@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 전체 아카이브</title>
+<style>
+:root { color-scheme: light dark; --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --border:#e4e4ea; --accent:#4f46e5; }
+@media (prefers-color-scheme: dark) { :root { --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --border:#2a2a34; --accent:#8f8ffa; } }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.7; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+h1 { font-size:1.3rem; }
+p.back { margin-top:6px; }
+p.back a { color:var(--muted); text-decoration:none; }
+ul { list-style:none; margin-top:20px; }
+li { border-bottom:1px solid var(--border); }
+li a { display:block; padding:10px 4px; color:var(--fg); text-decoration:none; }
+li a:hover { color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>전체 아카이브</h1>
+<p class="back"><a href="../index.html">← 최신 브리핑</a></p>
+<ul>
+{% for d in archive_dates %}
+<li><a href="{{ d }}.html">{{ d }}</a></li>
+{% endfor %}
+</ul>
+</div>
+</body>
+</html>

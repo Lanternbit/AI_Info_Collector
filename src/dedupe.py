@@ -1,7 +1,7 @@
 """최신성 필터 + seen 필터 + 중복 제거(URL 정규화 / 제목 유사도)."""
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import timedelta, timezone
 from difflib import SequenceMatcher
 
 from src.models import Item, now_kst
@@ -13,7 +13,14 @@ def filter_fresh(items: list[Item], hours: int) -> list[Item]:
     """게시 시각이 최근 N시간 이내인 아이템만 통과. 게시 시각이 없으면 최초 발견으로 간주해 통과
     (이후 실행에서는 seen 필터가 걸러 준다)."""
     cutoff = now_kst() - timedelta(hours=hours)
-    return [it for it in items if it.published is None or it.published >= cutoff]
+    fresh = []
+    for it in items:
+        pub = it.published
+        if pub is not None and pub.tzinfo is None:
+            pub = pub.replace(tzinfo=timezone.utc)  # 방어: naive는 UTC로 간주 (비교 크래시 방지)
+        if pub is None or pub >= cutoff:
+            fresh.append(it)
+    return fresh
 
 
 def filter_seen(items: list[Item], seen: dict) -> list[Item]:

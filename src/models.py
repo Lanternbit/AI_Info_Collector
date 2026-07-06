@@ -4,7 +4,7 @@ from __future__ import annotations
 import hashlib
 import re
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from html.parser import HTMLParser
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from zoneinfo import ZoneInfo
@@ -22,6 +22,19 @@ def now_kst() -> datetime:
 
 def today_kst() -> str:
     return now_kst().strftime("%Y-%m-%d")
+
+
+def parse_iso_utc(value: str | None) -> datetime | None:
+    """ISO 문자열 → tz-aware datetime. 오프셋이 없으면 UTC로 간주 (naive 비교 크래시 방지)."""
+    if not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except Exception:
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt
 
 
 class _TextExtractor(HTMLParser):

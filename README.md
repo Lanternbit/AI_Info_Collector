@@ -27,8 +27,15 @@ copy .env.example .env   # 열어서 키 입력
 .\.venv\Scripts\python.exe pipeline.py             # 실제 실행
 ```
 
-- `NOTION_DATABASE_ID`(DB URL의 32자리 hex)만 넣으면 `data_source_id`는 자동 조회된다.
+- `NOTION_DATABASE_ID`(DB URL의 32자리 hex)만 넣으면 `data_source_id`는 자동 조회되고 로그에 출력된다.
   DB URL 예: `notion.so/사용자명/<DB_ID>?v=...` — `<DB_ID>` 부분.
+- `data_source_id` 수동 확인 (2025-09-03 버전부터 데이터베이스는 data source의 컨테이너):
+
+  ```bash
+  curl -H "Authorization: Bearer $NOTION_TOKEN" -H "Notion-Version: 2025-09-03" \
+    https://api.notion.com/v1/databases/<DB_ID>
+  # 응답의 data_sources[0].id 가 NOTION_DATA_SOURCE_ID
+  ```
 - **로컬에서 실제 실행(비 dry-run) 전 반드시 `git pull`** — Actions가 커밋한 seen.json과 어긋나면 Notion에 중복 저장될 수 있다.
 
 ## GitHub 배포 (M4)
@@ -56,3 +63,5 @@ copy .env.example .env   # 열어서 키 입력
 - smol.ai 다이제스트는 h1~h3 헤딩 파서로 토픽 분해 (분해 실패 시 8,000자 단일 아이템 폴백)
 - 소스별 폴링 주기 기능·Anthropic 폴백 스크레이퍼는 명세에 따라 구현하지 않음
 - 날짜는 전부 Asia/Seoul 기준 (`zoneinfo` + `tzdata` 패키지로 Windows 호환)
+- 같은 날 재실행 대비 `data/briefing_snapshot.json`에 당일 렌더 결과를 저장하고 병합 — cron 후 수동 재실행해도 그날 브리핑이 빈 페이지로 덮어써지지 않음
+- 코드 리뷰(3렌즈 적대적 검증)에서 발견된 15건 수정 완료: 구조화 출력 스키마 제약(additionalProperties, min/max), feedparser UTC 변환(calendar.timegm), naive datetime 방어, seen.json last_seen purge, Notion 스키마 타입 검증 등

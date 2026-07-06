@@ -62,3 +62,9 @@ def render(items: list[Item], source_status: list[dict], llm_ok: bool) -> None:
 
     (DOCS / "index.html").write_text(_render("archive/"), encoding="utf-8")
     (archive_dir / f"{date_slug}.html").write_text(_render(""), encoding="utf-8")
+
+    # 전체 아카이브 목록 페이지 (헤더 네비게이션은 최근 14일만 보여주므로)
+    archive_index = env.get_template("archive_index.html.j2")
+    (archive_dir / "index.html").write_text(
+        archive_index.render(archive_dates=archive_dates), encoding="utf-8"
+    )

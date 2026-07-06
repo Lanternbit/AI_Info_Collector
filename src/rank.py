@@ -19,17 +19,22 @@ BATCH_SIZE = 100
 MAX_TOKENS = 32000
 MIN_SPLIT = 10
 
+# 주의: Anthropic 구조화 출력은 숫자 제약(minimum/maximum)을 지원하지 않고
+# 모든 object에 additionalProperties: false가 필수다. importance 1~5 범위는
+# rank_items에서 클램핑으로 보장한다.
 SCHEMA = {
     "type": "object",
+    "additionalProperties": False,
     "properties": {
         "items": {
             "type": "array",
             "items": {
                 "type": "object",
+                "additionalProperties": False,
                 "properties": {
                     "id": {"type": "string"},
                     "title_ko": {"type": "string"},
-                    "importance": {"type": "integer", "minimum": 1, "maximum": 5},
+                    "importance": {"type": "integer", "description": "1~5 정수"},
                     "category": {"type": "string", "enum": CATEGORIES},
                     "summary_ko": {"type": "string"},
                     "why_it_matters_ko": {"type": "string"},
@@ -157,7 +162,8 @@ def rank_items(items: list[Item], cfg: dict, api_key: str) -> bool:
             it.category = rec.get("category") if rec.get("category") in CATEGORIES else "커뮤니티 화제"
             it.summary_ko = (rec.get("summary_ko") or "").strip()
             it.why_ko = (rec.get("why_it_matters_ko") or "").strip()
-        elif ok_batches:
-            it.importance = 1
-            it.category = "커뮤니티 화제"
+        # 결과 누락 아이템은 category를 비워 '수집된 소식 (요약 없음)' 섹션으로 보낸다
+    missing = sum(1 for it in items if it.key not in results)
+    if missing:
+        log.warning("랭킹 결과 누락 %d건 — '요약 없음' 섹션으로 표시", missing)
     return ok_batches > 0

@@ -18,7 +18,13 @@ from src.dedupe import dedupe, filter_fresh, filter_seen
 from src.fetchers import FETCHERS
 from src.models import today_kst
 from src.render import render
-from src.state import load_seen, mark_seen, save_seen
+from src.state import (
+    load_day_snapshot,
+    load_seen,
+    mark_seen,
+    save_day_snapshot,
+    save_seen,
+)
 
 log = logging.getLogger("pipeline")
 
@@ -59,6 +65,7 @@ def main() -> None:
     with open("config/sources.yaml", encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
 
+    today = today_kst()
     all_items, source_status = collect(cfg)
     collected = len(all_items)
 
@@ -68,18 +75,30 @@ def main() -> None:
     unique = dedupe(unseen)
     log.info("수집 %d건 → 최신성 필터 %d건 → 미확인 %d건 → 중복 제거 %d건", collected, len(fresh), len(unseen), len(unique))
 
-    llm_ok = False
+    # 0건은 실패가 아니다 — llm_ok=False는 '호출했으나 실패'만 의미 (거짓 실패 배너 방지)
+    llm_ok = True
     api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if api_key and unique:
-        from src.rank import rank_items  # anthropic import를 키 있을 때만
+    if unique:
+        if api_key:
+            from src.rank import rank_items  # anthropic import를 키 있을 때만
 
-        llm_ok = rank_items(unique, cfg, api_key)
-        if not llm_ok:
-            log.error("LLM 랭킹 전체 실패 — 원제목 폴백으로 렌더링 (운영 요구사항 5)")
-    elif not api_key:
-        log.warning("ANTHROPIC_API_KEY 없음 — 요약 없이 원제목만으로 렌더링")
+            llm_ok = rank_items(unique, cfg, api_key)
+            if not llm_ok:
+                log.error("LLM 랭킹 전체 실패 — 원제목 폴백으로 렌더링 (운영 요구사항 5)")
+        else:
+            llm_ok = False
+            log.warning("ANTHROPIC_API_KEY 없음 — 요약 없이 원제목만으로 렌더링")
 
-    render(unique, source_status, llm_ok)
+    # 같은 날 재실행 시 이전 실행분과 병합 — 그날 브리핑이 빈 페이지로 덮어써지지 않게
+    snapshot = load_day_snapshot(today)
+    merged_map = {it.key: it for it in snapshot}
+    for it in unique:
+        merged_map[it.key] = it
+    merged = list(merged_map.values())
+    if snapshot:
+        log.info("당일 스냅샷 %d건과 병합 → 렌더 대상 %d건", len(snapshot), len(merged))
+
+    render(merged, source_status, llm_ok)
     log.info("HTML 생성 완료: docs/index.html")
 
     notion_saved = 0
@@ -98,16 +117,21 @@ def main() -> None:
                     key=lambda i: (-i.importance, i.tier),
                 )[: cfg.get("notion_max_items", 30)]
                 for item in candidates:
-                    if notion_client.save_item(token, ds_id, item, today_kst()):
-                        notion_saved += 1
-                    mark_seen(seen, item.key, notion_saved=True)
+                    try:  # 아이템 1건의 400이 나머지 저장을 막지 않게 격리
+                        if notion_client.save_item(token, ds_id, item, today):
+                            notion_saved += 1
+                        mark_seen(seen, item.key, notion_saved=True)
+                    except Exception as exc:  # noqa: BLE001
+                        log.error("Notion 저장 실패(%s): %s", item.display_title[:40], exc)
             except Exception as exc:  # noqa: BLE001
-                log.error("Notion 저장 실패: %s", exc)
+                log.error("Notion 연동 실패: %s", exc)
         else:
             log.warning("NOTION_TOKEN 없음 — Notion 저장 건너뜀")
-        for item in unseen:
+        # fresh 전체의 last_seen 갱신 — 무날짜 아이템이 30일 purge 후 부활하는 것 방지
+        for item in fresh:
             mark_seen(seen, item.key)
         save_seen(seen)
+        save_day_snapshot(today, merged)
 
     headline_count = sum(1 for i in unique if i.importance >= 4)
     log.info(

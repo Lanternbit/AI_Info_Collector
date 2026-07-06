@@ -54,6 +54,7 @@ footer .fail { color:#c0392b; }
     {%- for d in archive_dates[:14] %}
     <a href="{{ prefix }}{{ d }}.html">{{ d[5:] }}</a>
     {%- endfor %}
+    {% if archive_dates | length > 14 %}<a href="{{ prefix }}index.html">전체 ›</a>{% endif %}
   </nav>
   {% if not llm_ok %}<div class="banner">⚠ 오늘은 LLM 요약에 실패해 원제목만 표시합니다.</div>{% endif %}
 </header>

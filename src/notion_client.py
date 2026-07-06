@@ -68,20 +68,36 @@ def resolve_data_source_id(token: str) -> str:
         raise RuntimeError("데이터베이스에 data source가 없다 — DB가 통합에 공유되었는지 확인")
     if len(sources) > 1:
         log.warning("data source가 %d개 — 첫 번째를 사용", len(sources))
-    return sources[0]["id"]
+    ds_id = sources[0]["id"]
+    log.info("data_source_id: %s (Actions Secrets의 NOTION_DATA_SOURCE_ID에 이 값을 등록)", ds_id)
+    return ds_id
 
 
 def bootstrap_schema(token: str, ds_id: str) -> None:
-    """빈 DB에 필요한 속성을 자동 생성하고 title 속성을 '제목'으로 rename."""
+    """빈 DB에 필요한 속성을 자동 생성하고 title 속성을 '제목'으로 rename.
+
+    같은 이름·다른 타입 속성이 이미 있으면 조용히 지나가지 않고 명확한 에러로 중단한다
+    (그대로 두면 이후 모든 save_item이 400으로 실패하기 때문)."""
     data = _request("GET", f"/data_sources/{ds_id}", token)
     existing = data.get("properties") or {}
     patch: dict = {}
+    mismatches: list[str] = []
     title_name = next((n for n, p in existing.items() if p.get("type") == "title"), None)
     if title_name and title_name != "제목":
-        patch[title_name] = {"name": "제목"}
+        if "제목" in existing:
+            mismatches.append(f"'제목' 속성이 title 타입이 아님(현재 {existing['제목'].get('type')}) — 이름 변경 또는 삭제 필요")
+        else:
+            patch[title_name] = {"name": "제목"}
     for name, schema in DESIRED_PROPS.items():
-        if name not in existing:
+        if name in existing:
+            want = next(iter(schema))
+            got = existing[name].get("type")
+            if got != want:
+                mismatches.append(f"'{name}': {got} → {want} 타입이어야 함")
+        else:
             patch[name] = schema
+    if mismatches:
+        raise RuntimeError("Notion DB 속성 타입 불일치 — DB에서 수동 수정 필요: " + "; ".join(mismatches))
     if patch:
         _request("PATCH", f"/data_sources/{ds_id}", token, {"properties": patch})
         log.info("Notion 스키마 부트스트랩: %d개 속성 생성/변경", len(patch))

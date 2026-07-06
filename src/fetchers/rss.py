@@ -1,7 +1,7 @@
 """공용 RSS/Atom 수집기."""
 from __future__ import annotations
 
-import time
+import calendar
 from datetime import datetime, timezone
 
 import feedparser
@@ -18,7 +18,8 @@ def parse_entry_date(entry) -> datetime | None:
         st = entry.get(attr)
         if st:
             try:
-                return datetime.fromtimestamp(time.mktime(st), tz=timezone.utc)
+                # feedparser의 struct_time은 항상 UTC — mktime(로컬 해석)이 아니라 timegm 사용
+                return datetime.fromtimestamp(calendar.timegm(st), tz=timezone.utc)
             except Exception:
                 continue
     return None
