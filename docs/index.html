@@ -47,6 +47,11 @@ section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
 details.more { margin-top:12px; }
 details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
 details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
 ul.compact { list-style:none; margin-top:4px; }
 ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
 ul.compact li:last-child { border-bottom:none; }
@@ -78,10 +83,10 @@ footer .fail { color:#c0392b; }
     <a href="#headlines"><b>헤드라인</b></a>
     <a href="#cat-0">모델 릴리스 <b>6</b></a>
     <a href="#cat-1">연구·논문 <b>5</b></a>
-    <a href="#cat-2">도구·오픈소스 <b>15</b></a>
-    <a href="#cat-3">업계 동향 <b>10</b></a>
-    <a href="#cat-4">정책·안전 <b>3</b></a>
-    <a href="#cat-5">커뮤니티 화제 <b>37</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>15</b></a>
+    <a href="#cat-4">업계 동향 <b>10</b></a>
+    <a href="#cat-5">정책·안전 <b>3</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>37</b></a>
   </nav>
   
   
@@ -103,9 +108,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">코딩 배경이 없는 퇴역 군인이 Claude와 250번의 반복 작업을 통해 17KB의 프로토타입을 완전한 탱크 게임으로 개발하고 출시했습니다. Claude는 시뮬레이션, 그래픽, 사운드트랙, AI 상대 등 게임의 거의 모든 부분을 담당했으며, 개발자는 디렉터 및 QA 역할만 수행했습니다.</p>
   <p class="why">AI가 비전문가의 아이디어를 실제 제품으로 구현하는 데 얼마나 강력한 도구가 될 수 있는지 보여주는 놀라운 사례이며, AI를 통한 창작 및 개발의 민주화를 상징합니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Vibe Tanks, free browser game, one 130KB HTML file. Built entirely with Claude in the web interface. I acted as director and QA, never wrote code myself. What Claude did: 60Hz deterministic sim, procedural graphics, a synthesized soundtrack that speeds up as matches heat up, humanized AI opponent, stats, trophies, PWA install, and a Cloudflare Worker feedback backend. What I did: spec every feature, test every build on real devices, reject what failed, keep a byte-identical rollback before every change. Claude shipped silent bugs more than once. A self-recursing audio compressor killed performance for days until we instrumented the frame loop to hunt it. Free to play, no ads or accounts: https://www.hammeranvilbrew.com/vibetanks?utm_source=claudeai Happy to answer anything about the workflow. submitted by /u/MDawg74 [link] [comments]</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://importai.substack.com/p/import-ai-464-fables-writes-gpu-kernels" target="_blank" rel="noopener">Import AI 464: Fables가 GPU 커널 작성, AI 자동화, 아날로그 연산</a></h3>
   <div class="meta">
@@ -115,9 +127,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">Import AI 뉴스레터에서 Fable 모델이 &#39;KernelBench-Mega&#39;에 제출된 GPU 메가커널 중 가장 빠르고 진정한 커널을 작성했다고 보도했습니다. 이는 AI 시스템이 자체적으로 R&amp;D를 자동화할 수 있음을 시사하며, AI의 연구 개발 능력에 대한 새로운 지평을 열고 있습니다.</p>
   <p class="why">AI가 자체적으로 고성능 컴퓨팅 커널을 작성하는 능력은 AI 연구 개발의 자동화 및 가속화를 의미하며, 인간 중심의 개발 패러다임을 근본적으로 변화시킬 잠재력이 있습니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you’d like to support this, please subscribe. Subscribe now Fable writes a decent GPU kernel, hinting at broader AI R&amp;D automation: …The start of an RSI loop… Fable has written “the first genuine (and fastest) megakernel ever submitted to KernelBench-Mega, according to one of the benchmarks maintainers as well as its official leaderboard. This is a sign of how AI systems are getting better at doing some tasks that are fundamental to AI research and development, like kernel design. The results: Fable achieved an 18.71X speedup by writing Cuda code on an RTX PRO 6000 Blackwell, compared against an optimized PyTorch baseline. For calibration, other attempts at this get 14.4X (Claude Opus 4.8, writing Triton), 11.14X (GLM-5.2, Triton), and 4.34X (GPT 5.5, Triton). Here’s where it gets complicated: This solution is particularly impressive because “torch.profiler shows exactly ONE cooperative kernel launch per decoded token”. By comparison, every other high-scoring entry decomposed the problem into anywhere from 4 to 14 separate kernel launches per token. Why this matters: Being able to autonomously develop and improve kernels is one of the fundamental input tasks for being able to do AI research and development. The better AI systems at doing tasks like kernel design, the better they get at the kinds of tasks required for AI development, and that means the better they get at things that could lead to recursive self-improvement. Therefore, benchmarks like KernelBench-Mega are a meaningful signal on how effective AI systems are becoming at building themselves. See the leaderboard : KernelBench Mega (official site) . Read the analysis from one of the benchmark maintainers here (Elliot Arledge, X) .. *** AI systems are getting better at pricey online work tasks - what does that mean for the economy? …AI capability expansion versus human comparative advant</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://usefeyn.com/blog/pulpie-pareto-optimal-models-for-cleaning-the-web/" target="_blank" rel="noopener">Pulpie: 웹 페이지 클리닝을 위한 효율적인 모델 공개</a></h3>
   <div class="meta">
@@ -127,9 +146,16 @@ footer .fail { color:#c0392b; }
     <span class="badge">▲ 43</span>
     
     
+    
   </div>
   <p class="summary">Feyn의 창립자 Shreyash가 웹 페이지의 상용구(광고, 푸터 등)를 제거하고 주요 콘텐츠만 HTML 또는 Markdown으로 추출하는 Pulpie 모델을 공개했습니다. Pulpie는 SOTA 추출 품질을 유지하면서 기존 선도 추출기보다 20배 저렴한 비용으로 웹 페이지를 클리닝할 수 있다고 주장합니다.</p>
   <p class="why">효율적이고 저렴한 웹 데이터 클리닝 모델은 대규모 데이터셋 구축 비용을 획기적으로 낮춰 AI 학습 데이터 준비 시장에 큰 변화를 가져올 수 있습니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Hey HN, I&#39;m Shreyash, founder of Feyn. We built Pulpie, a family of Pareto optimal models for cleaning the web. Pulpie strips boilerplate (ads, footers, sidebars) from raw HTML and returns just the main content as HTML or Markdown. We match SOTA extraction quality while being 20x cheaper. Cleaning 1 billion webpages costs $7,900 with Pulpie versus $159,000 with Dripper, the current leading extractor. The gains come from architecture. Today&#39;s leading extractors are decoders that generate output one token at a time. Each step reads the full model from memory to produce a single token. Conversely, Pulpie models are encoders. They run one forward pass over the full input HTML and label each block as boilerplate or content. As a result, Pulpie is compute-bound while decoders are memory-bound. Cheaper GPUs have relatively more compute than memory bandwidth. This makes Pulpie easy to run optimally. Here&#39;s Pulpie and Dripper cleaning the same pages side by side: https://www.youtube.com/watch?v=ibd-tIiQECo . You can try a side-by-side comparison yourself: https://huggingface.co/spaces/feyninc/pulpie Our motivation for Pulpie came from building a deep research harness. Every search API returns noisy content that contains ads, nav elements, and sidebars. In one instance, an ad for &#34;Gemini on Pixel&#34; slipped into our search results, got passed into LLM context, and ended up in the final answer served to the user. Pretty embarrassing moment for us but it helped us realize how bad data kills model intelligence. We built Pulpie to get clean data for cheap. All models are open source on Hugging Face. You can read about our training process and how to use Pulpie here: https://usefeyn.com/blog/pulpie-pareto-optimal-models-for-cl... Happy to answer any questions!</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://intextbooks.science.uu.nl/workshop2026/files/itb26_s1s2.pdf" target="_blank" rel="noopener">새로운 AI 튜터, 다트머스 대학 수업에서 0.71-1.30 SD 효과 크기 달성</a></h3>
   <div class="meta">
@@ -139,9 +165,11 @@ footer .fail { color:#c0392b; }
     <span class="badge">▲ 174</span>
     
     
+    
   </div>
   <p class="summary">새로운 AI 튜터가 다트머스 대학 수업에서 0.71에서 1.30 표준편차(SD)의 효과 크기를 달성했다는 연구 결과가 발표되었습니다. 이는 AI 튜터가 학생들의 학습 성과를 유의미하게 향상시킬 수 있음을 시사합니다.</p>
   <p class="why">AI 기반 교육 기술의 효과를 입증하는 중요한 연구 결과로, AI가 교육 분야에 미치는 긍정적 영향과 상용화 가능성을 보여줍니다.</p>
+  
 </article><article class="item">
   <h3><a href="https://old.reddit.com/r/LocalLLaMA/comments/1uoozt4/new_open_model_from_tencent_hy_hy3_295b_total_21b/" target="_blank" rel="noopener">텐센트 Hy3 (295B, Apache 2.0) 오픈 모델 공개</a></h3>
   <div class="meta">
@@ -151,9 +179,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">텐센트가 Hy3이라는 새로운 오픈 모델(총 295B 파라미터, 활성 21B 파라미터)을 Apache 2.0 라이선스로 공개했습니다. 이는 기존의 제한적인 라이선스에서 변경된 것으로, 모델 접근성이 크게 향상되었습니다.</p>
   <p class="why">대규모 모델의 Apache 2.0 라이선스 공개는 상업적 활용을 포함한 광범위한 AI 연구 및 개발을 촉진하여 오픈소스 AI 생태계에 긍정적인 영향을 미칩니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Collection: https://huggingface.co/collections/tencent/hy3 From elie on 𝕏: https://x.com/eliebakouch/status/2074011171661701466 edit: To clarify: this is the non-preview version of Hy3 and they changed their license from the community one (restrictive + not allowed in SK, UK, EU) to Apache 2.0 submitted by /u/Nunki08 [link] [comments]</div>
+  </details>
+  
 </article>
 </section>
 
@@ -170,9 +205,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">러시아 Sberbank가 GigaChat3.5-432B-A28B라는 새로운 모델을 공개했으며, 출시 당일부터 GGUF 형식 지원을 제공합니다. 이는 로컬 환경에서의 모델 활용도를 크게 높이는 조치입니다.</p>
   <p class="why">대규모 모델의 즉각적인 GGUF 지원은 로컬 LLM 커뮤니티에 매우 중요하며, 사용자 친화적인 배포 전략은 모델 확산을 가속화합니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">New model from Sberbank: https://huggingface.co/ai-sage/GigaChat3.5-432B-A28B Base version also available: https://huggingface.co/ai-sage/GigaChat3.5-432B-A28B-base Most important is the&#39;re also made a GGUF version: https://huggingface.co/ai-sage/GigaChat3.5-432B-A28B-GGUF For now it&#39;s not in master branch yet but one can build from this PR: https://github.com/ggml-org/llama.cpp/pull/25342 submitted by /u/unbannedfornothing [link] [comments]</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://old.reddit.com/r/LocalLLaMA/comments/1up07mk/kyutais_pocket_tts_clones_a_voice_from_5_seconds/" target="_blank" rel="noopener">Kyutai의 Pocket TTS, 5초 음성으로 음성 복제, CPU에서 MIT 라이선스로 구동</a></h3>
   <div class="meta">
@@ -182,9 +224,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">Kyutai가 5초 오디오로 목소리를 복제하는 Pocket TTS 모델을 공개했습니다. 이 약 1억 개의 파라미터를 가진 스트리밍 언어 모델은 CPU에서도 작동하며 MIT 라이선스로 제공됩니다. 기존 CPU 기반 TTS 모델들과 비교 벤치마크 결과도 함께 발표되었습니다.</p>
   <p class="why">적은 오디오 샘플로 CPU에서 음성을 복제하는 기술은 개인화된 음성 AI 애플리케이션 개발에 중요한 진전이며, MIT 라이선스는 광범위한 채택을 가능하게 합니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Kyutai dropped Pocket TTS a bit ago and I&#39;ve been sitting on it for a benchmark. Finally ran it head to head against the three CPU TTS models that have been getting attention (Kokoro 82M, Supertonic 3, Inflect-Nano-v1). 180 timed runs, 36 audio samples, objective MOS scores via UTMOS. Short version: Pocket TTS is the slowest of the six configs I tested, and it&#39;s still the most interesting model in the field. Here&#39;s why. What Pocket TTS actually is: It&#39;s a ~100M param streaming language model that generates audio tokens over Kyutai&#39;s Mimi neural codec, then decodes to 24kHz. So instead of the usual acoustic-model-plus-vocoder setup, it&#39;s more like an autoregressive LLM but for audio. Token by token. Two consequences of that architecture: Latency is dead flat across text lengths. Its RTF is 0.69 to 0.76 whether you feed it 12 chars or 1712 chars. No fixed overhead to amortize. Compare with Kokoro PyTorch which climbs from 0.49 on tiny text to 0.83 on long text. It streams. Which matters if you&#39;re building anything interactive. Zero-shot voice cloning from 5 seconds. On CPU. This is the headline feature. Hand it a 5-second reference clip of any voice and it speaks in that voice. Accent, timbre, pacing, even the mic character of the reference. No fine-tuning. No GPU. MIT license. None of the other CPU-friendly models can do this at all. Kokoro and Inflect-Nano ship fixed voice sets, Supertonic same. If you want a user-supplied voice on a CPU box, Pocket TTS is currently in a category of one. I ran the benchmark with Pocket TTS pinned to a preset voice ( alba ) for a fair speed/quality comparison. The cloning capability isn&#39;t in the numbers below because you can&#39;t benchmark it against models that don&#39;t have it. Full results: Config Mean RTF UTMOS MOS Params License Supertonic 3 (2-step) 0.121 1.53 ~99M OpenRAIL-M Inflect-Nano-v1 0.145 3.48* 4.6M Apache 2.0 Supertonic 3 (5-step) 0.240 4.32 ~99M OpenRAIL-M Kokoro 82M (ONNX) 0.641 4.44 82M Apache 2.0 Kokoro 82M (PyTorch) 0.</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://old.reddit.com/r/LocalLLaMA/comments/1uodoli/liveportrait_distilled_model_that_can_run_at/" target="_blank" rel="noopener">브라우저에서 25fps로 실행 가능한 LivePortrait 경량 모델 개발</a></h3>
   <div class="meta">
@@ -194,9 +243,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">LivePortrait 모델을 증류(distillation)하여 브라우저 환경에서 25fps로 구동할 수 있는 경량 버전을 개발했습니다. 이는 WebGPU를 활용하며, 기존 ONNX 버전이 한 프레임에 30초가 걸리던 것을 30ms 미만으로 단축시켰습니다.</p>
   <p class="why">브라우저에서 실시간으로 작동하는 경량 비디오 합성 모델은 웹 기반 AI 애플리케이션의 새로운 가능성을 열고, 사용자 접근성을 크게 높입니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">This began as me attempting to run the ONNX version of LivePortrait ( https://github.com/KlingAIResearch/LivePortrait ) in Chrome with WebGPU. It took 30 seconds to generate a single frame. I investigated a few different options to improve performance, but eventually decided it would be fun to try to distill that model into something much smaller. Linked is a demo of the first proof-of-concept version of the distilled model. On my 5090, a frame takes less than 30ms to generate and runs 100% in the browser. Quality is just ok and some portraits will work better than others simply because I trained this using a small number of portraits and only trained for a few hours. I’d love to hear how quickly (or not!) frames are rendering for others with different GPUs. submitted by /u/stephen_holograf [link] [comments]</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://old.reddit.com/r/LocalLLaMA/comments/1up47qv/ant_group_released_lingbotvision_dinofamily/" target="_blank" rel="noopener">Ant Group, LingBot-Vision 공개: DINO 계열 비전 백본, 0.3B 모델이 7B 모델 성능 달성</a></h3>
   <div class="meta">
@@ -206,9 +262,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">Ant Group이 LingBot-Vision을 공개했습니다. 이는 4가지 크기의 DINO 계열 비전 백본으로, 특히 0.3B ViT-L 모델이 NYUv2 깊이 추정 벤치마크에서 DINOv3-7B와 유사한 성능을 약 23배 적은 파라미터로 달성했습니다. Apache-2.0 라이선스로 제공됩니다.</p>
   <p class="why">파라미터 수를 획기적으로 줄이면서도 SOTA 성능에 근접한 비전 모델은 효율적인 컴퓨터 비전 애플리케이션 개발에 중요하며, 엣지 AI 분야에 큰 영향을 미칠 것입니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Weights, all 4 sizes, Apache-2.0 (ViT-S / ViT-B / ViT-L / ViT-g): https://huggingface.co/collections/robbyant/lingbot-vision Code: https://github.com/robbyant/lingbot-vision Project page: https://technology.robbyant.com/lingbot-vision Self-supervised DINO-family backbone, but the masking is boundary-driven: the teacher predicts where object boundaries are and those tokens get forced into the student&#39;s mask, so it can&#39;t solve reconstruction by copying flat context. No labels, no text supervision, no external edge detector. The screenshot is Table 2. The 1.1B flagship gets the best NYUv2 RMSE in the whole comparison (0.296 vs 0.309 for DINOv3-7B, with V-JEPA 2.1 at 2B in between at 0.307). The 0.3B ViT-L number (0.310, basically the 7B&#39;s 0.309) is from Table 5. Sizes per the report: 1.1B ViT-g, 0.3B ViT-L, 86M ViT-B and a 21M ViT-S. ViT-L is ~0.6GB in fp16. The repos ship a small custom loader (lbot_vision_infer) that returns the frozen backbone for feature extraction, and dense features (depth/segmentation probes, tracking) are the point, not chat. Where it loses, same tables: ImageNet classification trails DINOv3 at the flagship and L scales (the B/S students actually lead their class on linear probe), and KITTI favors the bigger models (both the 7B and the 2B V-JEPA beat it there). Trained on 161M images, less than 1/3 of DINOv3&#39;s training samples. All numbers are self-reported. The eval protocol is the standard DINOv3 frozen linear-probe recipe, so it&#39;s cheap to check independently. Given how the Ling-1T threads went, I&#39;d treat the deltas as unverified until someone reruns the probe. submitted by /u/Simple_Response8041 [link] [comments]</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://old.reddit.com/r/LocalLLaMA/comments/1up38ap/pulpie_orange_small_paretooptimal_html_content/" target="_blank" rel="noopener">Pulpie Orange Small: 파레토 최적 HTML 콘텐츠 추출 모델</a></h3>
   <div class="meta">
@@ -218,9 +281,11 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">Pulpie Orange Small 모델은 HTML 콘텐츠 추출에서 파레토 최적 성능을 제공한다고 합니다. 이는 웹 페이지에서 핵심 정보를 효율적으로 추출하는 데 중점을 둔 모델입니다.</p>
   <p class="why">효율적인 HTML 콘텐츠 추출은 대규모 웹 데이터 처리 및 AI 학습 데이터 준비에 필수적이며, 비용 효율성 측면에서 중요한 진전입니다.</p>
+  
 </article>
   <ul class="compact">
   
@@ -241,9 +306,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">ThinkingCap-Qwen3.6-27B 모델이 기존 Qwen3.6과 동일한 정확도를 유지하면서도 추론에 필요한 &#39;사고(thinking)&#39;를 약 50% 줄였다는 연구 결과가 발표되었습니다. 이는 다양한 벤치마크를 통해 검증되었습니다.</p>
   <p class="why">동일 성능에서 추론 비용을 획기적으로 절감하는 기술은 LLM의 상용화 및 대규모 배포에 매우 중요하며, 효율적인 AI 모델 개발의 새로운 방향을 제시합니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">We rigorously evaluate the resulting checkpoint across general reasoning, non-reasoning multiple-choice question answering, everyday multi-turn conversations, system prompt adherence, safety, math, code and agentic use cases. Due to the high variability of reasoning quality at Qwen-recommended sampling temperature 1.0, we run each benchmark with multiple seeds and do statistical significance testing on all the results. We evaluate both in domain (holdout parts of selected datasets included in training) and out of domain. to be verified of course but interesting promise :) submitted by /u/paf1138 [link] [comments]</div>
+  </details>
+  
 </article>
   <ul class="compact">
   
@@ -266,7 +338,7 @@ footer .fail { color:#c0392b; }
   
 </section>
 
-<section id="cat-2">
+<section id="cat-3">
   <h2>도구·오픈소스 <span class="cnt">15건</span></h2>
   <article class="item">
   <h3><a href="https://old.reddit.com/r/LocalLLaMA/comments/1uom9zb/as_promised_here_is_the_github_link_for_my_100/" target="_blank" rel="noopener">100% 로컬 음성-음성 AI 비서 &#39;Athena&#39; GitHub 공개</a></h3>
@@ -277,9 +349,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">완전히 오프라인으로 작동하는 프라이버시 중심의 음성-음성 AI 비서 &#39;Athena&#39;의 GitHub 저장소가 공개되었습니다. 이 비서는 대규모 전문가 혼합 언어 모델(Qwen3.5-397B), 신경망 TTS(Orpheus 3B), 실시간 음성 인식(Whisper)을 결합하여 로컬 하드웨어에서만 구동됩니다.</p>
   <p class="why">완전 로컬, 오프라인 음성 비서의 등장은 데이터 프라이버시를 중시하는 사용자들에게 큰 이점을 제공하며, 엣지 AI 기술의 발전을 보여줍니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">I&#39;ve posted up earlier versions of this project before, promising a GitHub link, but never got around to pushing the code from my local system. Sorry all, I have a very busy life :P Anyway, without further ado: GitHub: https://github.com/igorbarshteyn/athena Athena is a fully offline, privacy-first voice assistant that runs entirely on local hardware. Athena combines a large mixture-of-experts language model (Qwen3.5-397B), neural text-to-speech (Orpheus 3B), real-time speech recognition (Whisper-small.en), and a SNAC neural audio codec into a four-process pipeline — all in C++ with zero Python at runtime (one optional Python script exists for a one-time, offline emotion2vec+ model conversion at setup). Athena speaks with natural emotion (laughs, sighs, gasps), reads the basic affect in your voice and responds to it, remembers across sessions (with evolving long-term memory and personality that persist between conversations), maintains long conversational context, is interruptible mid-sentence (speak over her and she stops, keeping what she already said in context), and runs on a single consumer GPU + system RAM. No cloud, no telemetry, no API keys. Right now the system is tuned to act as a friend and to be very connection-seeking. These parameters can be tuned to one&#39;s liking via system prompts embedded in the code. Here is a two-session demo video demonstrating these capabilities: https://youtu.be/8HuRUpJ4_as?t=237 - Session 1 - planting memories https://youtu.be/8HuRUpJ4_as?t=2137 - Session 2 - testing recall submitted by /u/Responsible_Fig_1271 [link] [comments]</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://old.reddit.com/r/LocalLLaMA/comments/1uogebv/i_asked_codex_to_optimize_deepseek_v4_flash_8bit/" target="_blank" rel="noopener">Codex로 DeepSeek V4 Flash 8비트 MLX 최적화하여 1.6~3배 속도 향상 달성</a></h3>
   <div class="meta">
@@ -289,9 +368,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">DeepSeek V4 Flash 8비트 MLX 모델을 Codex를 사용하여 최적화한 결과, 사전 채우기(prefill) 속도는 약 1.6배, 디코딩 속도는 약 3배 향상되었습니다. 이는 Mac Studio 환경에서 이루어진 성능 개선입니다.</p>
   <p class="why">AI를 활용하여 AI 모델의 성능을 최적화하는 사례는 흥미로우며, 이는 MLX와 같은 효율적인 프레임워크와 결합하여 로컬 LLM 성능 향상에 큰 기여를 합니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Follow-up to my earlier posts: Should I sell my Mac Studio? https://www.reddit.com/r/MacStudio/s/GK7QP8Lg87 Kimi benchmark: https://www.reddit.com/r/LocalLLaMA/s/ujBsYLYmpd Short version: my Mac Studio was sitting mostly idle, and from those Reddit threads I learned about DS4 and then oMLX. DS4 got me running DeepSeek V4 locally, but I wanted the 8-bit MLX version because I worry about accuracy loss in 4-bit variants. So I tried mlx-community/deepseek-ai-DeepSeek-V4-Flash-8bit , the 302GB 8-bit affine MLX model, and asked Codex to optimize oMLX for the model. I am not an oMLX/Metal kernel expert, so I am sharing this partly to sanity-check the work. Codex claims the changes should not reduce accuracy, and my Hermes/tool-calling runs look fine so far, but I would appreciate review from people who understand this stack better. Base oMLX work DeepSeek V4 support/tool calling came from oMLX DeepSeek V4 DSML/template/parser work, especially: https://github.com/jundot/omlx/pull/2048 There were also follow-up fixes for DSML/tool-call stopping, parser-side stop behavior, prompt/prefix-cache determinism, shared expert SwiGLU clamp behavior, and native DeepSeek V4 2-bit/3-bit Metal paths. The work below was separate: it focused on making the 8-bit affine model faster while keeping the same 302GB model format. What changed for 8-bit affine The issue was that DeepSeek V4 Flash 8-bit affine MoE was falling back to slower generic affine paths instead of using native DeepSeek MoE Metal kernels. Codex changed: Enabled native DeepSeek affine MoE kernels for bits=8 , group_size=64 Added 8-bit affine Metal kernel instantiations Replaced some generic route sorting with bucket/counting route paths Set route_sort_min_routes=1 so the native route path is used earlier Added route-indexed decode kernels to avoid route sort/materialization overhead during decode Tuned affine8 dequant/load with a uint32 load specialization Verified DeepSeek V4 parser/template and OpenAI-style tool calling sti</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://old.reddit.com/r/ClaudeAI/comments/1uolrn8/i_noticed_cowork_spins_up_a_vm_but_the_claude/" target="_blank" rel="noopener">Cowork가 VM을 사용하는 이유: Claude Code 내부 분석</a></h3>
   <div class="meta">
@@ -301,9 +387,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">Claude Cowork가 VM(가상 머신)을 사용하는 반면 Claude Code는 그렇지 않다는 점을 발견한 사용자가 내부 구조를 분석했습니다. Claude의 앱 지원 폴더에서 10GB 크기의 Ubuntu ARM64 클라우드 이미지를 발견했으며, 이는 Apple의 Virtualization.framework를 통해 부팅된다고 설명했습니다.</p>
   <p class="why">AI 코딩 환경의 기술적 구현 방식에 대한 심층 분석은 개발자들이 AI 도구의 작동 원리를 이해하고, 보안 및 성능 측면에서 중요한 통찰력을 제공합니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Found a 10GB VM bundle in Claude&#39;s app-support folder and spent the weekend taking it apart read-only. Notes: - Full Ubuntu ARM64 cloud image booted via Apple&#39;s Virtualization.framework, not a container or Seatbelt sandbox. The machineIdentifier bplist is the giveaway. - Control plane is a daemon (coworkd, internally sdk-daemon) speaking vsock RPC to the host. Runs as root with systemd hardening deliberately off, because the VM itself is the boundary. - Network egress runs through gVisor&#39;s userspace netstack, separate from the control channel. - Disk model: compressed golden image plus a disposable per-session overlay, so it resets clean each boot. Full write-up with: https://open.substack.com/pub/thefirstderivative/p/the-machine-inside-the-machine?r=820hh&amp;utm\_medium=web submitted by /u/foxtrot_north [link] [comments]</div>
+  </details>
+  
 </article>
   <ul class="compact">
   
@@ -342,7 +435,7 @@ footer .fail { color:#c0392b; }
   
 </section>
 
-<section id="cat-3">
+<section id="cat-4">
   <h2>업계 동향 <span class="cnt">10건</span></h2>
   <article class="item">
   <h3><a href="https://techcrunch.com/2026/07/02/mark-zuckerberg-tells-staff-that-ai-agents-havent-progressed-as-quickly-as-hed-hoped/" target="_blank" rel="noopener">마크 저커버그, AI 에이전트 발전이 충분치 않다고 직원들에게 언급</a></h3>
@@ -353,9 +446,44 @@ footer .fail { color:#c0392b; }
     <span class="badge">▲ 133</span>
     
     
+    
   </div>
   <p class="summary">마크 저커버그 메타 CEO가 직원들에게 AI 에이전트의 발전이 아직 충분하지 않다고 말했습니다. 이는 메타 내부에서 AI 에이전트 기술의 현재 수준에 대한 신중한 평가가 이루어지고 있음을 나타냅니다.</p>
   <p class="why">빅테크 CEO의 AI 에이전트 기술 현황에 대한 평가는 업계 전반의 기술 성숙도에 대한 중요한 지표가 됩니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Replacing people with AI doesn’t seem to be that easy to do, if Meta can be seen as an example.
+
+Reuters reports that at an internal town hall Thursday, CEO Mark Zuckerberg told staff that the pace of AI agent development had not “accelerated in the way” executives had previously expected them to.
+
+Earlier this year, Meta laid off some 8,000 employees — approximately 10% of its corporate workforce — and reassigned another 7,000 to various AI groups, including one called Agent Transformation, Bloomberg reported.
+
+During this week’s meeting, Zuckerberg apparently commented on these job cuts — noting that they were not as “clean” as they should have been. The cuts were made because top officials at the company “were worried that we weren’t going to move fast enough ‌to adapt” to the changing landscape of the tech industry, Zuckerberg reportedly added.
+
+The corporate leader also apparently said that the perceived upside of the new AI-focused company structure hadn’t “come to ​fruition yet,” although he said that he believed the company would begin to see improvements from its AI investments during the next three to six months. Several other investigative reports have depicted Meta’s months-old AI unit as a soul-crushing gulag, according to some of the engineers assigned to it.
+
+Meta has invested heavily in AI and is expected to spend as much as $145 billion on AI infrastructure this year, Reuters reports.
+
+TechCrunch reached out to Meta for comment.
+
+Last chance to save up to $190 on TechCrunch Founder Summit. Join 1,000+ founders and VCs at all stages for real-world scaling insights and connections that move the needle.Savings end June 26, 11:59 p.m. PT.
+
+Subscribe for the industry’s biggest tech news
+
+Startups Smart glasses maker Even Realities hits $1B valuation with $150M funding led by Meituan, Tencent Kate Park 10 hours ago
+
+AI Amazon will stop accepting new customers for Mechanical Turk Anthony Ha 1 day ago
+
+AI India’s MoEngage bets that the future of marketing is millions of AI agents Jagmeet Singh Jun 23, 2026
+
+In Brief You can now customize Siri’s pace and expressivity in the latest iOS 27 beta Sarah Perez 9 minutes ago
+
+AI The running list: major tech layoffs in 2026 where employers cited AI Rebecca Bellan Connie Loizos 36 minutes ago
+
+AI If you use Google, you’re training its AI. Here’s how to opt out. Sarah Perez 2 hours ago</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://old.reddit.com/r/LocalLLaMA/comments/1uoij3s/if_trends_hold_mythosclass_capability_may_be/" target="_blank" rel="noopener">현재 추세 유지 시, 2년 내 하이엔드 소비자 하드웨어에서 Mythos급 AI 성능 구현 가능</a></h3>
   <div class="meta">
@@ -365,9 +493,11 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">현재의 AI 기술 발전 추세가 지속된다면, 약 2년 안에 Mythos급 AI 성능이 하이엔드 소비자용 하드웨어에서도 구현될 수 있을 것으로 전망됩니다. 이는 로컬 LLM의 발전과 개인용 AI 컴퓨팅의 대중화를 시사합니다.</p>
   <p class="why">소비자용 하드웨어에서 Mythos급 AI 성능 구현은 개인 사용자들의 AI 접근성을 높이고, 엣지 AI 시장의 성장을 가속화할 것입니다.</p>
+  
 </article>
   <ul class="compact">
   
@@ -398,7 +528,7 @@ footer .fail { color:#c0392b; }
   
 </section>
 
-<section id="cat-4">
+<section id="cat-5">
   <h2>정책·안전 <span class="cnt">3건</span></h2>
   
   <ul class="compact">
@@ -420,7 +550,7 @@ footer .fail { color:#c0392b; }
   
 </section>
 
-<section id="cat-5">
+<section id="cat-6">
   <h2>커뮤니티 화제 <span class="cnt">37건</span></h2>
   <article class="item">
   <h3><a href="https://old.reddit.com/r/ClaudeAI/comments/1uoyvo2/in_1995_i_made_a_dos_game_about_shooting_green/" target="_blank" rel="noopener">1995년 DOS 게임, Claude가 원본 소스에서 부활시키다</a></h3>
@@ -431,9 +561,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">한 사용자가 1995년 고등학교 시절 QuickBasic으로 친구와 함께 만든 DOS 게임을 Claude AI가 원본 소스 코드에서 부활시켰다는 놀라운 경험담입니다. 이는 오래된 코드의 복구 및 현대화에 AI가 얼마나 강력한 도구가 될 수 있는지 보여줍니다.</p>
   <p class="why">AI가 레거시 시스템의 코드 분석, 이해, 그리고 현대화에 활용될 수 있음을 보여주는 강력한 사례로, 소프트웨어 개발 및 유지보수 패러다임에 변화를 가져올 수 있습니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Back in high school, I was trying to teach myself QuickBasic for DOS. I had a 500 page brick of a manual in English, droning on and on about Booleans and other stuff I had no idea what meant. But somehow, out of that thick book, I made small game. It was a collaboration with my friend Jesper - he made the graphics (pixel by pixel), I made the code (bug by bug). We named the protagonist Preben - a Danish name which, at the time, was the silliest name we could come up with. In order to prove himself worthy of the awesome name, he had to pass four tests. We only ever got around to building one: Preben is trapped in a cave, fighting off killer bees and mutant flying elephants, with only his trusted rifle by his side. This weekend I resurrected it. Over one long conversation, the AI: Parsed the original source-code and got all the game logic spot on. Extracted the original sprites pixel-perfect from 1995 BLOAD memory dumps (raw VGA memory snapshots, including the exact PUT coordinates) Recovered the original timing from the BIOS-tick game loop (something I remember being very proud of having made, since it made the game run at constant speed, no matter the speed of your CPU). Added a global highscore with server-side anti-cheat. My 1995 self, who stored highscores in plain-text, would not have believed this sorcery. Thirty years ago, this game took me months to build, now it was re-created in an afternoon. Fun times indeed - then and now 😄 Keyboard required — remember, this is 1995! Questions and Comments are welcomed! https://preben.fun submitted by /u/TheisSondergaard [link] [comments]</div>
+  </details>
+  
 </article><article class="item">
   <h3><a href="https://old.reddit.com/r/ClaudeAI/comments/1uoeskb/for_people_whove_actually_used_fable_5_heavily/" target="_blank" rel="noopener">Fable 5를 집중적으로 사용해 본 사람들에게, 어떤 점에서 진정한 강점을 보이는가?</a></h3>
   <div class="meta">
@@ -443,9 +580,16 @@ footer .fail { color:#c0392b; }
     
     
     
+    
   </div>
   <p class="summary">Fable 5가 7월 1일부터 전 세계적으로 다시 사용 가능해진 후, 이 모델을 실제로 집중적으로 사용해 본 사람들에게 Fable의 진정한 강점이 무엇인지 묻는 질문이 Reddit에 올라왔습니다. Opus 4.8이나 GPT-5.5와 비교했을 때 어떤 차별점이 있는지, 실제 어떤 것을 만들었는지에 대한 의견을 구하고 있습니다.</p>
   <p class="why">최신 고성능 AI 모델의 실제 사용자 경험과 차별화된 가치에 대한 심도 있는 논의는 AI 기술의 실질적인 역량을 이해하는 데 필수적입니다.</p>
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Fable&#39;s been back globally since July 1, and before the subscription window narrows on the 7th I wanted to hear from people who&#39;ve genuinely put it through its paces, not the pricing drama, the actual capability. Where does it clearly beat Opus 4.8 or GPT-5.5 for you, and where does it not? And more concretely: what have you actually built or done with it that you couldn&#39;t before? Trying to separate the real differentiated value from the hype. Curious what your experience has been. submitted by /u/Ok_Development_677 [link] [comments]</div>
+  </details>
+  
 </article>
   <ul class="compact">
   
@@ -539,7 +683,7 @@ footer .fail { color:#c0392b; }
 
 <footer>
   
-  소스 1/1 성공 · 생성 2026-07-07 04:29 KST
+  소스 1/1 성공 · 생성 2026-07-07 04:37 KST
   <ul>
     
     <li class="ok">✓ (스냅샷 재렌더 — 다음 실행 때 갱신) (81건)</li>

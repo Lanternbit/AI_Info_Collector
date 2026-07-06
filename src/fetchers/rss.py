@@ -55,7 +55,7 @@ def fetch(source: dict, client: httpx.Client, cfg: dict) -> list[Item]:
                 source=source["name"],
                 tier=source.get("tier", 2),
                 published=parse_entry_date(entry),
-                body=strip_html(extract_body(entry))[:2000],
+                body=strip_html(extract_body(entry))[:8000],
             )
         )
     return items

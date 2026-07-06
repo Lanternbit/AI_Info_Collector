@@ -15,7 +15,8 @@ API = "https://hn.algolia.com/api/v1"
 
 def _to_item(hit: dict, source: dict) -> Item:
     object_id = hit.get("objectID") or hit.get("story_id")
-    url = hit.get("url") or f"https://news.ycombinator.com/item?id={object_id}"
+    hn_page = f"https://news.ycombinator.com/item?id={object_id}"
+    url = hit.get("url") or hn_page  # 링크 포스트면 기사 원문, Ask HN이면 HN 페이지
     created = hit.get("created_at_i")
     return Item(
         title=(hit.get("title") or "(제목 없음)").strip(),
@@ -23,8 +24,9 @@ def _to_item(hit: dict, source: dict) -> Item:
         source=source["name"],
         tier=source.get("tier", 1),
         published=datetime.fromtimestamp(created, tz=timezone.utc) if created else None,
-        body=strip_html(hit.get("story_text") or "")[:2000],
+        body=strip_html(hit.get("story_text") or "")[:8000],
         metrics={"points": hit.get("points") or 0, "comments": hit.get("num_comments") or 0},
+        discussion_url=hn_page if url != hn_page else "",
     )
 
 

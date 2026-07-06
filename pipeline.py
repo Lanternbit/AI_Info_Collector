@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 
 from src.dedupe import dedupe, filter_fresh, filter_seen
 from src.fetchers import FETCHERS
+from src.fulltext import fetch_fulltext
 from src.models import today_kst
 from src.rank import editorial_pass, key_env_for, rank_items
 from src.render import render
@@ -103,6 +104,17 @@ def main() -> None:
         summary = editorial_pass(merged, cfg, api_key)
         if summary:
             daily_summary = summary
+
+    # 카드로 노출될 아이템의 '본문 읽기' 확보 — 본문이 짧으면 원문 기사에서 추출 (댓글 제외)
+    enriched = 0
+    for item in merged:
+        if (item.is_headline or item.importance >= 4) and not item.is_paper and len(item.body) < 400:
+            text = fetch_fulltext(item.url, cfg["user_agent"])
+            if len(text) > len(item.body):
+                item.body = text
+                enriched += 1
+    if enriched:
+        log.info("원문 본문 추출 %d건 (카드 아이템)", enriched)
 
     render(merged, source_status, llm_ok, daily_summary)
     log.info("HTML 생성 완료: docs/index.html")

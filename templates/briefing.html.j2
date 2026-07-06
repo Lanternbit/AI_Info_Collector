@@ -47,6 +47,11 @@ section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
 details.more { margin-top:12px; }
 details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
 details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
 ul.compact { list-style:none; margin-top:4px; }
 ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
 ul.compact li:last-child { border-bottom:none; }
@@ -95,9 +100,18 @@ footer .fail { color:#c0392b; }
     {% if item.metrics.get("points") %}<span class="badge">▲ {{ item.metrics["points"] }}</span>{% endif %}
     {% if item.metrics.get("upvotes") %}<span class="badge">▲ {{ item.metrics["upvotes"] }}</span>{% endif %}
     {% if item.metrics.get("likes") %}<span class="badge">♥ {{ item.metrics["likes"] }}</span>{% endif %}
+    {% if item.discussion_url %}<a class="badge" href="{{ item.discussion_url }}" target="_blank" rel="noopener">💬 토론</a>{% endif %}
   </div>
   {% if item.summary_ko %}<p class="summary">{{ item.summary_ko }}</p>{% endif %}
   {% if item.why_ko %}<p class="why">{{ item.why_ko }}</p>{% endif %}
+  {% if item.body and item.body | length >= 300 %}
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">{{ item.body[:6000] }}{% if item.body | length > 6000 %}
+
+… (전체 내용은 원문 링크에서){% endif %}</div>
+  </details>
+  {% endif %}
 </article>
 {%- endmacro %}
 

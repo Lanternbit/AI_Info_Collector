@@ -11,7 +11,7 @@ from zoneinfo import ZoneInfo
 
 KST = ZoneInfo("Asia/Seoul")
 
-CATEGORIES = ["모델 릴리스", "연구·논문", "도구·오픈소스", "업계 동향", "정책·안전", "커뮤니티 화제"]
+CATEGORIES = ["모델 릴리스", "연구·논문", "실무 지식", "도구·오픈소스", "업계 동향", "정책·안전", "커뮤니티 화제"]
 
 _TRACKING_PARAM = re.compile(r"^(utm_.*|fbclid|gclid|mc_cid|mc_eid|ref|ref_src|source|cmpid)$", re.I)
 
@@ -38,7 +38,10 @@ def parse_iso_utc(value: str | None) -> datetime | None:
 
 
 class _TextExtractor(HTMLParser):
+    """HTML → 텍스트. 문단 구조(p/li/헤딩/br)를 개행으로 보존해 '본문 읽기'가 읽을 만하게."""
+
     _SKIP = {"script", "style"}
+    _BREAK_AFTER = {"p", "li", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "tr", "div"}
 
     def __init__(self) -> None:
         super().__init__()
@@ -48,17 +51,29 @@ class _TextExtractor(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag in self._SKIP:
             self._skip_depth += 1
+        elif tag == "br":
+            self._parts.append("\n")
 
     def handle_endtag(self, tag):
         if tag in self._SKIP and self._skip_depth:
             self._skip_depth -= 1
+        elif tag in self._BREAK_AFTER:
+            self._parts.append("\n")
 
     def handle_data(self, data):
         if not self._skip_depth:
             self._parts.append(data)
 
     def text(self) -> str:
-        return re.sub(r"\s+", " ", " ".join(self._parts)).strip()
+        raw = "".join(self._parts)
+        lines = [re.sub(r"[ \t]+", " ", line).strip() for line in raw.split("\n")]
+        out: list[str] = []
+        for line in lines:
+            if line:
+                out.append(line)
+            elif out and out[-1] != "":
+                out.append("")  # 문단 구분 빈 줄 1개만 유지
+        return "\n".join(out).strip()
 
 
 def strip_html(html: str) -> str:
@@ -102,6 +117,7 @@ class Item:
     body_limit: int = 500  # LLM 입력 시 본문 절단 길이 (smol.ai 폴백만 8000)
     is_paper: bool = False  # HF Daily Papers → 논문 섹션 전용
     is_headline: bool = False  # 편집 패스가 선정한 '오늘의 헤드라인'
+    discussion_url: str = ""  # 커뮤니티 토론 페이지 (HN·Reddit — 본문 링크와 분리)
     # LLM 랭킹 결과
     title_ko: str = ""
     importance: int = 0

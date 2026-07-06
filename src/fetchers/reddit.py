@@ -1,8 +1,11 @@
 """Reddit — old.reddit.com의 .rss만 사용 (www.reddit.com/*.json 무인증은 403).
 
-설명적 User-Agent 필수, 초당 1요청 이하 유지."""
+설명적 User-Agent 필수, 초당 1요청 이하 유지.
+링크 포스트는 [link] 앵커에서 외부 기사 URL을 추출해 본문 링크로 쓰고,
+Reddit 페이지는 discussion_url(토론)로 분리한다."""
 from __future__ import annotations
 
+import re
 import time
 
 import feedparser
@@ -14,6 +17,7 @@ from src.net import get_with_retry
 
 _last_request_at = 0.0
 _REQUEST_GAP = 6.0  # 무인증 .rss는 레이트 리밋이 빡빡함 — 서브레딧 간 6초 간격
+_LINK_RE = re.compile(r'href="([^"]+)"\s*>\s*\[link\]', re.I)
 
 
 def fetch(source: dict, client: httpx.Client, cfg: dict) -> list[Item]:
@@ -30,14 +34,22 @@ def fetch(source: dict, client: httpx.Client, cfg: dict) -> list[Item]:
         link = entry.get("link", "")
         if not link:
             continue
+        raw_body = extract_body(entry)
+        url, discussion_url = link, ""
+        match = _LINK_RE.search(raw_body or "")
+        if match:
+            external = match.group(1)
+            if external.startswith("http") and "reddit.com" not in external:
+                url, discussion_url = external, link  # 링크 포스트: 본문은 기사, 토론은 Reddit
         items.append(
             Item(
                 title=(entry.get("title") or "(제목 없음)").strip(),
-                url=link,
+                url=url,
                 source=source["name"],
                 tier=source.get("tier", 1),
                 published=parse_entry_date(entry),
-                body=strip_html(extract_body(entry))[:2000],
+                body=strip_html(raw_body)[:8000],
+                discussion_url=discussion_url,
             )
         )
     return items
