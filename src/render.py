@@ -16,6 +16,12 @@ PAPERS_CARD_N = 5
 HEADLINE_FALLBACK_N = 5
 
 
+def paper_cards(items: list[Item]) -> list[Item]:
+    """논문 섹션에서 카드로 노출될 상위 논문 (pipeline의 번역 대상 선정과 공유)."""
+    papers = sorted([i for i in items if i.is_paper], key=lambda i: -(i.metrics.get("upvotes") or 0))
+    return papers[:PAPERS_CARD_N]
+
+
 def render(items: list[Item], source_status: list[dict], llm_ok: bool, daily_summary: str = "") -> None:
     now = now_kst()
     date_str = f"{now:%Y-%m-%d} ({WEEKDAYS_KO[now.weekday()]})"

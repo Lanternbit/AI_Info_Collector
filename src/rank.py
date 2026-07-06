@@ -297,6 +297,93 @@ GEMINI_EDITORIAL_SCHEMA = {
 }
 
 
+# ---------- 본문 번역: 카드 아이템의 '본문 읽기'를 한국어로 ----------
+
+TRANSLATE_SYSTEM = """너는 전문 기술 번역가다. AI 뉴스·기술 글 본문 목록을 받아 각각을
+자연스러운 한국어로 번역하라.
+- 기술 용어·모델명·고유명사·코드는 원어를 유지한다
+- 문단 구조(빈 줄)를 유지한다
+- 요약하지 말고 전체를 번역하라
+- 이미 한국어인 본문은 그대로 반환하라"""
+
+_TRANSLATE_PROPS = {
+    "id": {"type": "string"},
+    "body_ko": {"type": "string"},
+}
+ANTHROPIC_TRANSLATE_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": _TRANSLATE_PROPS,
+                "required": ["id", "body_ko"],
+            },
+        }
+    },
+    "required": ["items"],
+}
+GEMINI_TRANSLATE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "items": {
+            "type": "array",
+            "items": {"type": "object", "properties": _TRANSLATE_PROPS, "required": ["id", "body_ko"]},
+        }
+    },
+    "required": ["items"],
+}
+
+TRANSLATE_INPUT_CHARS = 6000  # 리더에 표시되는 분량만 번역
+TRANSLATE_BATCH_CHARS = 10000  # 호출당 입력 한도 (출력 32K 토큰 내 안전)
+
+
+def translate_bodies(targets: list[Item], cfg: dict, api_key: str) -> int:
+    """카드 아이템 본문을 한국어로 번역해 body_ko에 저장. 실패한 아이템은 원문 유지."""
+    provider = cfg.get("llm_provider", "gemini")
+    model = cfg.get("model", "gemini-2.5-flash")
+    call = _call_gemini if provider == "gemini" else _call_anthropic
+    schema = GEMINI_TRANSLATE_SCHEMA if provider == "gemini" else ANTHROPIC_TRANSLATE_SCHEMA
+
+    batches: list[list[Item]] = []
+    batch: list[Item] = []
+    size = 0
+    for it in targets:
+        body_len = len(it.body[:TRANSLATE_INPUT_CHARS])
+        if batch and size + body_len > TRANSLATE_BATCH_CHARS:
+            batches.append(batch)
+            batch, size = [], 0
+        batch.append(it)
+        size += body_len
+    if batch:
+        batches.append(batch)
+
+    done = 0
+    for n, b in enumerate(batches, 1):
+        if provider == "gemini":
+            time.sleep(GEMINI_BATCH_GAP)  # 10 RPM 준수
+        payload = json.dumps(
+            [{"id": it.key, "body": it.body[:TRANSLATE_INPUT_CHARS]} for it in b],
+            ensure_ascii=False,
+        )
+        try:
+            text, truncated = call(model, api_key, TRANSLATE_SYSTEM, schema, payload)
+            data = _parse_json(text)
+        except Exception as exc:  # noqa: BLE001 — 번역 실패 시 원문 표시로 폴백
+            log.warning("본문 번역 배치 %d/%d 실패: %s", n, len(batches), exc)
+            continue
+        by_id = {r["id"]: (r.get("body_ko") or "").strip() for r in data.get("items", []) if r.get("id")}
+        for it in b:
+            ko = by_id.get(it.key, "")
+            if ko:
+                it.body_ko = ko
+                done += 1
+    return done
+
+
 def editorial_pass(items: list[Item], cfg: dict, api_key: str) -> str:
     """전체 아이템을 보고 오늘의 요약을 쓰고 헤드라인 3~5건을 선정(is_headline in-place).
 

@@ -118,6 +118,7 @@ class Item:
     is_paper: bool = False  # HF Daily Papers → 논문 섹션 전용
     is_headline: bool = False  # 편집 패스가 선정한 '오늘의 헤드라인'
     discussion_url: str = ""  # 커뮤니티 토론 페이지 (HN·Reddit — 본문 링크와 분리)
+    body_ko: str = ""  # '본문 읽기'용 한국어 번역 (카드 아이템만)
     # LLM 랭킹 결과
     title_ko: str = ""
     importance: int = 0

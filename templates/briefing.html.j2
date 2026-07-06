@@ -104,10 +104,11 @@ footer .fail { color:#c0392b; }
   </div>
   {% if item.summary_ko %}<p class="summary">{{ item.summary_ko }}</p>{% endif %}
   {% if item.why_ko %}<p class="why">{{ item.why_ko }}</p>{% endif %}
-  {% if item.body and item.body | length >= 300 %}
+  {% set body_text = item.body_ko or item.body %}
+  {% if body_text and body_text | length >= 300 %}
   <details class="reader">
-    <summary>본문 읽기</summary>
-    <div class="reader-body">{{ item.body[:6000] }}{% if item.body | length > 6000 %}
+    <summary>본문 읽기{% if not item.body_ko %} (원문){% endif %}</summary>
+    <div class="reader-body">{{ body_text[:6000] }}{% if body_text | length > 6000 %}
 
 … (전체 내용은 원문 링크에서){% endif %}</div>
   </details>

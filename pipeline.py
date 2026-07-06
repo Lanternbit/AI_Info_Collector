@@ -18,8 +18,8 @@ from src.dedupe import dedupe, filter_fresh, filter_seen
 from src.fetchers import FETCHERS
 from src.fulltext import fetch_fulltext
 from src.models import today_kst
-from src.rank import editorial_pass, key_env_for, rank_items
-from src.render import render
+from src.rank import editorial_pass, key_env_for, rank_items, translate_bodies
+from src.render import paper_cards, render
 from src.state import (
     load_day_snapshot,
     load_seen,
@@ -115,6 +115,20 @@ def main() -> None:
                 enriched += 1
     if enriched:
         log.info("원문 본문 추출 %d건 (카드 아이템)", enriched)
+
+    # 카드 아이템의 본문을 한국어로 번역 ('본문 읽기'용)
+    if api_key:
+        card_map = {
+            i.key: i
+            for i in merged
+            if (i.is_headline or i.importance >= 4) and not i.is_paper
+        }
+        for paper in paper_cards(merged):
+            card_map.setdefault(paper.key, paper)
+        targets = [i for i in card_map.values() if not i.body_ko and len(i.body) >= 300]
+        if targets:
+            translated = translate_bodies(targets, cfg, api_key)
+            log.info("본문 한국어 번역 %d/%d건", translated, len(targets))
 
     render(merged, source_status, llm_ok, daily_summary)
     log.info("HTML 생성 완료: docs/index.html")
