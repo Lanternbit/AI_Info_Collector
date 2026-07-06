@@ -1,0 +1,234 @@
+# AI 프론티어 데일리 브리핑 — 소스 설정
+# 소스 추가/삭제는 이 파일만 수정하면 된다. URL은 2026-07-06 실제 호출로 검증됨.
+
+freshness_hours: 36            # 게시 시각 기준 이 시간 이내 아이템만 브리핑에 포함
+model: claude-haiku-4-5        # 랭킹·요약 모델 (교체 가능)
+notion_min_importance: 3
+notion_max_items: 30
+user_agent: "news-finder/0.1 (personal daily AI digest)"
+
+# Bluesky 핸들 — 2026-07-06 실제 API 호출로 활성(최근 30일 내 원본 포스트) 검증됨
+bluesky_handles:
+  - natolambert.bsky.social       # Nathan Lambert (Ai2, Interconnects)
+  - simonwillison.net             # Simon Willison
+  - stellaathena.bsky.social      # Stella Biderman (EleutherAI)
+  - ai2.bsky.social               # Allen Institute for AI (공식)
+  - pytorch.org                   # PyTorch (공식)
+  - danielvanstrien.bsky.social   # Daniel van Strien (Hugging Face)
+  - hardmaru.bsky.social          # David Ha (Sakana AI)
+  - emollick.bsky.social          # Ethan Mollick
+  - eugenevinitsky.bsky.social    # Eugene Vinitsky (NYU, RL)
+  - davidbau.bsky.social          # David Bau (해석가능성)
+  - caseynewton.bsky.social       # Casey Newton (Platformer)
+  - benjedwards.com               # Benj Edwards (Ars Technica AI)
+  - haydenfield.bsky.social       # Hayden Field (AI 전문 기자)
+  - sharongoldman.bsky.social     # Sharon Goldman (AI 전문 기자)
+
+sources:
+  # ---------- Tier 1: 공식 랩/기업 ----------
+  - id: openai-news
+    name: OpenAI News
+    type: rss
+    url: https://openai.com/news/rss.xml
+    tier: 1
+    enabled: true
+  - id: deepmind
+    name: Google DeepMind
+    type: rss
+    url: https://deepmind.google/blog/rss.xml
+    tier: 1
+    enabled: true
+  - id: google-ai
+    name: Google AI
+    type: rss
+    url: https://blog.google/technology/ai/rss/
+    tier: 1
+    enabled: true
+  - id: anthropic-news
+    name: Anthropic News
+    # Anthropic은 자체 RSS 없음 — Turing Institute가 재생성하는 검증된 제3자 피드
+    type: rss
+    url: https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/main/feeds/anthropic-news.xml
+    tier: 1
+    enabled: true
+  - id: hf-blog
+    name: Hugging Face Blog
+    type: rss
+    url: https://huggingface.co/blog/feed.xml
+    tier: 1
+    enabled: true
+
+  # ---------- Tier 1: 커뮤니티/논문 ----------
+  - id: hackernews
+    name: Hacker News
+    type: hackernews
+    keywords: [AI, LLM, Claude, GPT, Gemini]
+    tier: 1
+    enabled: true
+  - id: reddit-localllama
+    name: Reddit r/LocalLLaMA
+    type: reddit
+    subreddit: LocalLLaMA
+    tier: 1
+    enabled: true
+  - id: reddit-ml
+    name: Reddit r/MachineLearning
+    type: reddit
+    subreddit: MachineLearning
+    tier: 1
+    enabled: true
+  - id: reddit-singularity
+    name: Reddit r/singularity
+    type: reddit
+    subreddit: singularity
+    tier: 1
+    enabled: true
+  - id: reddit-claudeai
+    name: Reddit r/ClaudeAI
+    type: reddit
+    subreddit: ClaudeAI
+    tier: 1
+    enabled: true
+  - id: reddit-openai
+    name: Reddit r/OpenAI
+    type: reddit
+    subreddit: OpenAI
+    tier: 1
+    enabled: true
+  - id: arxiv
+    name: arXiv
+    type: arxiv
+    url: "https://export.arxiv.org/api/query?search_query=cat:cs.CL+OR+cat:cs.LG+OR+cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=100"
+    tier: 1
+    enabled: true
+  - id: hf-papers
+    name: HF Daily Papers
+    type: hf_papers
+    url: "https://huggingface.co/api/daily_papers?limit=50"
+    tier: 1
+    enabled: true
+
+  # ---------- Tier 1: 고신호 뉴스레터/블로그 ----------
+  - id: simonwillison
+    name: Simon Willison
+    type: rss
+    url: https://simonwillison.net/atom/everything/
+    tier: 1
+    enabled: true
+  - id: interconnects
+    name: Interconnects
+    type: rss
+    url: https://www.interconnects.ai/feed
+    tier: 1
+    enabled: true
+  - id: import-ai
+    name: Import AI
+    type: rss
+    url: https://importai.substack.com/feed
+    tier: 1
+    enabled: true
+  - id: latent-space
+    name: Latent Space
+    type: rss
+    url: https://www.latent.space/feed
+    tier: 1
+    enabled: true
+  - id: smol-ai
+    name: AI News (smol.ai)
+    # X/Discord/Reddit 요약 일간 다이제스트 — 토픽 단위로 분해 수집 (X 신호의 핵심)
+    type: smol_ai
+    url: https://news.smol.ai/rss.xml
+    tier: 1
+    enabled: true
+
+  # ---------- Bluesky (X 대체 — Phase 1) ----------
+  - id: bluesky
+    name: Bluesky
+    type: bluesky
+    tier: 1
+    enabled: true
+
+  # ---------- Tier 2: nice-to-have (기본 비활성) ----------
+  - id: google-research
+    name: Google Research
+    type: rss
+    url: https://research.google/blog/rss/
+    tier: 2
+    enabled: false
+  - id: mistral
+    name: Mistral AI
+    type: rss
+    url: https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/main/feeds/mistral-news.xml
+    tier: 2
+    enabled: false
+  - id: anthropic-research
+    name: Anthropic Research
+    type: rss
+    url: https://raw.githubusercontent.com/alan-turing-institute/ai-rss-feeds/main/feeds/anthropic-research.xml
+    tier: 2
+    enabled: false
+  - id: meta-engineering
+    name: Meta Engineering
+    # AI 카테고리 필터는 M5 이후 (공용 수집기로는 전체 피드가 들어온다)
+    type: rss
+    url: https://engineering.fb.com/feed/
+    tier: 2
+    enabled: false
+  - id: xai
+    name: xAI News
+    type: rss
+    url: https://openrss.org/x.ai/news
+    user_agent: "news-finder-rss-reader/0.1 (feed reader)"   # openrss는 RSS리더 UA 필요 (전역 UA 규칙의 예외)
+    accept: "application/rss+xml"
+    tier: 2
+    enabled: false
+  - id: ms-research
+    name: Microsoft Research
+    type: rss
+    url: https://www.microsoft.com/en-us/research/feed/
+    tier: 2
+    enabled: false
+  - id: lobsters
+    name: Lobsters
+    type: rss
+    url: https://lobste.rs/t/ai.rss
+    tier: 2
+    enabled: false
+  - id: lesswrong
+    name: LessWrong
+    # karma 필터는 M5 이후
+    type: rss
+    url: https://www.lesswrong.com/feed.xml
+    tier: 2
+    enabled: false
+  - id: techcrunch-ai
+    name: TechCrunch AI
+    type: rss
+    url: https://techcrunch.com/category/artificial-intelligence/feed/
+    tier: 2
+    enabled: false
+  - id: zvi
+    name: Don't Worry About the Vase
+    type: rss
+    url: https://thezvi.substack.com/feed
+    tier: 2
+    enabled: false
+  - id: qwen
+    name: Qwen Blog
+    # 미검증 URL — 활성화 전 피드 주소 확인 필요 (중국계 프론티어 랩 신호 보강)
+    type: rss
+    url: https://qwenlm.github.io/blog/index.xml
+    tier: 2
+    enabled: false
+  - id: vllm-releases
+    name: vLLM Releases
+    type: rss
+    url: https://github.com/vllm-project/vllm/releases.atom
+    tier: 2
+    enabled: false
+  - id: llamacpp-releases
+    name: llama.cpp Releases
+    type: rss
+    url: https://github.com/ggml-org/llama.cpp/releases.atom
+    tier: 2
+    enabled: false

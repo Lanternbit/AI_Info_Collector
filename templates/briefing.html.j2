@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — {{ date_str }}</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#22224a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:34px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.badge.up { color:var(--muted); }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">{{ date_str }} · 오늘 {{ total }}건</div>
+  <nav class="archive">
+    <a href="{{ home_href }}">최신</a>
+    {%- for d in archive_dates[:14] %}
+    <a href="{{ prefix }}{{ d }}.html">{{ d[5:] }}</a>
+    {%- endfor %}
+  </nav>
+  {% if not llm_ok %}<div class="banner">⚠ 오늘은 LLM 요약에 실패해 원제목만 표시합니다.</div>{% endif %}
+</header>
+
+{% macro card(item) -%}
+<article class="item">
+  <h3><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.display_title }}</a></h3>
+  <div class="meta">
+    <span class="badge">{{ item.source }}</span>
+    {% if item.importance %}<span class="badge imp">중요도 {{ item.importance }}</span>{% endif %}
+    {% if item.metrics.get("points") %}<span class="badge up">▲ {{ item.metrics["points"] }}</span>{% endif %}
+    {% if item.metrics.get("upvotes") %}<span class="badge up">▲ {{ item.metrics["upvotes"] }}</span>{% endif %}
+    {% if item.metrics.get("likes") %}<span class="badge up">♥ {{ item.metrics["likes"] }}</span>{% endif %}
+  </div>
+  {% if item.summary_ko %}<p class="summary">{{ item.summary_ko }}</p>{% endif %}
+  {% if item.why_ko %}<p class="why">{{ item.why_ko }}</p>{% endif %}
+</article>
+{%- endmacro %}
+
+{% if headlines %}
+<section class="headline">
+  <h2>오늘의 헤드라인</h2>
+  {% for item in headlines %}{{ card(item) }}{% endfor %}
+</section>
+{% endif %}
+
+{% for cat, cat_items in categories %}
+<section>
+  <h2>{{ cat }}</h2>
+  {% for item in cat_items %}{{ card(item) }}{% endfor %}
+</section>
+{% endfor %}
+
+{% if papers %}
+<section>
+  <h2>오늘의 논문 (HF Daily Papers)</h2>
+  {% for item in papers %}{{ card(item) }}{% endfor %}
+</section>
+{% endif %}
+
+{% if unranked %}
+<section>
+  <h2>수집된 소식 (요약 없음)</h2>
+  {% for item in unranked %}{{ card(item) }}{% endfor %}
+</section>
+{% endif %}
+
+{% if not headlines and not categories and not papers and not unranked %}
+<p class="empty">오늘 새로 수집된 소식이 없습니다.</p>
+{% endif %}
+
+<footer>
+  {% set ok_count = source_status | selectattr("ok") | list | length %}
+  소스 {{ ok_count }}/{{ source_status | length }} 성공 · 생성 {{ generated_at }}
+  <ul>
+    {% for s in source_status %}
+    <li class="{{ 'ok' if s.ok else 'fail' }}">{{ '✓' if s.ok else '✗' }} {{ s.name }} ({{ s.count }}건){% if not s.ok %} — {{ s.error }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+</footer>
+</div>
+</body>
+</html>

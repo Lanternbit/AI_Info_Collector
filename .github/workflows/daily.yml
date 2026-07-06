@@ -1,0 +1,47 @@
+name: daily-briefing
+
+on:
+  schedule:
+    - cron: "0 20 * * *" # UTC 20:00 = KST 05:00 (5~30분 지연 허용)
+  workflow_dispatch:
+
+permissions:
+  contents: write # 기본 GITHUB_TOKEN은 read-only — 없으면 push가 403
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  briefing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATA_SOURCE_ID: ${{ secrets.NOTION_DATA_SOURCE_ID }}
+        run: python pipeline.py
+
+      - name: Commit & push
+        # main /docs 브랜치 서빙은 GITHUB_TOKEN push로도 Pages 재배포가 트리거됨
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs data/seen.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          git commit -m "daily briefing $(TZ=Asia/Seoul date +%F)"
+          git pull --rebase origin main || (sleep 5 && git pull --rebase origin main)
+          git push origin main
