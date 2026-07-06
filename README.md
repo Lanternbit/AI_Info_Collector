@@ -60,6 +60,12 @@ copy .env.example .env   # 열어서 키 입력
 
 ## 결정 기록
 
+- 2026-07-07 M4 완료: 레포 [Lanternbit/AI_Info_Collector](https://github.com/Lanternbit/AI_Info_Collector),
+  브리핑 https://lanternbit.github.io/AI_Info_Collector/ — 첫 크론 실행(KST 05:00) e2e 성공.
+  러너에서 소스 15/19 성공: Reddit 3개 서브레딧과 Import AI가 데이터센터 IP에서 간헐 실패(429/차단).
+  smol.ai 다이제스트가 Reddit 하이라이트를 어차피 커버하므로 **일주일 관찰 후** 지속 실패 시
+  Reddit OAuth script app 폴백을 붙이거나 해당 소스를 비활성화하기로 함.
+
 - 2026-07-07 M2 게이트에서 `gemini-3-flash-preview`가 피크 시간대 지속 503(과부하)을 보여
   기본 모델을 안정판 `gemini-2.5-flash`로 확정 (폴백: `gemini-2.5-flash-lite`).
   2.5 계열은 thinking 토큰이 출력 한도를 잠식해 절단을 유발하므로 `thinkingBudget: 0`으로 비활성화.
