@@ -101,6 +101,7 @@ class Item:
     metrics: dict = field(default_factory=dict)  # points/comments/upvotes 등
     body_limit: int = 500  # LLM 입력 시 본문 절단 길이 (smol.ai 폴백만 8000)
     is_paper: bool = False  # HF Daily Papers → 논문 섹션 전용
+    is_headline: bool = False  # 편집 패스가 선정한 '오늘의 헤드라인'
     # LLM 랭킹 결과
     title_ko: str = ""
     importance: int = 0

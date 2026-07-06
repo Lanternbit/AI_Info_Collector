@@ -13,7 +13,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
-    --accent:#8f8ffa; --accent-soft:#22224a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
   }
 }
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -24,9 +24,16 @@ header .date { color:var(--muted); margin-top:2px; }
 nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
 nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
 nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
 .banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
-section { margin-top:34px; }
+section { margin-top:36px; }
 section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
 .item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
 .item h3 { font-size:1rem; font-weight:600; }
 .item h3 a { color:var(--fg); text-decoration:none; }
@@ -34,10 +41,18 @@ section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var
 .meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
 .badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
 .badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
-.badge.up { color:var(--muted); }
 .summary { margin-top:8px; font-size:0.93rem; }
 .why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
 .headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
 footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
 footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
 footer .fail { color:#c0392b; }
@@ -56,6 +71,17 @@ footer .fail { color:#c0392b; }
     {%- endfor %}
     {% if archive_dates | length > 14 %}<a href="{{ prefix }}index.html">전체 ›</a>{% endif %}
   </nav>
+  {% if daily_summary %}
+  <div class="daily-summary"><strong>오늘의 요약</strong>{{ daily_summary }}</div>
+  {% endif %}
+  {% if toc %}
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    {%- for t in toc %}
+    <a href="#{{ t.anchor }}">{{ t.label }} <b>{{ t.count }}</b></a>
+    {%- endfor %}
+  </nav>
+  {% endif %}
   {% if not llm_ok %}<div class="banner">⚠ 오늘은 LLM 요약에 실패해 원제목만 표시합니다.</div>{% endif %}
 </header>
 
@@ -64,45 +90,70 @@ footer .fail { color:#c0392b; }
   <h3><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.display_title }}</a></h3>
   <div class="meta">
     <span class="badge">{{ item.source }}</span>
+    {% if item.category %}<span class="badge">{{ item.category }}</span>{% endif %}
     {% if item.importance %}<span class="badge imp">중요도 {{ item.importance }}</span>{% endif %}
-    {% if item.metrics.get("points") %}<span class="badge up">▲ {{ item.metrics["points"] }}</span>{% endif %}
-    {% if item.metrics.get("upvotes") %}<span class="badge up">▲ {{ item.metrics["upvotes"] }}</span>{% endif %}
-    {% if item.metrics.get("likes") %}<span class="badge up">♥ {{ item.metrics["likes"] }}</span>{% endif %}
+    {% if item.metrics.get("points") %}<span class="badge">▲ {{ item.metrics["points"] }}</span>{% endif %}
+    {% if item.metrics.get("upvotes") %}<span class="badge">▲ {{ item.metrics["upvotes"] }}</span>{% endif %}
+    {% if item.metrics.get("likes") %}<span class="badge">♥ {{ item.metrics["likes"] }}</span>{% endif %}
   </div>
   {% if item.summary_ko %}<p class="summary">{{ item.summary_ko }}</p>{% endif %}
   {% if item.why_ko %}<p class="why">{{ item.why_ko }}</p>{% endif %}
 </article>
 {%- endmacro %}
 
+{% macro compact_list(list_items) -%}
+<ul class="compact">
+  {% for item in list_items %}
+  <li><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.display_title }}</a><span class="src">{{ item.source }}</span></li>
+  {% endfor %}
+</ul>
+{%- endmacro %}
+
 {% if headlines %}
-<section class="headline">
+<section class="headline" id="headlines">
   <h2>오늘의 헤드라인</h2>
   {% for item in headlines %}{{ card(item) }}{% endfor %}
 </section>
 {% endif %}
 
-{% for cat, cat_items in categories %}
-<section>
-  <h2>{{ cat }}</h2>
-  {% for item in cat_items %}{{ card(item) }}{% endfor %}
+{% for s in sections %}
+<section id="{{ s.anchor }}">
+  <h2>{{ s.name }} <span class="cnt">{{ s.count }}건</span></h2>
+  {% for item in s.featured %}{{ card(item) }}{% endfor %}
+  {% if s.notable %}{{ compact_list(s.notable) }}{% endif %}
+  {% if s.rest %}
+  <details class="more">
+    <summary>그 외 {{ s.rest | length }}건 보기</summary>
+    {{ compact_list(s.rest) }}
+  </details>
+  {% endif %}
 </section>
 {% endfor %}
 
-{% if papers %}
-<section>
-  <h2>오늘의 논문 (HF Daily Papers)</h2>
-  {% for item in papers %}{{ card(item) }}{% endfor %}
+{% if papers_top %}
+<section id="papers">
+  <h2>오늘의 논문 <span class="cnt">HF Daily Papers · {{ (papers_top | length) + (papers_rest | length) }}건</span></h2>
+  {% for item in papers_top %}{{ card(item) }}{% endfor %}
+  {% if papers_rest %}
+  <details class="more">
+    <summary>그 외 논문 {{ papers_rest | length }}건 보기</summary>
+    {{ compact_list(papers_rest) }}
+  </details>
+  {% endif %}
 </section>
 {% endif %}
 
 {% if unranked %}
 <section>
-  <h2>수집된 소식 (요약 없음)</h2>
-  {% for item in unranked %}{{ card(item) }}{% endfor %}
+  <h2>수집된 소식 <span class="cnt">요약 없음 · {{ unranked | length }}건</span></h2>
+  <details class="more" {% if not llm_ok %}open{% endif %}>
+    <summary>목록 보기</summary>
+    {{ compact_list(unranked) }}
+  </details>
 </section>
 {% endif %}
 
-{% if not headlines and not categories and not papers and not unranked %}
+{% if not headlines and not sections and not papers_top and not unranked %}
 <p class="empty">오늘 새로 수집된 소식이 없습니다.</p>
 {% endif %}
 

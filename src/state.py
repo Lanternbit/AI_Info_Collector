@@ -66,23 +66,29 @@ def _item_from_dict(d: dict) -> Item:
     return Item(**data)
 
 
-def load_day_snapshot(date_slug: str) -> list[Item]:
+def load_day_snapshot(date_slug: str) -> tuple[list[Item], str]:
+    """(당일 아이템, 오늘의 요약) 반환. 날짜가 다르거나 없으면 빈 값."""
     if not SNAPSHOT_PATH.exists():
-        return []
+        return [], ""
     try:
         data = json.loads(SNAPSHOT_PATH.read_text(encoding="utf-8"))
         if data.get("date") != date_slug:
-            return []
-        return [_item_from_dict(d) for d in data.get("items", [])]
+            return [], ""
+        items = [_item_from_dict(d) for d in data.get("items", [])]
+        return items, data.get("daily_summary", "")
     except Exception:
-        return []
+        return [], ""
 
 
-def save_day_snapshot(date_slug: str, items: list[Item]) -> None:
+def save_day_snapshot(date_slug: str, items: list[Item], daily_summary: str = "") -> None:
     SNAPSHOT_PATH.parent.mkdir(parents=True, exist_ok=True)
     SNAPSHOT_PATH.write_text(
         json.dumps(
-            {"date": date_slug, "items": [_item_to_dict(i) for i in items]},
+            {
+                "date": date_slug,
+                "daily_summary": daily_summary,
+                "items": [_item_to_dict(i) for i in items],
+            },
             ensure_ascii=False,
         ),
         encoding="utf-8",

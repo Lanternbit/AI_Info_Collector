@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 from src.dedupe import dedupe, filter_fresh, filter_seen
 from src.fetchers import FETCHERS
 from src.models import today_kst
-from src.rank import key_env_for, rank_items
+from src.rank import editorial_pass, key_env_for, rank_items
 from src.render import render
 from src.state import (
     load_day_snapshot,
@@ -90,7 +90,7 @@ def main() -> None:
             log.warning("%s 없음 — 요약 없이 원제목만으로 렌더링", key_env)
 
     # 같은 날 재실행 시 이전 실행분과 병합 — 그날 브리핑이 빈 페이지로 덮어써지지 않게
-    snapshot = load_day_snapshot(today)
+    snapshot, daily_summary = load_day_snapshot(today)
     merged_map = {it.key: it for it in snapshot}
     for it in unique:
         merged_map[it.key] = it
@@ -98,7 +98,13 @@ def main() -> None:
     if snapshot:
         log.info("당일 스냅샷 %d건과 병합 → 렌더 대상 %d건", len(snapshot), len(merged))
 
-    render(merged, source_status, llm_ok)
+    # 편집 패스: 오늘의 요약 + 헤드라인 엄선 (새 아이템이 있을 때만 다시 편집)
+    if api_key and merged and (unique or not daily_summary):
+        summary = editorial_pass(merged, cfg, api_key)
+        if summary:
+            daily_summary = summary
+
+    render(merged, source_status, llm_ok, daily_summary)
     log.info("HTML 생성 완료: docs/index.html")
 
     notion_saved = 0
@@ -131,7 +137,7 @@ def main() -> None:
         for item in fresh:
             mark_seen(seen, item.key)
         save_seen(seen)
-        save_day_snapshot(today, merged)
+        save_day_snapshot(today, merged, daily_summary)
 
     headline_count = sum(1 for i in unique if i.importance >= 4)
     log.info(

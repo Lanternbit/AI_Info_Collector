@@ -101,10 +101,10 @@ GEMINI_SCHEMA = {
 }
 
 
-def _call_gemini(model: str, api_key: str, payload_json: str) -> tuple[str, bool]:
+def _call_gemini(model: str, api_key: str, system: str, schema: dict, payload_json: str) -> tuple[str, bool]:
     generation_config = {
         "responseMimeType": "application/json",
-        "responseSchema": GEMINI_SCHEMA,
+        "responseSchema": schema,
         "maxOutputTokens": MAX_TOKENS,
     }
     if model.startswith("gemini-2.5"):
@@ -112,7 +112,7 @@ def _call_gemini(model: str, api_key: str, payload_json: str) -> tuple[str, bool
         # (2.5 계열만 thinkingBudget 지원; 3.x는 thinkingLevel이라 미전송)
         generation_config["thinkingConfig"] = {"thinkingBudget": 0}
     body = {
-        "system_instruction": {"parts": [{"text": SYSTEM}]},
+        "system_instruction": {"parts": [{"text": system}]},
         "contents": [{"role": "user", "parts": [{"text": payload_json}]}],
         "generationConfig": generation_config,
     }
@@ -150,28 +150,28 @@ def _call_gemini(model: str, api_key: str, payload_json: str) -> tuple[str, bool
     return text, truncated
 
 
-def _call_anthropic(model: str, api_key: str, payload_json: str) -> tuple[str, bool]:
+def _call_anthropic(model: str, api_key: str, system: str, schema: dict, payload_json: str) -> tuple[str, bool]:
     from anthropic import Anthropic  # 전환 시에만 import
 
     client = Anthropic(api_key=api_key)
     kwargs = dict(
         model=model,
         max_tokens=MAX_TOKENS,
-        system=SYSTEM,
+        system=system,
         messages=[{"role": "user", "content": payload_json}],
     )
     try:
         with client.messages.stream(
-            **kwargs, output_config={"format": {"type": "json_schema", "schema": ANTHROPIC_SCHEMA}}
+            **kwargs, output_config={"format": {"type": "json_schema", "schema": schema}}
         ) as stream:
             message = stream.get_final_message()
     except TypeError:
         # SDK가 output_config를 모르는 구버전 — 프롬프트 기반 JSON 폴백
         fallback = dict(kwargs)
         fallback["system"] = (
-            SYSTEM
+            system
             + "\n\n반드시 다음 JSON 스키마를 만족하는 JSON 객체만 출력하라. 그 외 텍스트 금지:\n"
-            + json.dumps(ANTHROPIC_SCHEMA, ensure_ascii=False)
+            + json.dumps(schema, ensure_ascii=False)
         )
         with client.messages.stream(**fallback) as stream:
             message = stream.get_final_message()
@@ -203,7 +203,8 @@ def _rank_batch(provider: str, model: str, api_key: str, batch: list[Item], resu
         ensure_ascii=False,
     )
     call = _call_gemini if provider == "gemini" else _call_anthropic
-    text, truncated = call(model, api_key, payload)
+    schema = GEMINI_SCHEMA if provider == "gemini" else ANTHROPIC_SCHEMA
+    text, truncated = call(model, api_key, SYSTEM, schema, payload)
     if truncated:
         if len(batch) <= MIN_SPLIT:
             raise RankingError("최소 배치에서도 출력 절단(max tokens)")
@@ -261,3 +262,71 @@ def rank_items(items: list[Item], cfg: dict, api_key: str) -> bool:
     if missing:
         log.warning("랭킹 결과 누락 %d건 — '요약 없음' 섹션으로 표시", missing)
     return ok_batches > 0
+
+
+# ---------- 편집 패스: 오늘의 요약 + 헤드라인 엄선 ----------
+
+EDITORIAL_SYSTEM = """너는 'AI 프론티어 데일리 브리핑'의 편집장이다. 오늘 브리핑에 실릴,
+이미 랭킹이 끝난 아이템 목록을 받아 지면을 편집한다.
+
+1. daily_summary_ko: 오늘 하루의 AI 동향을 3~4문장의 한국어로 종합하라.
+   개별 뉴스의 나열이 아니라 '오늘의 큰 흐름'이 드러나게 쓰고, 가장 중요한 소식을 중심에 둔다.
+2. headline_ids: '오늘의 헤드라인'에 올릴 3~5건의 id를 골라라.
+   서로 다른 주제여야 하며(같은 사건의 중복 보도 금지), 최전선 임팩트가 큰 순서로 나열한다."""
+
+_EDITORIAL_PROPS = {
+    "daily_summary_ko": {"type": "string"},
+    "headline_ids": {"type": "array", "items": {"type": "string"}},
+}
+ANTHROPIC_EDITORIAL_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": _EDITORIAL_PROPS,
+    "required": ["daily_summary_ko", "headline_ids"],
+}
+GEMINI_EDITORIAL_SCHEMA = {
+    "type": "object",
+    "properties": _EDITORIAL_PROPS,
+    "required": ["daily_summary_ko", "headline_ids"],
+}
+
+
+def editorial_pass(items: list[Item], cfg: dict, api_key: str) -> str:
+    """전체 아이템을 보고 오늘의 요약을 쓰고 헤드라인 3~5건을 선정(is_headline in-place).
+
+    실패해도 브리핑은 나가야 하므로 예외 대신 빈 요약을 반환한다
+    (render가 중요도 기반 헤드라인으로 폴백)."""
+    ranked = [it for it in items if it.category or it.is_paper]
+    if not ranked:
+        return ""
+    provider = cfg.get("llm_provider", "gemini")
+    model = cfg.get("model", "gemini-2.5-flash")
+    payload = json.dumps(
+        [
+            {
+                "id": it.key,
+                "title": it.title_ko or it.title,
+                "category": it.category or ("연구·논문" if it.is_paper else ""),
+                "importance": it.importance,
+                "source": it.source,
+            }
+            for it in ranked
+        ],
+        ensure_ascii=False,
+    )
+    call = _call_gemini if provider == "gemini" else _call_anthropic
+    schema = GEMINI_EDITORIAL_SCHEMA if provider == "gemini" else ANTHROPIC_EDITORIAL_SCHEMA
+    try:
+        if provider == "gemini":
+            time.sleep(GEMINI_BATCH_GAP)  # 랭킹 호출 직후 — 10 RPM 준수
+        text, _ = call(model, api_key, EDITORIAL_SYSTEM, schema, payload)
+        data = _parse_json(text)
+    except Exception as exc:  # noqa: BLE001
+        log.warning("편집 패스 실패 — 중요도 기반 헤드라인으로 폴백: %s", exc)
+        return ""
+    headline_ids = set((data.get("headline_ids") or [])[:5])
+    for it in items:
+        it.is_headline = it.key in headline_ids
+    summary = (data.get("daily_summary_ko") or "").strip()
+    log.info("편집 패스: 헤드라인 %d건 선정, 오늘의 요약 %d자", len(headline_ids), len(summary))
+    return summary
