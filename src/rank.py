@@ -1,15 +1,18 @@
-"""LLM 중요도 랭킹 + 한국어 요약.
+"""LLM 중요도 랭킹 + 한국어 요약 — 백엔드 선택형.
 
-- 100건 단위 분할 호출, 스트리밍(대형 max_tokens 비스트리밍은 SDK가 거부)
-- 구조화 출력(json_schema) 강제, stop_reason=max_tokens 시 절반 재분할
-- 배치 실패 시 1회 재시도 (운영 품질 요구사항 5)
+- gemini (기본): 무료 티어. REST 직접 호출 — google-genai SDK의 의존성(cryptography)이
+  이 로컬 파이썬(3.14t 32bit)에서 빌드 불가라 httpx로 직접 호출한다 (Notion과 같은 방식).
+- anthropic: config의 llm_provider/model 두 줄 변경으로 전환.
+
+공통: 100건 단위 분할, 출력 절단 시 절반 재분할, 배치 실패 1회 재시도 (운영 품질 요구사항 5).
 """
 from __future__ import annotations
 
 import json
 import logging
+import time
 
-from anthropic import Anthropic
+import httpx
 
 from src.models import CATEGORIES, Item
 
@@ -18,33 +21,15 @@ log = logging.getLogger("pipeline")
 BATCH_SIZE = 100
 MAX_TOKENS = 32000
 MIN_SPLIT = 10
+GEMINI_API = "https://generativelanguage.googleapis.com/v1beta/models"
+GEMINI_BATCH_GAP = 7  # 무료 티어 10 RPM — 배치 간 최소 간격(초)
 
-# 주의: Anthropic 구조화 출력은 숫자 제약(minimum/maximum)을 지원하지 않고
-# 모든 object에 additionalProperties: false가 필수다. importance 1~5 범위는
-# rank_items에서 클램핑으로 보장한다.
-SCHEMA = {
-    "type": "object",
-    "additionalProperties": False,
-    "properties": {
-        "items": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "additionalProperties": False,
-                "properties": {
-                    "id": {"type": "string"},
-                    "title_ko": {"type": "string"},
-                    "importance": {"type": "integer", "description": "1~5 정수"},
-                    "category": {"type": "string", "enum": CATEGORIES},
-                    "summary_ko": {"type": "string"},
-                    "why_it_matters_ko": {"type": "string"},
-                },
-                "required": ["id", "title_ko", "importance", "category", "summary_ko", "why_it_matters_ko"],
-            },
-        }
-    },
-    "required": ["items"],
-}
+PROVIDER_KEY_ENV = {"gemini": "GEMINI_API_KEY", "anthropic": "ANTHROPIC_API_KEY"}
+
+
+def key_env_for(cfg: dict) -> str:
+    return PROVIDER_KEY_ENV.get(cfg.get("llm_provider", "gemini"), "GEMINI_API_KEY")
+
 
 SYSTEM = """너는 'AI 프론티어 데일리 브리핑'의 편집장이다. 입력으로 오늘 수집된 AI 뉴스 아이템들의
 JSON 배열을 받아, 각 아이템의 중요도를 매기고 한국어로 요약한다. 독자는 AI 업계 최전선을
@@ -70,11 +55,85 @@ class RankingError(RuntimeError):
     pass
 
 
-def _response_text(message) -> str:
-    return "".join(block.text for block in message.content if getattr(block, "type", "") == "text")
+_ITEM_PROPS = {
+    "id": {"type": "string"},
+    "title_ko": {"type": "string"},
+    "importance": {"type": "integer", "description": "1~5 정수"},
+    "category": {"type": "string", "enum": CATEGORIES},
+    "summary_ko": {"type": "string"},
+    "why_it_matters_ko": {"type": "string"},
+}
+_ITEM_REQUIRED = list(_ITEM_PROPS)
+
+# Anthropic 구조화 출력: 모든 object에 additionalProperties:false 필수, 숫자 제약(min/max) 미지원
+# (importance 1~5 범위는 rank_items에서 클램핑으로 보장)
+ANTHROPIC_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": _ITEM_PROPS,
+                "required": _ITEM_REQUIRED,
+            },
+        }
+    },
+    "required": ["items"],
+}
+
+# Gemini responseSchema: OpenAPI 서브셋 — additionalProperties 없이 구성
+GEMINI_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": _ITEM_PROPS,
+                "required": _ITEM_REQUIRED,
+            },
+        }
+    },
+    "required": ["items"],
+}
 
 
-def _call(client: Anthropic, model: str, payload_json: str):
+def _call_gemini(model: str, api_key: str, payload_json: str) -> tuple[str, bool]:
+    body = {
+        "system_instruction": {"parts": [{"text": SYSTEM}]},
+        "contents": [{"role": "user", "parts": [{"text": payload_json}]}],
+        "generationConfig": {
+            "responseMimeType": "application/json",
+            "responseSchema": GEMINI_SCHEMA,
+            "maxOutputTokens": MAX_TOKENS,
+        },
+    }
+    resp = httpx.post(
+        f"{GEMINI_API}/{model}:generateContent",
+        headers={"x-goog-api-key": api_key, "Content-Type": "application/json"},
+        json=body,
+        timeout=300,
+    )
+    if resp.status_code >= 400:
+        raise RankingError(f"Gemini API {resp.status_code}: {resp.text[:300]}")
+    data = resp.json()
+    candidates = data.get("candidates") or []
+    if not candidates:
+        raise RankingError(f"Gemini 응답에 candidates 없음: {json.dumps(data, ensure_ascii=False)[:300]}")
+    cand = candidates[0]
+    parts = (cand.get("content") or {}).get("parts") or []
+    text = "".join(p.get("text", "") for p in parts)
+    truncated = cand.get("finishReason") == "MAX_TOKENS"
+    return text, truncated
+
+
+def _call_anthropic(model: str, api_key: str, payload_json: str) -> tuple[str, bool]:
+    from anthropic import Anthropic  # 전환 시에만 import
+
+    client = Anthropic(api_key=api_key)
     kwargs = dict(
         model=model,
         max_tokens=MAX_TOKENS,
@@ -83,19 +142,21 @@ def _call(client: Anthropic, model: str, payload_json: str):
     )
     try:
         with client.messages.stream(
-            **kwargs, output_config={"format": {"type": "json_schema", "schema": SCHEMA}}
+            **kwargs, output_config={"format": {"type": "json_schema", "schema": ANTHROPIC_SCHEMA}}
         ) as stream:
-            return stream.get_final_message()
+            message = stream.get_final_message()
     except TypeError:
         # SDK가 output_config를 모르는 구버전 — 프롬프트 기반 JSON 폴백
         fallback = dict(kwargs)
         fallback["system"] = (
             SYSTEM
             + "\n\n반드시 다음 JSON 스키마를 만족하는 JSON 객체만 출력하라. 그 외 텍스트 금지:\n"
-            + json.dumps(SCHEMA, ensure_ascii=False)
+            + json.dumps(ANTHROPIC_SCHEMA, ensure_ascii=False)
         )
         with client.messages.stream(**fallback) as stream:
-            return stream.get_final_message()
+            message = stream.get_final_message()
+    text = "".join(block.text for block in message.content if getattr(block, "type", "") == "text")
+    return text, message.stop_reason == "max_tokens"
 
 
 def _parse_json(text: str) -> dict:
@@ -106,7 +167,7 @@ def _parse_json(text: str) -> dict:
     return json.loads(text)
 
 
-def _rank_batch(client: Anthropic, model: str, batch: list[Item], results: dict) -> None:
+def _rank_batch(provider: str, model: str, api_key: str, batch: list[Item], results: dict) -> None:
     payload = json.dumps(
         [
             {
@@ -121,16 +182,17 @@ def _rank_batch(client: Anthropic, model: str, batch: list[Item], results: dict)
         ],
         ensure_ascii=False,
     )
-    message = _call(client, model, payload)
-    if message.stop_reason == "max_tokens":
+    call = _call_gemini if provider == "gemini" else _call_anthropic
+    text, truncated = call(model, api_key, payload)
+    if truncated:
         if len(batch) <= MIN_SPLIT:
-            raise RankingError("최소 배치에서도 max_tokens 절단")
+            raise RankingError("최소 배치에서도 출력 절단(max tokens)")
         mid = len(batch) // 2
-        log.warning("출력 절단(stop_reason=max_tokens) — 배치 %d건을 절반으로 재분할", len(batch))
-        _rank_batch(client, model, batch[:mid], results)
-        _rank_batch(client, model, batch[mid:], results)
+        log.warning("출력 절단 — 배치 %d건을 절반으로 재분할", len(batch))
+        _rank_batch(provider, model, api_key, batch[:mid], results)
+        _rank_batch(provider, model, api_key, batch[mid:], results)
         return
-    data = _parse_json(_response_text(message))
+    data = _parse_json(text)
     for rec in data.get("items", []):
         if rec.get("id"):
             results[rec["id"]] = rec
@@ -138,15 +200,17 @@ def _rank_batch(client: Anthropic, model: str, batch: list[Item], results: dict)
 
 def rank_items(items: list[Item], cfg: dict, api_key: str) -> bool:
     """아이템에 랭킹·요약을 in-place 적용. 하나 이상의 배치가 성공하면 True."""
-    client = Anthropic(api_key=api_key)
-    model = cfg.get("model", "claude-haiku-4-5")
+    provider = cfg.get("llm_provider", "gemini")
+    model = cfg.get("model", "gemini-3-flash-preview")
     results: dict[str, dict] = {}
     ok_batches = 0
     batches = [items[i : i + BATCH_SIZE] for i in range(0, len(items), BATCH_SIZE)]
     for n, batch in enumerate(batches, 1):
+        if provider == "gemini" and n > 1:
+            time.sleep(GEMINI_BATCH_GAP)  # 무료 티어 10 RPM 준수
         for attempt in (1, 2):  # 1회 재시도
             try:
-                _rank_batch(client, model, batch, results)
+                _rank_batch(provider, model, api_key, batch, results)
                 ok_batches += 1
                 break
             except Exception as exc:  # noqa: BLE001

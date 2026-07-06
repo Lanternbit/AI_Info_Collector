@@ -17,6 +17,7 @@ from dotenv import load_dotenv
 from src.dedupe import dedupe, filter_fresh, filter_seen
 from src.fetchers import FETCHERS
 from src.models import today_kst
+from src.rank import key_env_for, rank_items
 from src.render import render
 from src.state import (
     load_day_snapshot,
@@ -77,17 +78,16 @@ def main() -> None:
 
     # 0건은 실패가 아니다 — llm_ok=False는 '호출했으나 실패'만 의미 (거짓 실패 배너 방지)
     llm_ok = True
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    key_env = key_env_for(cfg)
+    api_key = os.environ.get(key_env)
     if unique:
         if api_key:
-            from src.rank import rank_items  # anthropic import를 키 있을 때만
-
             llm_ok = rank_items(unique, cfg, api_key)
             if not llm_ok:
                 log.error("LLM 랭킹 전체 실패 — 원제목 폴백으로 렌더링 (운영 요구사항 5)")
         else:
             llm_ok = False
-            log.warning("ANTHROPIC_API_KEY 없음 — 요약 없이 원제목만으로 렌더링")
+            log.warning("%s 없음 — 요약 없이 원제목만으로 렌더링", key_env)
 
     # 같은 날 재실행 시 이전 실행분과 병합 — 그날 브리핑이 빈 페이지로 덮어써지지 않게
     snapshot = load_day_snapshot(today)

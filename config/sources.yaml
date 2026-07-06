@@ -2,7 +2,8 @@
 # 소스 추가/삭제는 이 파일만 수정하면 된다. URL은 2026-07-06 실제 호출로 검증됨.
 
 freshness_hours: 36            # 게시 시각 기준 이 시간 이내 아이템만 브리핑에 포함
-model: claude-haiku-4-5        # 랭킹·요약 모델 (교체 가능)
+llm_provider: gemini           # gemini(무료 티어) | anthropic
+model: gemini-3-flash-preview  # gemini 안정판: gemini-2.5-flash / anthropic 전환 시: claude-haiku-4-5
 notion_min_importance: 3
 notion_max_items: 30
 user_agent: "news-finder/0.1 (personal daily AI digest)"
