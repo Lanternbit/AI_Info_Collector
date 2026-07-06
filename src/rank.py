@@ -102,21 +102,38 @@ GEMINI_SCHEMA = {
 
 
 def _call_gemini(model: str, api_key: str, payload_json: str) -> tuple[str, bool]:
+    generation_config = {
+        "responseMimeType": "application/json",
+        "responseSchema": GEMINI_SCHEMA,
+        "maxOutputTokens": MAX_TOKENS,
+    }
+    if model.startswith("gemini-2.5"):
+        # 요약·분류에 thinking 불필요 — thinking 토큰이 출력 한도를 잠식해 절단을 유발한다
+        # (2.5 계열만 thinkingBudget 지원; 3.x는 thinkingLevel이라 미전송)
+        generation_config["thinkingConfig"] = {"thinkingBudget": 0}
     body = {
         "system_instruction": {"parts": [{"text": SYSTEM}]},
         "contents": [{"role": "user", "parts": [{"text": payload_json}]}],
-        "generationConfig": {
-            "responseMimeType": "application/json",
-            "responseSchema": GEMINI_SCHEMA,
-            "maxOutputTokens": MAX_TOKENS,
-        },
+        "generationConfig": generation_config,
     }
-    resp = httpx.post(
-        f"{GEMINI_API}/{model}:generateContent",
-        headers={"x-goog-api-key": api_key, "Content-Type": "application/json"},
-        json=body,
-        timeout=300,
-    )
+    resp = None
+    for attempt in range(4):  # 무료 티어/preview 모델은 일시적 429·503이 흔함
+        resp = httpx.post(
+            f"{GEMINI_API}/{model}:generateContent",
+            headers={"x-goog-api-key": api_key, "Content-Type": "application/json"},
+            json=body,
+            timeout=300,
+        )
+        if resp.status_code in (429, 500, 503) and attempt < 3:
+            wait = 10.0 * (attempt + 1)
+            try:
+                wait = max(wait, float(resp.headers.get("Retry-After", 0)))
+            except ValueError:
+                pass
+            log.warning("Gemini %d — %.0f초 후 재시도 (%d/3)", resp.status_code, min(wait, 60), attempt + 1)
+            time.sleep(min(wait, 60))
+            continue
+        break
     if resp.status_code >= 400:
         raise RankingError(f"Gemini API {resp.status_code}: {resp.text[:300]}")
     data = resp.json()
@@ -127,6 +144,9 @@ def _call_gemini(model: str, api_key: str, payload_json: str) -> tuple[str, bool
     parts = (cand.get("content") or {}).get("parts") or []
     text = "".join(p.get("text", "") for p in parts)
     truncated = cand.get("finishReason") == "MAX_TOKENS"
+    if not text and not truncated:
+        # thinking 모델이 출력 없이 종료한 경우 등 — 재시도/폴백 대상으로 처리
+        raise RankingError(f"Gemini 응답 텍스트 없음 (finishReason={cand.get('finishReason')})")
     return text, truncated
 
 
@@ -205,6 +225,7 @@ def rank_items(items: list[Item], cfg: dict, api_key: str) -> bool:
     results: dict[str, dict] = {}
     ok_batches = 0
     batches = [items[i : i + BATCH_SIZE] for i in range(0, len(items), BATCH_SIZE)]
+    fallback_model = cfg.get("fallback_model")
     for n, batch in enumerate(batches, 1):
         if provider == "gemini" and n > 1:
             time.sleep(GEMINI_BATCH_GAP)  # 무료 티어 10 RPM 준수
@@ -215,6 +236,15 @@ def rank_items(items: list[Item], cfg: dict, api_key: str) -> bool:
                 break
             except Exception as exc:  # noqa: BLE001
                 log.warning("LLM 배치 %d/%d 시도 %d 실패: %s", n, len(batches), attempt, exc)
+        else:
+            # 기본 모델이 완전히 실패 — 폴백 모델로 마지막 시도 (브리핑이 안 나오는 것이 최악)
+            if fallback_model and fallback_model != model:
+                try:
+                    _rank_batch(provider, fallback_model, api_key, batch, results)
+                    ok_batches += 1
+                    log.info("폴백 모델 %s 로 배치 %d 성공", fallback_model, n)
+                except Exception as exc:  # noqa: BLE001
+                    log.warning("폴백 모델(%s)도 실패: %s", fallback_model, exc)
     for it in items:
         rec = results.get(it.key)
         if rec:

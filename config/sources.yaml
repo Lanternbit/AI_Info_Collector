@@ -3,7 +3,8 @@
 
 freshness_hours: 36            # 게시 시각 기준 이 시간 이내 아이템만 브리핑에 포함
 llm_provider: gemini           # gemini(무료 티어) | anthropic
-model: gemini-3-flash-preview  # gemini 안정판: gemini-2.5-flash / anthropic 전환 시: claude-haiku-4-5
+model: gemini-2.5-flash        # 안정판. gemini-3-flash-preview는 피크 시간 503 빈발(2026-07 확인)이라 보류. anthropic 전환 시: claude-haiku-4-5
+fallback_model: gemini-2.5-flash-lite  # 기본 모델 배치 실패 시 마지막 시도
 notion_min_importance: 3
 notion_max_items: 30
 user_agent: "news-finder/0.1 (personal daily AI digest)"

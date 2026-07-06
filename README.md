@@ -60,7 +60,11 @@ copy .env.example .env   # 열어서 키 입력
 
 ## 결정 기록
 
-- 2026-07-07 사용자 결정으로 LLM 백엔드를 **Gemini 3 Flash 무료 티어**로 전환 (운영 비용 $0).
+- 2026-07-07 M2 게이트에서 `gemini-3-flash-preview`가 피크 시간대 지속 503(과부하)을 보여
+  기본 모델을 안정판 `gemini-2.5-flash`로 확정 (폴백: `gemini-2.5-flash-lite`).
+  2.5 계열은 thinking 토큰이 출력 한도를 잠식해 절단을 유발하므로 `thinkingBudget: 0`으로 비활성화.
+  preview가 안정화되면 config의 model만 바꿔 복귀 가능.
+- 2026-07-07 사용자 결정으로 LLM 백엔드를 **Gemini 무료 티어**로 전환 (운영 비용 $0).
   이 용도(요약·랭킹)에서 벤치마크상 Haiku 4.5와 동급 이상. config 두 줄로 anthropic 복귀 가능.
   Gemini는 google-genai SDK 대신 REST 직접 호출 — 로컬 파이썬(3.14t 32bit)에서 SDK 의존성
   (cryptography) 빌드가 불가능했고, Notion과 같은 방식이라 일관적. 무료 티어 입력은 구글
