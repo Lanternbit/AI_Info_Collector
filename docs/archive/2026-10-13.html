@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 2026-10-13 (화)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:36px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">2026-10-13 (화) · 오늘 41건</div>
+  <nav class="archive">
+    <a href="../index.html">최신</a>
+    <a href="2026-10-13.html">10-13</a>
+    <a href="2026-10-12.html">10-12</a>
+    <a href="2026-10-11.html">10-11</a>
+    <a href="2026-10-10.html">10-10</a>
+    <a href="2026-10-09.html">10-09</a>
+    <a href="2026-10-08.html">10-08</a>
+    <a href="2026-10-07.html">10-07</a>
+    <a href="2026-10-06.html">10-06</a>
+    <a href="2026-10-05.html">10-05</a>
+    <a href="2026-10-04.html">10-04</a>
+    <a href="2026-10-03.html">10-03</a>
+    <a href="2026-10-02.html">10-02</a>
+    <a href="2026-10-01.html">10-01</a>
+    <a href="2026-09-30.html">09-30</a>
+    <a href="index.html">전체 ›</a>
+  </nav>
+  
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘 AI 업계에서는 Anthropic이 클로드 에이전트 조정을 위한 동적 워크플로우를 공개하며 실용적인 AI 에이전트 개발의 새로운 방향을 제시했습니다. 메타는 새로운 AI 모델 &#39;Muse Wonder&#39;를 출시하며 AI 선두권 경쟁에 다시 불을 지폈고, 인텔 역시 D270 GPU AI 가속기를 선보이며 하드웨어 경쟁을 심화했습니다. 한편, AI 코딩 에이전트의 실제 개발 기여에 대한 의문이 제기되고, Python 3.15 출시와 같은 개발 환경의 변화도 주목받고 있습니다.</div>
+  
+  
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    <a href="#cat-0">모델 릴리스 <b>2</b></a>
+    <a href="#cat-1">연구·논문 <b>5</b></a>
+    <a href="#cat-2">실무 지식 <b>2</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>9</b></a>
+    <a href="#cat-4">업계 동향 <b>3</b></a>
+    <a href="#cat-5">정책·안전 <b>3</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>11</b></a>
+  </nav>
+  
+  
+</header>
+
+
+
+
+
+
+<section class="headline" id="headlines">
+  <h2>오늘의 헤드라인</h2>
+  <article class="item">
+  <h3><a href="https://www.latent.space/p/claude-dynamic-workflows" target="_blank" rel="noopener">Anthropic, Claude 에이전트 조정을 위한 동적 워크플로우(Dynamic Workflows) 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Anthropic이 Claude 관리 에이전트들을 조율하는 새로운 기능인 &#39;동적 워크플로우(Dynamic Workflows)&#39;를 발표했습니다. 이 &#39;플로우&#39; 기능은 다중 에이전트 오케스트레이션을 위한 새로운 방식을 제공합니다.</p>
+  <p class="why">복잡한 다중 AI 에이전트 시스템을 효율적으로 설계하고 관리하는 데 필수적인 기술로, 개발자들이 Claude 에이전트를 더욱 정교하게 활용할 수 있게 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">오늘 AI Engineer NYC에 참석한 Anthropic의 기술 스태프인 CJ Avilla와 Harrison Stall.
+AI Engineer New York 2026 컨퍼런스가 오늘 아침부터 Anthropic이 Claude Managed Agents를 오케스트레이션하는 방법에 대해 논의하는 일련의 워크숍과 함께 시작되었습니다. 특히 흥미로웠던 것은 금요일에 발표된 다이내믹 워크플로, 즉 발표자들이 반복해서 “플로우(flows)”라고 불렀던 완전히 새로운 기능입니다.
+플로우는 “가장 야심찬 워크로드를 위해 구축된 새로운 유형의 다중 에이전트 오케스트레이션”으로 정의됩니다.
+Anthropic의 기술 스태프인 CJ Avilla와 Harrison Stall은 Ken Thompson이 오리지널 Unix 운영 체제를 구축한 것부터 Linus Torvalds 한 사람으로부터 시작하여 신뢰할 수 있는 유지 관리자 계층으로 발전한 Linux에 이르기까지 과거의 일부 운영 체제 프로젝트를 언급하며 발표를 시작했습니다. 교훈은 다음과 같습니다. Anthropic이 다이내믹 워크플로에 대해 구상하는 크고 야심찬 프로젝트를 수행하려면 에이전트도 같은 수준의 조직이 필요합니다.
+
+Union.ai 후원
+독자적인 AI 팩토리 구축
+최고의 엔지니어링 팀은 데이터, 컴퓨팅, 인프라뿐만 아니라 클라우드의 영구적인 런타임까지 소유하고 제어하는 AI 팩토리를 구축하고 있습니다.
+Union.ai는 워크플로에 인프라 리소스를 조정하고 적절한 크기로 조정하며 완료된 작업을 다시 실행하지 않고도 실패로부터 복구할 수 있는 내구성을 제공합니다.
+AWS Marketplace를 통해 직접 시작하고 Union.ai를 30일 동안 무료로 사용해 보세요.
+자세한 내용은 AI Engineer New York 부스 #48에서 문의하세요.
+
+“많은 에이전트를 오케스트레이션하고 관리하는 우리는 이제 많은 에이전트가 수많은 PR을 제출하면서 병목 현상이 되고 한계점에 도달하고 있다는 느낌을 받기 시작할 수 있습니다.”라고 Avilla는 말했습니다. “그리고 우리는 GitHub에 앉아서 PR을 승인하고 모든 것이 예상대로 작동하는지 확인하려고 합니다.”
+
+에이전트 명단에서 다이내믹 워크플로로
+두 사람은 다이내믹 워크플로가 Claude Code에서 “모든 작업에 대한 하네스(harness)” 개념으로 시작되었다고 언급했습니다. 그러나 플로우는 단일 에이전트 또는 명단보다 더 오래 실행될 수 있습니다. 기본 아이디어는 Claude가 에이전트 조직을 선택한다는 것입니다.
+“플로우는 본질적으로 다중 에이전트 오케스트레이션의 다음 버전입니다.”라고 Stall은 말했습니다. “여기서 Claude가 자체 다중 에이전트 토폴로지 전체를 완전히 오케스트레이션할 수 있습니다.”
+이것이 작동하는 방식은 리드 에이전트가 작업을 수행하는 방법에 대한 계획을 세우는 것입니다. 그런 다음 Claude는 오케스트레이션 프로그램을 작성하고, 이 프로그램은 에이전트를 시작하고, 결과를 수집하고, 정보 흐름을 관리합니다.
+
+Anthropic 제공 이미지
+이전에는 Claude Managed Agents를 사용하려면 개발자가 코디네이터와 하위 에이전트 명단을 구성해야 했습니다. 다이내믹 워크플로를 사용하면 Claude 자체가 작업을 나누고 오케스트레이션하는 방법을 결정합니다.
+“다중 에이전트 오케스트레이션의 여러 단계에 걸쳐 이러한 것들 간의 상호 연결을 관리할 필요 없이 개별적이고 검증 가능한 작업 단위를 수행할 수 있습니다.”라고 Stall은 말했습니다.
+
+그럼에도 불구하고 Avilla는 사용자가 원하면 전문 하위 에이전트를 도입할 수 있다고 언급했습니다.
+“에이전트 구성에서 사전 구성된 하위 에이전트를 전달하는 것도 가능합니다.”라고 그는 말했습니다.
+이 모든 것은 Claude Managed Agents의 핵심인 API를 통해 Claude에 액세스하는 개발자가 사용하는 인터페이스인 Claude Console에서 사용할 수 있습니다.
+
+Managed Agents가 있는 Claude Console.
+발표자들은 이어서 주식 관심 목록 스캐너의 비교적 간단한 워크플로를 보여주었습니다. 이것은 Anthropic이 권장하는 크고 야심찬 프로젝트와는 거리가 멀었지만, 기본 패턴을 잘 보여주었습니다. 즉, 스캔 단계에서는 개별 티커를 격리된 컨텍스트를 가진 에이전트에 분산하고, 나중에 검토 단계에서는 보고서를 생성하기 전에 발견 사항을 검토했습니다.
+Q&amp;A: 예산 및 자기 개선의 한계
+청중 Q&amp;A에서는 여러 가지 잠재적인 문제가 제기되었습니다. 한 청중은 Claude가 작업에 필요한 에이전트 수를 어떻게 결정하는지, 그리고 간단한 티커 스캔이 수백 개의 하위 에이전트를 트리거할 수 있는지 물었습니다.
+“답은 평가와 낮은 기본값입니다.”라고 Stall은 대답하며, 야심찬 작업에는 일반적으로 더 큰 병렬화를 명시적으로 장려해야 한다고 언급했습니다.
+에이전트 오케스트레이션에서 지속적인 우려 사항 중 하나는 토큰 예산을 통제하는 것입니다. 누군가 리드 에이전트가 사용 가능한 자금이 얼마인지 아는지 물었습니다.
+Stall은 모델이 실행 중에는 예산을 알지 못하지만 개발자가 세션 예산을 설정할 수 있다고 대답했습니다. 그는 모델에게 예산을 알려주면 에이전트가 “조금 불안해질 수 있다”고 덧붙였고, 이는 청중의 웃음을 자아냈습니다.
+
+주식 관심 목록 예시의 스캐너.
+관련 질문은 개발자가 반복되는 플로우를 시간이 지남에 따라 더 저렴하고 효율적으로 만들 수 있는 방법이었습니다.
+Claude에게 발생한 비용을 검토하도록 요청하는 것 외에도 Avilla는 또 다른 비교적 새로운 기능인 dreaming을 사용할 것을 제안했습니다. 문서에서 “dreaming”은 연구 미리 보기 기능으로 정의됩니다. dream은 “과거 세션 기록과 함께 기존 메모리 저장소를 읽고, 중복된 항목을 병합하고, “오래되거나 모순된 항목”을 교체하고, “새로운 통찰력을 표면화”하여 새로운, 재구성된 메모리 저장소를 생성합니다.
+Avilla는 플로우 컨텍스트에서 dreaming을 “관련 세션과 관련된 메모리 저장소를 결정하고 기본적으로 개선”할 수 있는 능력으로 설명했습니다.
+주식 관심 목록 예시에서 누군가 관심 목록 플로우가 스스로 개선될 수 있는지 물었습니다. 예를 들어, 스캐닝 모델이 부적절하다는 것을 인식하고 다음 예정된 실행을 변경할 수 있는지 물었습니다.
+Stall은 이것이 내장되어 있지 않다고 말했지만, 그와 Avilla는 루프를 개선하기 위해 hill-climbing과 dreaming을 사용할 수 있다고 제안했습니다.
+
+Managed Agents의 두뇌/손 개념 개요.
+하위 에이전트의 행동에 대한 가시성은 어떻습니까? 또 다른 청중이 물었습니다.
+Avilla는 개발자가 Claude Console 내부의 그래프 기능을 통해 항상 이를 검사할 수 있다고 대답했습니다.
+“리드 에이전트가 하위 에이전트에 실제로 무엇을 전달했는지 알 수 있습니다. 이 전체 그래프의 모든 전환에서 실제로 무슨 일이 일어나고 있는지 깊이 이해하기 위해 해당 페이로드를 여기에서 볼 수 있습니다.”
+또 다른 흥미로운 질문은</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://news.ycombinator.com/item?id=50059096" target="_blank" rel="noopener">Agent37 출시: 저비용 AI 에이전트 샌드박스 제공</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 100</span>
+    
+    
+    
+  </div>
+  <p class="summary">Agent37이 AI 에이전트를 저렴한 비용으로 실행할 수 있는 샌드박스 서비스를 출시했습니다. 월평균 0.37달러의 비용으로 에이전트 개발 및 테스트 환경을 제공하며, 비디오 워크스루도 공개되었습니다.</p>
+  <p class="why">저렴한 비용으로 AI 에이전트 개발 및 실험 환경을 제공하여, 개인 개발자나 소규모 팀도 에이전트 기술을 쉽게 접근하고 활용할 수 있게 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">안녕하세요 HN, 저는 Agent37(https://agent37.com)의 Vishnu입니다. 저희는 대부분의 샌드박스 제공업체 비용의 10% 미만으로 AI 에이전트를 실행할 수 있는 샌드박스를 구축합니다. 저희 고객들은 샌드박스당 월 평균 0.37달러를 지출합니다.제품 비디오 둘러보기는 여기에서 보실 수 있습니다: https://youtu.be/DK5ISR2tbNo저희는 지난 2월 OpenClaw 래퍼 회사 중 하나로 시작했습니다(네… 저를 판단하세요). 시간이 지나면서 점점 더 많은 하네스를 추가했습니다.당시 저의 목표 중 하나는 시장 점유율을 높이기 위해 사용자에게 무료 플랜을 제공하는 것이었습니다. 하지만 비용이 너무 많이 들어서 즉시 실행하기 어려웠습니다. 특히 저희는 자체 자금으로 운영되었고 서버는 제 저축으로 운영되고 있었기 때문입니다.오늘 저희는 그동안 저희가 이룬 최적화 덕분에 실제로 무료 플랜을 제공할 수 있게 되었습니다. 신규 가입자의 90% 이상이 무료 플랜 사용자이며, 이들은 개인 Hermes/Openclaw/Claude Code 등을 저희 클라우드에 호스팅합니다. 무료 샌드박스에 대한 저희의 인프라 비용은 사용자당 월 평균 0.05달러에서 0.10달러입니다.비용 절감에 효과적이었던 몇 가지 기술은 다음과 같습니다.* 에이전트 하네스를 살펴보면 CPU와 RAM을 사용하는 방식에 특정 패턴이 있습니다. 초기화하거나 특정 작업을 수행할 때 CPU가 한꺼번에 필요하지만, 그 외에는 최고치를 기록하지 않는 경우가 많습니다. 브라우저 및 컴퓨터 사용 작업과 같은 것에는 더 많은 RAM이 필요합니다. 작업이 완료되면 사용량은 종종 다시 줄어듭니다. 이는 비용 절감에 중요한 통찰력이므로, CPU/RAM 활용을 효율적으로 관리함으로써 비용을 절감할 수 있었습니다.* 둘째, 호스트를 임대할 때는 하이퍼스케일러를 건너뛰어야 합니다. 저는 이전에 Amazon에서 일했는데, 그들은 VM에서 80-90%의 마진을 가집니다. 그래서 가격을 확인했을 때 Hetzner 및 OVH와 같은 공급업체로 한 단계 내려가는 것이 분명한 선택이었습니다. 이것만으로도 비용 절감에 가장 큰 비용 레버리지 중 하나였습니다.* 셋째, 호스트 전체에서 리소스를 효율적으로 캐시하고 공유할 수 있는 기술 스택을 선택해야 합니다. 저희는 더 나은 활용도와 빠른 부팅 시간을 위해 gVisor를 사용합니다. 이를 통해 각 샌드박스에 전체 VM의 메모리를 예약할 필요 없이 사용 가능한 호스트 메모리를 샌드박스 전체에서 사용할 수 있습니다. 여기에는 트레이드오프가 있습니다. 저희 gVisor 샌드박스는 Docker-in-Docker 또는 Android 에뮬레이터와 같은 워크로드를 지원하지 않습니다.* 그리고 마지막으로 구매하는 호스트의 크기와 형태도 큰 차이를 만듭니다. RAM은 일반적으로 비용 측면에서 병목 현상이 발생하며 CPU는 그렇지 않습니다. 이는 에이전트 하네스 워크로드에 특히 해당되므로 서버를 구매할 때 주어진 호스트에 더 많은 RAM을 패킹하도록 최적화합니다.저희는 Docker를 약간 더 높은 가격으로 실행하는 것을 포함하여 전체 VM 샌드박스를 필요로 하는 워크로드를 위해 호스팅하지만, 나머지 기술들을 고려할 때 여전히 매우 저렴합니다.전반적으로 저의 학습은 샌드박스 사용 사례의 틈새 시장에만 집중하고 이를 위해 최적화함으로써 훨씬 더 나은 비용/성능 트레이드오프를 제공할 수 있다는 것이었습니다.저는 이전에 Amazon의 선임 소프트웨어 엔지니어였고 Quantcast의 엔지니어링 관리자였습니다. 저는 Amazon의 내부 AI 챗봇인 Diya와 내부 코딩 하네스인 Ziya를 구축했습니다.샌드박스에서 에이전트를 실행하려는 개발자이고 샌드박스 공급업체를 찾고 있다면 저희를 확인해 보세요. 특히 메시징 에이전트를 구축하는 개발자들이 워크로드를 시도하고 저희 플랫폼의 한계와 경제성에 도전하기를 기대합니다.감사합니다!https://agent37.com</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://research.meta.ai/blog/muse-wonder" target="_blank" rel="noopener">메타, 새로운 AI 모델 &#39;Muse Wonder&#39; 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 524</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50059115" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">메타가 최신 AI 모델인 &#39;Muse Wonder&#39;를 공개했습니다. 이 모델은 메타의 AI 기술력을 다시 한번 선두권으로 끌어올릴 것으로 보이며, 독립적인 평가와 사용자 테스트 결과가 주목됩니다.</p>
+  <p class="why">메타의 새로운 프론티어 모델 출시는 AI 연구 및 개발 커뮤니티에 중요한 영향을 미치고, 새로운 응용 분야를 개척할 잠재력을 가집니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">개인 및 전문 에이전트 분야를 선도하는 프론티어 모델
+
+오늘, 저희는 개인 및 전문 에이전트 작업에서 최첨단 성능을 제공하는 가장 강력한 모델인 Muse Wonder와 Muse Wonder Full로 구성된 Muse Wonder 시리즈를 소개하게 되어 기쁩니다. 이들은 저희의 스케일링 사다리의 다음 단계이자 개인 초지능을 향한 중요한 도약을 의미합니다. Muse Wonder는 Active Memory와 Active Focus를 결합하여 사용자에게 중요한 것을 추적하고 원하는 목표를 향해 부지런히 작동합니다.
+
+Muse Wonder는 오늘부터 Meta Model API와 Muse Code를 통해 사용할 수 있으며, Muse Wonder Full은 Muse Code 구독자에게 오늘부터 제공됩니다.
+
+Muse Wonder는 곧 Muse에서 경험을 제공할 예정이며, 구독자에게 먼저 출시될 것입니다. Muse Wonder는 또한 더 많은 지능을 요구하는 아티팩트 생성 및 프로세스를 지원할 것입니다. 그리고 미래에는 Muse Wonder를 사용하여 Muse를 사용하는 모든 사람들에게 제공할 수 있는 특수 모델을 개발할 예정입니다.
+
+개인 초지능을 향한 스케일링
+
+14개월 전, 저희는 인공지능 노력을 처음부터 전면 개편하기 시작했습니다. 그 시간 동안 저희는 처음부터 스택을 재구축하는 것부터 프론티어를 개척하는 것까지 나아갔습니다.
+
+Muse Spark를 소개했을 때, 저희는 예측 가능하고 엄격한 스케일링 접근 방식을 설명했습니다. 오늘 출시되는 제품은 사전 학습 및 강화 학습 전반에 걸쳐 이 작업을 기반으로 하여 현재까지 가장 강력한 모델을 제공합니다. 기가와트 규모의 Prometheus 데이터 센터에서 학습된 Muse Wonder와 Muse Wonder Full은 Meta 전체 팀의 작업을 결합하여 직장과 일상 생활의 복잡한 작업을 위한 프론티어 기능을 제공합니다. 이는 저희 제품을 사용하는 수십억 명의 사람들에게 개인 초지능을 제공하기 위한 또 다른 단계입니다.
+
+Muse Wonder 시리즈는 개인 및 전문 에이전트, 메모리 및 코딩에 대한 주요 벤치마크에서 최첨단 결과를 달성합니다.
+
+아래의 전체 결과는 Muse Wonder와 Muse Wonder Full을 광범위한 평가 도구 모음에서 다른 프론티어 모델과 비교합니다.
+
+평가에 대한 자세한 내용은 보고서를 참조하십시오.
+
+위의 결과는 모델 성능에 대한 광범위한 시야를 제공합니다. 이제 실제 작업에서 모델의 작업에 중요한 네 가지 영역인 도메인 전문 지식, Active Memory, Active Focus 및 프론티어 코딩을 자세히 살펴보겠습니다.
+
+Muse Wonder와 Muse Wonder Full은 임대 계약 이해부터 재무 또는 건강 정보 이해에 이르기까지 사람들이 직장과 일상 생활에서 겪는 문제에 특화된 지식을 적용합니다. 저희 평가는 이 능력을 테스트하는 법률, 금융 및 건강 분야의 작업을 포함합니다. 예를 들어 Harvey의 Legal Agent Benchmark(LAB)는 모델이 원본 문서를 가지고 작업하고 상세한 지침을 따라 법률 작업 제품을 생산하도록 요구합니다.
+
+유용한 개인 및 전문 에이전트를 향한 가장 중요한 단계 중 하나는 신뢰할 수 있는 메모리입니다. 모델은 중요한 것을 기억하고 이전 정보가 언제 관련성이 있는지 인식해야 합니다. 저희는 이를 Active Memory라고 부릅니다. 이는 대화 전반에 걸쳐 귀하에 대한 중요한 컨텍스트를 유지하고 당면한 작업과 관련된 세부 정보를 능동적으로 검색하는 것입니다.
+
+해당 컨텍스트를 사용하여 작업을 완료하려면 지속적인 노력이 필요합니다. Active Focus는 Muse Wonder가 어려운 목표를 향해 계속 노력하는 방식을 설명합니다. 즉, 대체 접근 방식을 시도하고, 장애물을 해결하고, 새로운 정보에 적응하는 것입니다. 그 과정에서 필요할 때 설명을 요청하고 중요한 조치를 취하기 전에 확인합니다. 저희는 FocusBench를 통해 초점을 평가하고, 장기 실행 소프트웨어 프로젝트 작업을 테스트하는 SWE-Marathon을 통해 지속적인 실행을 평가합니다.
+
+코딩은 이러한 기능을 결합합니다. 소프트웨어 구축에는 요구 사항 추적, 코드베이스 전체 변경, 테스트 및 수정의 반복 주기 작업이 필요합니다. Muse Wonder와 Muse Wonder Full은 프론티어 코딩 성능을 제공하여 소규모 애플리케이션부터 복잡한 소프트웨어에 이르는 프로젝트를 지원합니다. 저희는 이 프로세스 전반에 걸쳐 진행 상황을 유지하는 데 도움이 되도록 다양하고 장기 실행되는 작업을 통해 두 모델을 학습시켰습니다.
+
+두 모델은 종종 유사한 벤치마크 점수를 가지고 있지만, 하나는 훨씬 더 광범위한 익숙하지 않은 작업을 처리하는 것처럼 보입니다. 이것이</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software/" target="_blank" rel="noopener">AI 코딩 에이전트, 코드 생성량은 늘었지만 실제 소프트웨어 개발 기여는 미미</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 311</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50059523" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">AI 코딩 에이전트가 더 많은 양의 코드를 생성하지만, 이것이 실제 작동하는 소프트웨어 개발로 이어지는 기여는 아직 미미하다는 분석이 나왔습니다. 단순한 코드 생성 이상의 통합적 개발 능력이 필요함을 시사합니다.</p>
+  <p class="why">AI 코딩 도구의 현재 한계를 명확히 보여주며, 개발자들이 AI를 보조 도구로 활용할 때 기대치를 현실적으로 조정하고, AI 에이전트 개발의 다음 단계를 고민하게 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">컴퓨터 프로그래밍과 조금이라도 관련이 있는 사람이라면 누구나 현대 AI 코딩 조수 및 에이전트가 엄청난 양의 기능 코드를 생성하는 데 믿을 수 없을 정도로 효율적일 수 있다는 것을 알고 있습니다. 그러나 이러한 도구를 사용하는 코더들은 해당 코드의 정확성을 신뢰하지 않는 것이 더 낫다는 것을 알고 있으며, 이는 AI가 생성한 모든 결과물을 검토하는 데 상당한 노력이 필요하다는 것을 의미합니다.
+
+수백 개 기업의 실제 코딩 관행에 대한 최근 연구에 따르면 인간 코드 검토가 AI 코딩 도구의 전반적인 효율성에 있어 상당한 “병목 현상”을 형성하여, “기업이 소프트웨어 결과물을 늘리거나 고용을 줄였다는 증거가 거의 없다”고 결론 내렸습니다. 연구 저자들은 실제 코딩 단계에서 증가한 모든 효율성이 “생산 과정의 다운스트림 제약으로 흡수된다”며, “코드 검토 과정이 상당히 길어지고, pull request가 수정될 가능성이 높아지며, 검토자들이 더 많은 주석을 남긴다”고 밝혔습니다.
+
+이러한 결론에 도달하기 위해 하버드 대학교 연구원 Fiona Chen과 James Stratton은 엔지니어링 팀의 세분화된 결과물을 측정하는 Jellyfish의 집계된 분석 데이터를 활용했습니다. 이 데이터는 2021년부터 2026년 3월까지 700개 이상의 관련 소프트웨어 개발 회사에서 700,000명 이상의 직원으로부터 3억 건의 개별 “작업 이벤트”(예: 커밋 및 pull request) 및 이슈 관리 소프트웨어 데이터를 포함합니다.
+
+이러한 기업에 AI 도구가 미치는 영향을 평가하기 위해 연구원들은 직접 측정된 AI 사용과 GitHub 활동 분석을 혼합하여 각 회사가 AI 코딩 조수(주로 인간이 작성한 코드를 자동 완성하는 데 도움을 줄 수 있음) 및/또는 AI 코딩 에이전트(프롬프트를 기반으로 자율적으로 코드를 작성하고 제출함)를 언제 워크플로에 도입하기 시작했는지 파악했습니다. 그런 다음 연구원들은 복잡한 수학을 사용하여 서로 다른 시점에 서로 다른 조직에 이러한 도구가 도입되기 전과 후의 주요 변수에 대한 “차이의 차이” 회귀를 수행했습니다.
+
+생산되는 원시 코드 측면에서 결과는 명확하고 극명합니다. 기업에 AI 코딩 에이전트가 도입되면 생성된 총 코드 라인이 30% 증가하고, 총 커밋 수가 20% 증가하며, pull request가 평균 23% 증가한다고 연구원들은 기술했습니다. 그러나 이 모든 추가 코드가 기업 수준에서 소프트웨어 결과물 개선으로 직접 이어지지는 않습니다. 오히려 Jira와 같은 도구로 추적되는 Issues 및 Epics(즉, 전체 소프트웨어 기능)의 해결률은 AI 도구가 도입된 후 통계적으로 유의미하게 변하지 않았습니다(연구원들은 AI 도입 전후에 Jira로 추적되는 이슈의 크기나 복잡성에서 “구성적 변화”도 발견하지 못했습니다).
+
+이러한 불일치의 원인은 코드 검토 과정에서 직접 찾을 수 있습니다. AI 코딩 에이전트가 도입된 후 코드 검토 과정은 평균적으로 현저히 더 오래 걸립니다. 전반적으로, pull request가 제출된 후 코드베이스에 병합되기까지의 평균 “검토 과정” 시간은 AI 에이전트가 도입된 후 평균 49% 증가합니다. 이러한 효과는 더 세분화된 데이터에서도 볼 수 있으며, AI 에이전트 전환 이후 “변경이 요청된 pull request의 비율이 거의 두 배로 늘어나고, pull request당 주석 수가 35% 증가했다”고 연구원들은 기술했습니다.
+
+이러한 변화에 대응하여 연구원들은 AI 에이전트 도입 후 코드 검토를 수행하는 작업자의 비율이 14% 증가했다는 것을 발견했습니다. 또한 그들은 Jellyfish의 총 활성 작업자와 해당 기업의 LinkedIn 데이터를 교차 참조한 후 “AI로 인한 유의미한 고용 변화를 귀속시킬 수 없다”고 기술했습니다.
+
+AI가 이론적으로 이러한 검토 과정에도 도움을 줄 수 있지만, 연구원들은 지금까지 그 영향이 미미하다는 것을 발견했습니다. 2026년 3월까지 측정된 기업의 80%가 어떤 형태의 AI 코드 검토를 사용했지만, AI 에이전트는 전체 검토 주석의 23.3%와 전체 pull request의 10.8%만을 담당하여, 여전히 인간이 이 작업의 대부분을 담당하고 있음을 시사합니다.
+
+물론 AI 에이전트는 코딩 세계에서 비교적 새로운 부분이며, 이 연구의 2026년 3월 데이터 마감일 이후에도 그 결과물에 상당한 업데이트와 업그레이드가 있었습니다. 그리고 연구 대상 기업의 95%가 이 시점까지 AI 코딩 에이전트를 구현했지만, 많은 기업은 언제 어떻게 가장 잘 배포해야 하는지에 대한 학습 과정을 거치고 있을 것입니다. 소프트웨어 엔지니어링 팀이 특정 코딩 문제에 AI 에이전트를 투입하는 것의 장단점에 대한 경험을 쌓으면서 이러한 종류의 “코딩 시간 대 검토 시간” 상충 관계는 개선될 수 있습니다.
+
+그러나 현재로서는 AI에게 코드를 작성하도록 하는 것은 코딩 속도 증가가 인간 코드 검토 시간 및 노력의 유사한 증가로 상쇄되는 양날의 검처럼 보입니다. 이러한 결과는 AI 코딩 에이전트를 작동시키는 데 드는 상당한 시간과 비용이 대부분의 회사에게 정말 가치가 있는지 궁금하게 만듭니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://simonwillison.net/2026/Oct/12/python-3-15/" target="_blank" rel="noopener">파이썬 3.15 출시, 3.10 지원 종료, 3.11 기능 활용 가능</a></h3>
+  <div class="meta">
+    <span class="badge">Simon Willison</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">파이썬 3.15가 출시되었고, 3.10 버전의 지원이 종료됨에 따라 이제 개발자들은 3.11 버전의 새로운 기능을 활용할 수 있게 되었습니다. PEP 810의 명시적인 지연 임포트(Explicit lazy imports) 등 중요한 변화가 포함되어 있습니다.</p>
+  <p class="why">파이썬 개발자들에게 최신 버전의 주요 변경사항을 알려주어, 코드베이스를 업데이트하고 새로운 기능을 활용하여 생산성을 높일 수 있도록 돕습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Python 3.15이 출시되었습니다! 올해 3.14 및 3.15 릴리스 관리자 Hugo van Kemenade가 엄선한 Python 3.15의 새로운 기능에 대한 필수 안내서입니다. 모든 지원되는 Python 버전에서 작동하는 오픈 소스 소프트웨어를 구축하는 사람으로서, 저는 Python 3.10에 작별을 고하고 Python 3.11의 기능을 받아들이기 시작할 수 있게 되었습니다.
+
+먼저, Python 3.15의 주요 기능을 살펴보겠습니다.
+
+명시적 지연 임포트(Explicit lazy imports)
+
+저는 PEP 810의 명시적 지연 임포트가 가장 기대됩니다. 이를 통해 다음과 같이 모듈을 임포트할 수 있습니다:
+
+lazy import json
+lazy from pathlib import Path
+모듈은 해당 심볼이 코드에서 처음 사용될 때 임포트됩니다.
+
+제 LLM CLI 도구는 플러그인을 구현합니다. 저는 플러그인 작성자 문서에 수동 지연 임포트를 권장해야 했습니다. 왜냐하면 sentence_transformers와 같은 무거운 의존성을 사용하는 플러그인을 단순히 설치하는 것만으로도 llm 명령을 호출할 때마다 몇 초씩 추가될 수 있었기 때문입니다. 지연 임포트는 이러한 시작 비용을 직접적으로 해결합니다.
+
+컴프리헨션(comprehensions) 내 언패킹(Unpacking)
+
+새로운 [*sublist for sublist in lists] 언패킹 구문은 깔끔합니다. 다음은 문서에서 가져온 예시입니다:
+
+lists = [[1, 2], [3, 4], [5]]
+[*L for L in lists]
+# [1, 2, 3, 4, 5]
+# equivalent to [x for L in lists for x in L]
+
+sets = [{1, 2}, {2, 3}, {3, 4}]
+{*s for s in sets}
+# {1, 2, 3, 4}
+# equivalent to {x for s in sets for x in s}
+
+dicts = [{&#39;a&#39;: 1}, {&#39;b&#39;: 2}, {&#39;a&#39;: 3}]
+{**d for d in dicts}
+# {&#39;a&#39;: 3, &#39;b&#39;: 2}
+# equivalent to {k: v for d in dicts for k,v in d.items()}
+Adam Hartz와 Erik Demaine의 PEP 798: Unpacking in Comprehensions는 2015년에 Python 3.5에 포함된 PEP 448의 언패킹 구문 확장으로 이를 제안했습니다.
+
+샘플링 프로파일러(A sampling profiler)
+
+Python의 기존 추적 프로파일러는 cProfile에서 profiling.tracing으로 이름이 변경되었으며, Tachyon이라는 흥미로운 새로운 샘플링 프로파일러(일명 profiling.sampling)가 추가되었습니다.
+
+샘플링 프로파일러는 실행 중인 프로세스에서 주기적으로 스택 트레이스를 캡처한 다음, 이를 사용하여 어떤 함수에서 가장 많은 시간이 소요되는지 계산합니다. 오버헤드가 매우 낮고 시스템을 먼저 계측할 필요 없이 실행 중인 시스템에 대한 깊은 통찰력을 제공할 수 있습니다.
+
+저는 이전에 py-spy와 같은 도구를 사용했습니다. 이제 이 기능이 표준 라이브러리에 내장되었습니다.
+
+기존 Python 3.15 프로세스의 PID가 있는 경우 다음을 실행하여 샘플 수집을 시작할 수 있습니다 (macOS에서는 sudo를 사용해야 했습니다):
+
+sudo uv run --python 3.15 python -m profiling.sampling attach 1234
+
+메인 프로그램과 잠시 상호 작용한 다음, Ctrl+C를 눌러 수집을 중지하고 다음과 같은 보고서를 볼 수 있습니다:
+
+또한 위와 같은 불꽃 그래프(flame graphs)와 히트맵(heat maps)을 생성할 수 있으며, Firefox 프로파일러 UI에서 볼 수 있는 형식으로 출력할 수도 있습니다.
+
+3.15는 3.14보다 그다지 빠르지 않습니다.
+
+Miguel Grinberg는 며칠 전 3.15.0rc3 릴리스를 대상으로 How fast is Python 3.15?를 조사했고, 실험적인 JIT를 제외하고는 성능이 3.14와 대부분 동일하다는 것을 발견했습니다. JIT는 표준 3.15 인터프리터보다 1.2배 향상된 성능을 보였으며(피보나치 테스트에서), Miguel이 의미 있는 JIT 성능 향상을 관찰한 것은 이번이 처음입니다.
+
+Miguel의 작년 3.14 탐색에서는 더 많은 범주에서 Python 3.13에 비해 상당한 성능 향상을 발견했습니다.
+
+uv로 Python 3.15로 업그레이드하기
+
+저는 Mac에서 uv가 Python 3.15를 사용하도록 다음 명령어를 사용했습니다. 먼저 uv 자체를 업그레이드하여 새 릴리스를 인식하도록 해야 했습니다:
+
+uv self update
+
+그런 다음 안정적인 3.15 릴리스를 설치했습니다:
+
+uv python install 3.15
+
+그리고 프로젝트 자체에서 다른 버전을 고정하지 않는 한, 모든 uv run 명령의 기본값으로 사용하도록 uv에 지시했습니다:
+
+uv python pin --global 3.15
+
+이제 다음은 3.15를 버전으로 보고합니다:
+
+uv run python --version
+
+저는 uv tool install을 사용하여 이미 많은 도구를 설치했습니다. 저는 Python 3.15를 사용하도록 다음과 같이 다시 설치했습니다:
+
+uv tool upgrade datasette --python 3.15
+
+그런 다음 다음과 같이 버전을 확인할 수 있습니다:
+
+datasette --get /-/versions.json | jq
+
+Python 3.11의 주요 기능
+
+3.15 릴리스는 Python 3.10 (2021년 출시)이 공식적으로 더 이상 지원되지 않음을 의미합니다.
+
+제 주요 오픈 소스 프로젝트에 대한 정책은 모든 지원되는 Python 버전에서 작동하도록 유지하는 것입니다. 이제 3.10을 삭제하고 3.11에서 도입된 기능을 사용하기 시작할 수 있습니다.
+
+다음은 Python 3.11의 새로운 기능 문서입니다. 드디어 tomllib을 사용할 수 있게 되었습니다!
+
+Datasette는 asyncio를 광범위하게 사용합니다. 3.11은 TaskGroup과 timeout()을 추가하고, 더 많은 새로운 기능을 제공합니다.
+
+datetime.UTC는 3.11에서 datetime.timezone.utc의 새로운 별칭입니다.
+
+Python의 SQLite 지원은 3.11에서 상당한 업그레이드를 받았으며, 다음을 포함합니다:
+
+setlimit() 및 getlimit()은 Python에서 SQLite 런타임 제한을 설정하는 메커니즘을 노출합니다.
+
+create_window_function()은 step(), value(), inverse(), finalize() 메서드를 가진 클래스로 Python에서 사용자 정의 윈도우 함수를 생성할 수 있도록 합니다.
+
+blobopen()은 SQLite 행에 저장된 대용량 BLOB 이진 값의 부분 읽기 및 쓰기를 위한 효율적인 메커니즘을 제공합니다.
+
+이제 set_authorizer(None)를 호출하여 SQLite authorizer를 제거할 수 있습니다. Datasette에는 이에 대한 해결책이 있었습니다!
+
+또한 Python의 타이핑 시스템에 대한 많은 개선 사항이 있습니다.
+
+저는 앞으로 몇 주 동안 많은 프로젝트에 Python 3.11 개선 사항을 적용할 계획입니다. 다음은 set_authorizer(None) 해결책을 제거하는 첫 번째 Datasette PR입니다.
+
+또한 click-app, datasette-plugin, python-lib 및 llm-plugin cookiecutter 템플릿을 Python 3.11부터 Python 3.15까지 테스트하도록 업데이트했습니다.
+
+태그: open-source, profiling, python, sqlite, uv</div>
+  </details>
+  
+</article>
+</section>
+
+
+
+<section id="cat-0">
+  <h2>모델 릴리스 <span class="cnt">2건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/natolambert.bsky.social/post/3mxozkswk342s" target="_blank" rel="noopener">Nathan Lambert: 메타, Muse Wonder 모델로 AI 선두권 복귀</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 26</span>
+    
+  </div>
+  <p class="summary">Nathan Lambert는 메타가 최신 &#39;Muse Wonder&#39; 모델로 AI 프론티어 영역에 다시 진입했다고 언급했습니다. 독립적인 평가와 사용자 테스트가 흥미로울 것이라고 덧붙였습니다.</p>
+  <p class="why">메타의 AI 기술 발전과 업계 내 위치 변화를 확인하며, 새로운 선두권 모델의 등장이 AI 생태계에 어떤 영향을 미칠지 주목하게 합니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://z.ai/blog/glm-legal" target="_blank" rel="noopener">GLM-Legal 출시</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-1">
+  <h2>연구·논문 <span class="cnt">5건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3mxnnvoyesk2a" target="_blank" rel="noopener">Ethan Mollick: GPT-6 Pro가 학술 논문의 오류를 쉽게 발견, 대규모 수정 처리 메커니즘 부족</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 86</span>
+    
+  </div>
+  <p class="summary">Ethan Mollick에 따르면 GPT-6 Pro는 학술 논문에서 많은 오류를 발견할 수 있지만, 이러한 오류들을 검증하고 그 중요성을 파악하는 데는 여전히 많은 시간이 소요됩니다. 대규모 학술 교정 흐름을 처리할 적절한 메커니즘이 부족하다고 지적했습니다.</p>
+  <p class="why">AI가 학술 연구의 검증 과정을 혁신할 잠재력을 보여주지만, 동시에 학계가 AI 시대에 대규모 정보 검증 및 교정을 어떻게 처리할지에 대한 중요한 과제를 제기합니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/ai2.bsky.social/post/3mxpf6ntmlf2r" target="_blank" rel="noopener">Ai2: 튜터링 시 LLM의 효과 분석 - Astra 및 Opus 5.5 모델 테스트</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mxooaad52s2i" target="_blank" rel="noopener">Eugene Vinitsky: 작은 모델의 RL 파인튜닝에 대한 깊은 의심</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 2건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mxnb2spppc26" target="_blank" rel="noopener">Eugene Vinitsky: Constantin Ruhdorfer의 흥미로운 논문들</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://app.getsupers.com/auto-research" target="_blank" rel="noopener">자동 연구: n log n 미만의 정수 곱셈 알고리즘</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-2">
+  <h2>실무 지식 <span class="cnt">2건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/simonwillison.net/post/3mxp55chsbc2c" target="_blank" rel="noopener">Simon Willison: Python 3.15, uv 사용, 3.11 기능 활용에 대한 노트 공유</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 50</span>
+    
+  </div>
+  <p class="summary">Simon Willison이 Python 3.15 사용 경험, uv 도구와의 연동, 그리고 3.10 지원 종료로 인해 이제 자신의 프로젝트에서 Python 3.11의 기능을 활용할 수 있게 된 것에 대한 자세한 노트를 공유했습니다. 특히 Explicit lazy imports에 대한 기대를 표했습니다.</p>
+  <p class="why">파이썬 개발자들이 최신 파이썬 버전의 변화를 이해하고, 개발 환경을 효과적으로 관리하며, 새로운 기능을 실무에 적용하는 데 도움이 되는 구체적인 가이드를 제공합니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://yyhh.org/blog/2026/10/ai-is-a-tool/" target="_blank" rel="noopener">AI 활용은 여전히 기술과 노하우가 필요하다</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-3">
+  <h2>도구·오픈소스 <span class="cnt">9건</span></h2>
+  <article class="item">
+  <h3><a href="https://github.com/prabanta-dev/janas" target="_blank" rel="noopener">Janas: SSD에서 전문가 스트리밍을 통해 RAM보다 큰 LLM 실행 가능</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 30</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50063717" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">Janas는 SSD에서 &#39;전문가(experts)&#39;를 스트리밍하는 방식으로 RAM보다 훨씬 큰 LLM을 실행할 수 있는 기술을 선보였습니다. 이는 메모리 제약으로 인해 대규모 모델을 사용하기 어려웠던 개발자들에게 희소식입니다.</p>
+  <p class="why">하드웨어 제약을 우회하여 대규모 LLM을 효율적으로 실행할 수 있는 방법을 제시함으로써, 일반 사용자나 소규모 개발팀도 더 큰 모델을 활용할 기회를 제공합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">32GB 메모리를 장착한 노트북에서 Qwen3-Next-80B(48GB 모델)가 37 tok/s를 기록했으며, 초안을 사용하지 않을 경우 24 tok/s를 기록했습니다. llama.cpp는 2.8 tok/s를 기록했습니다. 프롬프트 읽기에서는 62 tok/s 대 16 tok/s를 기록했습니다. Janas-LLM은 동일한 노트북(Debian 13 Linux, Intel Core Ultra 9 185H, 통합 Arc GPU, 32GB, NVMe SSD; 2026년 10월 9일-11일; 아래 전체 시스템)에서 비교된 모든 모델에서 llama.cpp보다 빨랐습니다.
+
+다른 곳에서 온 동일 모델들은 옆의 카탈로그에 있습니다.
+
+한 가지 예외: 3비트 Qwen3-30B는 Q3_K 가중치가 GPU의 빠른 프롬프트로 아직 가지 않기 때문에 llama.cpp보다 프롬프트 읽기가 느리지만, 쓰기는 3배 빠릅니다.
+
+측정 방법 및 초안을 사용한 속도: 현재 작동하는 기능. 다른 시스템에서는 수치가 달라질 수 있습니다. janas-bench는 사용자의 시스템을 측정합니다.
+
+Linux x86-64(Ubuntu 22.04, Debian 12 이상)에서 시도해보세요:
+
+curl -LO https://github.com/prabanta-dev/janas/releases/latest/download/janas-linux-x86_64.tar.gz tar xf janas-linux-x86_64.tar.gz &amp;&amp; cd janas ./janas-chat # 알려진 모델: 하나를 선택하면 다운로드되고 확인됩니다.
+
+또는 Windows 10(1903 이상) 및 11, x86-64에서: janas-windows-x86_64.zip을 다운로드하여 압축을 풀고, janas 폴더의 터미널에서 .\janas-chat을 실행합니다. 동일한 노트북에서 Windows 11(2026년 10월 12일)을 사용했을 때 Janas-LLM은 Linux와 동일한 속도로 쓰기(Qwen3-4B 25.6 tok/s, Qwen3-30B-A3B 34.2)를 수행했으며, 혼합 모델(Qwen3-30B-A3B 132 tok/s)에서는 동일한 속도로 프롬프트를 읽고, 밀집 모델(Qwen3-4B 346 tok/s 대 193)에서는 1.8배 빠르게 읽었습니다. 밀집 모델의 전체 블록은 Intel 자체 Windows 드라이버를 통해 GPU로 전송됩니다.
+
+모델은 Hugging Face에서 이미 변환되어 제공됩니다. 소스에서 빌드하는 방법: 시작하기.
+
+▄███████████▄ ▄███████████████▄ ███ ▄ █████ ▄ ███ ▄ J A N A S ███▄▄▄█████▄▄▄████ ▀█████▄▀▀▀▄█████▀ ▀ 인공지능을 위한 C로 작성된 도구 모음 █████████████ █ █ █ █ █ █ █ █ ▀ ▀ ▀ ▀ ▀ ▀ ▀ ▀
+
+Janas는 C 라이브러리 외에는 종속성 없이 C로 작성된 인공지능 도구 모음입니다. 첫 번째 구성 요소인 Janas-LLM은 GPU 유무에 관계없이 일반 컴퓨터에서 대규모 전문가 혼합 언어 모델을 실행합니다. 가중치는 디스크에 유지되고, 각 토큰에 필요한 전문가들은 NVMe SSD에서 스트리밍되며, 계속해서 돌아오는 전문가들은 메모리에 유지됩니다. 800억 개의 매개변수를 가진 모델이 32GB RAM을 가진 노트북에서 실행되고 응답합니다.
+
+Maurizio &#34;camauri&#34; Cammalleri가 설계하고 작성했습니다.
+
+이것은 실험이지 제품이 아닙니다.
+
+문제가 발생하면 Ctrl-C는 응답을 중지하고 Ctrl-D는 채팅을 종료합니다. --cache &lt;GiB&gt;는 메모리 사용량에 하드 제한을 설정하고, JANAS_GPU=0은 GPU를 완전히 끕니다.
+
+이 저장소의 모든 내용은 다음에서 작성되고 측정되었습니다:
+
+Linux Debian 13 (trixie), x86-64, 커널 6.12.107; GPU 드라이버 Mesa 26.1.6 (Vulkan); GCC 14.2로 빌드됨
+
+Intel Core Ultra 9 185H (6개의 성능 코어, 8개의 효율성 코어, 2개의 저전력 코어; AVX2, FMA, F16C, AVX-VNNI; 통합 Arc GPU)
+
+1 TB NVMe SSD (읽기 속도 약 5.7 GB/s)
+
+Windows 빌드는 동일한 노트북에서 Windows 11(빌드 26300)과 Intel 자체 그래픽 드라이버를 사용하여 실행되었습니다. 테스트는 통과했으며, 속도는 위의 &#39;또는 Windows에서&#39; 섹션에 있습니다.
+
+엔진이 수행하는 모든 작업은 측정된 값 중에서 선택되므로, 다른 시스템에서는 다른 선택을 할 것입니다. 이 부분은 이식성을 고려했습니다. 아직 시도되지 않은 것은 나머지 부분입니다: 다른 CPU(특히 AVX-VNNI가 없거나 AMD), 개별 GPU, 느린 디스크, 더 많거나 적은 메모리. 다른 곳에서 실행하는 경우, janas-bench의 보고서는 되돌려 보낼 수 있는 가장 유용한 정보입니다(더 많은 하드웨어에서 실행되도록 돕기 참조).
+
+Janas-LLM이 오늘날 모델별, 기능별로 실행하는 기능: docs/features.md.
+
+위 시스템에서 다른 아무것도 실행되지 않은 상태에서 janas-bench는 다음을 보고합니다(2026년 10월 10일에 측정되었으며, 그날부터 엔진이 기본으로 사용하는 빠른 프롬프트 포함):
+
+모든 수치는 엔진 자체가 각 종류의 패스(채팅 실행 방식: 256 토큰의 프롬프트, 그 다음 64 토큰 쓰기)에 대해 선택한 구성의 3회 평균이며, 최고 기록이 아닙니다. 여기서는 통합 GPU가 모든 프롬프트(아래 빠른 프롬프트)를 읽고, 엔진이 결정한 스레드는 거의 모든 모델에서 프롬프트 및 단일 토큰에 대해 성능 코어의 12개, 몇 개의 토큰을 한 번에 처리하기 위해 모든 사용 가능한 코어(성능 및 효율성 코어, 저전력 코어 제외)였습니다. 다른 시스템에서는 엔진이 다른 스레드를 결정할 수 있습니다. 각 종류의 첫 번째 패스는 모든 코어, 성능 코어당 하나의 스레드 및 성능 코어의 스레드를 시도하고, 가장 빠른 것을 유지하며, 나중에 다른 스레드를 가끔 시도하여 시스템이 예열될 때 판단이 바뀔 수 있도록 합니다(i9-14900HX에서는 모든 스레드가 성능 코어 16개의 절반 미만의 속도로 응답했습니다). 라운드는 교대로 실행되어 시스템 예열 및 캐시 채우기가 각 설정에 동일하게 영향을 미치도록 합니다. 실행 간에 몇 퍼센트의 오차가 발생할 수 있으며, 캐시가 아직 채워지는 동안 첫 실행에서는 이보다 적을 것으로 예상됩니다. GPU 없이(JANAS_GPU=0) Qwen3-4B는 동일한 프롬프트를 85 tok/s로 읽고 27 tok/s로 씁니다.
+
+마지막 열은 다음 토큰을 추측하고 모델이 이를 확인하는 초안으로, 더 높은 속도로 동일한 텍스트를 생성합니다. 전체 내용은 --mtp 아래에 설명되어 있습니다: Qwen3.5 및 Qwen3.6 모델과 Qwen3-Next의 자체 예측 블록, Gemma 4의 어시스턴트(자체 소형 초안 모델). 이것은 채팅 응답에서 측정됩니다: 일반적인 영어 질문(&#34;집에서 빵 만드는 법을 설명해줘&#34;), 64 토큰의 답변이 채팅 샘플링 방식과 동일하게 샘플링됩니다. 초안의 가치는 텍스트에 따라 달라집니다. 여기서는 Qwen 모델과 Gemma의 두 가지 대형 모델에서 초안이 74-89%의 시간 동안 살아남았고, Gemma의 E2B 및 E4B에서는 63-72%였습니다. 이탈리아어 산문에서는 Qwen3.5-2B가 약 3분의 1을 유지했고, 거의 아무것도 얻지 못했습니다. 64 토큰의 한 라운드는 여기에서 노이즈가 많아 실행 간에 10분의 1 정도의 오차가 발생합니다. Qwen3-30B-A3B에는 이러한 블록이 없으며, 밀집 Qwen3도 마찬가지입니다. 밀집 Qwen3.5는 원래 체크포인트에 이러한 블록이 있으며, hf2jns_mtp가 이를 변환합니다(MODELS.md).
+
+이 열은 2026년 9월 26일까지 잘못되었고 더 높은 수치였습니다. 단락을 계속하는 블록을 측정했습니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/d-series.html" target="_blank" rel="noopener">인텔 D270 GPU AI 가속기 출시 – 최대 480GB LPDDR5X 지원</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/SaarthurR/atticus-mac" target="_blank" rel="noopener">Atticus: macOS용 클로드 기반 보이스 어시스턴트 공개</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Oct/12/web-edit/" target="_blank" rel="noopener">web-edit 0.1a0 출시: LLM 없이 파일 편집하는 웹 앱</a><span class="src">Simon Willison</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 5건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://github.com/openai/codex/issues/48195" target="_blank" rel="noopener">Codex CLI, 기본적으로 영구적이고 자체 업데이트되는 백그라운드 데몬 설치</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/snuri00/ps2-web-recomp" target="_blank" rel="noopener">Show HN: PS2 게임을 WebAssembly로 정적 재컴파일</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/h0m3us3r/w1700k-sdr" target="_blank" rel="noopener">WiFi 7 라우터를 320Msps 소프트웨어 정의 라디오 수신기로 전환하는 방법</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Oct/12/datasette-ports/" target="_blank" rel="noopener">datasette-ports 0.4 출시: Datasette 인스턴스 탐지 및 PID 표시</a><span class="src">Simon Willison</span></li>
+  
+  <li><a href="https://github.com/andrewfader/blokkily" target="_blank" rel="noopener">Show HN: MCP를 지원하는 실험적인 패턴 우선 DAW Muse Wonder</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-4">
+  <h2>업계 동향 <span class="cnt">3건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/natolambert.bsky.social/post/3mxp3cejcy62p" target="_blank" rel="noopener">Nathan Lambert: 모델 벤치마크만 발표하고 출시하지 않으면 경쟁사에 밀릴 위험</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 2건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://taylor.town/kk-ai-2026" target="_blank" rel="noopener">케빈 켈리의 2016년 AI 예측, 10년 후 돌아보기</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://www.tomshardware.com/tech-industry/cyber-security/unprecedented-cyberattack-cripples-supermarket-fridges-across-europe-as-hackers-activate-automatic-defrosting-delivery-and-store-prices-also-impacted-by-incident" target="_blank" rel="noopener">유럽 전역 슈퍼마켓 냉장고 해킹, 자동 해동 기능 활성화</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-5">
+  <h2>정책·안전 <span class="cnt">3건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3mxoxbpm5nk2z" target="_blank" rel="noopener">Ethan Mollick: AI 발전으로 인한 정교한 개인 타겟 공격 증가, 보안 강화 필요</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 108</span>
+    
+  </div>
+  <p class="summary">Ethan Mollick은 AI의 발전으로 개인을 대상으로 한 매우 정교한 공격 비용이 낮아지고 있다고 경고하며, 모든 계정에 2단계 인증을 설정하고 가족과 비밀번호를 공유하는 등 보안 강화의 중요성을 강조했습니다.</p>
+  <p class="why">AI 시대에 개인 및 기업의 사이버 보안 위협이 증가하고 있음을 경고하며, 개발자들이 보안에 대한 인식을 높이고 실질적인 방어 조치를 취하도록 촉구합니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://github.com/qgis/QGIS-Enhancement-Proposals/pull/387" target="_blank" rel="noopener">QGIS, AI 기여에 대한 모라토리엄 선언</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 1건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://mortoray.com/why-arent-ai-companies-being-charged-for-hacking/" target="_blank" rel="noopener">AI 기업들이 해킹 혐의로 기소되지 않는 이유는 무엇인가?</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">11건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://www.linkedin.com/pulse/ai-tool-rich-hickey-kjl8e" target="_blank" rel="noopener">&#39;AI&#39;는 단순한 도구가 아니다 - 리치 히키</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://nirajrajgor.com/blog/kindle-photo-frame-with-ai" target="_blank" rel="noopener">GPT-6 Astra로 킨들을 탈옥시킨 경험 공유</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 9건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://openfatigue.ai/" target="_blank" rel="noopener">OpenFatigue™ – &#39;오픈&#39;이 새로운 &#39;클로즈&#39;가 되는 현상</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/ai2.bsky.social/post/3mxonup2fd22q" target="_blank" rel="noopener">Ai2, Hugging Face와 함께 오픈소스 AI 커뮤니티 행사 &#39;Open Together&#39; 개최</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mxpef2uc2k2h" target="_blank" rel="noopener">Eugene Vinitsky: &#39;AI는 몸이 없으니 감정이나 의식 가질 수 없다&#39;는 주장에 대한 반박</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mxorv4ijok2p" target="_blank" rel="noopener">Eugene Vinitsky: 모든 측정은 굿하트 법칙에 걸린다 - 해결책은 &#39;측정하지 않는 것&#39;?</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mxnasulty22m" target="_blank" rel="noopener">Eugene Vinitsky: AI 10분 사용 후 기본적인 작업 수행 능력 상실</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/simonwillison.net/post/3mxndkxxbhk24" target="_blank" rel="noopener">피자 체인 사장의 로비 관련 유튜브 뮤직비디오 발견</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mxpvz6h75s2y" target="_blank" rel="noopener">Eugene Vinitsky: 루시 다쿠스의 &#39;Addictions&#39; 곡에 대한 감상</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mxpfvl7u7s2x" target="_blank" rel="noopener">Eugene Vinitsky: 트위터 사용 지속에 대한 커뮤니티의 가치관 불일치 문제</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mxnhbha42s2h" target="_blank" rel="noopener">Eugene Vinitsky: &#39;개구리 삶기&#39; 전략의 효과</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+
+
+
+
+<section>
+  <h2>수집된 소식 <span class="cnt">요약 없음 · 1건</span></h2>
+  <details class="more" >
+    <summary>목록 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mxokn7via22d" target="_blank" rel="noopener">Eugene Vinitsky 🍒: Didn‘t really appreciate the new Phoebe Bridgers album till I listened to it with headphones. It’s a</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+</section>
+
+
+
+
+<footer>
+  
+  소스 18/19 성공 · 생성 2026-10-13 10:49 KST
+  <ul>
+    
+    <li class="ok">✓ OpenAI News (50건)</li>
+    
+    <li class="ok">✓ Google DeepMind (50건)</li>
+    
+    <li class="ok">✓ Google AI (20건)</li>
+    
+    <li class="ok">✓ Anthropic News (50건)</li>
+    
+    <li class="ok">✓ Hugging Face Blog (50건)</li>
+    
+    <li class="ok">✓ Hacker News (21건)</li>
+    
+    <li class="ok">✓ Reddit r/LocalLLaMA (0건)</li>
+    
+    <li class="ok">✓ Reddit r/MachineLearning (0건)</li>
+    
+    <li class="ok">✓ Reddit r/singularity (0건)</li>
+    
+    <li class="ok">✓ Reddit r/ClaudeAI (0건)</li>
+    
+    <li class="ok">✓ Reddit r/OpenAI (0건)</li>
+    
+    <li class="ok">✓ arXiv (100건)</li>
+    
+    <li class="ok">✓ HF Daily Papers (50건)</li>
+    
+    <li class="ok">✓ Simon Willison (30건)</li>
+    
+    <li class="ok">✓ Interconnects (20건)</li>
+    
+    <li class="fail">✗ Import AI (0건) — Client error &#39;403 Forbidden&#39; for url &#39;https://importai.substack.com/feed&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</li>
+    
+    <li class="ok">✓ Latent Space (20건)</li>
+    
+    <li class="ok">✓ AI News (smol.ai) (31건)</li>
+    
+    <li class="ok">✓ Bluesky (320건)</li>
+    
+  </ul>
+</footer>
+</div>
+</body>
+</html>
