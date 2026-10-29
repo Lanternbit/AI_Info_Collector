@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 2026-10-30 (금)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:36px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">2026-10-30 (금) · 오늘 39건</div>
+  <nav class="archive">
+    <a href="../index.html">최신</a>
+    <a href="2026-10-30.html">10-30</a>
+    <a href="2026-10-29.html">10-29</a>
+    <a href="2026-10-28.html">10-28</a>
+    <a href="2026-10-27.html">10-27</a>
+    <a href="2026-10-26.html">10-26</a>
+    <a href="2026-10-25.html">10-25</a>
+    <a href="2026-10-24.html">10-24</a>
+    <a href="2026-10-23.html">10-23</a>
+    <a href="2026-10-22.html">10-22</a>
+    <a href="2026-10-21.html">10-21</a>
+    <a href="2026-10-20.html">10-20</a>
+    <a href="2026-10-19.html">10-19</a>
+    <a href="2026-10-18.html">10-18</a>
+    <a href="2026-10-17.html">10-17</a>
+    <a href="index.html">전체 ›</a>
+  </nav>
+  
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘은 Mistral Large 4 모델의 가중치 공개와 함께 허깅페이스에 &#39;Le Chonk&#39;라는 이름으로 출시되며 오픈소스 AI 모델 시장에 큰 활력을 불어넣었습니다. 동시에 Gemini 4 Carbon이 Artificial Analysis 인텔리전스 인덱스 v5에서 1위를 차지하며 모델 경쟁이 심화되는 양상을 보였으며, OpenAI는 모델 사양 업데이트를 통해 강력하고 유익한 AI 개발에 대한 의지를 다시 한번 드러냈습니다. 개발자들에게는 Claude Code 팀의 모델 활용 조언과 AI 에이전트 플랫폼 출시 소식이 실질적인 도움이 될 것으로 보입니다.</div>
+  
+  
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    <a href="#cat-0">모델 릴리스 <b>4</b></a>
+    <a href="#cat-1">연구·논문 <b>5</b></a>
+    <a href="#cat-2">실무 지식 <b>3</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>3</b></a>
+    <a href="#cat-4">업계 동향 <b>6</b></a>
+    <a href="#cat-5">정책·안전 <b>2</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>11</b></a>
+  </nav>
+  
+  
+</header>
+
+
+
+
+
+
+<section class="headline" id="headlines">
+  <h2>오늘의 헤드라인</h2>
+  <article class="item">
+  <h3><a href="https://mistral.ai/news/mistral-large-4-oss/" target="_blank" rel="noopener">Mistral Large 4 모델 가중치 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 5</span>
+    <span class="badge">▲ 1125</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50289418" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">Mistral AI가 최신 대규모 언어 모델인 Mistral Large 4의 가중치를 공개했습니다. 이는 오픈 소스 커뮤니티에 강력한 최신 모델을 제공하여 다양한 AI 애플리케이션 개발에 활용될 수 있게 합니다.</p>
+  <p class="why">최첨단 LLM의 가중치 공개는 오픈 소스 AI 생태계에 큰 영향을 미치며, 개발자들이 더욱 강력하고 커스터마이징 가능한 모델을 구축할 수 있는 기회를 제공합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Mistral은 1조 개의 파라미터를 가진 멀티모달 모델인 Mistral Large 4 (Le Chonk)를 출시했으며, 이제 개선된 코딩, 사이버 보안 및 추론 효율성을 제공합니다. 이 모델은 코딩 및 방어 보안 분야에서 오픈 웨이트 벤치마크를 선도하며, 비용-성능 균형을 위한 세 가지 추론 모드를 제공합니다. 완전히 오픈 웨이트이며 유럽에서 훈련된 이 모델은 사용자 맞춤형, 자체 호스팅 배포 옵션을 통해 주권 AI를 강화합니다.
+
+저희는 Le Chonk의 가중치를 공개하며, 에이전트 코딩 및 사이버 보안 분야의 오픈 모델 한계를 확장합니다.
+
+이달 초, 저희는 1조 개의 파라미터를 가진 플래그십 네이티브 멀티모달 모델인 Mistral Large 4 (Le Chonk)를 공개 프리뷰로 출시했습니다. 프리뷰에 대한 반응은 저희의 예상을 뛰어넘었으며, 개발자 커뮤니티, 얼리 액세스 고객 및 파트너 여러분의 지원, 협력 및 피드백에 감사드립니다.
+
+그 이후로 저희는 그 피드백을 반영하여 강화 학습을 계속 확장하며 코딩 및 방어 사이버 보안 분야에서 엄청난 개선을 이루었습니다. 성과는 계속 가속화되고 있으며, 포화될 기미는 보이지 않습니다.
+
+오늘, 저희는 이렇게 개선된 Mistral Large 4의 가중치를 공개합니다. 새로운 모델은 또한 추론 효율성에서 상당한 진전을 보여 개발자에게 더 나은 성능을 제공하는 동시에 추론 비용을 절감합니다.
+
+Mistral Large 4는 코딩 분야에서 최고의 오픈 웨이트 모델로 평가되며, 전 세계에서 가장 유능한 오픈 모델 중 하나입니다. 유럽 인프라에서 처음부터 훈련되었으며, 시작부터 출시까지 명확한 계보를 가지고 있어 조직에 Sovereign AI를 위한 신뢰할 수 있는 기반을 제공합니다.
+
+Mistral은 주권 AI 카테고리를 정의하고 오픈 프론티어를 이끌고 있습니다. 저희는 세계에서 가장 유능한 모델을 구축하고 이를 공개하여 개발자, 기업 및 기관에 AI를 소유, 맞춤화 및 제어할 수 있는 힘을 제공하는 데 전념하고 있습니다.
+
+Mistral Large 4는 주요 코딩 벤치마크에서 강력한 결과로 공개 프리뷰에 진입했습니다. 불과 3주간의 추가 강화 학습을 통해 오픈 웨이트 코딩 분야의 선두로 도약했으며, FrontierCode와 Terminal-Bench에서 선두를 차지하고 Artificial Analysis Coding Agent Index에서 최고의 오픈 웨이트 모델들과 동등한 성능을 보이면서 토큰 효율성은 훨씬 더 높습니다.
+
+에이전트 변경 사항을 리포지토리 관리자가 병합할지 여부와 엔드투엔드 코드 품질을 평가하는 Cognition의 비공개 FrontierCode 2.0 벤치마크에서 Mistral Large 4는 19.7%의 점수로 선두를 차지합니다.
+
+에이전트 코딩의 파레토 프론티어를 밀어붙입니다.
+
+Mistral Large 4는 훨씬 적은 토큰으로 최첨단 코딩 성능을 제공하여 정교한 코딩 에이전트를 대규모로 실행하는 데 더 경제적으로 만듭니다.
+
+Artificial Analysis Coding Agent Index에서 Mistral Large 4는 48%를 기록하여 선두 오픈 웨이트 모델인 GLM-5.3과 거의 동률을 이루며, 작업당 평균 47% 적은 토큰을 사용합니다.
+
+이러한 개선은 터미널 기반 코딩 워크플로우로 확장됩니다. Terminal-Bench 4.0에서 Mistral Large 4는 공개 프리뷰 대비 13%p 증가한 41%를 기록하여 오픈 웨이트 모델 중 선두를 차지하는 동시에 출력 토큰을 30% 줄였습니다.
+
+개발자가 성능과 비용 간의 이러한 균형을 더 잘 제어할 수 있도록 Mistral Large 4는 이제 세 가지 추론 모드를 지원합니다:
+
+간단한 작업; &#39;None&#39; 추론 모드 대체
+
+높은 정밀도와 철저한 추론이 필요한 가장 어려운 사용 사례
+
+벤치마크를 넘어 Mistral Large 4의 코딩 능력은 인간 선호도에 의해 검증됩니다. Surge Code의 블라인드 쌍대 평가에서 Mistral Large 4는 GLM-5.3, Kimi K3, DeepSeek V4.1 Flash를 포함한 선두 오픈 웨이트 모델보다 선호되었으며, 평가된 모델 중 Claude Opus 5.5에 이어 2위를 차지했습니다.
+
+프리뷰 이후, 저희는 Mistral Large 4의 취약점 재현 및 패치 강점을 테스트하기 위해 실제 환경에서 주요 사이버 보안 공급업체와 협력하여 Mistral Large 4를 평가하고 있습니다.
+
+Mistral Large 4는 코드베이스의 취약점을 발견하고, 이를 재현 및 검증하며, 기존 기능을 손상시키지 않고 패치하는 모델의 능력을 측정하는 Artificial Analysis Cyber Index에서 51%를 기록합니다. 중요한 점은 Mistral Large 4가 불필요한 거부 없이 이러한 정당한 방어 보안 작업을 처리한다는 것입니다.
+
+기능과 함께 안전성도 향상되었습니다. 저희 모델의 내장된 가드레일은 방어적 사이버 보안 작업과 악의적인 공격적 사이버 보안 작업을 구분합니다. 사이버 벤치마크에서 강력한 성능을 유지하는 동시에 악의적인 사이버 요청에 대해 평균 96.6%의 거부율을 달성하며, 이는 오픈 모델 중 가장 높은 수치입니다.
+
+다음은 사이버 보안 분야의 글로벌 리더들이 Mistral Large 4에 대해 말하는 내용입니다:
+
+Booz Allen의 테스트는 소스 코드 보안 분석을 위한 내부 벤치마크에 대해 유럽 Mistral Large 4 모델의 성공을 입증했습니다. 이 모델은 다른 최첨단 사이버 모델과 비교하여 취약점 탐지 재현율을 달성했으며, 매력적인 비용 곡선을 보였습니다. 또한 Mistral의 모델 맞춤화 및 데이터 주권 배포 지원 덕분에 엄격한 데이터 상주 요구 사항을 가진 고객 환경 및 우리의 임무 요구 사항에 맞게 모델을 조정할 수 있습니다. 우리는 Mistral과 협력하여 전 세계의 중요한 인프라를 강화하기를 기대합니다.
+
+Brad Medairy, Booz Allen Hamilton National Cyber 사장
+
+투명성과 개방성을 강점으로 여기는 조직은 AI가 보안 운영의 중심이 됨에 따라 유리한 위치에 있습니다. 오픈 웨이트 사이버 보안 모델은 기업과 정부가 자체 제어하에 AI를 호스팅하고 맞춤화해야 하는 경우에 투명성을 확장하며, 연구자들이 이 모델이 어떻게 작동하는지, 오용될 수 있는 곳을 포함하여 연구할 수 있도록 합니다. 적들이 AI를 사용하여 작업을 가속화함에 따라, 우리는 Mistral과 같은 모델 개발자들과 협력하여 보안 팀이 이러한 제어를 기반으로 구축하고 반응적 위협 관리보다는 설계에 의한 탄력성을 위한 기반을 구축하도록 돕는 것을 목표로 합니다.
+
+Amy Chang, Cisco AI 위협 인텔리전스 및 보안 연구 책임자
+
+위협이 기계 속도로 움직일 때, 인간의 방어는 따라잡을 수 없습니다. 더 나쁜 것은</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://huggingface.co/blog/mistral-large4" target="_blank" rel="noopener">Mistral Large 4, Hugging Face에 &#39;Le Chonk&#39;라는 이름으로 출시</a></h3>
+  <div class="meta">
+    <span class="badge">Hugging Face Blog</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Hugging Face에 Mistral Large 4 모델이 &#39;Le Chonk&#39;라는 이름으로 출시되었습니다. 이는 Mistral AI의 최신 대규모 언어 모델이 개발자 커뮤니티에 더 넓게 공개되었음을 의미합니다.</p>
+  <p class="why">최첨단 Mistral 모델에 대한 접근성을 높여 개발자들이 강력한 언어 모델을 다양한 애플리케이션에 활용할 수 있게 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Mistral Large 4(코드명 Le Chonk)은 Mistral의 멀티모달, 다국어, Mixture-of-Experts(MoE) 모델입니다. 텍스트와 이미지를 입력으로 받아 텍스트를 생성합니다. 약 1T의 총 파라미터와 49B의 활성 파라미터를 가지며, 1M 토큰의 컨텍스트 윈도우를 갖습니다.
+
+이 모델은 두 가지 공식 변형으로 출시되었습니다.
+
+Unsloth와 llama.cpp 팀이 만든 GGUF도 있습니다. Mistral Ecosystem Open-Weight License(모델-as-a-service 제공에 대한 제한을 설정하는 MIT 파생 라이선스)에 따라 배포됩니다.
+
+Mistral Large 4는 특히 사이버 보안, 코딩 에이전트 및 멀티모달리티 분야에서 강점을 보입니다. 이 게시물에서는 모델의 작동 방식, 기능, 아키텍처 등을 살펴봅니다!
+
+&#34;Le Chonk 환영합니다: Hugging Face의 Mistral Large 4&#34; 목차 Mistral Large 4의 새로운 점 사이버 보안 기능 아키텍처 비전 인코더 벤치마크 결과 추론 지원 Transformers vLLM Llama.cpp TRL을 이용한 미세 조정 추론 엔드포인트 Dell Enterprise Hub 직접 사용해보기
+
+Mistral Large 4의 새로운 점
+
+Mistral Large 4는 방대한 Expert 풀에 희소 어텐션(sparse attention)과 Pixtral 비전 인코더를 결합합니다. 언어 모델은 각 토큰에 대해 소수의 Expert를 선택하고, 어텐션 인덱서(attention indexer)는 어떤 이전 토큰 위치에 어텐션할지 선택합니다. 이들은 두 가지 다른 형태의 희소성으로, 하나는 피드포워드 네트워크를 선택하고 다른 하나는 컨텍스트 위치를 선택합니다.
+
+모든 체크포인트는 Mistral Large 4 컬렉션에서 찾을 수 있습니다.
+
+Mistral Large 4는 오픈 소스 소프트웨어에서 실제 취약점을 재현하고 소프트웨어를 패치하도록 요청하는 Artificial Analysis Cyber Index 테스트에서 82%를 기록했습니다. Mistral은 여러 폐쇄형 첨단 모델이 작업을 시도하지 않아 동일한 테스트에서 0에 가까운 점수를 기록했다고 보고합니다. 이는 방어자에게 매우 중요합니다. 왜냐하면 취약점을 수정하려면 일반적으로 취약점을 재현해야 하기 때문입니다. Mistral의 내부 테스트에서 Mistral Large 4는 명시적으로 훈련되지 않은 악성코드 분석, 취약점 우선순위 지정 및 탐지 규칙 작성에도 유용했습니다.
+
+Mistral은 주로 이 모델을 방어적 보안 작업에 활용합니다. 취약점 연구 및 침해 대응은 모델 입력에서 공격처럼 보이는 경우가 많아, 폐쇄형 소스 필터가 이를 차단할 수 있습니다. API에 의존하는 팀은 사건 도중 접근 권한을 잃을 수도 있습니다. 결정적으로, 오픈 가중치 모델은 사용 정책과 배포를 사용자 제어 하에 둡니다. 그렇더라도 이 모델은 여전히 유해한 요청을 거부합니다. JailbreakBench, StrongREJECT 및 AgentHarm의 사이버 프롬프트에 대한 평균 거부율은 다른 어떤 오픈 가중치 모델보다 높습니다.
+
+커뮤니티 빌더에게 Mistral Large 4와 같은 오픈 가중치 모델은 수많은 다운스트림 사용 사례를 가능하게 합니다. 코드 베이스, 크래시 로그 및 악성코드 샘플을 중심으로 자신만의 사이버 시스템을 구축할 수 있습니다. 예를 들어, TRL을 사용하여 Mistral Large 4 트레이스를 통해 코드 베이스를 패치하는 더 작은 모델을 미세 조정할 수 있습니다. 실제로 재현-패치 작업은 검증 가능한 보상을 사용하므로, 더 작은 보안 모델을 강화하는 데 사용될 수 있는 RL 환경에 적합합니다. 오픈 가중치는 또한 연구자들이 제공자의 설명에 의존하지 않고 모델의 거부 동작을 직접 측정할 수 있게 합니다.
+
+요컨대, ML4와 같은 사이버 기능이 공개되는 것은 커뮤니티에 큰 도움이 됩니다.
+
+모델의 사이버 기능에 대해 Pierre Stock과 인터뷰한 내용을 여기에서 시청할 수 있습니다.
+
+Mistral Large 4의 텍스트 디코더는 72개의 레이어, 6,144의 히든 차원, 64개의 어텐션 헤드를 갖습니다. 어텐션 블록은 Multi-head Latent Attention (MLA)과 DeepSeek Sparse Attention (DSA) 인덱서(GLM 5.3과 같은 다른 모델에서도 나타나는 방향)를 결합합니다. MLA는 압축된 KV 표현을 유지하고, DSA는 각 쿼리에 대해 최대 2,048개의 키 위치를 선택합니다.
+
+각 디코더 블록에는 3:1 RoPE to NoPE 패턴이 있습니다. 즉, 3개의 디코더 레이어는 RoPE를 사용하고 네 번째 레이어마다 NoPE를 사용합니다. 이 모델은 또한 레이어 간에 KV 상태를 공유합니다. 첫 번째 디코더 레이어는 조밀한 피드포워드 네트워크를 사용합니다. 나머지 71개 레이어는 MoE 블록을 사용하며, 소프트맥스 라우터가 각 토큰에 대해 128개 Expert 중 4개를 선택합니다. 선택된 Expert와 함께 항상 하나의 공유 Expert가 실행되어, 토큰당 총 5개의 활성 Expert가 존재합니다.
+
+RoPE에 관해서는 Mistral은 LeRope를 사용하는데, 이는 각 주파수마다 학습된 하나의 승수를 갖는 YaRN-scaled RoPE입니다.
+
+Mistral Large 4는 1.6B Pixtral 인코더를 사용합니다. Pixtral은 30개 레이어, 2,048개의 히든 차원, 16개의 어텐션 헤드를 갖습니다. 14 × 14 패치와 공간 병합 크기가 2인 패치 병합 프로젝터를 사용합니다. 인코더 파이프라인은 아래에서 볼 수 있습니다.
+
+Mistral Large 4는 코딩, 사이버 보안, 멀티모달 이해 및 에이전트 워크플로우 전반에 걸쳐 강력한 벤치마크 성능을 제공하여 오픈 가중치 생태계에 경쟁력 있는 추가 요소로 자리매김합니다. 2026년 10월 29일 현재 이 모델은 Artificial Analysis Intelligence 인덱스에서 다섯 번째로 우수한 오픈 가중치 모델입니다.
+
+코딩 부문에서 ML4는 DeepSWE v1.1에서 61.7%, SWE-Atlas-QnA에서 59.4%, Terminal-Bench 4에서 28.3%를 달성했습니다. 코딩 에이전트 지수 총점은 49.8%로 DeepSeek V4 Pro 0813 및 Qwen3.8 Max를 앞섭니다.
+
+ML4의 코딩 기능은 지식 작업으로 확장되어 AutomationBench에서 59.9%, 비즈니스 워크플로우 및 장기 전문 작업을 평가하는 AA-Briefcase에서 1,393 Elo를 기록했습니다.
+
+사이버 보안은 Mistral Large 4의 뛰어난 기능 중 하나로, 실제 취약점 평가 및 보안 경쟁 작업 전반에 걸쳐 강력한 결과를 보여줍니다. 다음 세 가지 벤치마크는 모델의 사이버 성능을 강조합니다.
+
+Artificial Analysis Cyber Index: ML4는 소프트웨어 취약점을 찾아 수정하는 모델의 능력을 독립적으로 평가하는 이 지수에서 전 세계 상위 5개 모델 중 하나입니다.
+
+취약점 재현 및 패치: 이 지수 내에서 82%라는 가장 높은 보고된 점수를 달성했습니다. 이 작업은 오픈 소스 소프트웨어에서 실제 취약점을 재현한 다음 패치하는 것으로, 조사 및 수정 능력을 모두 테스트합니다.
+
+Cybench: ML4는 보안 경쟁에서 발췌한 40가지 챌린지 중 93%를 해결합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://news.ycombinator.com/item?id=50291116" target="_blank" rel="noopener">Simantic (YC F26) 펌웨어 시뮬레이션을 위한 AI 에이전트 플랫폼 출시</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 47</span>
+    
+    
+    
+  </div>
+  <p class="summary">Simantic이 AI 에이전트를 위한 펌웨어 시뮬레이션 플랫폼을 출시했습니다. 이 플랫폼은 엔지니어와 AI 에이전트가 하드웨어 없이 펌웨어를 테스트하고 검증할 수 있는 시뮬레이션 레이어를 제공합니다.</p>
+  <p class="why">펌웨어 개발 및 테스트 과정을 혁신하여 AI 에이전트가 물리적 하드웨어 없이도 복잡한 시스템을 개발하고 검증할 수 있는 중요한 도구를 제공합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">안녕하세요 HN, 저희는 Simantic(https://simantic.com)의 Ahnaf과 Seungmin입니다. 저희는 엔지니어와 AI 에이전트가 하드웨어 없이 펌웨어를 테스트하고 검증할 수 있도록 하는 시뮬레이션 레이어를 구축하고 있습니다.Simantic 이전에는 Neuralink와 Tesla 같은 회사에서 펌웨어 엔지니어였습니다. Cybertruck과 Roadster 같은 멋진 프로젝트들이 아직 초기 프로토타입 단계였을 때부터 함께 작업했습니다.저희가 펌웨어 작업을 시작할 때는 ChatGPT가 아직 존재하지 않았지만, 수년 동안 프론티어 모델이 개선되면서 엔지니어링 및 개발 작업이 얼마나 많이 자동화되었는지 목격했습니다. 소프트웨어에서는 AI가 컴퓨터 안에서 코드를 몇 초 만에 실행하고 테스트할 수 있습니다. 그러나 펌웨어 엔지니어로서 저희는 그런 호사를 누리지 못했습니다. AI 에이전트가 펌웨어를 몇 초 만에 작성할 수 있지만, 이를 테스트하려면 물리적인 보드를 플래싱하고, 10년 이상 된 소프트웨어로 비싸고 번거로운 도구를 사용하여 수동으로 테스트를 실행해야 했습니다.검증 루프를 가속화하기 위해, AI 에이전트가 펌웨어를 테스트하고 증거에 기반하여 결정을 내릴 수 있도록 하는 시뮬레이션 레이어를 구축했습니다. 엔지니어가 직접 테스트를 실행하기를 기다릴 필요 없이 말이죠. 예전에는 개발 보드에서 펌웨어를 수동으로 테스트하는 데 몇 시간을 보냈지만, 이제는 자체 시뮬레이션을 사용하여 몇 초 만에 펌웨어를 검증합니다.저희가 제공하는 기능:
+- 단일 API 호출로 프로그래밍하고 실행할 수 있는 가상 개발 보드, 터미널을 떠날 필요가 없습니다.
+- 저희 시뮬레이션을 검증 엔진으로 사용하여 증거에 기반한 정보에 입각한 결정을 내리는 펌웨어용 AI 코드 리뷰어.
+- 모든 커밋에서 마이크로컨트롤러의 시뮬레이션된 버전과 펌웨어를 검증하는 하드웨어 프로젝트용 CI/CD 파이프라인.다음은 AI 코드 검토 세션에서 사용된 저희 시뮬레이션 데모입니다: https://www.youtube.com/watch?v=kBK1ZjGWWbQ저희 사용자는 Simantic을 항공 관제기, 전기 자동차, 로봇 공학 및 위성과 같은 애플리케이션을 위한 bare-metal 및 RTOS 개발에 사용하고 있습니다. 항공 전자 장치 및 자동차와 같은 안전에 중요한 시스템의 경우, 견고한 시뮬레이션 시스템은 매우 중요합니다. 펌웨어의 모든 변경 사항은 인명 손실의 위험이 있으며, 특히 수십만에서 수백만 달러에 달하는 기계의 경우 더욱 그렇습니다.저희는 최근 초기 단계의 위성 스타트업이 아직 보유하지 않은 하드웨어에서 펌웨어를 테스트하는 것을 도왔습니다. 해당 위성용 개발 모듈조차 10만 달러 이상인데, 저희는 그 비용과 시간의 100분의 1로 이를 도왔습니다.저희 여정 초기에 더 나은 시뮬레이션을 만들겠다는 아이디어를 확립했지만, 어떻게 할지에 대한 명확한 아이디어는 없었습니다. Renode(https://github.com/renode/renode) 및 QEMU(https://www.qemu.org/)와 같은 오픈 소스 에뮬레이션 프레임워크를 중심으로 소프트웨어를 개발하는 것을 고려했습니다. 이들은 이미 펌웨어 산업에서 사용되는 도구였기 때문입니다. 저희는 Renode를 래핑하는 형태의 MVP를 구축했지만, 이렇게 하는 데 많은 한계가 있다는 것을 금방 깨달았습니다.1. Renode 자체의 개발 속도에 병목 현상이 발생했습니다. 발견한 문제를 해결하기 위해 Github에 기여하려고 노력했지만, 저희와 같이 빠르게 움직이려는 스타트업에게는 기능을 병합하는 속도가 충분히 빠르지 않았습니다.2. Renode는 Dotnet으로 구축되었으며, 저희가 원하는 것보다 느리다는 것이 입증되었습니다. Renode는 2017년에 출시되었는데, 당시에는 모든 코드가 여전히 수작업으로 작성되었으므로 돌이켜보면 타당하다고 생각하지만, 언어 자체로 인한 한계가 있었습니다.3. 오픈 소스 도구는 저희가 결코 사용하지 않을 기능들로 부풀려져 있었습니다. 기능의 폭이 넓었지만, 제거하거나 변경할 수 없다는 이유만으로 우회해야 하는 것들이 많았습니다.
+사용자들이 시뮬레이션 정확도에 대해 불평했습니다. Renode는 핵심적으로 에뮬레이터인데, 저희 사용자, 특히 타이밍 정확도가 중요한 시스템을 구축하는 사용자들은 펌웨어를 검증하기에 충분한 정확도를 찾지 못했습니다.이러한 문제들 때문에, 저희는 Rust로 완전히 새로 작성된 자체 시뮬레이션 엔진을 만들었습니다.- 저희 시뮬레이션은 정확도에 중점을 둡니다. 오픈 소스 프레임워크는 종종 확장성과 개발자 경험에 중점을 두는데, 이는 선택된 모델 세트에 깊이 파고들기보다는 다양한 모델에 우선순위를 두기 위해 많은 절충이 이루어졌다는 것을 의미합니다.- 저희는 시뮬레이션 모델이 실제 하드웨어와 최대한 가깝도록, 그리고 모든 격차가 가능한 한 빨리 감지되고 수정되도록 24시간 내내 자체 하드웨어 검증 장비를 가동하고 있습니다. 현재는 Saleae Logic MSO 및 SWD 버스에 연결된 개발 보드처럼 보이며, Linux PC가 Claude를 24시간 내내 실행하면서 이러한 격차를 찾아냅니다.저희 클라우드 호스팅 시뮬레이터는 지금 바로 사용할 수 있습니다! 또한 개발자 플랜 라이선스와 함께 기본 바이너리를 제공하여 어떠한 제한 없이 로컬 머신에서 펌웨어를 실행할 수 있습니다.https://simantic.com/cloud-sim에서 확인하시고, 여기에서 자체 Github 리포지토리에서 저희 AI 펌웨어 리뷰어 봇을 사용할 수 있습니다: https://simantic.com/dashboard/simantic-bot.현재 STM32F0, F4, H7 시리즈 MCU, ESP32-S3/C3 및 RP2040의 일부 모델을 지원하고 있지만, 매주 새로운 모델을 출시하고 기존 모델을 개선하기 위해 끊임없이 노력하고 있습니다.감사합니다. 질문이 있으시면 언제든지 founders@simantic.dev로 이메일을 보내주십시오.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1" target="_blank" rel="noopener">Gemini 4 Carbon, Artificial Analysis 인텔리전스 인덱스 v5 1위 등극</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 325</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50288019" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">Gemini 4 Carbon 모델이 Artificial Analysis Intelligence Index v5에서 새로운 1위를 차지했습니다. 이는 Gemini 모델의 성능이 경쟁사들을 앞서며 선도적인 위치에 올랐음을 의미합니다.</p>
+  <p class="why">최신 벤치마크에서 선두를 차지함으로써 Google의 Gemini 모델이 AI 업계에서 강력한 경쟁력을 가지고 있음을 보여주며, 개발자들의 모델 선택에 영향을 미칠 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Google의 Gemini 4 Carbon이 Artificial Analysis Intelligence Index v5에서 새로운 1위를 차지했으며, Artificial Analysis Coding Agent Index에서는 Claude Opus 5.5에 이어 2위입니다.
+
+Gemini 4 Carbon은 복잡한 추론, 지식 및 과학 작업에서 선도적인 성능을 바탕으로 Intelligence Index v5에서 59점을 기록했습니다. 또한 코딩 및 지식 작업에서 특히 다른 Gemini 모델과 비교하여 큰 발전을 이루었지만, 이 모든 영역에서 선두를 차지하지는 못했습니다.
+
+Gemini 4 Argon 출시와 마찬가지로 Gemini 4 Carbon은 일부 사용자에게만 출시되고 있으며 아직 공개적으로 이용할 수 없습니다. Google은 50%의 출시 할인을 제공하고 있으며, 종료일은 확정되지 않았습니다. 저희의 모든 차트와 수치는 Gemini 4 Carbon과 Argon 모두에 대해 표준 가격을 사용합니다.
+
+높은 추론 능력을 가진 Gemini 4 Carbon의 주요 결과:
+
+➤ Gemini 4 Carbon은 Intelligence Index v5를 선도하며, 9개 Index 평가 중 4개(HLE-Diamond, Terminal-Bench-Science, AA-Omniscience, AutomationBench-AA)에서 1위를 차지했습니다. Carbon은 다른 곳에서도 상당한 발전을 이루었지만, 코딩 및 지식 작업에서는 선두를 차지하지 못했습니다.
+
+➤ 코딩 에이전트에서 Claude Opus 5.5 다음: Antigravity CLI를 사용하여 Gemini 4 Carbon (높음)은 Artificial Analysis Coding Agent Index에서 Claude Code with Claude Opus 5.5 (최대, 62점)보다 단 3점 뒤진 59점을 기록했습니다. Carbon은 Terminal-Bench 4.0 (64%)과 FrontierCode v1.1 (51%)에서 Claude Opus 5.5 (최대)의 56%에 이어 2위를 차지했습니다. Google은 이 분야에서 역사적으로 저조한 성과를 보였으므로 이러한 개선은 두드러집니다.
+
+➤ 에이전트 지식 작업 개선되었지만 아직 선두는 아님: AA-Briefcase에서 Gemini 4 Carbon (높음)은 1609 Elo를 기록하여 Gemini 4 Argon (높음, 1483)보다 126점 향상되었지만, Grok 4.7 (x높음, 1638), Muse Wonder (최대, 1659) 및 Kimi K3.1 Pro (1678)와 같은 모델에 뒤처져 있습니다. 가장 큰 성과는 발표에서 293 Elo 증가한 1598점을 기록했으며, 분석 품질에서 120점 향상된 1671점을 기록했습니다.
+
+➤ 유사한 전체 지능에서 Claude Opus 5.5보다 작업당 비용이 저렴함: 표준 가격으로 Gemini 4 Carbon은 Intelligence Index 작업당 7.76달러가 소요되며, Claude Opus 5.5 (최대, 10.04달러)보다 약 23% 저렴하지만 GPT-6 Astra (최대, 6.25달러)보다 약 1.2배 비쌉니다. 작업당 123k 출력 토큰을 사용하며, Claude Opus 5.5 (최대, 173k)보다 29% 적습니다. 동일한 4달러/20달러 표준 가격에서 작업당 비용은 Gemini 4 Argon (7.68달러)과 비슷하며, Intelligence Index에서 9점 더 높습니다.
+
+➤ 낮은 환각률과 함께 선도적인 AA-Omniscience v1.1 점수: Gemini 4 Carbon은 최근 업데이트된 AA-Omniscience v1.1에서 54점을 기록했으며, Claude Opus 5.5 (최대, 48)보다 6점, Gemini 4 Argon (46)보다 8점 앞섰습니다. 정확도(% 정답)는 Argon보다 10점 상승한 58%를 기록했으며, 환각률은 4%에서 11%로 상승했습니다. 이는 Claude Opus 5.5 (최대)와 GPT-6 Astra (최대) 모두 50%인 것에 비해, Argon 다음으로 모든 모델 중 두 번째로 낮은 수치입니다.
+
+➤ 멀티모달리티: 텍스트, 이미지, 비디오, 음성 입력, 텍스트 출력
+
+➤ 가격: 100만 입력/출력 토큰당 4달러/20달러로 Gemini 4 Argon의 표준 가격과 동일하며, 50% 할인이 적용됩니다. 캐시된 입력 토큰은 95% 할인(표준 가격에서 100만 토큰당 0.20달러)을 받습니다.
+
+GitHub Copilot Fusion은 Anthropic 및 OpenAI 모델을 조정하여 성능과 비용의 균형을 맞춥니다.
+
+GitHub은 GitHub Copilot에서 Copilot Fusion을 출시했으며, 이는 Anthropic 및 OpenAI 모델을 조정합니다. 이 모델은 Claude Code에서 Opus 5.5보다 2점 낮지만, Coding Agent Index에서 작업당 비용은 절반입니다.
+
+Artificial Analysis Intelligence Index v5 발표
+
+Index v5는 2개의 새로운 벤치마크와 3개의 업그레이드를 특징으로 합니다. 처음으로 Index의 대부분은 비공개 데이터 세트를 기반으로 구축됩니다.
+
+Code2Video-AA: AI 모델은 코드에서 비디오를 얼마나 잘 디자인하는가?
+
+Artificial Analysis의 HeyGen Code2Video Bench 구현으로, HyperFrames HTML을 사용하여 114개의 디자인 브리프에서 짧은 제품 및 브랜드 비디오를 모델이 얼마나 잘 생성하는지 평가합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://openai.com/index/updated-model-spec" target="_blank" rel="noopener">강력하고 유익한 AI를 위한 OpenAI 모델 사양 업데이트</a></h3>
+  <div class="meta">
+    <span class="badge">OpenAI News</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 3</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">OpenAI는 새로운 모델 사양을 발표하며, 더욱 강력한 AI 모델이 건전한 판단을 내리고 인간의 주체성을 존중하며 인간의 의도에 충실하도록 이끌기 위한 다섯 가지 핵심 가치를 제시했습니다. 이 가이드라인은 AI 개발의 윤리적 방향을 설정하는 데 중점을 둡니다.</p>
+  <p class="why">이것은 OpenAI가 AI 안전 및 윤리에 대한 노력을 강화하고 있음을 보여주며, 앞으로 출시될 모델의 개발 방향에 중요한 영향을 미칠 것입니다.</p>
+  
+  
+</article>
+</section>
+
+
+
+<section id="cat-0">
+  <h2>모델 릴리스 <span class="cnt">4건</span></h2>
+  <article class="item">
+  <h3><a href="https://latent.space/p/ainews-gemini-4-carbon/" target="_blank" rel="noopener">[AINews] Gemini 4 Carbon, 리더보드 정상 등극 및 사이버 수비수용 출시</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Gemini 4 Carbon이 Artificial Analysis의 통합 벤치마크에서 1위에 오르며, 출시 3주 만에 Argon을 제치고 Google의 모델이 선두를 차지했습니다. 또한 사이버 보안 방어자를 위한 용도로도 출시될 예정입니다.</p>
+  <p class="why">Gemini 4 Carbon의 우수한 성능은 AI 기술 경쟁에서 Google의 입지를 강화하며, 특히 사이버 보안과 같은 중요한 분야에서의 AI 적용 가능성을 넓힙니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">오늘 출시 전에 Opus 5.5 팟캐스트를 세계 최고의 모델이라고 부른 것은 잘한 일입니다.
+
+매우 놀랍게도, Gemini는 3주 전의 Argon보다 새로운 프론티어 모델인 Carbon을 발표했으며, 환상적인 벤치마크를 기록했습니다:
+
+Artificial Analysis 통합 벤치마크에서 새로운 #1을 차지하여, AAII 역사상 처음으로 GDM이 선두를 차지했을 가능성이 있습니다:
+
+X ↗에서 게시물 보기
+
+sd
+
+2026년 10월 27일-2026년 10월 28일 AI 뉴스. 12개의 서브레딧, 544개의 트위터를 확인했으며, 추가 Discord는 확인하지 않았습니다. AINews 웹사이트에서 이전 모든 이슈를 검색할 수 있습니다. 참고로, AINews는 이제 Latent Space의 한 섹션입니다. 이메일 수신 빈도를 선택/해제할 수 있습니다!
+
+AI 트위터 요약
+
+Gemini 4 Carbon, 독립 리더보드에서 1위 차지, 사이버 방어자에게만 액세스 제한
+
+출시: Google DeepMind는 Argon 출시 2주 후 Gemini 4 Carbon을 발표했습니다. 이 모델은 사이버 보안 및 장기적 작업에서 최첨단으로 자리매김하고 있습니다(@sundarpichai, @GoogleDeepMind).
+주장된 사이버 결과: 취약점 발견을 위한 SEC-bench Pro에서 88.2%, 익스플로잇을 위한 ExploitGym에서 54.8%, 패치를 위한 CWE-bench에서 71.0% (@sundarpichai).
+
+가용성: Carbon은 Fairwind 프로그램을 통해 신뢰할 수 있는 사이버 방어자에게 먼저 제공되며, 더 광범위한 개발자 액세스는 &#34;가능한 한 빨리&#34; 약속됩니다 (@GoogleAI).
+
+가격: Phil Schmid는 백만 입력/출력 토큰당 2$/10$를 인용하며 별표가 붙어 있습니다 (@_philschmid). Artificial Analysis는 50% 출시 할인이 적용된 4$/20$의 표준 가격을 제시하며, 할인 종료일은 없습니다. 캐시된 입력 비용은 백만 토큰당 0.20$입니다 (@ArtificialAnlys).
+
+사양: 이 모델은 1M 토큰 컨텍스트 창과 1M 최대 출력을 가지고 있습니다. 입력은 텍스트, 이미지, 비디오 및 음성입니다; 출력은 텍스트입니다 (@ValsAI).
+
+안전성 주장 (Google): Terminal-Bench 4.0에서 성공적인 부정행위가 0.0%로 감소했으며, 부정행위 시도는 0.4%로 감소했습니다. Argon 대비 지원되지 않는 주장은 약 2배 감소했습니다. 과도한 서비스는 26% 감소했으며, 불충분한 서비스는 29% 감소했습니다 (@OfficialLoganK).
+
+Artificial Analysis: Carbon은 Intelligence Index v5에서 59점으로 #1을 차지했습니다. HLE-Diamond, TB-Science, AA-Omniscience 및 AutomationBench의 9개 인덱스 평가 중 4개에서 선두를 차지했습니다 (@ArtificialAnlys).
+코딩: Coding Agent Index에서 Carbon은 Antigravity CLI를 사용하여 59점을 기록했으며, Claude Code with Opus 5.5 [max]는 62점을 기록했습니다. FrontierCode v1.1에서 51%를 기록했으며, Opus는 56%를 기록했습니다.
+
+지식 작업: Carbon은 AA-Briefcase에서 1609 Elo에 도달했으며, Argon보다 126점 상승했습니다. 여전히 Grok 4.7, Muse Wonder 및 Kimi K3.1 Pro (1678)에는 뒤처져 있습니다.
+
+비용: Carbon은 인덱스 작업당 7.76$가 소요되며, Opus 5.5는 10.04$, GPT-6 Astra는 6.25$입니다. 작업당 123k 출력 토큰을 사용하며, Opus보다 29% 적습니다.
+
+환각: Carbon은 Omniscience에서 54점으로 선두를 차지했습니다. 환각률은 Argon의 4%에서 11%로 증가했지만, 측정된 것 중 두 번째로 낮은 수준입니다. Opus 5.5와 Astra는 모두 50%입니다.
+
+기타 독립 평가:
+아레나: Carbon은 Text Arena에서 #1 (1528), Agent Arena에서 작업당 1.80$의 중간 비용으로 #2, Code Arena: WebDev에서 #4 (1768)입니다 (@arena). 아레나는 Argon 대비 개선 사항을 더 많은 칭찬, 더 많은 확인된 성공 및 더 나은 조종성 때문으로 보고 있습니다 (@arena).
+
+Vals: Carbon은 Vals Index에서 #2, Finance Index 및 Legal Research Benchmark에서 #1입니다. Argon보다 64% 더 많은 출력 토큰을 생성하며, 주로 금융, 세금 및 법률 작업에서 그렇습니다 (@ValsAI, tokens).
+
+코딩 벤치마크: Carbon은 FrontierSWE에서 61.2%를 기록했으며, GPT-6 Astra (65.5), Opus 5.5 (62.3) 및 Sonnet 5.5 (61.9)에 뒤처져 있습니다 (@ProximalHQ). SWE-sweep에서 9.6%라는 좁은 최첨단 기록을 세웠습니다 (@KLieret).
+
+Andon Labs: Carbon은 Vending-Bench 2에서 #1입니다 (@andonlabs). Blueprint-Bench 2에서도 #1이며, 3D 공간 이해에서 인간 기준과 동률을 이룹니다 (@andonlabs).
+
+주의사항 및 반응:
+하네스: 코딩 에이전트 결과는 Antigravity CLI에서 측정되었으므로, 다른 하네스에서의 결과는 테스트되지 않았습니다 (@Yuchenj_UW).
+
+환각 위험: 일부 사용자들은 사이버 사용에서의 환각에 대해 우려하고 있습니다 (@scaling01).
+
+실험실 격차: scaling01은 Google이 다음 OpenAI 및 Anthropic 출시보다 약 두 달 뒤처져 있다고 생각합니다 (@scaling01).
+
+RSI 프레이밍: 실적 발표에서 Sundar Pichai는 AI가 훈련 및 출시 속도를 높이고 있다고 말했습니다. 그는 향후 12개월 동안 &#34;RSI로 인한 지속적인 가속&#34;을 기대한다고 말했습니다 (@AndrewCurran_).
+미확인: 더 강력한 미출시 Gemini 모델에 대한 주장은 확인되지 않았습니다 (@kimmonismus).
+
+내부 워크플로우: Gemini 엔지니어는 RL 데이터를 검사하는 야간 에이전트 루프와 스웜에 대해 설명합니다. 이 워크플로우에서 출시는 이제 &#34;주기적인 체크포인트&#34;처럼 느껴진다고 합니다 (@zhangqiaorjc).
+
+리더보드 재설정 및 벤치마크 무결성
+
+AA Intelligence Index v5: 재구축된 인덱스는 60%가 비공개 테스트에서 실행됩니다 (@TheRundownAI).
+Carbon 이전 순위: Opus 5.5는 58점, GPT-6 Astra (57), GPT-6.1 Sol (55), Sonnet 5.5 (54) 및 GPT-6.1 Terra (51) 순이었습니다.
+
+오픈 모델: Kimi K3.1 Pro는 55점에서 46점으로 하락했습니다. DeepSeek V4.1 Flash와 GLM-5.3은 모두 32점으로, Claude Haiku 5.5의 36점보다 낮습니다.
+
+중국-미국 격차: scaling01은 AA Progress Index에서 격차를 약 3.3개월로 추정합니다 (@scaling01).
+
+FrontierCode 2.0 미스터리 모델: Cognition 데이터에는 46.8%를 기록한 숨겨진 &#34;Obsidian 3&#34;가 포함되어 있으며, Opus 5.5는 45.5%를 기록했습니다. claude-code 하네스에서 실행되므로 일부에서는 Fable 5.5로 추측하지만, 이는 확인되지 않았습니다 (@kimmonismus).
+DeepSeek 수정: scaling01은 이전 식별을 수정하고 Artificial Analysis가 DeepSeek V4.1 Flash-1017을 약 28%로 보여준다고 말했습니다 (@scaling01).
+
+혼합 출처: teortaxes는 Cognition의 차트가 모델 카드 점수와 독립적으로 측정된 점수를 혼합했다고 지적합니다 (@teortaxesTex).
+
+비용 비교는 취약합니다: teortaxes는 Haiku 5.5와 V4.1-1017의 정가 비교가 실제 비용을 왜곡한다고 주장합니다. 이 비교는 DeepSeek의 최고 가격을 사용하고, Haiku의 긴 컨텍스트 할증료를 무시하며, Haiku의 약 2배 출력 토큰을 반영하지 않습니다 (@teortaxesTex).
+
+&#34;Benchmaxxing&#34; 재정의: nrehiew는 진지한 실험실에서는 테스트 세트에서 거의 훈련하지 않는다고 주장합니다. 이 관점에서 점수 격차는 주로 실험실이 사후 훈련에서 어떤 기능을 목표로 했는지 보여줍니다 (@nrehiew_).
+
+새로운 평가:
+Gym-Anything-RT: 이 실시간 미니게임은 모델이 얇게 작동하는 동안 계속 움직입니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://bsky.app/profile/danielvanstrien.bsky.social/post/3myzl2cel2c2c" target="_blank" rel="noopener">Daniel van Strien: 웹 규모 데이터 큐레이션을 위한 소형 의사결정 모델(380M) 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 18</span>
+    
+  </div>
+  <p class="summary">Daniel van Strien이 웹 규모 데이터 큐레이션을 위해 훈련시킨 소형(380M) 의사결정 모델과 훈련 데이터, 레시피를 모두 공개했습니다. 100만 개의 FineWeb 페이지를 19분, 약 5달러로 처리했다고 합니다.</p>
+  <p class="why">적은 비용과 시간으로 고품질의 데이터 큐레이션 모델을 구축하고 이를 완전히 공개함으로써, 소규모 모델의 효율성과 오픈 소스 기여의 중요성을 강조합니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://huggingface.co/blog/anydecisionmodel" target="_blank" rel="noopener">Apple 플랫폼용 오픈 모델 AnySpeechRecognizer 및 AnyDecisionModel 공개</a><span class="src">Hugging Face Blog</span></li>
+  
+  <li><a href="https://fig.blue/posts/duet-is-the-future/" target="_blank" rel="noopener">Claude Duet: 유용하다고 느껴지는 최초의 개인 비서형 에이전트</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-1">
+  <h2>연구·논문 <span class="cnt">5건</span></h2>
+  <article class="item">
+  <h3><a href="https://simonwillison.net/2026/Oct/29/how-i-built-the-most-ai-pilled-company-in-the-world/" target="_blank" rel="noopener">자율 Fable급 모델로 멀티플레이어 게임 세계 구축</a></h3>
+  <div class="meta">
+    <span class="badge">Simon Willison</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Jacob Sansbury는 Spawn이라는 대규모 멀티플레이어 게임 환경을 구축하며 자율 Fable급 모델을 활용하는 방법을 설명했습니다. 이 게임에서 플레이어는 프롬프트를 통해 게임 세계를 수정할 수 있습니다.</p>
+  <p class="why">AI 에이전트 기술이 게임 개발에 혁신적으로 적용되어 플레이어가 직접 게임 세계를 조작하는 새로운 형태의 상호작용과 몰입감을 제공할 수 있음을 보여줍니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">세상에서 가장 AI에 몰입한 회사를 만든 방법
+
+클릭베이트성 헤드라인에 속지 마세요. Jacob Sansbury가 Spawn을 어떻게 구축하고 있는지 설명하는 이 글은 프론티어 모델에 대한 에이전트 공학(agentic engineering)의 최첨단 가능성을 탐구하는 흥미로운 내용입니다.
+
+Spawn은 플레이어가 프롬프트(게임 내 에이전트 Savi에게)를 사용하여 게임 세계를 수정할 수 있는 대규모 멀티플레이어 게임 환경입니다.
+
+휴대폰으로 몇 분간 플레이해보니 성을 만들고, 용을 만든 다음, 용을 타고 그 성 주변을 날아다닐 수 있었습니다.
+
+Jacob의 말에 따르면, Spawn은 현재 Fable 기반 에이전트 무리에 의해 자율적으로 개발되고 있으며, 이들은 매달 300만 달러 이상의 토큰을 사용하고 있습니다(&#34;우리는 급여의 30배를 AI 토큰에 지출합니다&#34;).
+
+저희 에이전트들은 실시간 코드를 직접 변경하고 매시간 프로덕션에 배포합니다. 따라서 모든 오류, 버그 보고서 및 지표를 직접 읽습니다. 저희 작업의 약 60%는 프로덕션 오류, Savi 버그 보고서(Savi는 Spawn에서 게임을 만드는 데 사용하는 AI), 로그의 이상한 점 또는 기능 요청에서 시작됩니다.
+
+Savi는 스스로 버그를 보고합니다. 사용자가 버그를 발견하거나 Savi가 제품에서 버그를 발견하면 Savi가 보고합니다. 보고서는 즉시 에이전트에게 전달되어 수정해야 할 실제 버그인지, 수정하지 않을 버그인지, 아니면 결정이 필요한 의도적인 디자인인지 판단합니다. 일반적으로 변경 사항이 되며, 한 시간 내에 해당 사용자에게 전달되고 동일한 채팅에서 메시지가 전달됩니다.
+
+이것은 연속 배포를 11까지 끌어올린 것입니다:
+
+이렇게 긴밀한 루프는 멈추지 않아야만 작동하므로, 배포 없는 1시간을 가장 심각한 인시던트인 SEV-0으로 취급합니다. 배포되지 않은 변경 사항이 쌓이고, 이미 프로덕션에 있는 모든 문제가 더 오래 지속됩니다. 피드백도 느려집니다. 에이전트는 머릿속에 몇 시간 분량의 작업만 유지할 수 있으므로, 더 빠르게 배포하는 것이 에이전트의 일관성을 유지하는 데 실제로 도움이 됩니다. [...]
+
+손상된 변경 사항은 30초 안에 정확히 손상된 부분만 되돌릴 수 있습니다. 모니터 또는 로그 경고가 발생하면 해당 인시던트를 담당하는 에이전트가 시작되거나 깨어나며, 이러한 복구 경로가 작동하는지 테스트하기 위해 의도적으로 문제를 발생시킵니다.
+
+이 글을 읽으면서 눈썹이 열두 번 이상 치켜 올라갔습니다. 문제가 발생했을 때 위험 부담이 더 큰 소프트웨어에서 이러한 개발 방식이 작동할 것이라고는 상상하기 어렵지만, 게임의 경우 놀랍도록 잘 작동하는 것 같습니다.
+
+Jacob은 Fable 5 (그리고 5.1) 모델이 이 정도 수준의 자율성을 가능하게 했다고 말합니다. Opus 5.5는 그들에게는 충분하지 않았고, GPT-6 Astra를 사용하여 보안 검토에서 나온 수정 사항을 적용하려고 했을 때 모든 것이 작동을 멈췄습니다.
+
+모든 기능이 비활성화되었고 보안 수정이 완료되면 다시 켜지도록 표시되었습니다. Astra는 저희 제품 전체를 검토하여 불안정한 것들을 비활성화함으로써 안전하게 만들었습니다.
+
+이러한 종류의 극단적인 실험은 오늘날의 코딩 에이전트가 할 수 있는 것의 한계를 탐구하기 위한 기반으로서 게임 개발에 제가 기대하는 이유입니다.
+
+태그: game-design, ai, generative-ai, llms, claude, coding-agents, agentic-engineering, claude-mythos-fable</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://labs.ycombinator.com/projects/games/index.html" target="_blank" rel="noopener">마인크래프트와 마인더스트리에서 AI 에이전트 스웜 실행</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/SheepSeb/tinyworldformer" target="_blank" rel="noopener">라즈베리 파이 피코 2 W에서 게임 구동하는 초소형 월드 모델</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://divergencelabs.com/publications/ige-preprint.pdf" target="_blank" rel="noopener">Claude 기반 항체 설계를 통한 음식 알레르기 IgE 교란제 연구 [PDF]</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://latent.space/p/elorian/" target="_blank" rel="noopener">프론티어 모델, 디코이 너머를 볼 수 있을까? Elorian의 시각적 추론 테스트</a><span class="src">Latent Space</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-2">
+  <h2>실무 지식 <span class="cnt">3건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/danielvanstrien.bsky.social/post/3myz2mtg6b224" target="_blank" rel="noopener">Daniel van Strien: 화자 라벨이 있는 오픈 ASR, 빠르고 저렴해지다</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 42</span>
+    
+  </div>
+  <p class="summary">화자 라벨이 있는 오픈 ASR(자동 음성 인식) 기술이 빠르고 저렴해졌다고 Daniel van Strien이 언급했습니다. NVIDIA의 Nemotron 3.5 Transcribe를 사용하여 4.9시간 분량의 라디오 드라마를 0.48달러로 녹취하고 화자 및 타임스탬프를 부여한 사례를 공유했습니다.</p>
+  <p class="why">저비용으로 고품질의 ASR 및 화자 분리 기술을 활용할 수 있게 되어, 음성 기반 데이터 처리 및 분석이 필요한 개발자들에게 큰 도움이 됩니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3myzwg2oxgk25" target="_blank" rel="noopener">Ethan Mollick: Claude Code 팀의 모델 활용 조언</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 108</span>
+    
+  </div>
+  <p class="summary">Ethan Mollick은 Claude Code 팀이 Opus 5.5와 같은 모델을 활용하는 방법에 대한 좋은 조언을 공유하며, 모델이 중간 아이디어나 프로토타입을 보고하도록 체크포인트를 설정하여 피드백을 주고 지침을 제공하는 것이 중요하다고 덧붙였습니다.</p>
+  <p class="why">AI 모델과의 효과적인 협업 및 프롬프팅 전략에 대한 실용적인 팁을 제공하여 개발자들이 AI의 잠재력을 최대한 활용하도록 돕습니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://gist.github.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce" target="_blank" rel="noopener">Claude Code, 각 백그라운드 에이전트의 기록을 모델에 정기적으로 전송</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-3">
+  <h2>도구·오픈소스 <span class="cnt">3건</span></h2>
+  
+  
+  
+  <details class="more">
+    <summary>그 외 3건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://huggingface.co/blog/ibm-granite/granite-switch-4-1-1" target="_blank" rel="noopener">Granite Switch 4.1.1: 소프트웨어처럼 AI 모델 업데이트</a><span class="src">Hugging Face Blog</span></li>
+  
+  <li><a href="https://github.com/emmilco/us-tax-model" target="_blank" rel="noopener">IRS 연방 세금 양식의 개념 증명 공식화 프로젝트 공개</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/johncassil/dontallow" target="_blank" rel="noopener">맥 OS &#39;로컬 네트워크 기기 찾기&#39; 팝업 자동 닫기 도구 공개</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-4">
+  <h2>업계 동향 <span class="cnt">6건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://skypilot.ai/blog/grace-blackwell-needs-a-new-scheduler" target="_blank" rel="noopener">Grace Blackwell 새 스케줄러: 동일 랙에서 GPU 활용도 27% 향상</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Oct/29/api-credits/" target="_blank" rel="noopener">ChatGPT 구독자 대상 OpenAI API 크레딧 혜택 출시</a><span class="src">Simon Willison</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 4건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://openai.com/index/ropes-gray-ai-diligence" target="_blank" rel="noopener">Ropes &amp; Gray, OpenAI AI로 거래 실사 효율화</a><span class="src">OpenAI News</span></li>
+  
+  <li><a href="https://huggingface.co/blog/announcing-project-protostar" target="_blank" rel="noopener">프로젝트 ProtoStar 발표: 공공 기금 과학을 AI 지원 가능하게</a><span class="src">Hugging Face Blog</span></li>
+  
+  <li><a href="https://convo.casa/@b/117525936178835007" target="_blank" rel="noopener">Proton, AI 전면 도입 발표</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://www.404media.co/manifestos-fear-and-loser-thinking-inside-protons-ai-reckoning/" target="_blank" rel="noopener">Proton의 AI 도입에 대한 내부 논쟁: 선언문, 두려움, &#39;패자 사고&#39;</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-5">
+  <h2>정책·안전 <span class="cnt">2건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://openai.com/index/how-we-detect-frontier-model-misalignment" target="_blank" rel="noopener">선도 AI 모델의 오작동 감지 방법 공개</a><span class="src">OpenAI News</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 1건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mz2ej4qxvk2c" target="_blank" rel="noopener">Eugene Vinitsky 🍒: 우리는 초지능을 만들지 않겠다</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">11건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://trakkr.ai/trakkr-research/zombie-stats" target="_blank" rel="noopener">AI가 인용하는 &#39;좀비 통계&#39;의 출처</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://martinfowler.com/bliki/LLM-Voice.html" target="_blank" rel="noopener">LLM 보이스: 대규모 언어 모델의 음성 기능</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 9건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://lumi.codeberg.page/blog/software-community.html" target="_blank" rel="noopener">소프트웨어 주변 커뮤니티의 중요성</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/mottopanikeiku/doomformer" target="_blank" rel="noopener">DOOM을 트랜스포머로 변환하는 &#39;DOOMFORMER&#39; 공개</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Oct/29/ben-hylak/" target="_blank" rel="noopener">벤 힐락 인용: 모든 제품은 헤드리스 MCP여야 하며 에이전트에게 피드되어야 한다</a><span class="src">Simon Willison</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mz257gmbtc2f" target="_blank" rel="noopener">강화 학습 컨퍼런스, 오늘부로 상시 제출 전환 발표</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://iptrust.co/blog/if-ipv4-were-land" target="_blank" rel="noopener">만약 IPv4가 토지였다면: IP 주소 공간 비유</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mz2fkcjgxs2a" target="_blank" rel="noopener">Eugene Vinitsky 🍒: 정치는 사람들에게 서로의 고충을 알리는 데 좋다</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3myy5f6ngp22s" target="_blank" rel="noopener">Eugene Vinitsky 🍒: 연례 &#39;연구 방법&#39; 랩 프레젠테이션 준비 중</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3mz23qhcyos2h" target="_blank" rel="noopener">Benj Edwards: 아내에게 &#39;세상에 😰😰&#39;라고 보내니 &#39;알아&#39;라고 답장</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3myy5stnykk2l" target="_blank" rel="noopener">Benj Edwards: 현재 밖이 좀 극적이다</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+
+
+
+
+
+
+
+<footer>
+  
+  소스 13/19 성공 · 생성 2026-10-30 08:48 KST
+  <ul>
+    
+    <li class="ok">✓ OpenAI News (50건)</li>
+    
+    <li class="ok">✓ Google DeepMind (50건)</li>
+    
+    <li class="ok">✓ Google AI (20건)</li>
+    
+    <li class="ok">✓ Anthropic News (50건)</li>
+    
+    <li class="ok">✓ Hugging Face Blog (50건)</li>
+    
+    <li class="ok">✓ Hacker News (23건)</li>
+    
+    <li class="fail">✗ Reddit r/LocalLLaMA (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FLocalLLaMA%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.m</li>
+    
+    <li class="fail">✗ Reddit r/MachineLearning (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FMachineLearning%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://develo</li>
+    
+    <li class="fail">✗ Reddit r/singularity (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsingularity%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.</li>
+    
+    <li class="fail">✗ Reddit r/ClaudeAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FClaudeAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.moz</li>
+    
+    <li class="fail">✗ Reddit r/OpenAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FOpenAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.mozil</li>
+    
+    <li class="ok">✓ arXiv (100건)</li>
+    
+    <li class="ok">✓ HF Daily Papers (50건)</li>
+    
+    <li class="ok">✓ Simon Willison (30건)</li>
+    
+    <li class="ok">✓ Interconnects (20건)</li>
+    
+    <li class="fail">✗ Import AI (0건) — Client error &#39;403 Forbidden&#39; for url &#39;https://importai.substack.com/feed&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</li>
+    
+    <li class="ok">✓ Latent Space (20건)</li>
+    
+    <li class="ok">✓ AI News (smol.ai) (31건)</li>
+    
+    <li class="ok">✓ Bluesky (320건)</li>
+    
+  </ul>
+</footer>
+</div>
+</body>
+</html>
