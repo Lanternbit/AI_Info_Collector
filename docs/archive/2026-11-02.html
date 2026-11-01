@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 2026-11-02 (월)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:36px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">2026-11-02 (월) · 오늘 18건</div>
+  <nav class="archive">
+    <a href="../index.html">최신</a>
+    <a href="2026-11-02.html">11-02</a>
+    <a href="2026-11-01.html">11-01</a>
+    <a href="2026-10-31.html">10-31</a>
+    <a href="2026-10-30.html">10-30</a>
+    <a href="2026-10-29.html">10-29</a>
+    <a href="2026-10-28.html">10-28</a>
+    <a href="2026-10-27.html">10-27</a>
+    <a href="2026-10-26.html">10-26</a>
+    <a href="2026-10-25.html">10-25</a>
+    <a href="2026-10-24.html">10-24</a>
+    <a href="2026-10-23.html">10-23</a>
+    <a href="2026-10-22.html">10-22</a>
+    <a href="2026-10-21.html">10-21</a>
+    <a href="2026-10-20.html">10-20</a>
+    <a href="index.html">전체 ›</a>
+  </nav>
+  
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘은 AI의 잠재적 위험성과 실질적 효용성에 대한 논의가 뜨거웠습니다. ChatGPT 계정 탈취와 LLM의 신뢰성 훼손 문제가 제기되며 AI 보안과 윤리에 대한 경각심이 높아진 반면, GPT Pro가 복잡한 문제 해결에 탁월한 능력을 보인다는 긍정적 평가도 나왔습니다. 한편, 기업들이 AI 투자에서 아직 재정적 성과를 거두지 못하고 있다는 지적과 함께, 자바스크립트 프레임워크 사용이 AI 개발 비용을 증가시킨다는 현실적인 문제도 부각되었습니다.</div>
+  
+  
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    <a href="#cat-1">연구·논문 <b>2</b></a>
+    <a href="#cat-2">실무 지식 <b>1</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>2</b></a>
+    <a href="#cat-4">업계 동향 <b>2</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>6</b></a>
+  </nav>
+  
+  
+</header>
+
+
+
+
+
+
+<section class="headline" id="headlines">
+  <h2>오늘의 헤드라인</h2>
+  <article class="item">
+  <h3><a href="https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/" target="_blank" rel="noopener">ChatGPT 계정을 탈취한 방법: 아티팩트 패턴 취약점 공격</a></h3>
+  <div class="meta">
+    <span class="badge">Simon Willison</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Parameter Labs가 ChatGPT의 &#39;아티팩트 패턴&#39; (과거 &#39;캔버스&#39;로 불린 HTML 프리뷰 기능) 구현에서 발견한 복잡한 공격 체인을 통해 ChatGPT 계정을 탈취한 방법을 공개했습니다. 이 취약점은 샌드박스화된 iframe 내에서 실행되는 HTML 앱의 보안 문제를 드러냈으며, OpenAI는 이를 수정했습니다.</p>
+  <p class="why">LLM 기반 플랫폼에서 사용자 데이터를 보호하기 위한 샌드박싱 및 보안 메커니즘의 중요성을 강조하며, 개발자들이 복잡한 공격 벡터에 대비한 심층적인 보안 설계의 필요성을 인지해야 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">우리가 ChatGPT 계정을 장악한 방법
+
+Parameter Labs는 ChatGPT가 artifact 패턴(OpenAI는 이전에 이를 “Canvas”라고 불렀지만 최신 버전은 HTML previews라고 불리는 것 같습니다)을 구현하는 방식에서 발견한 익스플로잇을 설명합니다. 이 패턴은 샌드박스 처리된 iframe에 상호작용 가능한 사용자 지정 HTML 앱을 표시합니다.
+
+이러한 HTML은 신뢰할 수 없는 코드가 OpenAI API와 상호작용하거나 비공개 데이터에 액세스하는 것을 방지하기 위해 엄격하게 샌드박스 처리되어야 합니다.
+
+Parameter는 상당히 복잡한 공격 체인을 발견했습니다. OpenAI는 그래프 지원의 일부로 MathLive JavaScript 라이브러리를 사용하며, 이 라이브러리에는 자체 가상 키보드가 포함되어 있어 샌드박스 처리된 iframe에서 postMessage()를 통해 상위 페이지에서 트리거될 수 있습니다.
+
+메시지 수신 코드는 innerHTML을 사용하므로 메시지를 보내는 모든 것이 상위에 사용자 지정 HTML을 추가할 수 있습니다. 그리고 HTML preview 프레임을 포함한 다른 샌드박스 처리된 프레임이 해당 메서드를 호출하는 것을 막을 메커니즘이 없었습니다.
+
+이는 iframe 내의 신뢰할 수 없는 코드가 HTML을 삽입할 수 있음을 의미했으며, innerHTML이 스크립트 요소를 직접 실행하지는 않지만 샌드박스 제한이 없는 새 iframe을 삽입하는 데 사용될 수 있습니다.
+
+OpenAI의 CSP 규칙은 인라인 스크립트를 완전히 차단하고, 몇몇 도메인에서만 스크립트 로딩을 허용했지만, 그 중 하나는 YouTube였습니다. 그리고 YouTube oEmbed 엔드포인트를 사용하여 JavaScript를 실행하는 방식으로 반영할 수 있었습니다.
+
+공격자가 ChatGPT에서 JavaScript 실행 권한을 얻으면 API에서 비공개 사용자 데이터를 가져와 이미지 참조를 통해 유출하는 것은 사소한 일이었습니다.
+
+최종 결과: 다른 로그인된 사용자가 방문했을 때 비공개 데이터를 유출하거나 해당 사용자를 대신하여 작업을 수행할 수 있는 ChatGPT 공유 URL을 만들 수 있었습니다.
+
+OpenAI는 이 취약점을 해결하고 5,000달러의 버그 바운티를 지급했는데, 이처럼 심각한 취약점에 비해 다소 적은 금액이라고 생각합니다.
+
+Hacker News를 통해
+
+태그: iframes, javascript, sandboxing, security, xss, openai, chatgpt, content-security-policy</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://github.com/ivankovic/omnidiff" target="_blank" rel="noopener">OmniDiff: Rust 기반의 빠르고 콘텐츠 인식 Git Diff 도구 (오픈소스)</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 127</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50325253" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">Rust로 개발된 오픈소스 Git Diff 도구인 OmniDiff가 공개되었습니다. 이 도구는 코드, 설정 파일, 이미지, PDF 등 다양한 파일 형식을 지원하며, 수만 줄의 C++ 파일도 100ms 이내에 비교할 수 있을 정도로 빠릅니다.</p>
+  <p class="why">기존 Git Diff 도구의 한계를 뛰어넘는 성능과 다양한 파일 형식 지원으로 개발자들의 코드 리뷰 및 버전 관리 생산성을 크게 향상시킬 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">저는 오픈 소스 저장소의 실제 diff를 기반으로 궁극적인 diff 도구가 어떤 모습일지 연구해 왔습니다.OmniDiff는 코드(25개 언어), config, 이미지, PDF, 아카이브, 커서, 글꼴 등을 diff할 수 있습니다.빠릅니다. 2023년 ThinkPad T14s에서 수만 줄의 C++ 파일을 100ms 이내에 diff할 수 있습니다.오픈 소스입니다. AGPLv3입니다.실제 diff를 기반으로 합니다. Gentoo 패키지에 나열된 7400개 저장소를 살펴보고, 2000개의 diff를 샘플링하여 각 콘텐츠 유형에 대한 diff 파이프라인을 구축하기 전에 필요한 것이 무엇인지 제대로 이해하기 위해 수동으로 해결했습니다. 우연히도 이것은 CI 파이프라인의 기초도 형성하므로 코드베이스의 견고성이 상당히 높습니다.저는 아직 개발 중입니다. 현재 v0.3.0입니다. 하지만 저는 몇 달 동안 매일 Git difftool로 사용해 왔으며 잘 작동합니다.AI 공개: 네, 저는 AI를 사용합니다. 아니요, 저는 vibecode를 사용하지 않습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://simonwillison.net/2026/Nov/1/kyle-kingsbury/" target="_blank" rel="noopener">LLM이 문서와 소프트웨어에 대한 신뢰를 훼손한다 (Kyle Kingsbury 인용)</a></h3>
+  <div class="meta">
+    <span class="badge">Simon Willison</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Kyle Kingsbury는 LLM의 사용이 문서, 소프트웨어, 그리고 이를 생산하는 조직에 대한 신뢰를 약화시킨다고 지적합니다. LLM이 생성한 콘텐츠의 진위와 품질을 분별하기 어려워지면서 시스템의 성숙도를 판단하는 기준이 모호해진다는 우려를 표합니다.</p>
+  <p class="why">개발자들이 LLM을 활용할 때 내용의 정확성과 진실성에 대한 검증 노력을 강화하고, 사용자에게 신뢰를 줄 수 있는 방안을 모색해야 할 중요한 과제를 제시합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">더 나아가 LLM의 사용은 문서, 소프트웨어, 그리고 이를 생산하는 조직에 대한 신뢰를 약화시킵니다. 아마도 엔지니어들은 모든 새로운 소프트웨어 프로젝트를 의심스럽게 여기기 시작할 것입니다. 우리가 성숙한 시스템의 지표로 신뢰했던 신호들은 이제 위조하기 더 쉬워졌습니다. [...]
+
+LLM 시대에 유지보수자들은 정확한 소프트웨어와 정확한 문서를 보장하기 위해 무엇을 할 수 있을까요? 그 작업을 마친 후, 사용자에게 그 품질을 어떻게 보여줄 수 있을까요?
+
+— Kyle Kingsbury, ParticleDB 1.1.4 Jepsen 결과
+
+태그: kyle-kingsbury, llms, ai, generative-ai, ai-misuse</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3mz7swluwac2w" target="_blank" rel="noopener">Ethan Mollick, GPT Pro 시리즈의 복잡한 문제 해결 능력 극찬</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 58</span>
+    
+  </div>
+  <p class="summary">Ethan Mollick이 GPT Pro 시리즈, 특히 GPT-6 Astra Pro 모델이 복잡한 계산, 참조, 정교한 아이디어를 포함하는 단일 질문 문제 해결에 매우 인상적인 성능을 보인다고 평가했습니다. 속도는 느리지만 &#39;위대한 신탁에 질문하는&#39; 듯한 경험을 제공한다고 합니다.</p>
+  <p class="why">최신 GPT Pro 모델이 고난이도 문제 해결에 특화된 능력을 보여주며, 복잡한 작업을 수행해야 하는 개발자들에게 유력한 AI 조력자가 될 수 있음을 시사합니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/" target="_blank" rel="noopener">AI, 대부분 기업에 &#39;재정적 성과 제로&#39; 지적</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 3</span>
+    <span class="badge">▲ 14</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50330456" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">아폴로 이코노미스트에 따르면, 대부분의 기업들이 AI 도입으로 인해 &#39;재정적 성과를 얻지 못하고 있다&#39;고 합니다. 이는 AI 투자 대비 실제 사업적 가치 창출에 대한 회의적인 시각을 보여줍니다.</p>
+  <p class="why">AI 기술의 실제 비즈니스 적용과 ROI에 대한 냉철한 시각을 제공하며, 개발자들이 기술 구현을 넘어 비즈니스 가치 창출에 집중해야 함을 상기시킵니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Founder Summit 티켓 1장을 구매하시면 1장을 무료로 드립니다. 지금 등록하세요.
+
+Founder Summit은 11월 4일 오전 9시(미국 동부 표준시)에 시작합니다. 시작하기 전에 패스 할인 및 혜택을 받으세요. 여기에서 등록하세요.
+
+Apollo Global Management(이전에 TechCrunch를 소유했던 사모펀드 대기업)의 수석 경제학자가 최근 발표한 메모에 따르면, AI는 기술 산업 외의 어떤 대기업의 수익에도 도움이 되지 않았습니다.
+
+Apollo의 Torsten Slok은 S&amp;P 493(S&amp;P 500에서 Alphabet, Amazon, Apple, Meta, Microsoft, Nvidia, Tesla를 제외한 기업)에 초점을 맞춰, 이들 기업의 이윤율과 직원당 매출이 정체되어 있으며 AI가 생산성을 향상시키고 있다는 증거가 없다고 밝혔습니다.
+
+Slok은 “막대한 투자와 인공지능에 대한 광범위한 과장에도 불구하고, 이 기술은 기술 분야 외의 미국 기업에 재정적 성과를 전혀 제공하지 못했습니다”라고 말했습니다.
+
+이것이 단순히 비기술 기업들이 거대 기술 기업들에 뒤처지고 있는 문제일까요? Slok은 회의적인 입장을 보이며, 미국 기업들이 “점점 저렴해지는 지능을 더 높은 매출 성장과 더 높은 이윤으로 전환하기는 어려울 것”이라고 주장했습니다.
+
+그는 “AI는 훌륭한 계산기일 수 있지만, 비즈니스에서 지능은 대부분 판단력입니다”라고 썼고, 이어서 “AI는 책임감, 신뢰, 문화, 불문율, 윤리적 절충 또는 공정성을 이해하지 못합니다. 이 모든 것이 평판 위험을 형성하고 궁극적으로 매출 성장과 이윤을 이끌어냅니다”라고 덧붙였습니다.
+
+최근 연구에서도 AI가 아직 상당한 생산성 향상을 가져오지 못했음을 발견했습니다.
+
+패스 1장 구매 시 1장 무료TechCrunch의 올해 최고의 창업자 부트캠프에서 공동 창업자 또는 파트너를 무료로 데려와 더 많은 것을 얻으세요.1+1 할인이 끝나기 전에 예약하세요
+
+업계의 가장 큰 기술 뉴스를 구독하세요
+
+AI AI는 기술 CEO의 삶을 더 쉽게 만들 수 있습니다. 다른 모든 사람들은 어떻습니까? Anthony Ha 2시간 전
+
+정부 및 정책 판사가 xAI 데이터 센터 오염에 대한 NAACP 소송을 진행하도록 허용했습니다 Anthony Ha 1일 전
+
+요약 OpenAI가 데이터 센터를 ‘AI 컴퓨팅 캠퍼스’로 리브랜딩할 수도 있습니다 Anthony Ha 1시간 전
+
+AI AI는 기술 CEO의 삶을 더 쉽게 만들 수 있습니다. 다른 모든 사람들은 어떻습니까? Anthony Ha 2시간 전
+
+요약 Apple CEO는 회사가 ‘AI를 위한 AI를 출시하고 싶지 않다’고 말했습니다 Anthony Ha 1일 전</div>
+  </details>
+  
+</article>
+</section>
+
+
+
+<section id="cat-1">
+  <h2>연구·논문 <span class="cnt">2건</span></h2>
+  <article class="item">
+  <h3><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-agent-swarms-unleashed-in-minecraft-to-build-a-thriving-civilization-50-agent-teams-fail-after-falling-into-paralyzing-bureaucracy" target="_blank" rel="noopener">마인크래프트 AI 에이전트 무리, 문명 건설 실패 및 관료주의에 익사</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 140</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50325662" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">마인크래프트 환경에서 AI 에이전트 무리가 문명을 건설하려 했으나, 복잡한 협업 및 의사소통 문제로 인해 실패하고 &#39;관료주의&#39;에 빠져들었다는 연구 결과가 나왔습니다. 이는 다중 에이전트 시스템의 조정 및 복잡성 관리의 어려움을 보여줍니다.</p>
+  <p class="why">자율 에이전트 시스템을 설계할 때 발생하는 협업, 통신, 조정 문제를 실증적으로 보여주며, 복잡한 다중 에이전트 환경에서의 AI 설계 방향에 대한 중요한 통찰을 제공합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">ycombinator 및 Olam Labs의 AI 연구원들은 최근 게임 시나리오에서 AI 에이전트 스웜을 테스트했습니다. Minecraft와 다양한 게임 모드는 수백 개의 에이전트가 함께 작업하거나 서로 대립하도록 풀어놓은 샌드박스였습니다. 이 아이디어는 게임 내 협력과 갈등이 AI 에이전트가 관련된 실제 헤드라인을 장식하는 사례에 대한 통찰력을 제공할 것이라는 것으로 보입니다.
+
+이 연구는 최근 AI 스웜 사례에서 좋았던 점과 나빴던 점을 파악하는 데 도움이 될 수 있으며, 이 기술의 개발자들이 이를 개선할 수 있게 할 것입니다. 블로그에서는 “최근 수백 개의 공개 수학 문제를 해결했던” 천 개 에이전트 스웜과 “극히 위험한” OpenAI-Hugging Face 사건이라는 두 가지 대조적인 사례를 언급합니다. 이 연구는 Mindcraft와 Mineflayer의 스크립팅 도구와 같은 기존 작업 및 프레임워크를 기반으로 합니다.
+
+Minecraft의 다중 에이전트 역학
+
+첫 번째 AI 스웜 테스트 계획은 간단한 협력 계획이었습니다. 이 테스트 단계에서 연구원들은 50개의 에이전트에게 3시간 안에 번성하는 문명을 건설하도록 지시했습니다. 여기에서는 50개의 GPT-6.1 Sol 에이전트를 테스트한 것으로 보이지만, Claude 에이전트는 테스트하지 않았습니다.
+
+이 ‘Civ50’ 테스트에서 가장 흥미로운 통찰력은 50명으로 구성된 식민지가 실제로 번성하지 못했다는 것입니다. 첫날 밤에 좀비들이 많은 에이전트들을 제거했지만(거의 페널티 없이), “많은 야심찬 초기 작업들이 포기되었다”는 점이 주목되었습니다.
+
+그 후로 식민지 주민들은 조심스럽게 생존했으며, 관료주의 경향이 있었습니다. 예를 들어, “네 명의 에이전트가 단 하나의 밀 블록에 있는 단 하나의 골분 조각에 대한 ‘유일한 비료 운영자’를 임명하는 데 11분을 보냈습니다.” 연구원들은 이러한 AI 에이전트 스웜 행동이 “코딩 에이전트와 작업할 때 나타나는 패턴과 유사하게 느껴졌다”고 말합니다.
+
+다음으로, 연구원들은 AI 에이전트 스웜을 갈등 상황에 놓기로 결정했습니다. 먼저 Bed Wars에서 테스트했는데, 이것은 일종의 팀 PvP 기지 점령 게임 모드이며 자신의 기지를 방어하는 것입니다. 설정은 10개의 GPT-6.1 Sol 에이전트 대 10개의 Claude Opus 5.5 에이전트였습니다.
+
+“GPT 에이전트들은 훨씬 더 공격적이고 정교한 전략을 고안했습니다”라고 연구원들은 언급했습니다. Claude는 더 방어적이었습니다. 팀들이 문제를 처리하는 방식의 대조를 관찰하는 것도 흥미로웠습니다. “도구 버그로 블록 깨기가 중단되었습니다. GPT는 이를 진단하고 해결책을 공유했지만, 몇몇 Claude는 깨기가 불가능하다고 결론 내렸습니다.”
+
+Tom&#39;s Hardware의 최고의 뉴스와 심층 리뷰를 받은편지함으로 직접 받아보세요.
+
+마지막으로, 에이전트들은 Mindustry에서 테스트되었습니다. Mindustry는 Minecraft의 타워 디펜스 모드가 있는 일종의 가벼운 RTS 전투 게임입니다. “GPT는 7개의 게임에서 Claude를 상대로 6대 1로 승리했습니다.” 이는 OpenAI가 만든 에이전트들에게는 훌륭한 결과였습니다. 연구원들은 GPT가 벌집처럼 행동한 반면, Claude는 단일 리더가 있지만 민주적인 의사 결정 과정을 가졌다고 결론 내렸습니다. Mindustry에서는 전자가 더 일관성 있게 승리하는 전략의 기반이 되었습니다.
+
+이러한 스웜은 오픈 소스로 공개되어 있으므로 관심이 있다면 직접 실행하여 조정하고 테스트할 수 있습니다. 원본 블로그 게시물은 몇 가지 열린 질문으로 끝나며, 직접 탐색해 볼 수 있는 몇 가지 방향을 제시합니다. 예를 들어, Minecraft에서 다양한 모델 조합과 다양한 크기의 에이전트 스웜을 비교하는 것이 가치 있는 결론을 도출할 수 있다고 제안됩니다.
+
+Google News에서 Tom&#39;s Hardware를 팔로우하거나, 선호하는 소스로 추가하여 최신 뉴스, 분석 및 리뷰를 피드에서 받아보세요.
+
+Mark Tyson은 Tom&#39;s Hardware의 뉴스 편집자입니다. 그는 비즈니스 및 반도체 설계부터 합리성의 한계에 도달하는 제품에 이르기까지 PC 기술의 전반적인 분야를 다루는 것을 즐깁니다.</div>
+  </details>
+  
+</article>
+  
+  
+  <details class="more">
+    <summary>그 외 1건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://arxiv.org/abs/2409.02292" target="_blank" rel="noopener">RAM에서 전파 신호를 통해 에어갭 컴퓨터에서 비밀 유출 (2024)</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-2">
+  <h2>실무 지식 <span class="cnt">1건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/natolambert.bsky.social/post/3mzb34kgier2a" target="_blank" rel="noopener">Nathan Lambert, 오픈 모델 데이터 대시보드 무료 공개</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-3">
+  <h2>도구·오픈소스 <span class="cnt">2건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://hackerbooks.org" target="_blank" rel="noopener">HackerBooks: 해커뉴스에 언급된 도서들을 모아놓은 웹사이트 (Claude가 구축)</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Oct/31/datasette-llm/" target="_blank" rel="noopener">Datasette LLM 플러그인 0.1a9 릴리스: 모델 설정 간소화</a><span class="src">Simon Willison</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-4">
+  <h2>업계 동향 <span class="cnt">2건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/" target="_blank" rel="noopener">자바스크립트 프레임워크 사용에 따른 AI 개발 비용 증가 문제</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 1건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://www.reddit.com/r/frontierairlines/comments/1xl20e8/psa_email_scam/" target="_blank" rel="noopener">프론티어 항공사, 데이터 유출 가능성</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">6건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mzbeslebkc2g" target="_blank" rel="noopener">LLM 코드의 놀라움과 한계: 로켓 발사에는 아직 불신</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 5건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://eva.ac/blog/llms/" target="_blank" rel="noopener">이제 모두가 LLM으로 사고하는 시대인가?</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mzbg2j33i22l" target="_blank" rel="noopener">INFORMS 컨퍼런스 팔로우를 위한 리소스 제공</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mzb52xe5uc2g" target="_blank" rel="noopener">기술적 성공 후의 윤리적 논의: 경고였나 지침이었나?</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://blog.raed.dev/posts/proton-loser-thinking/" target="_blank" rel="noopener">양성자의 전하를 바꾼 것은 AI가 아니었다</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3mzbt4lw6wk2e" target="_blank" rel="noopener">주머니 속 사진과 빅뱅 초기의 유사성</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+
+
+
+
+
+
+
+<footer>
+  
+  소스 13/19 성공 · 생성 2026-11-02 08:20 KST
+  <ul>
+    
+    <li class="ok">✓ OpenAI News (50건)</li>
+    
+    <li class="ok">✓ Google DeepMind (50건)</li>
+    
+    <li class="ok">✓ Google AI (20건)</li>
+    
+    <li class="ok">✓ Anthropic News (50건)</li>
+    
+    <li class="ok">✓ Hugging Face Blog (50건)</li>
+    
+    <li class="ok">✓ Hacker News (13건)</li>
+    
+    <li class="fail">✗ Reddit r/LocalLLaMA (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FLocalLLaMA%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.m</li>
+    
+    <li class="fail">✗ Reddit r/MachineLearning (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FMachineLearning%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://develo</li>
+    
+    <li class="fail">✗ Reddit r/singularity (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsingularity%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.</li>
+    
+    <li class="fail">✗ Reddit r/ClaudeAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FClaudeAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.moz</li>
+    
+    <li class="fail">✗ Reddit r/OpenAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FOpenAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.mozil</li>
+    
+    <li class="ok">✓ arXiv (100건)</li>
+    
+    <li class="ok">✓ HF Daily Papers (50건)</li>
+    
+    <li class="ok">✓ Simon Willison (30건)</li>
+    
+    <li class="ok">✓ Interconnects (20건)</li>
+    
+    <li class="fail">✗ Import AI (0건) — Client error &#39;403 Forbidden&#39; for url &#39;https://importai.substack.com/feed&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</li>
+    
+    <li class="ok">✓ Latent Space (20건)</li>
+    
+    <li class="ok">✓ AI News (smol.ai) (31건)</li>
+    
+    <li class="ok">✓ Bluesky (320건)</li>
+    
+  </ul>
+</footer>
+</div>
+</body>
+</html>
