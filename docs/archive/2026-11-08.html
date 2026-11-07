@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 2026-11-08 (일)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:36px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">2026-11-08 (일) · 오늘 16건</div>
+  <nav class="archive">
+    <a href="../index.html">최신</a>
+    <a href="2026-11-08.html">11-08</a>
+    <a href="2026-11-07.html">11-07</a>
+    <a href="2026-11-06.html">11-06</a>
+    <a href="2026-11-05.html">11-05</a>
+    <a href="2026-11-04.html">11-04</a>
+    <a href="2026-11-03.html">11-03</a>
+    <a href="2026-11-02.html">11-02</a>
+    <a href="2026-11-01.html">11-01</a>
+    <a href="2026-10-31.html">10-31</a>
+    <a href="2026-10-30.html">10-30</a>
+    <a href="2026-10-29.html">10-29</a>
+    <a href="2026-10-28.html">10-28</a>
+    <a href="2026-10-27.html">10-27</a>
+    <a href="2026-10-26.html">10-26</a>
+    <a href="index.html">전체 ›</a>
+  </nav>
+  
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘은 AI 업계의 구조조정 소식과 함께 AI 모델의 실제 적용 가능성 및 잠재적 위험에 대한 논의가 활발했습니다. 마이크로소프트의 AI 프론티어스 그룹 해체는 AI 연구 분야의 변화를 시사하며, Claude Code의 비밀번호 노출 사례는 AI 활용의 보안 중요성을 다시금 일깨웠습니다. 한편, AI가 과학 연구 시간을 대폭 단축할 수 있다는 연구 결과는 AI의 긍정적인 파급력을 보여주며 미래 역할에 대한 기대를 높였습니다.</div>
+  
+  
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>3</b></a>
+    <a href="#cat-4">업계 동향 <b>2</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>6</b></a>
+  </nav>
+  
+  
+</header>
+
+
+
+
+
+
+<section class="headline" id="headlines">
+  <h2>오늘의 헤드라인</h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3mzomjgktvd2h" target="_blank" rel="noopener">Anthropic 연구: AI가 과학 연구 시간의 27-52%를 대체 가능</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    <span class="badge">♥ 67</span>
+    
+  </div>
+  <p class="summary">Anthropic의 새로운 데이터에 따르면, AI는 현재 역량으로 연구자가 새로운 연구를 수행하는 데 필요한 시간의 27~52%를 대체할 수 있으며, 분야별 중앙값은 38%에 달한다고 합니다. 이는 AI가 과학 연구의 여러 단계에서 효율성을 크게 높일 수 있음을 시사합니다.</p>
+  <p class="why">AI가 과학 연구 분야에 미치는 혁신적인 영향을 구체적인 수치로 제시하며, 연구 프로세스 자동화 및 가속화를 통해 새로운 발견을 앞당길 가능성을 보여줍니다. 개발자 역시 연구 협업 도구로서 AI를 적극적으로 활용할 기회를 모색해야 합니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://hunch.net/?p=13764006" target="_blank" rel="noopener">마이크로소프트 리서치 AI 프론티어스 그룹 해체 소식</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 312</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50406563" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">마이크로소프트 리서치의 AI 프론티어스 그룹이 해체된다는 소식입니다. 이 그룹은 설립된 지 약 1년 반 만에 사라지게 되며, 소속 연구원들은 다른 부서로 흩어지거나 회사를 떠날 가능성이 있습니다. 이는 AI 연구 방향의 변화 또는 구조조정의 일환으로 해석될 수 있습니다.</p>
+  <p class="why">이는 마이크로소프트의 AI 연구 전략 변화를 시사하며, AI 연구 분야의 인력 이동과 더불어 장기적인 연구 프로젝트의 지속 가능성에 대한 의문을 제기합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">2023년 ChatGPT 출시 이후, Microsoft Research 내의 일반적인 방식보다 연구가 더 체계적으로 조직되어야 성공할 수 있다는 것이 분명해졌습니다. 다른 연구 그룹들이 제공하는 지원과 집중의 양이 너무 커서, 한 사람이 영리한 아이디어를 추구하더라도 너무 늦고 설득력 없는 결과가 나올 가능성이 높았습니다. 왜냐하면 한 사람이 충분히 빠르게 움직일 수 없고, 한 사람이 수집할 수 있는 기준선(baselines)만으로는 아이디어가 비상할 가치가 있음을 진정으로 보여주기에 충분히 강력하지 않았기 때문입니다. 몇몇 다른 동료들도 비슷하게 생각했고, 우리는 MSR 내에 AI Frontiers(AIF)라는 하위 조직을 만들기 위해 조직했습니다.
+
+AI Frontiers에서 우리는 일관성 있는 연구 노력을 적극적으로 조직하려고 노력했습니다. 이것은 정확히 “하향식”이나 “상향식”이 아니라, 대부분 혼란스러운 중간 지점에 있었습니다. 물론 의견 불일치도 있었고, 이를 해결하는 것은 때때로 매우 어려웠습니다. 컴퓨팅 자원 가용성 또한 종종 심각한 병목 현상이었습니다. 하지만 전반적으로 저는 이 조직이 선구적인 일을 성공적으로 수행하고 있다는 인상을 받았습니다. 특히 AIF의 작은 규모(~50명)와 우리가 이전에 할 수 있었던 것과 비교했을 때 더욱 그러했습니다. AIF의 많은 작업은 에이전트 작동 방식을 알아내는 것이었습니다. 예를 들어 Autogen 오케스트레이션 프레임워크와 Fara 컴퓨터 사용 에이전트가 있습니다. 그러나 뉴욕에서는 우리 중 몇몇은 외삽을 가능하게 하는 Next Latent 목표, 최적화/개선된 Muon을 생성하는 Dion3, 또는 재귀를 통해 모델 기능을 상당히 더 강력하게 만드는 Full Bandwidth Transformer와 같은 새로운 근본적인 기능을 개발하는 데 관심이 있었습니다.
+
+우리는 또한 MSR의 나머지 부분과 적극적으로 공유하려고 노력했습니다. 예를 들어 AIF는 모든 Microsoft Research와 기본적으로 공유되는 모노레포를 개발하기로 결정했습니다. 이 모노레포에는 지난달 COLM 기조연설에서 제가 이야기했던, 입증된 역량을 가진 에지 스케일 사전 훈련 코드베이스가 포함되어 있었습니다. 이것은 사소한 세부 사항처럼 보일 수 있지만, 잘 구성된 모델 생성 파이프라인을 만드는 데 필요한 노력은 상당하며, 저는 모델 빌딩 파이프라인을 개발하려는 노력이 최소 4개(나머지 3개는 MSR 내에서 공개되지 않은 리포지토리에 있음)에 달한다는 것을 알고 있습니다.
+
+9월 초, 우리는 Microsoft AI(MAI)로 재편되었습니다. 표면적으로는 이것이 타당할 수 있습니다. 두 개의 다른 AI 조직을 합치면 노력의 집중도를 높일 기회가 생기고, AIF가 MAI보다 앞서 나가는 부분도 있었고 물론 그 반대도 마찬가지였습니다(MAI는 훨씬 더 큽니다). 실제로는, MAI의 이전 Inflection 리더십의 철학이 호환되지 않기 때문에 상당한 문제가 있습니다. 그들의 핵심 철학은 스케일링이며, 적극적으로 연구를 배제합니다. 이것은 더 나은 모델을 만드는 방법이 연구를 통한 것이라고 자연스럽게 생각하는 일부 사람들을 놀라게 할 수 있지만, 더 큰 모델이 예측의 품질 면에서 더 나은 모델이라는 충분한 증거가 있으며, 비즈니스 관점에서 스케일링에 대한 수익은 연구에 대한 수익보다 훨씬 더 예측 가능합니다. 스케일링 중심 환경에서는 물론 주요 노력이 데이터를 확보하고 만들고 정제하는 데 집중되며, 이는 우리가 작업하던 것과는 상당히 거리가 있습니다. 호환되지 않는 초점 외에도, 그들이 우리를 정말로 원하지 않는다는 충분한 증거가 있었습니다.
+
+이런 상황에 처하는 것은 힘든 일입니다. 저는 스케일링만을 고집하는 초점이 잘못된 방향이며 재미도 없다고 생각합니다. 이것은 이해할 수 있는 실패 모드입니다. 스케일링은 간단하며, 사람들은 여러 경쟁하는 이상(혁신과 규모와 같은) 사이의 균형을 포기하고 단기적으로 하나를 전적으로 채택하고 다른 하나를 포기하는 경우가 흔합니다. 그러나 연구에 대한 수익은 실제적이고 중요합니다. 예를 들어, Bytedance 실험은 Full Bandwidth Transformer의 변형이 두 배 크기의 모델과 비교할 만할 수 있음을 시사하며, 이는 동일한 기능을 위해 훈련 및 추론에서 상당한 절약을 의미합니다. 계산해보세요. 업계가 수조 달러에 가까운 투자를 하고 있다는 점을 고려할 때, 훈련 및 추론 비용을 절반으로 줄이는 것이 얼마나 가치 있을까요?
+
+그래서 저는 제 동료들을 최선을 다해 정리하고 떠났습니다. 저의 본질적인 관심사인 연구와 혁신의 가치를 알아볼 수 있는 다른 많은 사람들이 세상에 있다는 점에서 저는 매우 운이 좋습니다. 다른 모든 AIF 창립 리더십 팀원들도 비슷한 결론에 도달한 것 같습니다.
+
+이것은 한 가지 질문을 남깁니다. 왜 MSR로 돌아가지 않는가? 동료들과 약간 이야기를 나누었지만 두 가지 심각한 장애물에서 벗어날 수 없었습니다. 첫째, 제가 하는 연구가 실제 사용으로 이어질 방법이 없는 회사에 있는 것이 불편합니다. MAI에 있을 때 혁신을 활용하거나 (심지어 진지하게 고려되지도) 못했기 때문에, MSR에서 성공할 가능성은 매우 작아 보입니다. 둘째, MSR의 기본 계약이 무너졌을까 봐 두렵습니다. 즉, 좋은 일을 하면 좋은 결과가 따른다는 것입니다. 제가 아는 한 우리는 좋은 일을 했고, 비자발적으로 재편되었습니다. 불행히도 MSR 리더십이 이 순간을 효과적으로 대처하기 위한 의지를 개발할 때까지 그런 일이 계속될 것을 보게 될 것이라고 해도 놀라지 않을 것입니다.
+
+그래서 AI Frontiers는 끝났습니다. 내년에는 그곳 동료들과 인턴십을 할 수 없게 되어 유감입니다. 저는 여러 차례 인턴들과 함께 일하는 것을 즐겼습니다. 그리고 제가 떠나는 동료들에게 행운을 빕니다. 통제권을 가진 사람들이 조금 더 지혜를 발휘한다면, 미래의 Microsoft가 다시 연구에 매력적인 곳이 될 것이라고 상상하는 것은 어렵지 않습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again" target="_blank" rel="noopener">Claude Code의 &#39;Don&#39;t Ask Again&#39; 기능이 1,122개 GitHub 파일에서 비밀번호 노출</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 78</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50407882" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">Claude Code의 &#39;Don&#39;t Ask Again&#39; 기능 사용 시, 1,122개의 공개 GitHub 파일에서 비밀번호가 노출되는 보안 취약점이 발견되었습니다. 이 문제는 AI 코드 생성 도구가 민감한 정보를 부적절하게 처리하거나, 사용자가 의도치 않게 중요한 데이터를 노출시킬 수 있음을 보여줍니다. 현재 해당 취약점의 해결 여부는 불분명합니다.</p>
+  <p class="why">AI 코드 어시스턴트 사용 시 발생할 수 있는 심각한 보안 위험을 경고하며, 개발자들이 AI 도구 사용에 있어 보안 및 프라이버시를 더욱 신중하게 고려해야 함을 상기시킵니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://github.com/Video-Rebirth/hyperflow-h3-flash" target="_blank" rel="noopener">31B 비디오+오디오 확산 모델을 14B, 6단계, INT8로 압축 성공</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 52</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50405263" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">연구팀이 310억 개 매개변수를 가진 비디오와 오디오 확산 모델을 140억 개 매개변수로 대폭 압축하는 데 성공했습니다. 이 압축 모델은 6단계 추론과 INT8 양자화를 적용하여 효율성을 극대화했으며, 모델 크기와 처리 속도 면에서 상당한 개선을 이루어냈습니다.</p>
+  <p class="why">대규모 AI 모델의 상업적 활용과 보급에 있어 핵심적인 과제인 모델 경량화 및 효율성 개선에 중요한 진전을 보여주어, AI 서비스의 접근성과 비용 효율성을 높이는 데 기여할 것입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">HyperFlow H3 Flash는 MiniMax-H3의 Video Rebirth 압축 버전으로, 몇 단계만으로 동작합니다. 비디오와 동기화된 스테레오 오디오를 함께 생성합니다.
+
+쇼케이스 · 가중치 (Hugging Face) · ComfyUI 노드 · GGUF 설정 가이드 · 풀 사이즈 MiniMax-H3용 8단계 LoRA
+
+출력: 24 fps (기본값 1344×768) 비디오 5.2–15초, 32 kHz 스테레오 사운드트랙 포함.
+
+샘플링: 4, 6 (기본값), 또는 8단계, Classifier-Free Guidance (CFG) 없음.
+
+속도 (5.2초 클립, 6단계): 4× B200에서 8.7초, 1× H200에서 36초, 1× RTX 5090에서 92초.
+
+4× Blackwell GPU에서의 실시간: NVIDIA SOL-H3는 4× B-시리즈 GPU에서 HyperFlow H3 Flash를 실시간으로 실행합니다. SOL-H3는 당사의 추론 가속 파트너이며 이 모델을 처음부터 지원합니다.
+
+모델 크기: 13.7B (fl2va) 또는 13.9B (ref2va) 매개변수로, 약 31B MiniMax-H3 트랜스포머의 절반 미만입니다.
+
+최소 점유 공간: Q4_K_M은 9.1 GB (Q8_0은 14.9 GB)입니다. 시스템 RAM 16 GB인 PC의 24 GB 및 32 GB GPU에서 실행됩니다. 16 GB GPU는 아직 측정되지 않았습니다.
+
+결정 규칙: 시스템 RAM이 64 GB 이하인 PC에서는 GGUF를 사용합니다. 데이터 센터 GPU 또는 시스템 RAM이 최소 69 GiB인 24 GB+ RTX GPU에서는 INT8 convrot을 사용합니다.
+
+모든 가중치는 VideoRebirthAI/hyperflow-h3-flash에 있습니다.
+
+GGUF 런타임 (ComfyUI, Unsloth Studio, stable-diffusion.cpp)
+
+전체 설정 가이드: integrations/README.md. 빠른 시작:
+
+ComfyUI (Video-Rebirth/ComfyUI-HyperFlow-Flash): ComfyUI-GGUF 및 ComfyUI-HyperFlow-Flash를 ComfyUI/custom_nodes/에 클론합니다. 15.7 GB qwen3vl_32b_minimax_h3_nvfp4_awq 텍스트 인코더를 다운로드합니다. 16 GB 또는 32 GB PC에서는 python main.py --fast-disk로 ComfyUI를 시작합니다. Workflow &gt; Browse Templates &gt; ComfyUI-HyperFlow-Flash를 열고 hyperflow_t2v, hyperflow_i2v, hyperflow_flf2v, 또는 hyperflow_ref2v를 선택합니다.
+
+Unsloth Studio (설정 가이드): SD_CLI_PATH를 패치된 sd-cli 바이너리로 지정하고 unsloth studio를 실행합니다. VideoRebirthAI/hyperflow-h3-flash (fl2va_gguf/ 또는 ref2va_gguf/)를 로드합니다. Studio는 동반 텍스트 인코더와 VAE를 자동으로 다운로드합니다. CFG = 1에서 내장된 6단계 스케줄을 실행합니다.
+
+stable-diffusion.cpp (integrations/stable-diffusion.cpp/): hyperflow-two-time.patch를 상위 커밋 3be2378에 적용합니다. 이 패치는 두 시간 (t, r) 임베더, 저랭크 선형 레이어, GGUF 메타데이터의 기본 6단계 스케줄, 긴 클립을 위한 32비트 matmul 토큰 분할을 추가합니다.
+
+pip install git+https://github.com/Video-Rebirth/hyperflow-h3-flash pip install &#34;hyperflow-h3-flash[hopper] @ git+https://github.com/Video-Rebirth/hyperflow-h3-flash&#34; # H100 / H200: FlashAttention-3 pip install &#34;hyperflow-h3-flash[fp8] @ git+https://github.com/Video-Rebirth/hyperflow-h3-flash&#34; # --text-encoder-precision fp8
+
+요구 사항: Python 3.10+, PyTorch 2.6+ (CUDA 및 Triton 포함; 네이티브 Windows에서는 pip install triton-windows), Ampere 또는 최신 NVIDIA GPU, diffusers &gt;= 0.40. 다중 GPU (--gpus &gt; 1)는 Linux 또는 WSL2가 필요합니다 (WSL2에서는 %UserProfile%\.wslconfig에서 memory=를 늘립니다).
+
+첫 실행 다운로드: ~90 GB, 또는 --text-encoder-precision fp8 사용 시 ~68 GB. 여기에는 MiniMax-H3 텍스트 인코더, VAE, 선택한 작업을 위한 16 GB HyperFlow INT8 트랜스포머가 포함됩니다. 62 GB 기본 트랜스포머는 다운로드되지 않습니다.
+
+첫 실행 컴파일: Triton INT8 커널은 첫 사용 시 컴파일됩니다 (~1분).
+
+hyperflow-h3-flash 또는 python -m hyperflow_h3_flash 실행:
+
+# 텍스트를 비디오 + 오디오로 (t2va) hyperflow-h3-flash --prompt &#34;A chef slides a steaming bowl of ramen across a wooden counter; rain taps on the window.&#34; \ --output ramen.mp4 # 첫 번째 키프레임, 또는 첫 번째 + 마지막 키프레임 (fl2va) hyperflow-h3-flash --prompt &#34;...&#34; --image first.png --output clip.mp4 hyperflow-h3-flash --prompt &#34;...&#34; --image first.png --last-image last.png --output clip.mp4 # 프롬프트 순서대로 참조 이미지, 비디오 (사운드트랙 포함), 오디오 클립 (ref2va) hyperflow-h3-flash --prompt &#34;&lt;Picture 1&gt; walks through the scene of &lt;Picture 2&gt; ...&#34; \ --reference person.png --reference scene.png --output clip.mp4 # 15초 클립, 4개 GPU에 걸쳐 컨텍스트 병렬 (또는 최대 4개 가시 GPU를 위한 --gpus auto) hyperflow-h3-flash --prompt &#34;...&#34; --num-frames 360 --gpus 4 # 4단계 (속도), 6단계 (기본), 또는 8단계 (품질) hyperflow-h3-flash --prompt &#34;...&#34; --steps 4
+
+examples/benchmark.py는 torchrun 하에서 모든 파이프라인 단계 및 GPU당 최대 메모리를 측정합니다.
+
+import torch from diffusers.utils.export_utils import encode_video from hyperflow_h3_flash import load_pipeline pipe = load_pipeline(&#34;t2va&#34;) # &#34;fl2va&#34;: image=... (및 last_image=...) 전달; &#34;ref2va&#34;: references=[...] 전달 out = pipe( prompt=&#34;A chef slides a steaming bowl of ramen across a wooden counter.&#34;, num_frames=124, num_inference_steps=6, # 4, 6, or 8 generator=torch.Generator().manual_seed(0), output=[&#34;videos&#34;, &#34;audio&#34;, &#34;sampling_rate&#34;], ) encode_video( out[&#34;videos&#34;][0], fps=24, output_path=&#34;ramen.mp4&#34;, audio=out[&#34;audio&#34;][0], audio_sample_rate=out[&#34;sampling_rate&#34;], )
+
+torchrun 하의 다중 GPU: torch.distributed.init_process_group(&#34;nccl&#34;)을 호출하고 device=f&#34;cuda:{local_rank}&#34;를 load_pipeline에 전달합니다. 파이프라인은 실행을 랭크별로 분할하고 모든 랭크에서 전체 출력을 반환합니다.
+
+독립형 트랜스포머 (AutoModel): 각 INT8 Hub 폴더에는 자체 포함된 모델 코드가 제공됩니다. 이 패키지를 설치하지 않고 로드할 수 있습니다: from diffusers import AutoModel, 그 다음 AutoModel.from_pretrained(&#34;VideoRebirthAI/hyperflow-h3-flash&#34;, subfolder=&#34;fl2va_int8_convrot&#34;, trust_remote_code=True, torch_dtype=torch.bfloat16).
+
+--offload는 GPU 메모리 할당을 설정합니다. auto (기본값)는 GPU당 VRAM에서 모드를 선택합니다.
+
+stream은 동일한 GPU에서 none보다 약 2%만 느립니다.
+
+model 및 stream은 오프로드된 가중치를 하나의 고정된 호스트 메모리 할당에 유지합니다.
+
+로더는 컨디셔닝 탭 위에 있는 사용되지 않는 Qwen3-VL 레이어를 제거합니다. 이는 약 14 GB를 절약합니다. --text-encoder-precision fp8은 추가로 약 22 GiB를 절약합니다.
+
+컨테이너에서는 메모리 제한을 free가 아닌 /sys/fs/cgroup/memory.max에서 읽으십시오.
+
+모든 실행은 1344×768 및 6단계에서 엔드투엔드입니다: 텍스트 인코딩, 트랜스포머, 비디오 및 오디오 VAE 디코딩. 각 a/b 셀은 5.2초/15초 클립 (124/362 프레임)의 총 시간입니다.
+
+GGUF 설정: ComfyUI, Q4_K_M, 15.7 GB nvfp4 텍스트 인코더. 32</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3mzq6762vuc25" target="_blank" rel="noopener">AI가 탐사 저널리즘의 황금기를 열 수 있다</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 73</span>
+    
+  </div>
+  <p class="summary">Ethan Mollick 교수는 AI, 특히 LLM이 방대한 자료 분석을 통해 탐사 저널리즘의 효율성을 10배 높일 수 있다고 언급했습니다. 과거에는 많은 인력과 시간이 필요했던 기업 및 정부 데이터 분석 작업이 AI 덕분에 더 빠르고 깊이 있게 수행될 수 있어 탐사 저널리즘의 황금기가 올 수 있다는 전망입니다.</p>
+  <p class="why">LLM은 정보 분석 및 요약 능력으로 개발자에게도 복잡한 문서 작업, 코드 분석, 리서치 등에서 생산성을 혁신적으로 높여줄 잠재력을 보여줍니다.</p>
+  
+  
+</article>
+</section>
+
+
+
+<section id="cat-3">
+  <h2>도구·오픈소스 <span class="cnt">3건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://eyesrhythm.com/" target="_blank" rel="noopener">눈 깜빡임 습관 개선을 돕는 오프라인 데스크톱 앱 &#39;Blink Rhythm&#39;</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://maxxbench.unlap.ai/research/why-maxxbench/" target="_blank" rel="noopener">MaxxBench, &#34;DeepSWE 점수, 정말 믿을 수 있을까?&#34; 벤치마크 도구 공개</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/hedgerow-dev/coldframe" target="_blank" rel="noopener">슈퍼마켓 냉장고 컨트롤러를 가장한 오픈소스 허니팟, Coldframe</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-4">
+  <h2>업계 동향 <span class="cnt">2건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://www.reuters.com/business/microsoft-is-winding-down-oracle-deal-rent-ai-cloud-capacity-bloomberg-news-2026-11-06/" target="_blank" rel="noopener">마이크로소프트, 오라클 AI 클라우드 용량 임대 계약 종료</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://latent.space/p/ainews-anthropic-ipo-whither-now/" target="_blank" rel="noopener">Anthropic IPO와 AI 시장 침체 논의</a><span class="src">Latent Space</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">6건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3mzqkydpmfd2h" target="_blank" rel="noopener">AI 결과물 검증에 대한 과도한 우려 불필요</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">커뮤니티 화제</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 64</span>
+    
+  </div>
+  <p class="summary">Ethan Mollick 교수는 일상 업무에서 AI 결과물의 사실 오류 검증에 대한 과도한 우려가 있다고 주장합니다. 최신 모델들은 사실 확인 및 주장 검증 능력에서 인간 전문가를 능가하는 것으로 나타났다는 데이터를 근거로 들었습니다.</p>
+  <p class="why">AI 모델의 신뢰도와 정확성이 향상됨에 따라, AI를 활용한 업무 프로세스 최적화 및 생산성 향상에 대한 시각을 재고하게 만듭니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/emollick.bsky.social/post/3mzp6wfzwgt2h" target="_blank" rel="noopener">WIRED의 AI 시대 보도 방식, 과거 인터넷 시대와 비교 연구</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 4건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://8rank.ai/game/apple-intelligence-personal-knowledge-graph" target="_blank" rel="noopener">모든 Mac에 숨겨진 미사용 가족 구성원 분류기능</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3mzovpjdisc2j" target="_blank" rel="noopener">비디오 게임 완결 경험에 대한 개인적 소회</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3mzonu3rfmk2r" target="_blank" rel="noopener">젤다의 전설: 시간의 오카리나에 대한 풍자적 언급</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3mzondqcn7c2r" target="_blank" rel="noopener">패트릭 스튜어트 회고록 오디오북 감상평</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+
+
+
+
+
+
+
+<footer>
+  
+  소스 13/19 성공 · 생성 2026-11-08 08:24 KST
+  <ul>
+    
+    <li class="ok">✓ OpenAI News (50건)</li>
+    
+    <li class="ok">✓ Google DeepMind (50건)</li>
+    
+    <li class="ok">✓ Google AI (20건)</li>
+    
+    <li class="ok">✓ Anthropic News (50건)</li>
+    
+    <li class="ok">✓ Hugging Face Blog (50건)</li>
+    
+    <li class="ok">✓ Hacker News (14건)</li>
+    
+    <li class="fail">✗ Reddit r/LocalLLaMA (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FLocalLLaMA%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.m</li>
+    
+    <li class="fail">✗ Reddit r/MachineLearning (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FMachineLearning%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://develo</li>
+    
+    <li class="fail">✗ Reddit r/singularity (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsingularity%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.</li>
+    
+    <li class="fail">✗ Reddit r/ClaudeAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FClaudeAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.moz</li>
+    
+    <li class="fail">✗ Reddit r/OpenAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FOpenAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.mozil</li>
+    
+    <li class="ok">✓ arXiv (100건)</li>
+    
+    <li class="ok">✓ HF Daily Papers (50건)</li>
+    
+    <li class="ok">✓ Simon Willison (30건)</li>
+    
+    <li class="ok">✓ Interconnects (20건)</li>
+    
+    <li class="fail">✗ Import AI (0건) — Client error &#39;403 Forbidden&#39; for url &#39;https://importai.substack.com/feed&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</li>
+    
+    <li class="ok">✓ Latent Space (20건)</li>
+    
+    <li class="ok">✓ AI News (smol.ai) (31건)</li>
+    
+    <li class="ok">✓ Bluesky (325건)</li>
+    
+  </ul>
+</footer>
+</div>
+</body>
+</html>
