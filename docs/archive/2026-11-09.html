@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 2026-11-09 (월)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:36px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">2026-11-09 (월) · 오늘 15건</div>
+  <nav class="archive">
+    <a href="../index.html">최신</a>
+    <a href="2026-11-09.html">11-09</a>
+    <a href="2026-11-08.html">11-08</a>
+    <a href="2026-11-07.html">11-07</a>
+    <a href="2026-11-06.html">11-06</a>
+    <a href="2026-11-05.html">11-05</a>
+    <a href="2026-11-04.html">11-04</a>
+    <a href="2026-11-03.html">11-03</a>
+    <a href="2026-11-02.html">11-02</a>
+    <a href="2026-11-01.html">11-01</a>
+    <a href="2026-10-31.html">10-31</a>
+    <a href="2026-10-30.html">10-30</a>
+    <a href="2026-10-29.html">10-29</a>
+    <a href="2026-10-28.html">10-28</a>
+    <a href="2026-10-27.html">10-27</a>
+    <a href="index.html">전체 ›</a>
+  </nav>
+  
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘 AI 최전선에서는 제한된 자원으로 대규모 AI 모델을 효율적으로 운영하는 Llama-modchip 프로젝트와 같은 기술 혁신 소식이 눈길을 끕니다. 동시에 골드만삭스의 클로드 사용 금지 사례처럼 AI 도입에 따른 기업의 보안 및 정책적 고민이 심화되고 있음을 보여줍니다. 스탠포드 대학의 AI 네이티브 엔지니어링 교육 공개는 AI 시대에 필요한 개발자 역량 강화의 중요성을 강조하며 실용적인 학습 기회를 제시하고 있습니다.</div>
+  
+  
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    <a href="#cat-1">연구·논문 <b>1</b></a>
+    <a href="#cat-2">실무 지식 <b>2</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>3</b></a>
+    <a href="#cat-5">정책·안전 <b>1</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>4</b></a>
+  </nav>
+  
+  
+</header>
+
+
+
+
+
+
+<section class="headline" id="headlines">
+  <h2>오늘의 헤드라인</h2>
+  <article class="item">
+  <h3><a href="https://github.com/synchopate/llama-modchip" target="_blank" rel="noopener">GPU 없이 64GB RAM으로 284B 딥시크 모델 구동: Llama-modchip 프로젝트 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 337</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50411961" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">Llama-modchip 프로젝트는 GPU 없이 64GB RAM만을 사용하여 2840억 파라미터 규모의 DeepSeek 모델을 구동하는 방법을 시연합니다. 이는 저사양 하드웨어에서도 대규모 언어 모델을 실행할 수 있는 가능성을 제시하며, 자원 제약이 있는 환경에서 LLM을 활용하려는 개발자들에게 큰 의미가 있습니다.</p>
+  <p class="why">저사양 환경에서도 대규모 언어 모델을 효율적으로 실행할 수 있는 기술은 LLM 접근성을 크게 향상시켜 더 많은 개발자가 혁신적인 AI 애플리케이션을 만들 수 있도록 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">16~64GB RAM 환경에서 284B 및 30B Mixture-of-Experts 모델을 위한 CPU-First 추론
+
+퀵스타트 · 양자화 및 메모리 사양 · 지원 모델 · 지원 하드웨어 · 리더보드 · 기술 논문 (paper/) · 아키텍처 · FAQ
+
+llama-modchip은 희소 Mixture-of-Experts (MoE) 체크포인트를 x86_64 (AVX-512 / AVX2) 및 ARM64 (NEON / SVE / Apple Metal) 프로세서의 시스템 RAM에서 전적으로 실행하도록 설계된 ggml/llama.cpp 커널 패치, 양자화 트랜스코더 및 런타임 도구 세트입니다:
+
+284B DeepSeek-V4-Flash를 64GB 물리 RAM에 맞추기 (디스크상 56.56GiB, 1.71bpw): DeepSeek-V4-Flash의 표준 UD-IQ1_S 빌드 (총 284.33B, 43개 MLA 레이어 및 256개 라우팅된 전문가에 걸쳐 13.17B 활성)는 76.87GiB (82.5GB)를 차지하여 64GB Linux 시스템에서 사용 가능한 RAM ~62.5GiB를 초과하고 페이지 캐시 스래싱 또는 OOM Kill을 유발합니다. llama-modchip은 체크포인트를 56.56GiB (60.73GB)로 줄여서 전체 모델과 256K KV 캐시 (57.61–58.9GiB VmRSS)가 스왑 없이 RAM에 고정되도록 합니다. 기본적으로 레이어당 라우팅된 6명의 전문가 (Top-6)는 가지치기 없이 평가됩니다.
+
+CPU 캐시 및 SIMD 커널 패치 (+77% 프리필, +53% 디코드): 프롬프트 프리필 동안 단일 열 양자화 행렬-벡터 루프를 4레벨 레지스터 (ZMM AVX-512BW) + L1D (32KB) + L2 (1MB) + L3 (64MB) 다중 열 ({8,4,3,2}) 타일링 스케줄 (16코어 Zen 5에서 25.0 -&gt; 44.36 tok/s), 레지스터 고정 MQA8 FlashAttention, 그리고 비일시적 _MM_HINT_NTA MoE 스트리밍으로 대체하여 콜드 전문가 가중치가 L3에서 핫 KV 캐시 라인을 제거하지 않도록 합니다.
+
+자가 추론 드래프팅 및 즉각적인 에이전트 컨텍스트 복원: 1.64MB L2/L3 Zobrist n-gram 드래프터 (Stockfish-PVS v2)를 /dev/shm KV 슬롯 스냅샷 (40개 도구 Claude Code 프롬프트에 대해 13.1–32.6ms 복원 시간)과 $O(1)$ 심층적인 deepseek4 순환/MLA 상태에 대한 추측 롤백 수정과 결합합니다.
+
+양자화 및 메모리 분석
+
+가장 흔한 기술 질문에 바로 답하기 위해—정확한 비트 폭 (bpw), 기본 체크포인트, 그리고 각 GGUF에서 압축되는 내용:
+
+MoE 전문가 라우팅에 대한 참고 사항 (Top-K): 기본적으로 (v2.4.0 Lossless), DeepSeek-V4-Flash는 동일한 체크포인트에서 패치되지 않은 런타임과 비교하여 0의 전문가 드롭(1.00000 로짓 코사인 유사성)으로 레이어당 라우팅된 6명의 전문가 + 1명의 공유 전문가 (Top-6)를 모두 평가합니다. LLAMA_MOE_TOP_K=5 또는 4로 설정하는 것은 더 높은 디코드 처리량을 위해 작은 퍼플렉시티 델타를 교환하려는 사용자를 위한 선택적 런타임 플래그입니다.
+
+Linux 및 macOS (자동화된 설정 및 채팅)
+
+git clone https://github.com/synchopate/llama-modchip.git cd llama-modchip ./modchip chat
+
+직접 실행 (사전 컴파일된 Linux x86_64 바이너리 + Hugging Face .gguf)
+
+호환성 참고 사항 (GGML_TYPE_Q2_0 = 40): Fractal-64 모델은 커스텀 블록-64 BF16-스케일 텐서 (GGML_TYPE_Q2_0, 타입 ID 40) 및 deepseek4 / Stockfish-PVS 커널을 사용합니다. 패치되지 않은 llama.cpp, Ollama 또는 LM Studio 바이너리는 알 수 없는 텐서 타입 40으로 인해 이를 거부합니다. 위에서 ./modchip을 사용하거나 Hugging Face 저장소 및 GitHub Release v2.4.0에 포함된 독립형 사전 컴파일된 바이너리 (llama-server-modchip-linux-x86_64, 외부 .so 종속성 없음)를 사용하십시오:
+
+# 1. 30B Nemotron-3.5-A3B (14.35 GiB — 16–32 GB RAM에서 25–60.4 tok/s로 실행)의 경우: hf download Synchopate/NVIDIA-Nemotron-3.5-30B-A3B-Fractal-64-CPU-GGUF \ llama-server-modchip-linux-x86_64 NVIDIA-Nemotron-3.5-30B-A3B-Fractal-64.gguf --local-dir . chmod +x llama-server-modchip-linux-x86_64 ./llama-server-modchip-linux-x86_64 -m NVIDIA-Nemotron-3.5-30B-A3B-Fractal-64.gguf -c 262144 -t 16 --port 8080 # 2. 284B DeepSeek-V4-Flash (56.56 GiB — 64 GB RAM에 9.1–14.7 tok/s로 적합)의 경우: hf download Synchopate/DeepSeek-V4-Flash-0731-Fractal-64GB-CPU-GGUF --local-dir ./dsv4 chmod +x ./dsv4/llama-server-modchip-linux-x86_64 ./dsv4/llama-server-modchip-linux-x86_64 -m ./dsv4/DeepSeek-V4-Flash-0731-Fractal-00001-of-00003.gguf -c 32768 -t 16 -fa on --port 8080
+
+Windows 10/11 (하이브리드 GPU + CPU MoE 팩)
+
+windows/ 폴더를 열고 windows/AVVIA_MODCHIP.bat를 실행하십시오 (또는 Git Bash에서 ./modchip start). 물리적 CPU 코어, 사용 가능한 RAM, GPU VRAM (nvidia-smi)을 감지하고, llama.cpp CUDA 12.4 / Vulkan 바이너리를 다운로드하며, --n-cpu-moe 분할을 계산하고, 웹 채팅 UI (http://127.0.0.1:8080)를 시작합니다.
+
+하드웨어 준비 확인 (모델 다운로드 필요 없음)
+
+curl -sL https://raw.githubusercontent.com/synchopate/llama-modchip/main/scripts/check_cpu_readiness.py | python3
+
+GitHub Benchmark Issue 또는 GitHub Discussions를 통해 터미널 점수표를 제출하여 아래 리더보드에 CPU를 추가하십시오.
+
+지원 모델 및 모델별 최적화
+
+각 모델 제품군에는 수학적 유도, 연산자 수준 대기 시간 프로필 및 품질 게이트 벤치마크가 포함된 전용 기술 가이드가 있습니다:
+
+지원 칩 및 프로세서별 최적화
+
+각 프로세서 및 GPU 하이브리드에 대한 마이크로아키텍처 세부 정보 및 튜닝 플래그는 docs/HARDWARE_OPTIMIZATIONS.md에 문서화되어 있습니다:
+
+주요 벤치마크: 순수 CPU 및 하이브리드 요약
+
+1. 64GB Zen 5 CPU (AMD Ryzen 9 9955HX, 0 GPU)에서 DeepSeek-V4-Flash 284B (13.17B 활성)
+
+docs/DEEPSEEK_V4_OPTIMIZATIONS.md의 연산자 수준 프로파일링 및 수학적 유도 (확률 및 KL-다이버전스는 56.56GiB Fractal 체크포인트에서 패치되지 않은 Top-6 실행에 비해 측정됨):
+
+2. 256K 컨텍스트에서 NVIDIA-Nemotron-3.5-30B-A3B (3.0B 활성) (AMD Ryzen 9 9955HX, 0 GPU)
+
+docs/NEMOTRON_OPTIMIZATIONS.md의 전체 절제 테이블 및 100/100 품질 게이트 보고서:
+
+커뮤니티 CPU 및 하이브리드 리더보드
+
+./modchip bench (또는 Windows에서 windows\BENCHMARK_PC.bat)를 실행하고 점수표를 제출하십시오 (GitHub Issue).
+
+llama-modchip/ ├── modchip # 통합 CLI (setup | start | chat | bench | eval | quantize | web | claude | stop) ├── install.sh # 자동 설치 관리자 (Linux) ├── README.md / ARCHITECTURE.md / FAQ.md # 개요, 전체 수학 논문 및 엔지니어링 FAQ ├── RELEASE_NOTES.md # v2.4.0 릴리스 노트 ├── docs/ │ ├── NEMOTRON_OPTIMIZATIONS.md # Nemotron-3.5-30B-A3B 및 Nemotron-H-8B 최적화에 대한 심층 분석 │ ├── DEEPSEEK_V4_OPTIMIZATIONS.md # DeepSeek-V4-Flash 284B 프로파일링, SVD 및 L2-quadrature MoE에 대한 심층 분석 │ └── HARDWARE_OPTIMIZA</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://www.thestateofai.com/news/goldman-sachs-claude-code-traders-bankers" target="_blank" rel="noopener">골드만삭스, 트레이더 및 은행원들의 클로드(Claude) 코드 사용 금지</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 524</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50415628" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">골드만삭스가 보안 및 규제 준수 문제로 인해 자사 트레이더와 은행원들의 앤트로픽 클로드 AI 코드 사용을 중단시켰습니다. 이는 금융 업계와 같은 고도로 규제되는 환경에서 AI 도입 시 발생할 수 있는 데이터 보안 및 컴플라이언스 문제의 중요성을 부각시킵니다.</p>
+  <p class="why">주요 금융 기관의 AI 사용 제한은 기업 환경에서 AI 도입 시 보안, 규제, 신뢰성 문제가 얼마나 중요한지를 보여주며, AI 솔루션 개발자들에게 시사하는 바가 큽니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Goldman Sachs는 Anthropic의 Claude Code와 Microsoft의 GitHub를 엔지니어에게만 허용하며, 고객 흐름을 추적하고 시장 모델을 구축하는 데 이 도구를 사용했던 트레이더와 은행원들의 사용을 제한했습니다. 이 은행은 4월에 홍콩 은행원들의 Claude 사용을 금지했으며 현재 Anthropic의 IPO의 주요 주간사입니다.
+
+Goldman Sachs의 대부분의 트레이더와 은행원들은 더 이상 직장에서 AI 코딩 도구를 사용할 수 없습니다. 10월에 업데이트된 내부 지침에 따르면 생산성과 위험성 검토를 거쳐 Anthropic의 Claude Code와 Microsoft의 GitHub 사용은 은행 엔지니어에게만 제한된다고 블룸버그 뉴스가 보도했습니다.
+
+트레이딩, 정량 연구 및 소프트웨어 엔지니어링 전반에서 일하는 Strat 부서 직원들은 여전히 접근 권한을 가지고 있다고 이 문제에 정통한 두 번째 소식통이 전했습니다.
+
+이번 변경으로 일부 트레이더들은 불만을 표했다고 이 문제에 정통한 한 소식통이 블룸버그에 전했습니다. 이들은 고객 거래 흐름을 모니터링하고, 시장 움직임과 포지션을 모델링하며, 문서 및 그래픽 자료를 작성하는 데 이 도구를 사용해왔습니다. Goldman의 대변인 Nick Carcaterra는 은행이 “최고의 사용 사례를 결정하기 위해” 특정 AI 도구를 직원들에게 제공한다고 말했습니다.
+
+Argenti는 7월에 트레이더가 만든 도구를 칭찬했습니다.
+
+최근 7월까지만 해도 최고 정보 책임자(CIO) Marco Argenti는 Goldman의 비기술 직원들이 만든 “바이브 코딩”을 칭찬했습니다. 그는 블룸버그에 트레이더와 은행원들이 AI로 도구를 만들고 이를 약 12,000명에 달하는 은행 엔지니어들에게 넘겨 개선하도록 했다고 말했습니다.
+
+이러한 방식은 문제에 가장 가까운 사람들이 엔지니어링 시간을 기다리지 않고 첫 번째 버전을 만들 수 있게 해주었습니다. 또한 이는 엔지니어링 교육을 받지 않은 수천 명의 직원들이 클라이언트 정보를 처리하는 데 사용하는 동일한 기기에서 코드를 작성하고 실행하는 소프트웨어를 운영하고 있음을 의미했습니다.
+
+지난달 토리노에서 열린 컨퍼런스에서 Argenti는 Goldman의 AI 도입을 여러 단계로 설명하며, 은행 직원 약 47,000명 중 12,000명 이상의 개발자들이 첫 번째 단계를 구성했다고 말했습니다. 10월 지침은 이러한 코딩 에이전트를 해당 그룹으로 제한합니다.
+
+Goldman은 4월에 홍콩에서 Claude를 제한했습니다.
+
+4월에 Goldman은 홍콩 은행원들을 위한 내부 AI 플랫폼에서 Claude를 제거했습니다. 파이낸셜 타임즈는 은행이 Anthropic과의 계약을 엄격하게 해석했으며, Anthropic 대변인은 Claude가 홍콩에서 공식적으로 지원된 적이 없다고 말했다고 보도했습니다. ChatGPT와 Gemini는 홍콩에서 계속 사용할 수 있었습니다. JPMorgan은 6월에 Claude를 홍콩 승인 목록에서 제거했습니다.
+
+홍콩 제한은 위치 및 계약 조건에 기반했으며, 새로운 제한은 역할에 기반합니다. 여러 회사의 모델을 사용하는 Goldman의 자체 AI 비서(in-house AI assistant)는 회사 전반에서 여전히 사용할 수 있습니다. 이 제한은 코드를 스스로 작성하고 실행할 수 있는 타사 에이전트에 적용됩니다.
+
+Goldman은 여전히 Anthropic과 긴밀하게 협력하고 있습니다.
+
+올해 초, Goldman은 Anthropic 엔지니어들이 은행에서 6개월을 보내며 거래 회계 및 고객 온보딩을 위한 Claude 기반 에이전트 구축을 도왔다고 말했습니다. 이러한 에이전트들은 백 오피스에 위치하며 Goldman의 엔지니어링 팀에 의해 운영됩니다.
+
+10월 26일 제출된 S-1에 따르면 Goldman과 Morgan Stanley는 Anthropic의 IPO의 주요 주간사이기도 합니다. 지난주 보도한 바와 같이 Anthropic은 11월 말 이전에 티커 ANT로 나스닥에 상장될 예정입니다. 앞으로 몇 주 동안 Goldman의 은행원들은 대부분의 직원들이 더 이상 코딩 에이전트를 사용할 수 없는 회사의 주식을 마케팅할 것입니다.
+
+트레이딩 데스크에서 코딩 에이전트가 더 위험한 이유
+
+Claude Code는 파일을 읽고, 프로그램을 작성하며, 일반적으로 사용자와 동일한 접근 권한으로 프로그램을 실행합니다. 엔지니어가 작성한 코드는 일반적으로 중요한 것에 도달하기 전에 검토, 테스트 및 배포 제어를 거칩니다. 트레이더가 고객 흐름을 모니터링하기 위해 구축한 스크립트는 이러한 과정 없이 매일 사용될 수 있습니다.
+
+은행은 또한 예를 들어 거래를 진행하는 은행원과 이를 알면 이득을 볼 수 있는 트레이더 그룹 사이에 정보 장벽을 유지해야 합니다. Goldman은 이러한 제어를 중심으로 내부 AI 플랫폼을 구축했습니다. 트레이더가 에이전트로 만든 도구는 이러한 제어를 염두에 두고 설계되지 않았으며, 엔지니어는 누군가에게 보내야만 확인할 수 있습니다.
+
+또한 코드를 이해하는지에 대한 문제도 있습니다. 지난달 Meta 엔지니어는 이제 자신이 완전히 설명할 수 없는 코드를 배포하며, 소프트웨어 작성은 그의 직업이라고 말했습니다. 에이전트를 사용하여 포지션을 모델링하는 트레이더는 해당 코드가 특이한 사례를 어떻게 처리하는지 알 가능성이 적으며, 이는 트레이딩 데스크에서 손실을 의미할 수 있습니다.
+
+비용도 한몫했을 수 있습니다. 에이전트 사용은 토큰별로 청구되며, 모든 사람에게 에이전트를 제공한 여러 회사에서 지출이 증가하는 것을 목격했습니다. Amazon은 직원들이 순위 상승을 위해 무의미한 작업에 에이전트를 실행한 후 내부 리더보드를 폐쇄했으며, Accenture는 이제 직원당 Claude에 월 29달러를 지원합니다. 블룸버그 소식통은 생산성이 Goldman 검토의 일부였다고 말했습니다.
+
+Barclays는 반대 방향으로 움직이고 있습니다.
+
+Barclays는 10월에 연말까지 개발자의 절반이 Claude Code를 사용할 것으로 예상한다고 밝혔으며, 3주 후 5,000명의 인력 감축에 개발자를 포함시켰습니다. Goldman과 마찬가지로 엔지니어에게 코딩 에이전트를 제공하고 있습니다. 하지만 Goldman과 달리 엔지니어 고용 수를 줄이는 데에도 사용하고 있습니다.
+
+은행들은 이번 가을 다른 곳에서도 에이전트 접근을 강화했습니다. JPMorgan과 Schwab은 고객 계정에서 외부 에이전트를 차단하고 있으며, Goldman은 이제 자체 직원 중 누가 에이전트를 사용할 수 있는지에 대한 제한을 설정했습니다.
+
+State of AI에서는 Goldman이 도구 제한을 잘했지만, 그 방식은 잘못되었다고 생각합니다.
+
+트레이딩 플로어는 코드를 읽을 수 없는 사람들이 작성한 검토되지 않은 코드에 좋지 않은 장소이며, 정보 장벽 문제는 그 자체로 충분한 이유가 될 것입니다. 에이전트가 작성한 코드가 이를 검토하도록 훈련된 사람들에게서 나와야 한다는 요구 사항은 규제 대상 사업에 대한 합리적인 규칙입니다.
+
+하지만 Goldman의 자체 CIO는 7월에 트레이더들의 AI 기반 도구를 홍보했습니다. 블룸버그 보도에서 대체 방안이 언급되지 않은 채 지침 업데이트를 통해 접근을 철회하는 것은 트레이더에게</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://simonwillison.net/2026/Nov/8/sqlite-parse-number-c-vs-rust/" target="_blank" rel="noopener">SQLite 확장 기능 개발: C와 Rust로 parse_number() 구현 비교</a></h3>
+  <div class="meta">
+    <span class="badge">Simon Willison</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Simon Willison이 SQLite에 &#39;parse_number()&#39; 함수를 추가하는 C 언어 확장 기능을 개발하는 과정에서 Claude AI의 도움을 받은 경험을 공유합니다. 특히 문자열에서 숫자 값을 파싱하는 기능 구현을 위해 C와 Rust 두 언어의 접근 방식을 비교하는 데 중점을 두었습니다.</p>
+  <p class="why">AI를 활용한 코드 개발 과정과 C 및 Rust를 사용한 SQLite 확장 기능 구현 비교는 개발자들이 AI 도구를 효과적으로 사용하고 언어 선택에 대한 실용적인 통찰력을 얻는 데 도움이 됩니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">연구: SQLite 확장으로서 parse_number(): C vs Rust
+
+개를 산책시키고 있을 때, SQLite C 확장을 작성하여 &#39;-$1,234.56&#39; 또는 &#39;12.5%&#39;와 같은 문자열을 합산하고 정렬할 수 있는 숫자 값으로 변환하는 parse_number() 함수를 추가하는 것이 얼마나 쉽거나 어려울지에 대한 궁금증이 생겼습니다.
+
+일반 Claude chat(Opus 5.5)을 실행하고 다음과 같이 프롬프트를 입력했습니다:
+
+SQLite 사용자 정의 함수 &#39;parse_number(value)&#39;를 생각하고 있는데, 이는 &#39;,&#39;, &#39;$&#39;, &#39;£&#39;, &#39;%&#39;를 제거하고, 선행 &#39;-&#39;를 처리하며, 파싱할 수 없는 모든 것에 대해 &#39;NULL&#39;을 반환합니다.
+
+이를 C 대 Rust로 SQLite 확장으로 구축하는 것의 차이를 탐색해 보세요 – 성능과 코드 복잡성, 결과 .so(또는 다른) 파일의 크기를 비교하고 싶습니다.
+
+이것은 저에게 견고한 출발점을 제공했습니다 – Rust 확장은 321KB(Rusqlite 사용) 및 298KB(sqlite-loadable-rs 사용)였고, C 확장은 14KB였습니다. 하지만 Rust 확장이 더 빨랐습니다!
+
+알고 보니 C의 strtod에 해당하는 Rust 구현이</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://latent.space/p/cs146s/" target="_blank" rel="noopener">스탠포드 대학의 AI 네이티브 엔지니어링 교육 방법 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">스탠포드 대학의 Mihail Eric 교수가 &#39;AI 엔지니어링&#39; YouTube 채널 100만 구독자 기념으로 AI 시대에 소프트웨어 엔지니어가 무엇을 배워야 하는지에 대한 통찰을 제공합니다. 그는 학생들이 오픈소스 프로젝트에 참여하여 실제 코드를 배우고, 기존 코드 베이스를 이해하며, 변경 사항을 제안하는 실무 중심의 교육 방식을 강조합니다.</p>
+  <p class="why">최고 수준의 기관이 AI 시대에 맞춰 개발자 교육 방식을 어떻게 혁신하는지 보여주며, 이는 개발자들이 자신의 역량을 강화하기 위한 방향성을 제시합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">AI Engineer YouTube 채널이 구독자 100만 명을 돌파했습니다. 강연을 시청하고, 팀 동료에게 공유하고, 배운 내용을 실제로 적용해주신 모든 분들께 감사드립니다. 이 특별한 순간을 기념하여, 직장에서 많은 분들이 던지는 질문에 답해야 하는 분과 함께 앉아 이야기 나누고 싶었습니다: 이제 소프트웨어 엔지니어는 실제로 무엇을 배워야 할까요?
+
+Mihail Eric은 그의 답을 시험해볼 두 곳이 있습니다. 그는 스탠퍼드에서 ‘The Modern Software Developer’를 가르치고, Monaco에서 AI를 이끌며 그의 동료들은 코딩 에이전트를 사용하여 소프트웨어를 출시하고 서비스 중단을 조사합니다. 저는 그에게 강의 계획서를 설명해달라고 요청한 다음, 그의 엔지니어링 팀과의 접촉에서 어떤 부분이 살아남았는지 알려달라고 요청했습니다.
+
+이것은 또한 다음 주 샌프란시스코에서 열리는 AIE Code에 참여하시는 모든 분들을 위한 미리 보기이기도 합니다. 연사, 후원사 및 참석자들과의 모든 대화에 필요한 지식입니다. 만약 LS 구독자로서 이 글을 보고 아직 티켓을 구매하지 않으셨다면, 이 코드를 사용하여 30% 할인을 받을 수 있습니다(환불 불가, 죄송합니다).
+
+작년 숙제는 하나의 프롬프트를 사용합니다.
+
+CS146S의 첫 번째 과정은 9개의 과제와 캡스톤 프로젝트로 구성되었습니다. 한 연습에서 학생들은 리포지토리에서 AI 코드 리뷰어를 실행하고 그 피드백을 평가했습니다. 다음 과정에서는 Mihail이 학생들은 그러한 연습의 많은 부분을 한 번에 해결할 수 있을 것이라고 생각했습니다. 그가 스탠퍼드 2, 3학년 학생들에게 어떻게 코딩하는지 물었을 때, 설문 조사에 참여한 모든 학생들은 이미 에이전트를 사용하고 있었습니다.
+
+그래서 이번에는 숙제의 일부로 오픈 소스 프로젝트에 기여하는 것이 있습니다. 리포지토리를 관리하는 사람이 학생의 패치를 검토합니다. 저는 이것이 과제에 미치는 영향이 마음에 듭니다. 에이전트에게 오후에 기능을 구현해달라고 요청할 수 있습니다. 하지만 여전히 관리자가 그것을 원하는지, 코드가 왜 그렇게 작동하는지, 그리고 당신의 패치가 무엇을 망가뜨릴 수 있는지 알아내야 합니다. 이 대화는 또한 주니어 엔지니어가 시니어 엔지니어로부터 배우는 방법이기도 합니다.
+
+이번 에피소드에는 다음 PR에 활용할 수 있는 연습이 있습니다. Geoffrey Litt의 ‘explain-diff’ 스킬은 변경 사항을 시각적인 안내로 바꾸고, 질문을 던집니다. 에이전트가 방금 작성한 패치에 적용해보세요. 어떤 질문에 답하기 위해 코드를 다시 열어야 하나요? 토론을 시청해보세요.
+
+Monaco가 구매하는 것, 그리고 Monaco가 구축하는 것
+
+Monaco에서 팀은 코드 리뷰 제품을 평가하고 Devin을 계속 사용했습니다. 에이전트 워크스페이스는 그 반대였습니다. 백그라운드 에이전트는 제품을 실행하고, 오류를 재현하고, 패치를 테스트할 장소가 필요합니다. 세부 사항은 Monaco의 클라우드 설정 방식에 따라 다르므로 팀은 자체 워크스페이스를 구축했습니다. Mihail의 경험 법칙: “배우기 위해 사고, 유지하기 위해 구축한다.”
+
+그 결과물 중 하나가 Hal입니다. 엔지니어는 Hal에게 고장 난 것을 조사하고 PR을 열어달라고 요청할 수 있습니다. 영업 사원은 동일한 시스템에게 제품이 어떻게 작동하는지 물을 수 있습니다. 한 경우에는 유용한 답변이 검토할 수 있는 변경 사항입니다. 다른 경우에는 고객에게 제공할 수 있는 설명입니다. 두 사람 모두에게 디버깅 출력의 벽을 제공한다면, 둘 중 한 명만 만족시키는 것입니다.
+
+제가 계속해서 떠올렸던 질문은 PR의 다른 쪽 끝에서 무슨 일이 일어나는가였습니다. 에이전트는 현재 코드를 봅니다. 팀이 6개월 전에 이 동일한 변경을 왜 거부했는지 알아내려면 어디를 봐야 할까요? 이것은 Basis의 Authority Map에서부터 오픈 소스 리포지토리가 에이전트 기반 소프트웨어 팩토리가 될 것이라는 Mihail의 예측으로 이어집니다. 이것은 오늘 학생을 관리자에게 보내야 하는 좋은 이유입니다. 누가 어떤 변경 사항이 프로젝트에 속하는지 여전히 결정해야 합니다.
+
+코딩 에이전트를 사용하여 구축하고 있다면, AI Engineer CODE에 참여하세요. 그리고 직접 이 내용을 가르치고 있다면, 어떤 과제를 먼저 다시 작성해야 했는지 듣고 싶습니다.
+
+쇼 노트
+
+Stanford CS146S — 10주 강의 계획서, 과제 및 오픈 소스 파트너. 이전 연도 과정으로 전환하여 비교할 수도 있습니다.
+
+Build a coding agent and look inside Claude Code — Mihail의 도구 루프 및 그 주변의 하네스 설명.
+
+Understanding is the new bottleneck — AI가 작성한 diff에서 변경된 내용을 학습하는 Geoffrey Litt의 접근 방식.
+
+Monaco’s agent-developer workspaces — 에이전트가 앱을 실행하고 테스트할 수 있는 공간을 구축하는 팀의 이유.
+
+How to Kill the Code Review and the underlying Faros study — AI 채택률이 높은 팀은 PR 병합률이 98% 더 높았지만, PR 검토 시간은 91% 더 길었습니다.
+
+Basis’s Authority Map — 에이전트가 현재 동작, 이전 결정 및 의도를 찾아야 하는 곳.
+
+Stripe’s Minions — 백그라운드 코딩 에이전트에게 환경과 엔지니어 검토 PR 경로를 제공하는 생산 사례.
+
+Boris Cherny’s Steps of AI Adoption — 에피소드 말미에 화면에 표시되는 5단계.
+
+Mihail on The Thinking Mode — EO Studio의 인터뷰, 우리 인터뷰 시작 부분에 발췌.
+
+타임스탬프
+
+0:00 · AI Engineer 구독자 100만 명 돌파 및 CODE 서밋
+
+0:51 · Mihail Eric과 Stanford CS146S
+
+5:26 · 주니어 엔지니어가 지금 배워야 할 것
+
+10:02 · 오픈 소스 관리자가 학생들의 코드를 검토합니다
+
+15:04 · 10주 강의 계획서 둘러보기
+
+24:04 · 코딩 에이전트 내부의 루프, 도구 및 하네스
+
+32:18 · 대규모 코드베이스를 위한 Context engineering
+
+38:15 · diff를 이해하게 하는 스킬
+
+46:42 · Monaco.com 분쟁과 비행기 배너
+
+50:23 · Monaco가 영업 팀을 위해 하는 일
+
+59:21 · Monaco 엔지니어링 팀 내부
+
+1:01:40 · “배우기 위해 사고, 유지하기 위해 구축한다”
+
+1:05:24 · 리포지토리를 에이전트 지원 가능하게 만들고 온콜 루프를 닫습니다
+
+1:12:37 · 코드 리뷰가 병목 현상이 될 때
+
+1:20:37 · 보안, 종속성 및 권한
+
+1:30:13 · 백그라운드 에이전트 및 Stripe의 Minions
+
+1:34:16 · MCP 포털 및 인프라가 수렴하는 이유
+
+1:41:22 · 소프트웨어 팩토리 구축
+
+1:45:24 · 개발자에게 남은 작업은 무엇입니까?
+
+1:52:16 · 개인적인 채택에서 팀 자율성으로
+
+대본
+
+아래에서 전체 텍스트를 다운로드하세요. 웹 버전에서는 대본을 읽고 타임스탬프를 클릭하여 인터뷰 해당 지점으로 이동할 수 있습니다.
+
+transcript.txt152.95 KB • 일반 파일
+
+최종 에피소드에 맞춰 자동 생성된 대본. 타임스탬프를 클릭하면 YouTube의 해당 지점이 열립니다.
+
+0:00 swyx · Intro — 좋습니다, 이것은 꽤 특별합니다.</div>
+  </details>
+  
+</article>
+</section>
+
+
+
+<section id="cat-1">
+  <h2>연구·논문 <span class="cnt">1건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/emollick.bsky.social/post/3mzsyjxxrsk2l" target="_blank" rel="noopener">딥SWE 코딩 벤치마크: 작은 변경에도 모델 성능 변화 심화 연구</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-2">
+  <h2>실무 지식 <span class="cnt">2건</span></h2>
+  <article class="item">
+  <h3><a href="https://latent.space/p/one_million_ai_engineer_special_how_stanford_teaches_ai-native_engineering_mihail_eric_monaco/" target="_blank" rel="noopener">AI 시대, 스탠포드의 AI 네이티브 엔지니어링 교육: 실무 중심의 커리큘럼</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">스탠포드 CS146S 강의에서 Mihail Eric 교수는 코딩 에이전트가 숙제를 쉽게 해결하는 현실에 맞춰, 학생들이 낯선 오픈소스 레포지토리를 배우고 변경을 제안하며 유지보수자와 논의하는 과제를 부여합니다. 이는 AI 시대에 필요한 실무 중심의 개발자 교육 철학을 보여줍니다.</p>
+  <p class="why">AI 도구가 발전하면서 변화하는 개발자 교육의 필요성을 강조하며, 실제 문제 해결 능력과 협업 역량을 키우는 데 중점을 둔 교육 방식은 미래 개발자들에게 중요한 시사점을 제공합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">코딩 에이전트가 작년 숙제를 한 번의 프롬프트로 끝낼 수 있다면 무엇을 과제로 내줘야 할까요? 스탠퍼드 CS146S의 두 번째 과정에서 Mihail Eric은 오픈 소스 관리자들을 과정에 참여시켰습니다. 학생들은 익숙하지 않은 리포지토리를 학습하고, 변경 사항을 제안하며, 이를 병합할 수도 있는 사람에게 패치를 설명해야 합니다.
+스탠퍼드에서 ‘The Modern Software Developer’를 가르치고 Monaco에서 AI를 이끄는 Mihail을 AI Engineer YouTube 채널의 구독자 100만 명 돌파를 기념하기 위해 초대했습니다. 그는 강의 계획서를 공개하고 자신의 엔지니어링 팀과의 접촉에서 어떤 교훈이 살아남았는지 보여줍니다. Monaco는 에이전트 워크스페이스를 구축하고, 코드 리뷰 도구를 구매했으며, 온콜 에이전트에게 Datadog와 GitHub에 대한 접근 권한을 부여했습니다. 우리는 그가 어떤 도구를 팀이 소유해야 하는지 어떻게 결정하는지 물었습니다.
+전체 인터뷰와 화면 공유는 YouTube에서 시청하세요.
+쇼 노트
+
+Stanford CS146S — 10주 강의 계획서 및 과제.
+
+The Emperor Has No Clothes — Mihail이 처음부터 코딩 에이전트를 구축합니다.
+
+Demystifying Claude Code — Mihail이 실제 에이전트 하네스를 추적합니다.
+
+Monaco’s agent workspaces — 팀이 각 에이전트를 위한 워크스페이스를 설정하는 방법.
+
+How to Kill the Code Review — 코드 생성이 검토를 능가할 때 발생하는 일에 대한 에세이.
+
+Basis’s Authority Map — 에이전트가 현재 동작과 이전 설계 결정을 구별하는 방법.
+
+Stripe’s Minions — Stripe의 백그라운드 코딩 에이전트 내부 살펴보기.
+
+AI Engineer CODE Summit — 서두에 언급된 컨퍼런스.
+
+타임스탬프
+0:00 AI Engineer 구독자 100만 명 돌파 및 CODE 서밋
+0:51 Mihail Eric과 Stanford CS146S
+5:26 주니어 엔지니어가 지금 배워야 할 것
+10:02 오픈 소스 관리자가 학생들의 코드를 검토합니다
+15:04 10주 강의 계획서 둘러보기
+24:04 코딩 에이전트 내부의 루프, 도구 및 하네스
+32:18 대규모 코드베이스를 위한 Context engineering
+38:15 diff를 이해하게 하는 스킬
+46:42 Monaco.com 분쟁과 비행기 배너
+50:23 Monaco가 영업 팀을 위해 하는 일
+59:21 Monaco 엔지니어링 팀 내부
+1:01:40 “배우기 위해 사고, 유지하기 위해 구축한다”
+1:05:24 리포지토리를 에이전트 지원 가능하게 만들고 온콜 루프를 닫습니다
+1:12:37 코드 리뷰가 병목 현상이 될 때
+1:20:37 보안, 종속성 및 권한
+1:30:13 백그라운드 에이전트 및 Stripe의 Minions
+1:34:16 MCP 포털 및 인프라가 수렴하는 이유
+1:41:22 소프트웨어 팩토리 구축
+1:45:24 개발자에게 남은 작업은 무엇입니까?
+1:52:16 개인적인 채택에서 팀 자율성으로
+‘The Thinking Mode, EO Studio’에서 발췌한 서두.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://sergeykuhne.com/blog/fighting-ai-brain-fry" target="_blank" rel="noopener">AI로 인한 번아웃 대처법: 개발자 경험 공유</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-3">
+  <h2>도구·오픈소스 <span class="cnt">3건</span></h2>
+  
+  
+  
+  <details class="more">
+    <summary>그 외 3건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://ketchup3d.github.io/app/" target="_blank" rel="noopener">KetchUp: Rust와 WebGPU로 개발된 오픈소스 SketchUp 대체 소프트웨어</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/SafeScript/safescript" target="_blank" rel="noopener">SafeScript: 신뢰할 수 없는 코드 실행을 위한 안전한 JavaScript 버전</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Nov/7/link-rel-next/" target="_blank" rel="noopener">Datasette: Firefox의 HTTP 프리페치 문제 해결을 위한 link rel=next 헤더 제공 방식 개선</a><span class="src">Simon Willison</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-5">
+  <h2>정책·안전 <span class="cnt">1건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://www.science.org/content/article/wearable-device-makers-are-harvesting-brain-data-train-ai-without-telling-users?referrer=https%3A%2F%2Fwww.google.com%2F" target="_blank" rel="noopener">소비자용 뇌파 헤드셋, 사생활 침해 위협 제기</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">4건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://caleb.software/posts/claude-to-pi.html" target="_blank" rel="noopener">클로드에서 파이(Pi)로 전환: 개인용 AI 비서 사용 경험 변화</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 3건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/simonwillison.net/post/3mzrfku36422q" target="_blank" rel="noopener">사이먼 윌리슨: 드라마 촬영지로 뉴욕의 역사적인 건물 발견</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mztkbq7h5k2b" target="_blank" rel="noopener">Eugene Vinitsky: 새로운 Becky Chambers 작품 출시</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3mzt5itivts2x" target="_blank" rel="noopener">Eugene Vinitsky: Glonzo 용어가 정치 전문가들에게도 생소하다는 사실 인지</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+
+
+
+
+
+
+
+<footer>
+  
+  소스 13/19 성공 · 생성 2026-11-09 08:25 KST
+  <ul>
+    
+    <li class="ok">✓ OpenAI News (50건)</li>
+    
+    <li class="ok">✓ Google DeepMind (50건)</li>
+    
+    <li class="ok">✓ Google AI (20건)</li>
+    
+    <li class="ok">✓ Anthropic News (50건)</li>
+    
+    <li class="ok">✓ Hugging Face Blog (50건)</li>
+    
+    <li class="ok">✓ Hacker News (12건)</li>
+    
+    <li class="fail">✗ Reddit r/LocalLLaMA (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FLocalLLaMA%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.m</li>
+    
+    <li class="fail">✗ Reddit r/MachineLearning (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FMachineLearning%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://develo</li>
+    
+    <li class="fail">✗ Reddit r/singularity (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsingularity%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.</li>
+    
+    <li class="fail">✗ Reddit r/ClaudeAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FClaudeAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.moz</li>
+    
+    <li class="fail">✗ Reddit r/OpenAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FOpenAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.mozil</li>
+    
+    <li class="ok">✓ arXiv (100건)</li>
+    
+    <li class="ok">✓ HF Daily Papers (50건)</li>
+    
+    <li class="ok">✓ Simon Willison (30건)</li>
+    
+    <li class="ok">✓ Interconnects (20건)</li>
+    
+    <li class="fail">✗ Import AI (0건) — Client error &#39;403 Forbidden&#39; for url &#39;https://importai.substack.com/feed&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</li>
+    
+    <li class="ok">✓ Latent Space (20건)</li>
+    
+    <li class="ok">✓ AI News (smol.ai) (31건)</li>
+    
+    <li class="ok">✓ Bluesky (324건)</li>
+    
+  </ul>
+</footer>
+</div>
+</body>
+</html>
