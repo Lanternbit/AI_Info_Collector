@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 2026-11-13 (금)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:36px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">2026-11-13 (금) · 오늘 44건</div>
+  <nav class="archive">
+    <a href="../index.html">최신</a>
+    <a href="2026-11-13.html">11-13</a>
+    <a href="2026-11-12.html">11-12</a>
+    <a href="2026-11-11.html">11-11</a>
+    <a href="2026-11-10.html">11-10</a>
+    <a href="2026-11-09.html">11-09</a>
+    <a href="2026-11-08.html">11-08</a>
+    <a href="2026-11-07.html">11-07</a>
+    <a href="2026-11-06.html">11-06</a>
+    <a href="2026-11-05.html">11-05</a>
+    <a href="2026-11-04.html">11-04</a>
+    <a href="2026-11-03.html">11-03</a>
+    <a href="2026-11-02.html">11-02</a>
+    <a href="2026-11-01.html">11-01</a>
+    <a href="2026-10-31.html">10-31</a>
+    <a href="index.html">전체 ›</a>
+  </nav>
+  
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘은 Google이 새로운 모델인 Gemini 4 Hydrogen을 대규모로 공개하고 검색 서비스에 통합하며 AI 모델 경쟁이 한층 심화되는 하루였습니다. 또한, 엔비디아 젠슨 황 CEO의 사임 발표는 업계에 큰 충격을 주었고, 개발자들에게는 3D 생성 모델 파인튜닝, AI 코딩 에이전트 활용 등 실용적인 기술 가이드와 함께 LLM 전용 마크업 언어(LLMON), 자율 개선 에이전트 플랫폼(AgentRun) 같은 유용한 오픈소스 도구들이 등장하여 AI 최전선에서 활발한 움직임을 보였습니다. 한편, 중국 최신 AI 모델에서 수출 통제 GPU 흔적이 발견되는 등 AI 기술 규제와 안전에 대한 이슈도 계속해서 제기되고 있습니다.</div>
+  
+  
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    <a href="#cat-0">모델 릴리스 <b>4</b></a>
+    <a href="#cat-1">연구·논문 <b>2</b></a>
+    <a href="#cat-2">실무 지식 <b>4</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>7</b></a>
+    <a href="#cat-4">업계 동향 <b>7</b></a>
+    <a href="#cat-5">정책·안전 <b>1</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>14</b></a>
+  </nav>
+  
+  
+</header>
+
+
+
+
+
+
+<section class="headline" id="headlines">
+  <h2>오늘의 헤드라인</h2>
+  <article class="item">
+  <h3><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" target="_blank" rel="noopener">Gemini 4 Hydrogen 출시</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 5</span>
+    <span class="badge">▲ 451</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50471431" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">Google의 새로운 AI 모델인 Gemini 4 Hydrogen이 출시되었습니다. 이 모델은 Gemini 4 시리즈 중 가장 저렴한 비용으로 제공되며, 구글 검색을 비롯한 다양한 서비스에 통합될 예정입니다.</p>
+  <p class="why">Google의 최신 주력 AI 모델 출시로, AI 기술의 접근성을 높이고 다양한 애플리케이션 개발 및 활용에 중요한 영향을 미칠 것으로 예상됩니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Hydrogen은 모든 사람에게 최첨단 인텔리전스를 제공합니다.
+
+SVP, Google DeepMind 및 최고 AI 아키텍트, Google
+
+귀하의 브라우저는 오디오 요소를 지원하지 않습니다.
+
+오늘, 저희는 Gemini 4 Hydrogen을 선보이며, 일상적인 코딩과 에이전트 워크플로를 위한 속도와 효율성으로 모든 사람에게 최첨단 인텔리전스를 제공합니다.
+
+저희의 최전선 모델인 Gemini 4 Carbon과 Gemini 4 Argon이 가장 어려운 문제에 대한 심층적이고 장기적인 추론에 탁월한 반면, Hydrogen은 다양한 에이전트 워크플로에서 빠른 실행을 위해 구축되었습니다. Hydrogen을 통해 저희는 또한 Google AI Studio의 모든 티어, Gemini API, 기업용 Gemini, Gemini 앱, Google Search, 그리고 Google Antigravity의 유료 Google AI Pro 및 Ultra 구독자에게 Gemini 4를 제공합니다.
+
+Hydrogen은 기본 높은 사고 수준에서 Artificial Analysis Intelligence Index에서 Argon을 능가하며(51 대 50, 최고 xhigh 사고 설정에서 54에 도달), 종종 동급 모델보다 작업을 더 빠르게 완료합니다. Gemini 4 Hydrogen은 전체 1백만 토큰 컨텍스트 창에서 입력 토큰 백만 개당 1.50달러, 출력 토큰 백만 개당 7.50달러로 균일하게 책정됩니다.
+
+다중 모델 워크로드에서 효율성 잠금 해제
+
+실제 소프트웨어 개발에서 팀은 시스템을 설계하거나 미묘한 버그를 해결할 때 Carbon 및 Argon과 같은 최전선 모델에 의존하여 심층적인 아키텍처 판단을 내리지만, 코드 작성, 테스트 실행 및 변경 사항 확인을 위한 빠르고 규율 있는 실행 모델도 여전히 필요합니다. Hydrogen은 일상적인 작업을 위한 독립형 모델로 구축되거나, 다중 모델 워크플로에서 고효율 실행 엔진으로 Carbon 및 Argon과 짝을 이룰 수 있습니다.
+
+이러한 다중 모델 협업을 자동으로 돕기 위해 Google Antigravity에 Orchestrator를 도입합니다. 처음부터 끝까지 단일 모델을 사용하는 대신, Orchestrator는 동일한 세션 내에서 Carbon 및 Hydrogen과 같은 모델 간에 동적으로 전환합니다. Terminal-Bench 4.0에서 Orchestrator는 Carbon에 가까운 작업 성공률을 달성하면서도 평균적으로 24% 적은 할당량을 소비하고 19% 더 빠르게 완료했습니다. 병렬 에이전트가 필요한 워크플로의 경우, Carbon은 코디네이터 역할을 할 수 있고 Hydrogen은 작업자 및 검증자 에이전트를 구동하여 격리된 작업 공간에서 동시에 변경 사항을 구축하고 테스트할 수 있습니다. 이는 토큰 비용을 높이지 않고도 팀이 복잡한 프로젝트를 더 빠르게 출시하는 데 도움이 됩니다.
+
+개발자 및 엔터프라이즈 워크플로 확장
+
+다중 모델 워크플로 외에도 Hydrogen은 Gemini 3.8 Flash에서 마이그레이션하는 팀을 위한 주요 독립형 업그레이드입니다. 속도와 인텔리전스 모두에서 상당한 도약을 제공합니다. 높은 기본 설정에서 작업을 2.5배 더 빠르게 완료하고 Terminal-Bench 4.1 점수를 3배 이상 높이며(57% 대 18.2%), 허위 주장을 5배 이상 줄이고, 도구 호출이 실패하거나 검색이 빈 결과를 반환할 때 깔끔하게 적응합니다. 또한 핵심 개발자 및 엔터프라이즈 워크플로에서 동급 경쟁 모델과 일치하거나 능가합니다.
+
+반복적인 저장소 코딩 및 디버깅: Hydrogen은 관련된 파일을 다시 작성하지 않고도 문제 해결, 디버깅, 빠른 반복 및 코드베이스 Q&amp;A를 집중적이고 정밀한 편집으로 처리하여 더 깔끔하고 프로덕션 준비된 코드를 제공합니다. 기존 코드를 손상시키지 않고 버그를 발견하고 수정해야 하는 SWE-sweep에서 유사한 티어 모델을 능가합니다. 대규모 저장소를 효율적으로 탐색하기 위해 이 모델은 파일을 하나씩 검사하는 대신 파일 읽기 및 검색 호출을 병렬로 기본적으로 일괄 처리하는 데 탁월합니다. 복잡한 그래프, SQL 및 데이터 중심 엔터프라이즈 워크플로에 대한 초기 테스트에서 당사 파트너는 Hydrogen이 3.8 Flash에 비해 2배에서 2.8배 더 빠르게 실행되는 동시에 토큰 사용량을 12%에서 23% 줄이는 것을 확인했습니다.
+
+개방형 에이전트 실행: 심층 연구, 데이터 분석 및 광범위한 코드베이스 탐색과 같은 다단계 작업에서 Hydrogen은 arena.ai의 실시간 벤치마크인 Agent Arena에서 5위를 차지합니다. 심층 도메인 추론 및 분석에서 HLE-Diamond(58.8%)에서 동급 최고를 기록하고, Vals Tax Agent Bench(52.3%)에서 전체 1위를 차지하며, Vals Legal Research Bench(55.8%)에서 공동 1위를 기록하고, AutomationBench-AA에서 동급 최고를 기록합니다.
+
+다중 모드 지식 작업: Hydrogen은 기본 1백만 토큰 입력을 최대 1백만 출력 토큰과 결합하여 밀집된 PDF, 스프레드시트, 차트, 오디오 및 녹화된 비디오를 세련되고 인용된 보고서 및 구조화된 결과물로 종합합니다. 복잡한 시각 파일에 대한 종단 간 에이전트 지식 작업에 대한 새로운 Multimodal Knowledge Agent(MKA) 벤치마크(53.4%)와 종단 간 전문 워크플로에 대한 Agents’ Last Exam v1.1(71.6%)에서 다른 모델을 능가합니다.
+
+웹 개발: 라이브 UI 프로토타이핑, 디자인-코드 반복 및 대화형 앱 구축과 같이 개발자에게 속도가 중요한 작업에서 Hydrogen은 더 적은 프롬프트로 더 기능적이고 기능이 완비된 레이아웃을 생성합니다.
+
+즉석 3D 코딩에 Hydrogen을 사용하는 Geminisland는 누구나 단일 프롬프트에서 공유 복셀 섬에 추가하여 플레이어가 1인칭으로 걸어 다니고 탐험할 수 있는 사용자 지정 구조를 맵에 실시간으로 생성할 수 있습니다. 라이브 앱을 사용해보세요.
+
+Google Antigravity의 새로운 Gemini 프론트엔드 디자인 스킬과 짝을 이룬 Hydrogen은 WebGL2 지형 셰이더, 고정된 4단계 스크롤텔링, 열 분할 슬라이더, 3D 와이어프레임 사양 카드 및 실시간 마감재 구성기를 포함한 전자 상거래 상점을 한 번에 구축했습니다. 라이브 앱과 Gemini 프론트엔드 디자인 스킬을 사용해보세요.
+
+Google Antigravity에서 Hydrogen은 Google Sheets를 수천 개의 셀을 축소하고 Python, 기본 =LET(...) 수식 및 조건부 서식을 결합하여 라이브 스프레드시트 내에서 전체 모션 장면을 그리고 애니메이션화하는 애니메이션 픽셀 캔버스로 변환했습니다.
+
+YouTube 기조연설 비디오와 Google Antigravity의 디자인 템플릿에서 시작하여 Hydrogen은 Google Slides에서 직접 여러 슬라이드 프레젠테이션을 생성한 다음 자율 감사-수정 루프를 실행하여 겹치는 텍스트를 포착하고 모든 슬라이드 레이아웃을 정리했습니다.
+
+Google Sheets의 Gemini와 함께 Hydrogen은 팀이 재무 데이터를 다양한 예측 시나리오에 따라 동적으로 조정되는 대화형 모델로 신속하게 변환하여 o를 생성하는 데 도움을 줄 수 있습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://apnews.com/article/nvidia-megaspeed-china-singapore-huang-5403f152a601cf82ce939f1d24fffa0f" target="_blank" rel="noopener">젠슨 황 엔비디아 CEO 사임 발표</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 5</span>
+    <span class="badge">▲ 2868</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50467087" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">엔비디아의 젠슨 황 CEO가 사임한다고 발표했습니다. 이는 AI 반도체 시장의 선두 주자인 엔비디아의 리더십 변화를 의미하며, 업계에 큰 파장을 일으킬 것으로 예상됩니다.</p>
+  <p class="why">AI 반도체 시장의 핵심 인물인 젠슨 황 CEO의 사임은 엔비디아의 미래 전략뿐 아니라 전체 AI 산업의 역학 관계에 중대한 영향을 미칠 수 있습니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://huggingface.co/blog/3d-lora-finetuning" target="_blank" rel="noopener">3D 생성 모델을 위한 파인튜닝 완벽 가이드</a></h3>
+  <div class="meta">
+    <span class="badge">Hugging Face Blog</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Hugging Face 블로그에서 3D 생성 모델의 성능을 최적화하기 위한 상세한 파인튜닝 가이드를 공개했습니다. 이 가이드는 개발자들이 3D 모델 생성 기술을 향상시키는 데 필요한 실용적인 지식을 제공합니다.</p>
+  <p class="why">3D 생성 모델 개발자들이 실제 프로젝트에 바로 적용할 수 있는 깊이 있는 기술 노하우를 제공하여, 3D AI 애플리케이션 개발 역량을 강화할 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">요약: 이 블로그에서는 TRELLIS.2를 미세 조정하기 위한 스크립트와 컨테이너를 제공합니다. TRELLIS.2는 3D 자산에 대해 인기 있는 3D 모델이며 로컬 및 Hugging Face Jobs에서 실행할 수 있습니다. 미세 조정에 관심이 있다면 몇 가지 인수를 사용하여 스크립트를 사용하거나 (데이터셋을 Hugging Face Hub에 업데이트했다고 가정) 이 저장소에서 직접 수정할 수 있습니다. 더 자세히 알고 싶다면 스크립트가 어떻게 작동하는지 살펴보겠습니다. 시작해봅시다!
+
+3D 생성은 로봇 공학, 시뮬레이션, 미디어 및 엔터테인먼트 분야에서 다양한 용도로 사용됩니다. 이러한 분야에서는 생성된 객체가 엄격한 규칙을 따르도록 하고 모델 및 데이터 표현을 표준화하는 것이 어렵습니다. GLB 및 PLY와 같은 다양한 파일 형식과 신경 방사 필드(NeRFs) 및 3D 가우시안 스플래팅(3DGS)과 같은 다양한 표현 방식이 있습니다. 각각은 다른 장단점을 가지고 있습니다.
+
+TRELLIS는 통합 잠재 표현이라는 공통 내부 표현을 도입했습니다. 그 디코더는 이 표현을 필요한 출력 형식의 3D 모델로 변환합니다. 따라서 각 표현 형식에 대해 다른 모델을 사용할 필요가 없습니다.
+
+동일한 팀은 TRELLIS.2를 출시했으며, 이는 3D 구조의 모델 표현을 개선합니다. 그러나 두 모델 모두 특정 작업에 모델을 쉽게 적용할 수 있는 방법을 제공하지 않습니다.
+
+TRELLIS.2와 같은 범용 모델은 특정 응용 프로그램에 중요한 세부 사항에서 오류를 발생시킬 수 있습니다. 예를 들어, 사용자는 가구 모델에 대한 정확한 기하학적 형태가 필요할 수 있습니다. 해당 작업에 대한 미세 조정 없이 사전 훈련된 모델은 충분히 정확하지 않은 기하학적 형태를 생성할 수 있습니다. 우리는 실험을 위해 188개의 신발류 객체를 포함하는 GSO의 하위 집합을 사용합니다. 초기 테스트에서 사전 훈련된 모델은 일반적으로 올바르게 보이는 신발을 생성했지만 밑창이 정확하지 않았습니다. 우리는 LoRA가 밑창을 더 정확하게 만들 수 있는지 테스트합니다.
+
+우리의 목표는 Google Scanned Objects (GSO) 데이터셋을 사용하여 특정 객체 범주에서 TRELLIS.2의 성능을 향상시키는 것입니다. 우리는 어떤 파이프라인 구성 요소를 미세 조정하고 어떤 구성 요소를 훈련 중에 변경하지 않고 유지할지 설명할 것입니다. 파이프라인은 구조, 상세 기하학적 형태 및 재료를 분리합니다. 따라서 우리는 우리 작업에 중요한 구성 요소만 미세 조정할 것입니다.
+
+무엇을 고정할지 선택하는 것은 무엇을 미세 조정할지 선택하는 것만큼 중요합니다.
+
+LoRA는 저랭크 적응(low-rank adaptation)의 줄임말로, 작은 어댑터 행렬을 훈련하는 동안 원래 가중치를 고정한 채로 모델을 미세 조정합니다. 이는 훈련 가능한 매개변수 수와 그라디언트 및 옵티마이저 상태에 필요한 메모리를 줄입니다. 우리는 Hugging Face의 PEFT 라이브러리를 사용하여 이러한 어댑터를 추가하고 훈련합니다. 더 자세한 정보는 우리의 LoRA 가이드를 참조하십시오.
+
+Hugging Face Jobs는 클라우드 하드웨어에서 컨테이너화된 워크로드를 실행합니다. 우리는 전처리 및 훈련에 사용합니다. 대신 자신의 GPU를 사용하려면 아래의 로컬 Docker 명령을 참조하십시오. 시작하기 전에 다음 사항을 확인하십시오:
+
+여기에서 얻을 수 있는 HF_TOKEN
+
+DINOv3가 게이트 모델이므로 Hugging Face 계정은 DINOv3에 액세스할 수 있어야 합니다
+
+자신의 데이터셋을 사용하는 경우, 시작하기 전에 메시를 Hub에 업로드하십시오.
+
+훈련하기 전에 TRELLIS.2가 3D 객체를 어떻게 생성하는지 그리고 LoRA 어댑터를 어디에 추가할지 살펴보겠습니다.
+
+TRELLIS.2는 다섯 가지 주요 단계가 있습니다: 이미지 배경 제거, 이미지 인코딩, 거친 구조 예측, 상세 기하학적 형태 생성, 재료 생성. 그런 다음 파이프라인은 결과를 텍스처 메시로 내보냅니다.
+
+먼저 BiRefNet은 입력 이미지에서 배경을 제거합니다. 그런 다음 DINOv3-L은 이미지를 특징 토큰으로 인코딩합니다. 생성 모델은 이 토큰을 사용하여 3D 객체를 안내합니다.
+
+희소 구조 생성(Sparse Structure Flow)
+
+희소 구조 흐름 DiT는 객체의 거친 형태를 예측합니다. 16³ × 8 크기의 작은 잠재 공간을 만드는 확산 트랜스포머(DiT)입니다. 그런 다음 VAE 디코더는 이 잠재 공간을 64 × 64 × 64 점유 그리드로 변경합니다. 그리드의 각 복셀은 해당 위치가 객체의 일부인지 여부를 보여줍니다. 복셀은 3차원 픽셀입니다. 우리는 이 모델에 LoRA 어댑터를 추가합니다. 왜냐하면 그 출력이 기하학적 형태 단계를 안내하기 때문입니다.
+
+O-Voxel 및 구조화된 잠재 공간
+
+O-Voxel은 TRELLIS.2의 3D 형식입니다. 희소 복셀 그리드입니다. 객체 표면의 복셀만 유지합니다. 각 복셀은 메시 정점과 같은 로컬 기하학적 형태와 재료 속성을 유지합니다. 형식이 작기 때문에 CPU는 메시를 몇 초 안에 O-Voxel로 변경합니다. GPU는 몇 초 안에 O-Voxel을 다시 메시로 변경합니다.
+
+구조화된 희소 잠재 공간은 TRELLIS에서 나옵니다. 3D 데이터를 희소 텐서에 유지하여 계산을 더 빠르게 만듭니다. 모델은 그리드의 복셀 중 약 10%만 사용하므로 빈 복셀에 계산을 낭비하지 않습니다. 따라서 형상 흐름 DiT 및 텍스처 흐름 DiT는 희소 트랜스포머입니다. 희소 구조 흐름 DiT는 밀집 트랜스포머입니다.
+
+기하학적 형태 생성(Shape Flow)
+
+형상 흐름 DiT는 점유 그리드와 DINOv3 특징 토큰을 사용하여 잠재 공간을 만듭니다. 또 다른 VAE 디코더는 이 잠재 공간을 512 × 512 × 512 해상도의 O-Voxel 기하학적 형태로 변경합니다.
+
+우리는 객체의 형태를 제어하기 때문에 이 단계의 DiT에 LoRA 어댑터를 추가합니다.
+
+재료 생성 + 메시 생성
+
+마지막 단계에서 텍스처 흐름 DiT는 형상 잠재 공간과 DINOv3 특징을 입력으로 사용합니다. 이는 기하학적 형태 표면의 재료와 텍스처를 정의합니다. 그런 다음 VAE 디코더는 잠재 공간을 각 복셀에 대한 기본 색상, 금속성, 거칠기 및 알파 값으로 변경합니다. 우리는 이 단계에 LoRA 어댑터를 추가하지 않습니다. 우리 데이터셋에는 확산 색상 맵이 있지만, 이 단계에서 훈련에 필요한 별도의 재료 맵이 부족합니다. 또한, 우리의 문제는 신발의 형태입니다. 기본 모델은 이미 좋은 색상과 텍스처를 만듭니다.
+
+마지막으로, 파이프라인은 기하학적 형태와 재료 속성을 텍스처 메시로 결합하고 GLB 파일로 내보냅니다.
+
+우리는 희소 구조 흐름 DiT와 형상 흐름 DiT에만 LoRA 어댑터를 추가합니다. 이 DiT는 객체의 형태와 기하학적 형태를 제어합니다. 우리는 텍스처 흐름 DiT를 고정하여 현재 기능을 유지합니다.
+
+우리 데이터셋에는 확산 색상 맵이 포함되어 있습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://github.com/Parcha-ai/agentrun/blob/main/README.md" target="_blank" rel="noopener">AgentRun: 오픈소스 자율 개선 관리형 에이전트 플랫폼 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 74</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50471650" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">GREP.AI가 자율 개선 기능과 웹 기반 워크플로우를 갖춘 오픈소스 관리형 에이전트 플랫폼인 AgentRun을 공개했습니다. 이 플랫폼은 다양한 샌드박스 환경, 수천 개의 도구 통합, 그리고 에이전트 행동에 대한 상세 분석 기능을 제공하여 개발자들이 자신의 에이전트를 가져와 활용할 수 있습니다.</p>
+  <p class="why">개발자들이 AI 에이전트를 구축하고 배포하며 개선하는 과정을 크게 단순화하여, 에이전트 기반 애플리케이션 개발을 가속화할 잠재력이 큽니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기 (원문)</summary>
+    <div class="reader-body">We (GREP.AI, YC F26) are open-sourcing AgentRun and turning it into a full managed agents platform. Read more about it in this post: https://agentrun.ai/blog/introducing-agentrun-run-smarter-ag....It includes what we originally built for our own agent harness:- Self-improving agents
+- Web-grounded workflows
+- A range of sandboxes and computer environments
+- Thousands of tools and integrations
+- Detailed analytics on how your agents behaveYou can bring your own agent. AgentRun works with Pi, Claude Agents, Codex, OpenCode, and any other harness that supports ACP.You can self-host it (see 1-click install on Render) with an OpenRouter key, or try the hosted version at console.agentrun.ai.We’d love feedback, especially on the architecture (see README), or anything we may be missing to make it useful to you.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://unemploymentlabs.com/checkpoint-forensics" target="_blank" rel="noopener">중국 최신 AI 모델, 수출 통제 GPU의 흔적 발견</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 3</span>
+    <span class="badge">▲ 134</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50474883" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">중국의 최신 AI 모델에서 수출 통제 대상인 GPU의 흔적이 발견되었다는 보고가 나왔습니다. 이는 국제적인 기술 통제와 AI 개발 경쟁의 복잡성을 보여줍니다.</p>
+  <p class="why">국가 간 AI 기술 패권 경쟁과 반도체 수출 통제가 AI 모델 개발 및 확산에 미치는 영향을 이해하는 데 중요한 단서가 됩니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기 (원문)</summary>
+    <div class="reader-body">Our forensic analysis of publicly released AI models finds evidence that DeepSeek, Moonshot AI, MiniMax and Ant Group have gained access to NVIDIA’s Blackwell GPUs, despite restrictions on exporting these chips to China, and are using that hardware to create their AI models. Six models released by these companies since April 2026 contain numerical patterns matching Blackwell hardware, whereas earlier models from the same companies match NVIDIA’s older Hopper generation. The findings suggest that several leading Chinese AI developers have begun using Blackwell to train their newest models. U.S. officials and press reports had already alleged that DeepSeek and Moonshot AI were using Blackwell chips, without publishing technical evidence.
+
+The evidence comes entirely from the models’ own published weights, rather than from leaks or insider accounts. We recover traces of the models’ initial values, and then search for the hardware configurations and initial configurations that reproduce them; for DeepSeek-V4-Flash and Kimi K3, we also confirmed the match on physical Blackwell chips. The fingerprint identifies how the weights were created and supports, without proving, the inference that Blackwell also performed the training. Specially configured AMD hardware, which is also restricted from export to China, is the only alternative we have identified; we have excluded it for DeepSeek-V4-Flash, and consider it very unlikely for the other five models. Notably, our findings provide technical evidence of access to advanced computing hardware, but do not establish where the chips were located, how access was obtained, or whether export controls were violated.
+
+Table 1. Hardware fingerprints in successive models from DeepSeek, Moonshot AI, MiniMax and Ant Group Link ↗
+
+• Requires a U.S. license for export to China; none have been reported.
+
+A Hopper fingerprint cannot distinguish an H800 from an H100 SXM or H200; the H800 identifications above are lab disclosures, not findings of this method.
+
+Full list of models in Appendix 2 ↓
+
+Six models from four Chinese labs read as Blackwell-trained. DeepSeek-V4-Flash and MiniMax-M3 match NVIDIA’s Blackwell-class B200 or B300 chips, which have 148 processor cores (called streaming multiprocessors, or SMs). DeepSeek-V4-Pro, Kimi K3, Kimi K3.1-Pro and Ling-3.1-flash match the GB200 or GB300 chips, also Blackwell-class, which have 152 processor cores. Kimi K3.1-Pro starts from the same seed as K3, and may be a checkpoint of K3 with further post-training.
+
+Chinese labs started training on Blackwell relatively recently. DeepSeek’s models read as Hopper-trained through DeepSeek-V3 (released in December 2024), and as Blackwell from DeepSeek V4 (released in April 2026). Moonshot’s models read as Hopper through Kimi K2.5 (January 2026) and as Blackwell from K3 (July 2026). One Moonshot model sits in between: Kimi K2.7-Code, posted six weeks before K3, is built on the Hopper-era weights but contains a small part that matches the B200 or B300. MiniMax’s models read as Hopper through M2.7 (April 2026) and as Blackwell from M3 (June 2026). Ant Group’s Ling-3.0-flash (August 2026) reads as Hopper, while its Ling-3.1-flash (October 2026) reads as Blackwell. The Hopper readings do not identify a specific chip: H800s, H100 SXMs and H200s share the same fingerprint.
+
+Not every Chinese AI lab has switched to Blackwell. The newest models we could read from Alibaba (Qwen), Zhipu (GLM), Tencent, Xiaomi and StepFun all read as Hopper-trained. Meituan says its LongCat-2.0 was trained entirely on “AI ASIC superpods,” and we found no NVIDIA fingerprint in the model weights it’s released.
+
+The method gets known answers right. For 24 specific models, the developer has publicly said what hardware was used. In every case, our method agrees with the public announcement. NVIDIA’s own Nemotron-3 Ultra, whose technical report names the GB200 for one phase of its training, reads as 152 SMs, the same as Kimi K3.
+
+The matches are far stronger than chance would explain. Even unrelated numbers can appear to match when enough combinations are tried. Across the roughly 6 trillion seed-and-layout combinations in our search, the strongest chance match would be expected to reach about 8 sigma—a measure of how far a result stands above ordinary random variation. The strongest evidence for each of the six models ranges from 49 to 1,385 sigma. Even the weakest individual test we report reaches 20 sigma.
+
+The training runs were data-center scale. From each model’s size and the amount of data it was trained on, we estimate that each run needed on the order of 1,500 to 3,500 Blackwell GPUs for one and a half to three months, about 12,000 across the five (Table 2), assuming each model was trained on the hardware that initialized it. These estimates are rough, and the ranges around them are wide. At roughly $70,000 per GPU—the cost implied by a Wall Street Journal report that about 36,000 Blackwell chips being installed in Malaysia for ByteDance’s use would cost more than $2.5 billion—the largest of these clusters would cost about $200 million, and the five together more than half a billion dollars. These figures cover only the final training runs; the labs’ total spending on export-controlled GPUs is likely in the billions of dollars.
+
+Table 2. Rough scale of each training run Link ↗
+
+Training tokens divided by the tokens per second we assume a Blackwell GPU sustained on a model of that shape, over the run length the release timeline suggests: about 45 days for DeepSeek-V4-Flash, 70 for DeepSeek-V4-Pro, 80 for Kimi K3, 60 for MiniMax-M3 and 100 for Ling-3.1-flash.
+
+We are not confident in these estimates. They rest on assumptions that the weights cannot confirm. The first is how efficiently each lab used its GPUs (often called MFU): we assume less than NVIDIA’s published benchmark rates, in line with other disclosed Blackwell training runs, and no lab has published its own figure. The second is how many tokens 
+
+… (전체 내용은 원문 링크에서)</div>
+  </details>
+  
+</article>
+</section>
+
+
+
+<section id="cat-0">
+  <h2>모델 릴리스 <span class="cnt">4건</span></h2>
+  <article class="item">
+  <h3><a href="https://deepmind.google/blog/introducing-gemini-4-hydrogen/" target="_blank" rel="noopener">Gemini 4 Hydrogen 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Google DeepMind</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Google DeepMind가 새로운 모델인 Gemini 4 Hydrogen을 발표했습니다. 상세한 정보는 아직 공개되지 않았지만, 구글의 차세대 AI 모델 라인업의 확장임을 시사합니다.</p>
+  <p class="why">Google의 최신 AI 모델 출시로, 성능 및 활용도에 따라 AI 개발 생태계에 큰 영향을 미칠 수 있는 중요한 소식입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Hydrogen은 모든 사람에게 최첨단 인텔리전스를 제공합니다.Google DeepMind 수석 부사장 겸 Google 최고 AI 설계자귀하의 브라우저는 오디오 요소를 지원하지 않습니다.오늘 저희는 Gemini 4 Hydrogen을 소개합니다. 이는 일상적인 코딩 및 에이전트 워크플로우를 위한 속도와 효율성으로 모든 사람에게 최첨단 인텔리전스를 제공합니다.저희의 선도 모델인 Gemini 4 Carbon과 Gemini 4 Argon은 가장 어려운 문제에 대한 깊고 장기적인 추론에 탁월하지만, Hydrogen은 다양한 에이전트 워크플로우 전반에서 신속한 실행을 위해 구축되었습니다. Hydrogen을 통해 저희는 또한 Gemini 4를 모든 사람에게 제공합니다. Google AI Studio의 모든 티어, Gemini API, 기업용 Gemini, Gemini 앱, Google Search, 그리고 Google Antigravity의 유료 Google AI Pro 및 Ultra 구독자에게 제공됩니다.Hydrogen은 기본 높은 사고 수준(51 대 50, 최고 xhigh 사고 설정에서는 54 도달)에서 Artificial Analysis Intelligence Index에서 Argon을 능가하며, 종종 동급 모델보다 작업을 더 빠르게 완료합니다. Gemini 4 Hydrogen은 100만 토큰 컨텍스트 창 전체에 걸쳐 입력 토큰 백만 개당 $1.50, 출력 토큰 백만 개당 $7.50의 균일한 가격으로 책정됩니다.다중 모델 워크로드에서 효율성 잠금 해제실제 소프트웨어 개발에서 팀은 시스템 설계나 미묘한 버그 해결 시 Carbon 및 Argon과 같은 선도 모델에 의존하여 깊은 아키텍처적 판단을 내리지만, 코드 작성, 테스트 실행 및 변경 사항 확인을 위한 빠르고 규율 있는 실행 모델이 여전히 필요합니다. Hydrogen은 일상적인 작업을 위한 독립형 모델로 구축되었거나, 다중 모델 워크플로우에서 고효율 실행 엔진으로 Carbon 및 Argon과 함께 사용될 수 있습니다.이러한 다중 모델 협업을 자동화하기 위해 Google Antigravity에 Orchestrator를 도입했습니다. Orchestrator는 처음부터 끝까지 단일 모델을 사용하는 대신 동일한 세션 내에서 Carbon 및 Hydrogen과 같은 모델 간에 동적으로 전환합니다. Terminal-Bench 4.0에서 Orchestrator는 Carbon에 가까운 작업 성공률을 달성하면서 평균적으로 24% 적은 할당량을 소비하고 19% 더 빠르게 완료했습니다. 병렬 에이전트가 필요한 워크플로우의 경우 Carbon은 코디네이터 역할을 할 수 있고 Hydrogen은 작업자 및 검증자 에이전트에게 권한을 부여하여 격리된 작업 공간에서 변경 사항을 동시에 구축하고 테스트할 수 있도록 하여 팀이 토큰 비용을 늘리지 않고도 복잡한 프로젝트를 더 빠르게 출시할 수 있도록 돕습니다.개발자 및 기업 워크플로우 확장다중 모델 워크플로우 외에도 Hydrogen은 Gemini 3.8 Flash에서 마이그레이션하는 팀을 위한 주요 독립형 업그레이드입니다. 속도와 인텔리전스 모두에서 상당한 발전을 이루었으며, 높은 기본 설정에서 작업을 2.5배 더 빠르게 완료하면서 Terminal-Bench 4.1 점수를 3배 이상 높이고(57% 대 18.2%), 조작된 주장을 5배 이상 줄이고, 도구 호출 실패 또는 검색이 비어 있을 때 깔끔하게 적응합니다. 또한 핵심 개발자 및 기업 워크플로우 전반에서 동급 경쟁 모델과 일치하거나 능가합니다.반복적인 리포지토리 코딩 및 디버깅: Hydrogen은 문제 해결, 디버깅, 빠른 반복 및 코드베이스 Q&amp;A를 집중적이고 정밀한 편집으로 처리하여 관련 없는 파일을 다시 작성하지 않고도 더 깨끗하고 프로덕션 준비가 된 코드를 제공합니다. 기존 코드를 손상시키지 않고 버그를 발견하고 복구해야 하는 SWE-sweep에서 유사한 티어 모델을 능가합니다. 대규모 리포지토리를 효율적으로 탐색하기 위해 이 모델은 파일을 하나씩 검사하는 대신 파일 읽기 및 검색 호출을 병렬로 기본적으로 일괄 처리하는 데 탁월합니다. 복잡한 그래프, SQL 및 데이터가 많은 기업 워크플로우 전반의 초기 테스트에서 파트너는 Hydrogen이 3.8 Flash에 비해 2배에서 2.8배 더 빠르게 실행되고 토큰 사용량을 12%에서 23% 줄이는 것을 확인했습니다.개방형 에이전트 실행: 심층 연구, 데이터 분석 및 광범위한 코드베이스 탐색과 같은 다단계 작업에서 Hydrogen은 arena.ai의 실시간 벤치마크인 Agent Arena에서 5위를 차지했습니다. 심층 도메인 추론 및 분석에서 HLE-Diamond(58.8%)에서 동급 1위를 차지했으며, Vals Tax Agent Bench(52.3%)에서 전체 1위를 차지했고, Vals Legal Research Bench(55.8%)에서 공동 1위를 차지했으며, AutomationBench-AA에서 동급 1위를 차지했습니다.다중 모달 지식 작업: Hydrogen은 기본 100만 토큰 입력과 최대 100만 출력 토큰을 쌍으로 연결하여 밀도 높은 PDF, 스프레드시트, 차트, 오디오 및 녹화된 비디오를 세련된, 인용된 보고서 및 구조화된 결과물로 종합합니다. 복잡한 시각적 파일에 대한 종단 간 에이전트 지식 작업에 대한 새로운 Multimodal Knowledge Agent (MKA) 벤치마크(53.4%)와 종단 간 전문 워크플로우에 대한 Agents’ Last Exam v1.1 (71.6%)에서 다른 모델을 능가합니다.웹 개발: 라이브 UI 프로토타이핑, 디자인-코드 반복, 대화형 앱 구축과 같이 개발자에게 속도가 중요한 작업에서 Hydrogen은 더 적은 프롬프트로 더 기능적이고 기능이 완전한 레이아웃을 생성합니다.Hydrogen을 사용하여 즉석 3D 코딩을 하는 Geminisland는 누구나 단일 프롬프트에서 공유 복셀 섬에 추가하여 플레이어가 1인칭으로 걸어 다니며 탐색할 수 있는 맞춤형 구조를 지도에 실시간으로 생성할 수 있습니다. 라이브 앱을 사용해 보세요.Google Antigravity의 새로운 Gemini 프런트엔드 디자인 기술과 결합된 Hydrogen은 WebGL2 지형 셰이더, 고정된 4단계 스크롤텔링, 열 분할 슬라이더, 3D 와이어프레임 사양 카드 및 라이브 마감재 구성기를 완벽하게 갖춘 전자상거래 상점을 한 번에 구축했습니다. 라이브 앱과 Gemini 프런트엔드 디자인 기술을 사용해 보세요.Google Antigravity에서 Hydrogen은 Google Sheets를 애니메이션 픽셀 캔버스로 바꾸었습니다. 수천 개의 셀을 축소하여 Python, 기본 =LET(...) 수식 및 조건부 서식을 결합하여 라이브 스프레드시트 내에서 전체 모션 장면을 그리고 애니메이션으로 만들었습니다.YouTube 기조연설 비디오와 Google Antigravity의 디자인 템플릿을 시작으로 Hydrogen은 Google Slides에서 직접 여러 슬라이드 프레젠테이션을 생성한 다음 자율 감사 및 수정 루프를 실행하여 겹치는 텍스트를 찾아내고 모든 슬라이드 레이아웃을 정리했습니다.Google Sheets의 Gemini와 함께 Hydrogen은 팀이 재무 데이터를 다양한 예측 시나리오에 따라 동적으로 조정되는 대화형 모델로 빠르게 전환하는 데 도움이 될 수 있습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/" target="_blank" rel="noopener">Gemini 4 Hydrogen과 Orchestrator</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 281</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50472260" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">새롭게 출시된 Gemini 4 Hydrogen 모델과 함께 Orchestrator에 대한 논의가 진행되고 있습니다. 이는 Gemini 4 Hydrogen의 활용 범위와 시스템 통합에 대한 관심을 보여줍니다.</p>
+  <p class="why">Gemini 4 Hydrogen 모델의 성능뿐만 아니라 이를 효과적으로 관리하고 다른 시스템과 연동할 수 있는 Orchestrator의 중요성을 강조합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">오늘부터 Google Antigravity에 Gemini 4 Hydrogen을 출시하고, Hydrogen을 Gemini 4 Carbon을 포함한 가장 강력한 모델과 페어링하여 품질, 효율성, 지연 시간의 최적화된 균형을 통해 장기적인 작업을 수행하는 새로운 모델 드롭다운 옵션인 Orchestrator를 공개합니다.
+
+Google Antigravity에서 모델 선택기에서 Orchestrator (Carbon)을 선택하는 모습.
+
+Orchestrator로 Gemini 4 Carbon 및 Gemini 4 Hydrogen을 활용하세요
+
+이번 주 초에 우리는 대규모의 멀티 워크트리 엔지니어링 작업을 병렬 에이전트 팀으로 처리하기 위한 /swarm과 함께 Gemini 4 Carbon을 소개했습니다. 단 며칠 만에 수만 개의 스웜이 Antigravity에서 시작되어 가장 어려운 문제에 대한 최첨단 지능을 확장했습니다.
+
+단일 세션 내에서 일상적인 기능 작업 및 디버깅을 위해 모든 루틴 작업의 모든 단계에서 여러 병렬 에이전트와 함께 최첨단 추론 모델을 실행하면 루프 속도가 느려지고 최첨단 할당량이 소모됩니다. 일반적인 산업 접근 방식은 첫 번째 프롬프트에서 작업 난이도를 추측하고 전체 작업을 작업을 완료하기에 충분히 저렴한 모델로 라우팅하는 정적 “모델 라우터”를 사용하는 것입니다. 불행히도 에이전트가 더 오래 실행되면서 다른 단계에서 다른 수준의 복잡성을 필요로 하고, 종종 작업이 진화하면서 발견되는 경우 이러한 방식은 무너지기 시작합니다.
+
+Orchestrator는 단일 궤적의 진화 내에서 Carbon과 Gemini 4 Hydrogen 간의 동적이고 양방향적인 접근 방식을 취합니다. 예를 들어, Carbon은 종속성을 탐색하고, 모호성을 해결하고, 명시적인 재계획 트리거를 사용하여 구체적인 계획을 구축하기 위해 읽기 전용 단계에서 시작할 수 있습니다. 그런 다음 Hydrogen이 편집을 작성하고, 패키지를 업데이트하고, 테스트를 실행할 수 있습니다. Hydrogen이 마찰에 부딪히면 Carbon으로 다시 넘겨 상태를 검사하고, 계획을 수정하고, 실행을 재개합니다. 이를 통해 Orchestrator는 Carbon에 가까운 작업 성공률을 달성하면서도 더 빠르고 할당량 효율적입니다. Terminal-Bench 4.1에서 Orchestrator는 Carbon에 가까운 작업 성공률을 달성하면서 평균적으로 24% 적은 할당량을 소비하고 19% 더 빠르게 완료했습니다.
+
+Antigravity SDK를 사용한 명시적 다중 모델 파이프라인: 각 역할이 어떤 모델로 처리될지 프로그래밍 방식으로 제어하려는 경우 Antigravity SDK를 사용하여 Hydrogen과 Carbon을 직접 연결할 수 있습니다. 아래 데모에서 Antigravity SDK로 구축된 오픈 소스 이슈 분류 시스템은 여러 에이전트를 함께 페어링합니다. Hydrogen 에이전트는 들어오는 이슈 볼륨을 따라잡기 위해 분류 및 코딩을 처리하고, 코드베이스를 검색하고, 명확한 질문을 하고, PR 댓글에서 빠른 UI 반복을 수행하는 반면, Carbon 에이전트는 더 큰 리팩터링, 새로운 기능 및 보안 검사에 할당됩니다.
+
+자동화된 오픈 소스 이슈 분류 및 코드 생성을 위해 Antigravity SDK로 Gemini 4 Hydrogen과 Gemini 4 Carbon을 페어링하는 모습.
+
+Gemini 4 Hydrogen을 통한 빠르고 안정적인 실행: Hydrogen은 일상적인 코딩 및 에이전트 작업을 위한 독립형 모델로도 작동하며, Artificial Analysis Intelligence Index에서 51점(Argon의 50점을 능가하며 최고 설정에서 54점에 도달)을 기록하고 Terminal-Bench 4.1에서 57%(3.8 Flash의 18.2%보다 세 배 이상)를 기록했습니다. Hydrogen을 직접 선택할 때, 저, 중, 고(기본), 새로운 xhigh 티어의 네 가지 사고 수준으로 추론 깊이를 조절할 수 있습니다.
+
+Google Antigravity에서 Gemini 4 Hydrogen을 사용하여 종속성을 업그레이드하고, 공유 유틸리티를 리팩터링하고, 접근성 있는 이미지 alt 텍스트를 생성하는 모습.
+
+Gemini 4 Hydrogen은 일상적인 코딩 및 에이전트 워크플로를 위한 최첨단 지능을 제공합니다. 모델 전환을 관리하지 않고도 최첨단 계획과 속도를 원할 때, Orchestrator는 Gemini 4 Carbon과 Gemini 4 Hydrogen을 하나의 프롬프트 뒤에 놓습니다. 오늘부터 Gemini 4 Hydrogen은 유료 Google AI Pro 및 Ultra 구독자에게 제공됩니다. Orchestrator는 Google AI Ultra 구독자에게 Orchestrator (Carbon) 및 Orchestrator (Argon)으로, 유료 Google AI Pro 구독자에게는 Orchestrator (Argon)으로 제공되며, 향후 추가 모델 및 요금제가 지원될 예정입니다. 기업은 Gemini for business에서 둘 다 이용할 수 있습니다.
+
+하나를 선택하십시오. 여러분과 같은 더 많은 사람들에게 다가가는 데 도움이 됩니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://latent.space/p/ainews-d-day-decision-models-day/" target="_blank" rel="noopener">결정 모델(Decision Models)의 시대: Google Gemini Decision 1 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">두 번째 AIE CODE 행사에서 &#39;시스템 원 모델(System One models)&#39;의 중요성이 강조되었으며, Google은 예상치 못하게 멀티모달 결정 모델인 Gemini Decision 1을 공개했습니다. 이 모델은 구조화된 선택, 점수 또는 확률을 반환하는 비생성형 모델입니다.</p>
+  <p class="why">생성형 AI 외에 &#39;결정 모델&#39;이라는 새로운 AI 모델 유형의 등장과 Google의 참여는 AI 애플리케이션 개발의 새로운 방향과 가능성을 제시합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">오늘은 두 번째 연례 AIE CODE 행사의 “System One Day”였으며, 모든 것이 잘 맞아떨어졌습니다:
+
+Cloudflare의 Michelle Chen은 그들의 Clef 및 Clairic 모델을 설명했습니다.
+
+Richard는 Diogo의 AIE 복귀에 대해 이야기하며 1억 달러의 연간 반복 매출(ARR)을 넘어선 이후 가장 주목할 만한 프로덕션 고객들과 함께 Jevolution에 대해 다루었습니다.
+
+엄청난 놀라움으로, Google은 Anthropic을 제치고 프로덕션 의사결정 모델을 출시했습니다. Sundar와 Logan은 최대 1000개의 질문을 처리할 수 있고, 100만 입력당 0.10달러의 비용이 들며, 약 200ms의 E2E(end-to-end) 지연 시간을 가진 보정된 멀티모달 의사결정 모델인 Gemini Decision 1을 발표했습니다.
+
+벤치마크는 좋습니다 (벤치마크에 대한 일반적인 주의사항):
+
+이 모든 내용과 그 외의 내용은 오늘 System One 트랙에서 들을 수 있습니다.
+
+그리고 SerpApi에게 에이전트를 제공하여 웹을 읽고 크롤링하도록 함으로써 AINews를 지원해주세요!
+
+SerpApi 후원
+
+AI 에이전트에게 링크뿐만 아니라 전체 페이지를 제공하세요
+SerpApi의 Extract API를 사용하여 URL로 공개 웹 페이지를 깔끔한 Markdown, 구조화된 JSON 또는 원시 HTML로 검색하세요. 단일 페이지를 추출하고, 사이트의 URL을 매핑하거나, 제한된 동일 사이트 크롤링을 실행하세요. 단순히 engine=extract와 URL을 설정하고, Markdown을 위해 output=md를 추가하세요. 이를 100개 이상의 SerpApi 검색 API와 결합하여 하나의 공급자로 쿼리부터 페이지 콘텐츠까지 이동하세요.
+
+business@latent.space와 협력해 주신 SerpApi에게 감사드립니다!
+
+AI 트위터 요약
+
+Google, 단일 패스 분류를 위한 Gemini Decision 1 출시
+
+Gemini Decisions API: Google은 Gemini Decision 1을 기반으로 하는 새로운 API를 도입했습니다. 이 모델은 닫힌 집합 의사결정을 처리하므로, 토큰별로 텍스트를 생성하는 대신 단일 패스로 선택 항목에 점수를 매깁니다 (Sundar Pichai, Logan Kilpatrick, Google).
+사양: 예/아니오, 객관식 및 루브릭 채점을 지원하며, 최대 255개의 객관식 옵션을 제공합니다. 텍스트, 이미지, 오디오, 비디오 및 PDF 입력을 받아들이고, 요청당 최대 1,000개의 질문을 처리하며, 256K 컨텍스트를 가지며, 150-250ms의 엔드 투 엔드 시간으로 답변을 반환하고, 모든 답변에 신뢰도 점수를 첨부합니다 (@_philschmid).
+
+가격: 100만 입력 토큰당 0.10달러이며, 출력에는 요금이 청구되지 않습니다. Google은 Flash-Lite보다 약 5배 저렴하다고 말합니다 (Sundar).
+
+기원: 이 프로젝트는 Google DeepMind의 내부 프로토타입으로 시작되었습니다. 소규모 팀이 약 6주 후에 모델과 API를 출시했습니다 (@_philschmid).
+
+Google의 TypeSafe Jev와의 비교: Google 자체 테스트에 따르면 Decision 1은 7개의 공유 벤치마크 중 5개에서 Jev 1.14를 능가하며, JevBench에서는 92.2% 대 90.0%를 기록했습니다. Jev는 100만 입력 토큰당 0.042달러의 비용이 듭니다 (@kimmonismus).
+
+Artificial Analysis 평가: 독립적인 결과는 더 엇갈립니다 (Artificial Analysis).
+전체 점수: Decision 1은 Decision Index에서 66점을 받았습니다. 이는 Elephant 9B 및 Jev 1.14와 동점이며, Drex Max v1.1 및 GLiDE v1.2보다 7점 뒤쳐집니다.
+
+강점 및 약점: AA-Omniscience-Decision (66) 및 HLE-MultiChoice (49)에서 선두를 달립니다. AA-Paperclip에서는 33%의 문서에서 모든 질문에 정확하게 답변하는 반면, Drex Max는 63%입니다.
+
+비용 및 지연 시간: 100만 작업당 345달러가 소요되며, Drex Max는 103달러, Jev는 156달러입니다. Brier 점수는 0.18입니다. 작업당 평균 시간은 211ms로, 92ms인 Jev보다 느립니다 (latency).
+
+초기 채택자: Stitch는 API를 기반으로 한 신속 설계 실험을 구축하여 대략적인 프롬프트에서 다중 화면 제품 흐름을 약 5초 만에 생성합니다 (Stitch). LangChain은 TypeSafe 분류기와 공유되는 기본 클래스를 통해 day-zero 지원을 제공했습니다 (LangChain).
+
+아키텍처 패턴: AI Engineer에서 Cloudflare는 하이브리드 에이전트 설계를 설명했습니다. 빠른 의사결정 모델은 도구 선택 및 로그 추출을 처리하고, 대규모 추론 모델은 진단만 처리합니다. 데모에서 이것은 6개의 LLM 호출을 1개로, 약 40K 토큰을 1.8K로 줄였습니다 (TheTuringPost).
+
+프론티어 모델 평가: Fable 5.2가 선두, Carbon은 속도 불만 야기
+
+Agent Arena의 Claude Fable 5.2: Fable 5.2 (Max)는 4.7K의 실제 에이전트 세션에서 +30.4%의 순 개선율로 1위를 차지했습니다. 이는 2위인 Opus 5.5 (+19.5%) 점수의 약 1.6배입니다. 또한 Code, Work 및 Chat에서도 1위입니다 (Arena, Pareto view).
+가격: API 가격은 100만 입력/출력 토큰당 10달러/50달러에서 8달러/40달러로 인하되었습니다. 작업당 중간 비용은 7.3달러이며, Opus 5.5는 5.5달러, Gemini 4 Carbon (High)은 1.5달러, GPT-6-Astra는 6.0달러입니다.
+
+기타 평가:
+AA-Robotics v0.1: Fable 5.2가 75점으로 선두를 달리며, Astra (69)와 Sol (65)보다 앞섭니다 (AA).
+
+VIALS-AA (시각적 추론): 도구를 사용하면 67%의 점수를 기록하지만, 도구 없이는 44%에 불과합니다. 도구를 사용하는 Haiku 5.5는 작업당 0.07달러로 49%에 도달합니다 (AA).
+
+토론 벤치마크: Cambridge Union 스타일 대회에서 224개의 토론 중 209개를 승리했습니다 (@SamuelFitouss10).
+
+노력 보정: Claude 라인업 내에서 Artificial Analysis는 모델 티어를 올리는 것이 노력을 늘리는 것보다 낫다는 것을 발견했습니다. xhigh의 Opus 5.5는 max의 Sonnet 5.5보다 작업당 비용이 40% 저렴하면서도 더 높은 점수를 기록했습니다 (AA). Vals는 Fable의</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://edge0.ai/blog/introducing-edge0-145b-frontier-ai-capabilities-on-your-own-computer" target="_blank" rel="noopener">Edge0-145B: 개인 컴퓨터에서 최첨단 AI 기능 구현</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-1">
+  <h2>연구·논문 <span class="cnt">2건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/pytorch.org/post/3n24gsjjzv424" target="_blank" rel="noopener">Domyn 팀, PyTorch 및 TorchTitan으로 1조 파라미터 MoE 모델 훈련 성공</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Domyn 팀은 PyTorch와 TorchTitan을 사용하여 EuroHPC Jupiter 슈퍼컴퓨터에서 1조 파라미터 MoE(Mixture-of-Experts) 모델 훈련에 성공했습니다. 384개의 GH200 GPU에서 GPU당 처리량을 90 토큰/초에서 약 1,300 토큰/초로 향상시켰습니다.</p>
+  <p class="why">초거대 AI 모델 훈련의 최전선을 보여주며, 대규모 분산 훈련 기술의 발전이 AI 연구 및 개발의 한계를 확장하고 있음을 증명합니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/pytorch.org/post/3n24x26kszw2x" target="_blank" rel="noopener">Helion의 컴파일 시간 휴리스틱: 자동화된 고성능 커널 구성</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-2">
+  <h2>실무 지식 <span class="cnt">4건</span></h2>
+  <article class="item">
+  <h3><a href="https://github.com/hyperionaidev/smolmaxxing/" target="_blank" rel="noopener">작고 오래된 기기에서도 LLM이 작동하도록 하는 기술 개발 중</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 275</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50468888" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">작고 오래된 기기에서도 LLM(거대 언어 모델)을 효율적으로 실행할 수 있도록 하는 기술이 개발 중입니다. 이는 자원 제약이 있는 환경에서도 AI 모델을 활용할 수 있는 방안을 제시합니다.</p>
+  <p class="why">AI 모델의 접근성을 넓히고 엣지 디바이스 및 저사양 환경에서의 AI 애플리케이션 개발 가능성을 확대하여 AI 활용의 폭을 넓힐 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">가장 작은 하드웨어에서 실행할 수 있는 가장 큰 언어 모델을 실행하세요.
+
+TV 박스, 오래된 태블릿, 단일 보드 컴퓨터 및 라우터는 모두 대부분의 시간을 유휴 상태로 보내는 CPU, RAM 및 플래시 스토리지를 가지고 있습니다. smolmaxxing은 이들 각각이 실제로 실행할 수 있는 가장 큰 모델을 찾은 다음, 맞춤형 커널, 신중한 메모리 사용 및 플래시에서 스트리밍되는 가중치로 이를 더욱 확장합니다. 이 저장소의 모든 숫자는 장치 자체에서 측정되었습니다.
+
+두 장치 모두 약 1GB의 RAM에서 8B 및 16B 혼합-전문가 모델을 실행합니다. 이는 각 모델의 일부만 메모리에 유지하고 나머지는 필요할 때 플래시에서 읽어오기 때문입니다.
+
+더 많은 장치(휴대전화, 단일 보드 컴퓨터, 라우터)가 추가될 예정입니다. 이 기술은 한 상자에 묶여 있지 않습니다. 1비트 커널은 기본적인 NEON만 필요하며, 플래시 스트리밍은 RAM보다 더 많은 모델이 있는 모든 Linux 또는 Android 장치에서 작동합니다.
+
+이 모든 것은 llama.cpp의 패치입니다. 주요 아이디어:
+
+칩을 위해 구축된 커널. 1비트 룩업 테이블 커널, Cortex-A55용으로 재포장된 2비트 및 3진 형식, 그리고 점곱 명령이 없는 A7용 버전.
+
+모델당 더 적은 RAM. 작은 모델의 어휘 대부분은 거의 사용되지 않으므로, 해당 출력 행을 삭제합니다. TV에서는</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://latent.space/p/jev-revolution/" target="_blank" rel="noopener">Jev 혁명: 시스템 원 모델을 활용한 엔지니어들의 실제 구축 사례</a><span class="src">Latent Space</span></li>
+  
+  <li><a href="https://bsky.app/profile/pytorch.org/post/3n24qdgz76a2f" target="_blank" rel="noopener">AI 코딩 에이전트 활용: SGLang, IBM Spyre와 1주일 만에 통합</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 1건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://ray.hatchet.run" target="_blank" rel="noopener">Hatchet으로 분산 레이 트레이서 구현</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-3">
+  <h2>도구·오픈소스 <span class="cnt">7건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3n25jpzcdtk2p" target="_blank" rel="noopener">Wharton Generative AI Lab, 교사 중심 에이전트 기반 시스템 &#39;Primer&#39; 오픈소스 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 64</span>
+    
+  </div>
+  <p class="summary">Wharton Generative AI Lab이 교사가 수업 내용을 설명하고 학생들을 위한 플레이 가능한 시뮬레이션을 생성하는 오픈소스 에이전트 기반 시스템 &#39;Primer&#39;를 공개했습니다. 이 시스템은 교육학적 원리에 기반하며, 논문, 프롬프트, 코드가 모두 오픈소스입니다.</p>
+  <p class="why">교육 분야에서 AI 에이전트를 활용하여 학습 경험을 혁신할 수 있는 실용적인 도구를 제공하며, 교육 기술 개발자 및 연구자에게 큰 도움이 될 것입니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite" target="_blank" rel="noopener">LLMON: LLM 전용 마크업 언어, Granite 4.1 모델에 통합</a><span class="src">Hugging Face Blog</span></li>
+  
+  <li><a href="https://news.ycombinator.com/item?id=50471281" target="_blank" rel="noopener">Kapso: 엔터프라이즈 데이터에서 반복적으로 학습하는 엔진 오픈소스 공개</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/cerulion-inc/cerulion" target="_blank" rel="noopener">Cerulion: ROS 2 호환 다중 프로세스 리플레이 로봇 런타임 공개</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Nov/12/llm-gemini/" target="_blank" rel="noopener">llm-gemini 0.37 출시 및 Gemini 4 Hydrogen 가격 분석</a><span class="src">Simon Willison</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 2건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://makepad.github.io/relax/" target="_blank" rel="noopener">Relax: Rust 빌드 시간 단축을 위한 JIT 컴파일러</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/chocoford/ExcalidrawZ" target="_blank" rel="noopener">ExcalidrawZ: macOS/iOS용 로컬 네이티브 Excalidraw 앱</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-4">
+  <h2>업계 동향 <span class="cnt">7건</span></h2>
+  <article class="item">
+  <h3><a href="https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/" target="_blank" rel="noopener">구글 검색에 Gemini 4 Hydrogen 대규모 통합</a></h3>
+  <div class="meta">
+    <span class="badge">Google AI</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">구글은 Gemini 4 Hydrogen 모델을 전 세계 구글 검색에 통합하여 사용자들에게 더욱 유용하고 시각적이며 직관적인 검색 결과를 제공할 예정입니다. 이는 검색 경험의 큰 변화를 예고합니다.</p>
+  <p class="why">최신 AI 모델이 구글의 핵심 서비스에 적용됨으로써 일반 사용자들의 정보 접근 방식과 경험에 혁신적인 변화를 가져올 것입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">귀하의 브라우저는 오디오 요소를 지원하지 않습니다.저희는 Google Search에 Gemini 4 Hydrogen을 전 세계적으로 도입하여 보다 직관적이고 시각적이며 정확한 답변을 제공합니다. 이 업데이트는 귀하의 의도를 이해하고, 동시 쿼리를 수행하며, 테이블 및 이미지와 같은 구조화된 정보를 표시함으로써 복잡한 질문을 탐색하는 데 도움이 됩니다. 오늘 Google Search를 방문하여 가장 미묘한 질문을 함으로써 이러한 개선된 기능을 사용해 볼 수 있습니다.저희는 Google Search에서 더욱 유용하고 직관적인 응답을 제공하기 위해 Gemini 4 Hydrogen을 소개합니다.이제 저희 모델이 귀하의 의도를 더욱 정확하게 이해하므로 복잡하고 여러 부분으로 나뉜 질문을 할 수 있습니다.저희의 개선된 추론 기능은 귀하를 더 넓은 범위의 관련 웹사이트 및 유용한 링크로 연결해 줍니다.구조화된 응답, 비교 테이블 및 귀하를 위한 맞춤형 도구를 포함하여 더 많은 시각적 콘텐츠를 보게 될 것입니다.이러한 업데이트는 오늘날 저희 AI 모델이 지원하는 모든 언어로 미묘하고 정확한 답변을 제공합니다.저희는 귀하가 필요한 것을 정확하게 찾을 수 있도록 Google Search에 Gemini 4 Hydrogen을 도입합니다. 이 업데이트는 복잡하고 여러 부분으로 나뉜 질문을 이해하고 유용한 이미지, 테이블 및 링크와 함께 명확한 답변을 제공합니다. 이제 여행, 쇼핑 또는 취미에 대한 특정 요구 사항을 자연어로 질문할 수 있습니다. 이는 귀하의 일상 검색 시간을 절약하기 위해 더 많은 관련 웹사이트 및 도구로 귀하를 연결합니다.오늘 Google Search는 Gemini 4 Hydrogen과 함께 모든 사람에게 최첨단 인텔리전스를 제공합니다. 이것은 Search의 가장 큰 모델 업그레이드입니다.Hydrogen은 이제 모든 사용자를 위해 Google Search에서 전 세계적으로 사용할 수 있으며, 개선된 모델 기능으로 더 유용하고 시각적이며 직관적인 응답을 제공합니다.의도에 대한 더 나은 이해: Search는 이제 훨씬 더 미묘하고 복잡한 질문을 처리하여 귀하가 필요한 것을 빠르게 이해할 수 있습니다. 여러 부분으로 나뉜 질문, 이해하기 어려운 오타 또는 매우 구체적인 요청을 포함하여 자연스러운 사고 흐름으로 질문하십시오. 더 깊은 지시 따르기 및 도구 호출을 통해 Search는 귀하가 원하는 것을 더 정확하게 따르고 귀하의 질문의 각 부분에 대한 관련 응답을 제공합니다.개선된 쿼리 팬아웃 및 연결: Hydrogen의 고급 추론은 Search의 쿼리 팬아웃 기술을 강화하여 이전보다 더 넓은 범위의 유용한 링크로 귀하를 연결합니다. 귀하의 질문을 더 철저히 이해하고 모든 관련 하위 주제에 걸쳐 동시 쿼리를 수행함으로써 Search는 이전에 발견하지 못했을 수도 있는 사이트를 찾는 데 도움이 됩니다.더 많은 시각적 응답: Search의 속도로 귀하의 요구에 고유하게 관련되고 매우 적응적이며 시각적이고 쉽게 스캔할 수 있는 응답을 얻을 수 있습니다. 더 많은 이미지, 구조화된 응답, 비교 테이블 및 귀하를 위해 구축된 맞춤형 도구를 보게 될 것입니다.더 풍부한 언어 이해: 어떤 언어로 질문하든 이제 지원되는 모든 AI Mode 언어에서 더 미묘하고 유용한 응답을 얻을 수 있습니다.오늘 Search에서 Gemini 4 Hydrogen을 사용해 보세요.받은 편지함에서 Google의 최신 소식을 받아보세요.제품 업데이트, 이벤트 정보, 특별 제안 등에 대한 뉴스레터에 가입하십시오.구독을 확인하려면 받은 편지함을 확인하십시오.으로도 구독할 수 있습니다.귀하의 정보는 Google의 개인 정보 보호 정책에 따라 사용됩니다. 언제든지 옵트아웃할 수 있습니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://openai.com/business/customer-stories/amplitude" target="_blank" rel="noopener">Amplitude, OpenAI 모델로 제품 개선을 1-2일 만에 달성</a><span class="src">OpenAI News</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n25hg4aaos2i" target="_blank" rel="noopener">Torc Robotics와 협력하여 자율 주행 모션 플래너 실제 적용</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 4건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://openai.com/business/customer-stories/gondola" target="_blank" rel="noopener">Gondola, OpenAI Codex 활용으로 매출 두 배 성장</a><span class="src">OpenAI News</span></li>
+  
+  <li><a href="https://openai.com/business/customer-stories/holidays-extras-codex" target="_blank" rel="noopener">Holiday Extras, Codex로 고객 경험 기반 앱 개발 및 성장 가능성 확대</a><span class="src">OpenAI News</span></li>
+  
+  <li><a href="https://synthanatomy.com/2026/11/ai-is-turning-apples-app-review-process-into-a-nightmare-for-developers.html" target="_blank" rel="noopener">AI, Apple 앱 검수 과정에서 신디사이저 개발자들에게 악몽 초래</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/simonwillison.net/post/3n25qivmljs2t" target="_blank" rel="noopener">Gemini 4 가격 정책의 혼란스러움: Argon과 Carbon, 그리고 Hydrogen 비교</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-5">
+  <h2>정책·안전 <span class="cnt">1건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://openai.com/index/children-first-declaration" target="_blank" rel="noopener">OpenAI, AI와 아동 안전 연구에 200만 달러 투자 발표</a><span class="src">OpenAI News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">14건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/pytorch.org/post/3n253coz7vg2c" target="_blank" rel="noopener">PyTorchCon North America 2026 전체 세션 유튜브 공개</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 13건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://github.com/simpsoka/zigzag" target="_blank" rel="noopener">300달러짜리 자수 기계 구독료 때문에 직접 앱 개발</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://pron.github.io/posts/correctness-and-complexity" target="_blank" rel="noopener">정확한 소프트웨어 개발의 어려움과 수학의 한계 (2016년 글)</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n25k7jmeh22e" target="_blank" rel="noopener">RLC 2027 강화 학습 컨퍼런스 웹사이트 오픈</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n25iczienk2i" target="_blank" rel="noopener">위대한 인물 이론에 대한 토론 예고</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n25gqsulvc2n" target="_blank" rel="noopener">@mariaa.bsky.social, lea.ac 발견 페이지 개선</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n25e3snd722n" target="_blank" rel="noopener">유진 비니츠키, 새로운 프로필 사진 공개</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n255hxbtps2s" target="_blank" rel="noopener">테슬라 규제 관련 과거 논쟁 언급</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n23lch2d322s" target="_blank" rel="noopener">연구 토론에 부적절한 웹사이트 사용에 대한 비판</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/caseynewton.bsky.social/post/3n24s2c3yy22t" target="_blank" rel="noopener">케이시 뉴튼, 스튜디오에서 근황 공유</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n25mq4y4vs2a" target="_blank" rel="noopener">Benj Edwards, 구형 컴퓨터 사양에 대한 유머</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n25az56srk2k" target="_blank" rel="noopener">Benj Edwards, 1980년대 피자헛 및 척 E 치즈 재현 아이디어</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n257jrlq322k" target="_blank" rel="noopener">Benj Edwards, 로봇에 대해 배우기 시작</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n2547xrrr22k" target="_blank" rel="noopener">Benj Edwards, 짧은 긍정적 평가</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+
+
+
+
+
+
+
+<footer>
+  
+  소스 13/19 성공 · 생성 2026-11-13 09:56 KST
+  <ul>
+    
+    <li class="ok">✓ OpenAI News (50건)</li>
+    
+    <li class="ok">✓ Google DeepMind (50건)</li>
+    
+    <li class="ok">✓ Google AI (20건)</li>
+    
+    <li class="ok">✓ Anthropic News (50건)</li>
+    
+    <li class="ok">✓ Hugging Face Blog (50건)</li>
+    
+    <li class="ok">✓ Hacker News (21건)</li>
+    
+    <li class="fail">✗ Reddit r/LocalLLaMA (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FLocalLLaMA%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.m</li>
+    
+    <li class="fail">✗ Reddit r/MachineLearning (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FMachineLearning%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://develo</li>
+    
+    <li class="fail">✗ Reddit r/singularity (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsingularity%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.</li>
+    
+    <li class="fail">✗ Reddit r/ClaudeAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FClaudeAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.moz</li>
+    
+    <li class="fail">✗ Reddit r/OpenAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FOpenAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.mozil</li>
+    
+    <li class="ok">✓ arXiv (100건)</li>
+    
+    <li class="ok">✓ HF Daily Papers (50건)</li>
+    
+    <li class="ok">✓ Simon Willison (30건)</li>
+    
+    <li class="ok">✓ Interconnects (20건)</li>
+    
+    <li class="fail">✗ Import AI (0건) — Client error &#39;403 Forbidden&#39; for url &#39;https://importai.substack.com/feed&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</li>
+    
+    <li class="ok">✓ Latent Space (20건)</li>
+    
+    <li class="ok">✓ AI News (smol.ai) (31건)</li>
+    
+    <li class="ok">✓ Bluesky (318건)</li>
+    
+  </ul>
+</footer>
+</div>
+</body>
+</html>
