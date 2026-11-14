@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 2026-11-14 (토)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:36px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">2026-11-14 (토) · 오늘 140건</div>
+  <nav class="archive">
+    <a href="../index.html">최신</a>
+    <a href="2026-11-14.html">11-14</a>
+    <a href="2026-11-13.html">11-13</a>
+    <a href="2026-11-12.html">11-12</a>
+    <a href="2026-11-11.html">11-11</a>
+    <a href="2026-11-10.html">11-10</a>
+    <a href="2026-11-09.html">11-09</a>
+    <a href="2026-11-08.html">11-08</a>
+    <a href="2026-11-07.html">11-07</a>
+    <a href="2026-11-06.html">11-06</a>
+    <a href="2026-11-05.html">11-05</a>
+    <a href="2026-11-04.html">11-04</a>
+    <a href="2026-11-03.html">11-03</a>
+    <a href="2026-11-02.html">11-02</a>
+    <a href="2026-11-01.html">11-01</a>
+    <a href="index.html">전체 ›</a>
+  </nav>
+  
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘은 AI 업계에 큰 지각변동이 있었습니다. 엔비디아의 젠슨 황 CEO가 33년 만에 사임을 발표하며 AI 시대의 새로운 전환점을 예고했습니다. 이러한 거시적 변화 속에서도 OpenAI는 ChatGPT에 AI 에이전트 결제를 위한 지갑 기능을 도입하며 AI 서비스의 실용성 강화에 나섰고, llama.cpp는 v1.0.0 출시로 로컬 AI 생태계의 기반을 더욱 튼튼히 다졌습니다. 한편, AI의 놀라운 능력으로 괴델의 정리가 증명되는 연구 결과가 발표되는 등 기술적 진보도 꾸준히 이어지고 있습니다.</div>
+  
+  
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    <a href="#cat-0">모델 릴리스 <b>3</b></a>
+    <a href="#cat-1">연구·논문 <b>87</b></a>
+    <a href="#cat-2">실무 지식 <b>2</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>8</b></a>
+    <a href="#cat-4">업계 동향 <b>8</b></a>
+    <a href="#cat-5">정책·안전 <b>5</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>18</b></a>
+  </nav>
+  
+  
+</header>
+
+
+
+
+
+
+<section class="headline" id="headlines">
+  <h2>오늘의 헤드라인</h2>
+  <article class="item">
+  <h3><a href="https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths" target="_blank" rel="noopener">AI, 괴델의 노트 잠금 해제: 수백 개의 증명된 정리 발견</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 5</span>
+    <span class="badge">▲ 316</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50486748" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">AI 기술이 쿠르트 괴델(Kurt Gödel)의 미공개 노트를 해독하여 이전에 알려지지 않았던 수백 개의 증명된 정리를 발견했습니다. 이는 AI가 복잡한 역사적 문헌 및 수학적 난제를 해결하는 데 기여할 수 있음을 보여줍니다.</p>
+  <p class="why">AI가 인류의 지식 격차를 메우고 미지의 영역을 탐구하는 데 활용될 수 있음을 보여주는 기념비적인 사례이며, 특히 수학 및 논리학 분야의 발전에 잠재적으로 큰 영향을 미칠 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">쿠르트 괴델은 1,009페이지 분량의 빽빽하게 쓰인 글을 남겼는데, 그 중 상당 부분은 현재는 사용되지 않는 속기법으로 작성되었으며, 현재 수백 개의 증명된 정리가 포함되어 있다고 합니다.
+
+오스트리아의 논리학자 쿠르트 괴델은 20세기에서 가장 독창적인 사상가 중 한 명입니다. 1931년에 발표된 그의 두 가지 불완전성 정리는 수학을 변화시키고 디지털 시대를 위한 길을 열었습니다.
+
+1930년대의 중요한 결과 이후, 괴델은 몇 편의 논문만을 발표했습니다. 그러나 그의 미발표 작업은 수만 페이지에 달하며 과학사학자들에게 큰 관심을 받고 있습니다.
+
+2017년부터 핀란드 논리학자 얀 폰 플라토는 헬싱키 대학에서 괴델이 1940년대 초에 쓴 16권의 노트를 이해하기 위한 프로젝트를 이끌었습니다. 이 자료인 &#39;워크북&#39;은 수학과 논리에 대한 1,009페이지 분량의 빽빽하게 쓰인 텍스트입니다. 대부분은 괴델이 사용하던 당시에도 이미 사용되지 않던 독일어 속기법인 Gabelsberger로 쓰여 있습니다.
+
+텍스트의 수학적 이해 진전은 고통스러울 정도로 느려서 주당 약 한 페이지 정도였습니다. 그러다 9월에 폰 플라토는 AI 모델 Claude의 도움을 얻었습니다. 이틀 만에 Claude는 전체 자료에 대한 포괄적인 요약을 제공했고, 괴델이 아무도 몰랐던 수백 개의 정리를 증명했다는 사실을 밝혀냈습니다.
+
+현대 시대의 가장 유명한 논리학자는 사실 그 누구도 생각했던 것보다 훨씬 더 많은 것을 발견했습니다.
+
+폰 플라토는</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://latent.space/p/ainews-jensen-huang-resigns-after-33-years-leading-nvidia/" target="_blank" rel="noopener">엔비디아 젠슨 황 CEO, 33년 만에 사임 발표</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">엔비디아의 젠슨 황 CEO가 33년간의 재임 후 사임했습니다. 이는 AI 업계에 가장 큰 리더십 변화로 평가되며, Gemini 4 Hydrogen 출시와 Anthropic의 IPO 진행 소식에도 불구하고 가장 주목받는 헤드라인이었습니다.</p>
+  <p class="why">AI 하드웨어 시장의 지배적인 리더였던 엔비디아 CEO의 사임은 회사 전략 및 AI 산업 전반에 중대한 변화를 가져올 수 있는 매우 중요한 사건입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Gemini 4 Hydrogen의 출시와 Anthropic의 IPO가 순조롭게 진행되는 것을 축하하지만, 오늘 헤드라인은 AI 분야에서 가장 파격적인 리더십 변화(Google DeepMind의 Demis/Jeff 등 이후)에 관한 것일 수밖에 없었습니다.
+
+어제 우리는 NVIDIA 이사회가 Jensen Huang을 교체할 준비를 하고 있다는 보도에 대해 다루었습니다. 이는 NYT가 그가 중국 스파이 혐의자와 불륜 관계였다는 보도에 따른 것이었습니다. 두 번째 불륜 소식에 이어 오늘 NVIDIA는 그의 사임을 발표했습니다(상관관계/인과관계는 논쟁의 여지가 있지만, 아마도 이사회에 의해 강제된 것으로 보입니다).
+
+X에 게시물 보기 ↗
+
+또한 중국 모델이 접근할 수 없어야 할 Blackwell GPU로 학습되었다는 것을 입증할 수 있는 정도에 대한 논의도 있습니다… 규모는 논쟁 중이지만 말입니다.
+
+33년 만에 Jensen Huang은 CEO, 사장 및 이사회 멤버 자리에서 물러났습니다. 2013년부터 NVIDIA의 CFO였던 Colette Kress는 그 직책을 유지하면서 임시 CEO를 맡을 예정입니다… 다음 주 $NVDA 역사상 가장 많은 관심을 받을 것으로 예상되는 실적 발표로 이어질 것입니다.
+
+2026년 11월 11일~11월 12일 AI 뉴스. 우리는 12개의 서브레딧, 544개의 트위터, 그리고 추가적인 Discord는 확인하지 않았습니다. AINews 웹사이트에서 모든 과거 기사를 검색할 수 있습니다. 참고로, AINews는 이제 Latent Space의 한 섹션입니다. 이메일 수신 빈도를 선택/해제할 수 있습니다!
+
+AI 트위터 요약
+
+Gemini 4 Hydrogen: Google의 빠른 Gemini 4 티어 광범위하게 출시
+
+출시: Google DeepMind는 속도 우선 모델인 Gemini 4 Hydrogen을 Carbon 및 Argon과 함께 출시했습니다. Google은 이 모델이 Gemini 3.8 Flash보다 2.5배 빠르게 작업을 완료하고, 기본 사고(default thinking)에서 인공 분석 지능 지수(Artificial Analysis Intelligence Index)에서 Argon보다 51 대 50으로 앞서며, 새로운 xhigh 수준에서는 54점을 기록했다고 말합니다 (DeepMind, Koray Kavukcuoglu).
+사양 및 가격: 이 모델은 4가지 사고 수준(low, medium, high 및 xhigh)과 1M 컨텍스트 창을 제공합니다. 백만 입력/출력 토큰당 $1.50/$7.50의 비용이 들며, 캐시된 입력에는 95% 할인이 적용됩니다 (Phil Schmid, Artificial Analysis).
+
+공식 주장: Google은 Terminal-Bench 4.0에서 57%, Terminal-Bench 4.1에서 Gemini 3.8 Flash보다 3배 이상 높은 성능을 보고합니다. 또한 조작된 주장이 5배 이상 적고, Vals Tax Agent Bench에서 1위, AutomationBench-AA 및 Agents&#39; Last Exam에서 선두 결과를 기록했다고 주장합니다 (Google).
+
+가용성: Hydrogen은 AI Studio의 무료 티어를 포함하여 모든 Gemini API 티어에서 사용할 수 있습니다. Search AI Mode의 기본 모델이며, 무료 Gemini 앱 사용자는 자동 선택을 통해 이를 이용할 수 있습니다. 유료 Pro 및 Ultra 구독자는 Antigravity에서 사용할 수 있습니다 (Sundar Pichai, GeminiApp, Search).
+
+Orchestrator 멀티 모델 모드: Antigravity에서 Carbon은 계획을 세우고 Hydrogen은 코드를 작성하고 테스트합니다. Google은 이 방식이 Carbon에 가까운 Terminal-Bench 4.0 성공률을 24% 적은 할당량과 19% 빠른 완료 시간으로 달성한다고 말합니다. 이는 Ultra 구독자에게 rollout되고 있습니다 (Google, Mohan).
+
+인공 분석 측정: 독립적인 결과는 혼합된 프로필을 보여줍니다.
+지능 및 비용: xhigh에서 Hydrogen은 54점을 기록하여 Claude Sonnet 5.5 (최대) 및 GPT-6.1 Sol (최대)보다 1점 뒤쳐집니다. 비용은 Sonnet의 약 32%이지만 Sol의 약 2.5배입니다. 작업당 비용은 xhigh에서 $3.16, high에서 $1.87입니다. 출력 속도는 약 200 tok/s입니다 (AA).
+
+강점: Hydrogen은 AA-Omniscience에서 8%의 환각률을 보였으며, Sonnet은 43%, Sol은 52%였습니다. 또한 GDP.pdf 시각적 추론에서 1위 점수를 공유합니다.
+
+약점: Terminal-Bench 4.0에서 high 및 xhigh 모두에서 54%를 기록하여 Sonnet의 64% 및 Sol의 56%보다 낮습니다.
+
+타사 리더보드:
+Agent Arena: Hydrogen은 6.5k 세션에 걸쳐 +14.8%의 순 개선율로 5위에 데뷔했습니다. 상위 10개 모델 중 가장 빠른 모델로, 작업당 중간 시간은 5.3분, 작업당 중간 비용은 $1.6입니다 (Arena).
+
+Code Arena WebDev: 1703점으로 10위를 기록했습니다 (Arena).
+
+Vals Index: 68.5%로 6위이며, Carbon보다 2점 뒤쳐지지만 Carbon 가격의 38% 수준입니다 (Vals).
+
+코딩 에이전트: CursorBench는 3.8 Flash의 39.6%에서 54.3%로 상승했습니다 (Cursor). Cognition의 FrontierCode 2.0은 38.2%를 보여 Sol 바로 뒤에 있습니다 (Cognition). SWE-sweep은 13.5%를 보여 Astra의 9.5%보다 높습니다 (KLieret).
+
+사용자 주의사항:
+폭주 추론: 한 테스터는 xhigh가 저지 번호 이미지 질문에 답변하지 않고 131K의 사고 토큰과 약 $1.08를 사용했다고 보고했습니다. 동일한 테스터는 텍스트 벤치마크의 1.8%에서 예산 소진을 보고합니다 (skalskip92).
+
+약점: Hydrogen은 MazeBench에서 1%를 기록했습니다 (patience_cave).
+
+가격 구조: Simon Willison은 Hydrogen이 Carbon/Argon 토큰 가격의 25% 할인에 불과하다고 말했지만, 해당 모델들은 12월 1일에 가격이 두 배로 오른다고 합니다 (simonw).
+
+속도: Theo는 자신의 측정치를 기반으로</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener">ChatGPT 지갑으로 AI 에이전트 결제 지원</a></h3>
+  <div class="meta">
+    <span class="badge">OpenAI News</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">OpenAI가 ChatGPT Wallet을 출시하여 ChatGPT Work, Codex, dots 에이전트들이 사용자 승인 및 기존 카드 보호 기능을 통해 안전하게 구매를 완료할 수 있도록 합니다. 이는 AI 에이전트의 활용 범위를 넓히고 상거래 기능을 통합하려는 시도입니다.</p>
+  <p class="why">AI 에이전트가 단순 정보 제공을 넘어 실제 금융 거래에 참여하게 되면서, 비즈니스 자동화 및 새로운 AI 기반 서비스 모델 개발에 큰 영향을 미칠 것입니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://huggingface.co/blog/ggml-org/llama-cpp-v1" target="_blank" rel="noopener">llama.cpp v1.0.0 출시: 로컬 AI 생태계를 위한 강력한 기반 마련</a></h3>
+  <div class="meta">
+    <span class="badge">Hugging Face Blog</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">llama.cpp가 v1.0.0 버전을 출시하며 로컬 AI 생태계를 위한 더욱 강력한 기반을 제공합니다. 이는 로컬 환경에서 대규모 언어 모델을 효율적으로 실행하고 개발하는 데 중요한 진전을 의미합니다.</p>
+  <p class="why">개발자들이 개인 장치에서 LLM을 더 쉽게 구동하고 활용할 수 있게 되어, 엣지 AI 및 개인 정보 보호를 강화한 AI 애플리케이션 개발에 크게 기여할 것입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">llama.cpp는 소비자용 로컬 기기부터 고성능 엔터프라이즈 서버에 이르는 광범위한 하드웨어에서 멀티모달 LLM을 실행할 수 있게 해줍니다. 퀀타이제이션, 최적화된 백엔드 및 이식성 좋은 C/C++ 구현을 통해 AI 추론을 소프트웨어 스택의 모든 수준에서 접근 가능하게 만듭니다. 우리는 이것이 크로스 플랫폼 및 프라이빗 AI 제품을 구축하기 위한 가장 가볍고 다재다능하며 합리적인 플랫폼이라고 믿습니다.
+
+시작된 지 3.5년 동안 이 프로젝트는 크게 성장했으며, 이미 많은 다운스트림 애플리케이션이 우리의 작업에 의존하고 있습니다. 로컬 AI와 프라이버시가 우리 일상생활에서 점점 더 중요해짐에 따라 이러한 추세는 계속될 것으로 예상합니다. 새로운 통합은 더 많은 개발자가 우리의 라이브러리 인터페이스에 의존한다는 것을 의미하며, 따라서 유연하면서도 안정적인 API를 갖는 것이 가장 중요합니다.
+
+오늘 우리는 개발자들에 대한 우리의 책임을 강조하며 라이브러리 v1.0.0을 출시합니다. 앞으로 llama.cpp와 ggml 모두 주요 버전 업그레이드를 통해 API 및 ABI 비호환성을 반영할 것입니다. 채택이 증가함에 따라 우리는 다운스트림 소비자에게 이러한 경계를 더욱 엄격하게 알릴 것입니다.
+
+시맨틱 버저닝을 사용하는 모든 ggml-org 프로젝트에는 다음 규칙이 적용됩니다.
+
+ggml-org 소프트웨어가 배포되고 개발자와 최종 사용자에게 도달하는 방식을 확장하기를 기대합니다. ggml-org 프로젝트를 패키징 및 릴리스 파이프라인에 추가하는 방법에 대한 자세한 내용은 다음 토론을 확인하십시오.
+
+이 프로젝트는 매우 숙련되고 재능 있는 기여자들과 함께 놀라운 오픈 소스 커뮤니티를 육성했습니다. 소프트웨어 공학 분야에서 AI 기능의 급속한 발전에 발맞춰 우리는 개발 주기에서 LLM을 사려 깊고 합리적인 방식으로 계속 적응하고 통합합니다. 고품질 코드베이스를 유지하고, 아키텍처를 제어하며, 구현 세부 사항을 이해하는 것이 우리의 최우선 과제로 남을 것입니다.
+
+더 빠른 개발 속도를 강화하기 위해 우리는 프로젝트 뒤에 있는 CI 인프라를 개선하는 데 점점 더 많은 자원을 투자하고 있습니다. HF Buckets 및 HF Jobs와 같은 HF 기술 덕분에 마스터 브랜치에 착륙하는 모든 변경 사항에 대한 정확성을 보장하는 데 필요한 용량을 확장할 수 있습니다. NVIDIA, AMD, Qualcomm, Arm, IBM 및 Intel의 하드웨어 지원을 통해 우리는 모든 주요 하드웨어 플랫폼에서 더 많은 자체 호스팅 러너를 계속 등록하고 있습니다.
+
+llama.cpp의 기본 머신러닝 엔진인 ggml은 사실상 현존하는 모든 하드웨어에서 실행되도록 설계되었습니다. 이는 전용 ggml 백엔드를 구현함으로써 달성됩니다. 각 백엔드는 동적 라이브러리로 컴파일될 수 있으며 런타임에 선택적으로 로드될 수 있습니다.
+
+현재 구현된 백엔드의 전체 목록은 여기에서 찾을 수 있습니다.
+
+우리는 모든 모델 아키텍처에 대한 지속적인 지원을 제공하기 위해 최선을 다하고 있습니다. 현재 llama.cpp는 150개 이상의 아키텍처 변형과 모든 주류 추론 디코딩 방법을 지원합니다.
+
+Hugging Face의 llama.cpp 팀은 커뮤니티의 놀라운 지원에 감사드립니다. 프로젝트의 오랜 관리자들과 모든 기여자들에게 특별한 감사를 전합니다. 이것은 우리의 공동 노력 없이는 불가능했을 중요한 이정표입니다!
+
+llama.cpp 및 Hugging Face 팀이 정성껏 제작한 MacOS 및 Windows용 Llama 데스크톱 앱을 확인하십시오.
+
+llama.cpp의 새로운 기능: Decision Models
+
+llama.cpp에서 OCR 모델 사용하기
+
+저기, 프로젝트에 대해 안내해 주실 수 있나요? 연결되어 있지 않습니다.
+
+Linux 데스크톱 앱은 없나요?
+
+· 댓글을 달려면 가입하거나 로그인하십시오.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17280v1" target="_blank" rel="noopener">합성 밀수: LLM 출력에 추론된 개인 속성 악의적으로 숨기기</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Synthesis Smuggling은 악의적인 LLM이 사용자 상호작용을 통해 민감한 정보를 추론하고, 이를 무해해 보이는 모델 생성 콘텐츠에 스테가노그래피 방식으로 숨기는 새로운 위협 모델을 제안합니다. 사용자가 이 정보를 무의식적으로 공유하면 모니터링하는 공격자가 정보를 탈취할 수 있습니다.</p>
+  <p class="why">LLM의 개인 정보 보호 및 보안에 대한 심각한 위협을 보여주며, LLM 개발자들이 프라이버시 침해 및 정보 유출 가능성에 대비하여 보다 강력한 보안 메커니즘을 설계해야 할 필요성을 강조합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">우리는 Synthesis Smuggling을 제안합니다. 이는 적대적인 LLM이 일상적인 지원 요청 상호작용에서 사용자에 대한 민감한 정보를 추론하고, 무해해 보이는 모델 생성 콘텐츠에 은밀하게 인코딩하는 새로운 위협 모델입니다. 사용자는 이메일, 소셜 미디어 게시물 또는 메시지와 같이 일반적인 통신 채널을 통해 생성된 아티팩트를 공유함으로써 해당 정보를 알지 못하는 사이에 전송할 수 있습니다. 이러한 채널을 모니터링하는 공격자는 이 정보를 발견할 수 있습니다. 우리는 두 개의 공개 가중치 모델을 학습시켜 대화 단서로부터 성별 및 연령 그룹 레이블을 추론하고 보이지 않는 문자 또는 단어 선택을 사용하여 예측을 인코딩함으로써 이 위협을 시연합니다. 이러한 결과는 모델 자체가 공격자와 직접 접촉할 수단이 없더라도 사용자 공유 모델 출력이 개인 추론을 위한 은밀한 채널이 될 수 있음을 보여줍니다.</div>
+  </details>
+  
+</article>
+</section>
+
+
+
+<section id="cat-0">
+  <h2>모델 릴리스 <span class="cnt">3건</span></h2>
+  <article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17048v1" target="_blank" rel="noopener">AURA 2.0: 스트리밍 비디오에서 사용자 주도 응답에서 모델 주도 대화로</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">AURA 2.0은 스트리밍 비디오 대규모 언어 모델로, 순전히 사용자 주도 상호작용을 넘어 모델이 대화를 시작하는 &#39;Model-Initiated Conversation (MIC)&#39; 기능을 도입합니다. 모델이 비디오 스트림에서 의미 있는 대화 주제를 식별하고 적절한 순간에 대화를 시작할 수 있게 합니다.</p>
+  <p class="why">AI 비서와 사용자의 상호작용 방식을 혁신하여, AI가 더욱 능동적이고 상황 인지적인 동반자 역할을 할 수 있도록 합니다. 이는 스마트 홈, 감시 시스템 등 다양한 분야에서 새로운 사용자 경험을 창출할 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">대부분의 AI 비서는 프롬프트가 있을 때만 응답하며, 비디오 스트림의 이벤트가 의미 있는 대화 기회를 제공할 때조차 침묵합니다. 순전히 사용자 중심적인 상호작용을 넘어 확장하기 위해, 우리는 AURA에 세 가지 핵심 업그레이드를 도입한 스트리밍 비디오 대규모 언어 모델인 AURA 2.0을 제시합니다. 핵심적인 진보는 Model-Initiated Conversation (MIC)으로, 이 기능을 통해 모델은 진화하는 시각적 스트림에서 논의할 가치가 있는 주제를 식별하고 사용자 쿼리 없이 적절한 순간에 대화를 시작할 수 있습니다. Stream-Aware Tool Calling (SATC)은 모델이 현재 시각적 및 대화적 맥락을 사용하여 외부 도구를 호출하고 반환된 정보를 진행 중인 상호작용에 통합할 수 있도록 합니다. Interactive Visual Grounding (IVG)은 사용자 입력과 모델 출력 모두에서 시각적 접지를 지원합니다. 모델은 사용자가 비디오 프레임에 표시한 객체를 식별하고 프레임에 정렬된 경계 상자를 생성하여 응답을 특정 객체 및 영역에 연결할 수 있습니다. 이러한 기능을 개발하기 위해 우리는 전용 스트리밍 상호작용 데이터셋을 구축하고 AURA의 기존 스트리밍 상호작용 능력과 새로운 동작을 통합하기 위해 3단계 훈련 방식을 채택합니다. 또한 확장된 비디오 스트림에서 맥락적 연속성을 유지하기 위해 Long-Horizon Interaction Memory (LHIM)를 통합합니다. 공개 스트리밍 벤치마크에 대한 평가는 AURA 2.0이 오픈소스 스트리밍 모델 중 선도적인 성능을 달성함을 보여주며, 대상 평가는 새로운 상호작용 능력을 추가로 검증합니다. 우리는 모델 가중치와 추론 코드를 오픈소스화합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.16956v1" target="_blank" rel="noopener">다언어 능력을 향상시킨 소형 언어 모델 &#39;Lara Mini Base&#39; 발표</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Lara Mini base는 6조 개의 토큰으로 영어와 44개 언어(유럽 연합 24개 공용어 포함)를 학습하여, 언어 다양성이 모델 용량 경쟁으로 이어지지 않도록 설계되었습니다. 기존 소형 다언어 모델이 영어 중심 모델에 비해 성능이 낮았던 한계를 극복하고, 언어 간 용량 경쟁 우려를 해소했습니다.</p>
+  <p class="why">적은 리소스로도 다양한 언어를 효율적으로 처리하는 소형 LLM 개발의 가능성을 열어, 다국어 지원 애플리케이션 개발에 큰 도움이 될 것입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">범용 언어 모델은 대부분 영어로 학습됩니다. 우리가 검토한 오픈 모델 중 비영어권 사전 학습 데이터는 최대 12%에 불과합니다. 유럽 언어를 위해 구축된 모델은 훨씬 더 많은 데이터를 사용하지만, 동일한 크기의 범용 모델보다 훨씬 낮은 점수를 기록합니다. 일반적인 우려는 작은 모델에서 언어들이 용량 경쟁을 한다는 것입니다. 우리는 영어와 44개의 다른 언어로 된 6T 토큰으로 처음부터 학습된 모델인 Lara Mini base를 소개합니다. 이 44개의 언어는 유럽 연합의 24개 공식 언어를 모두 포함합니다. 학습이 진행됨에 따라 44개의 다른 언어가 영어보다 중요해집니다. 이러한 언어에 낮은 비용으로 충분한 용량을 제공하기 위해 Lara Mini base는 총 7.2B 및 활성 0.6B 매개변수를 가진 전문가 혼합(mixture of experts) 아키텍처를 사용합니다. 활성 매개변수 2B 이하의 오픈 기반 모델 중에서, 이는 표준 영어, 다국어, 수학 및 코드 벤치마크 전반에서 가장 높은 평균 점수를 달성하며, 4~6배 더 많은 토큰으로 학습된 모델보다 앞서 있습니다. 이 모델의 가장 큰 차이는 지원하는 언어의 다국어 벤치마크와 수학 벤치마크에서 나타납니다. 최대 128k 토큰의 컨텍스트를 지원합니다. 우리는 MoE 아키텍처가 언어 간의 용량 경쟁을 줄인다는 것을 발견했습니다. 양자화 없이 단일 GPU를 사용하는 단일 사용자에게는 평균 점수가 더 높은 어떤 모델보다 최소 1.8배 빠르게 텍스트를 생성합니다. 우리는 Lara Mini base의 가중치를 CC BY-NC-SA 4.0 라이선스 하에 공개합니다. 또한, 상식 추론 벤치마크 HellaSwag을 110개 언어 변형으로 더 높은 품질의 기계 번역한 T-HellaSwag을 공개할 예정입니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://www.perplexity.ai/hub/blog/perplexity-decider" target="_blank" rel="noopener">Perplexity Decider v1.3: 훈련, 평가 및 활용 사례</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-1">
+  <h2>연구·논문 <span class="cnt">87건</span></h2>
+  <article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17031v1" target="_blank" rel="noopener">당신의 비전 파운데이션 모델은 비밀리에 EEG 파운데이션 모델이다</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">수천 시간의 기록으로 사전 훈련된 뇌전도(EEG) 파운데이션 모델이 하위 작업에 잘 전이되지 않는 문제점을 지적하며, EEG 신호를 비전 트랜스포머가 읽을 수 있는 이미지로 렌더링하는 &#39;SeeEEG&#39; 방법을 제안합니다. 이 방법으로 훈련된 비전 파운데이션 모델이 특화된 EEG 모델보다 더 강력한 EEG 인코더임을 보여줍니다.</p>
+  <p class="why">EEG 데이터 해석에 혁신적인 접근 방식을 제시하여, 뇌 과학 및 의료 진단 분야에서 AI의 활용 가능성을 크게 확장합니다. 기존 모델의 한계를 넘어선 새로운 파운데이션 모델 활용법을 보여줍니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">뇌전도(EEG) 파운데이션 모델은 수천 시간의 녹음 데이터로 사전 훈련되지만, 고정된 특징은 다운스트림 작업으로 잘 전이되지 않으며, 이러한 전이는 더 큰 모델이나 더 많은 사전 훈련 데이터로도 일관되게 개선되지 않습니다. 우리는 EEG를 시각 트랜스포머가 읽을 수 있는 이미지로 렌더링하면 EEG를 한 번도 본 적이 없는 비전 파운데이션 모델이 이러한 전문 모델보다 더 강력한 고정 EEG 인코더가 된다는 것을 보여줍니다. 우리의 방법인 SeeEEG는 비전 백본을 고정하고 EEG가 어떻게 표시되는지만 학습합니다. 각 채널은 전용 패치 행을 차지하며 고정된 게인으로 파형으로 그리거나 주파수 범위가 패치 높이를 아우르는 스칼로그램으로 그려져, 작업 관련 패턴이 개별 토큰 내에 포함되도록 합니다. 이 디스플레이의 몽타주, 필터링 및 대비 매개변수는 표준 임상 몽타주에서 초기화되고, 고정된 백본을 통해 작업 손실과 함께 최적화되며, 이는 뷰당 최대 1,113개의 훈련 가능한 매개변수에 해당합니다. 우리는 SeeEEG를 7개의 EEG 파운데이션 모델과 8개의 임상, 수면, 정서 및 뇌-컴퓨터 인터페이스 데이터셋에서 비교했으며, 모든 인코더는 고정되고 동일한 판독 헤드와 페어링되었습니다. 고정된 DINOv3 ViT-B를 사용하여 SeeEEG는 8개의 모든 데이터셋에서 모든 EEG 파운데이션 모델보다 균형 정확도에서 우수하며, Cohen kappa 또는 AUROC에서 평균 랭크 1.3을 달성했습니다. 이는 가장 강력한 기준선인 REVE의 2.9와 비교됩니다. 학습된 디스플레이는 추가 최적화 없이 비디오 인코더 V-JEPA 2.1로 전이되며, V-JEPA 2.1은 8개 데이터셋 중 6개에서 두 가지 측정 항목 모두에서 모든 EEG 파운데이션 모델을 능가합니다. DINOv3를 무작위로 초기화된 ViT-B로 교체하면 점수가 평균 15.2점 낮아지므로, 렌더링된 EEG를 읽는 능력은 시각적 사전 훈련에서 비롯됩니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17309v1" target="_blank" rel="noopener">고전 에너지 모델, 반복 모델보다 1,000배 빠르게 추론 학습</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">고전 에너지 모델(Classical Energies)이 Sudoku-Extreme 및 Maze-Unique와 같은 간단한 추론 퍼즐에서 반복 모델(Looped Models)보다 1,000배 빠르게 추론을 학습할 수 있음을 보여줍니다. 이 모델은 안정성이 높고 훈련 속도가 빠르며, 적은 파라미터와 FLOPs로도 문제를 해결할 수 있습니다.</p>
+  <p class="why">AI 추론 모델의 효율성과 안정성을 혁신적으로 개선할 수 있는 새로운 접근 방식을 제시하여, 복잡한 문제 해결을 위한 AI 시스템 개발에 큰 영향을 미칠 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">반복 모델은 Sudoku-Extreme 및 Maze-Unique와 같은 간단한 추론 퍼즐에서 성공을 거두며 추론을 위한 탁월한 패러다임으로 부상했습니다. 그러나 이러한 모델은 불안정하고 학습 속도가 느리며 간단한 퍼즐을 해결하는 데 많은 매개변수와 FLOP를 사용합니다. 에너지에 대한 경사 하강법은 이러한 문제를 완화할 뿐만 아니라 내장된 조기 중단, 문제 난이도에 따라 조정되는 계산, 솔버를 통한 미분 없이 빠른 학습, 퍼즐의 제약 조건을 학습하는 해석 가능한 가중치 등 여러 장점을 제공합니다. 여기에서는 80년대 Hopfield &amp; Tank의 에너지 학습 버전을 CRAM이라고 부르며 이를 시연합니다. CRAM은 단일 GPU에서 42ms 및 132ms 학습 후 Sudoku-Extreme의 99.996%와 Maze-Unique 테스트 퍼즐의 100%를 해결하며, 이는 이러한 작업에서 반복 모델보다 최소 1,000배 빠릅니다. CRAM은 또한 Sudoku-Extreme에서 최소 282배 적은 추론 FLOP를 사용하여 가장 높은 정확도로 기준 반복 모델과 일치합니다. 우리의 작업은 두 가지를 시사합니다. 첫째, 에너지는 데이터로부터 추론을 학습하는 데 매우 유망한 방향입니다. 둘째, Sudoku 및 Maze와 같이 사소하게 해결 가능한 벤치마크를 사용하여 반복 추론 기술의 확장성을 테스트하는 것에 대한 주의입니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17220v1" target="_blank" rel="noopener">확장 가능한 대화형 평가: 두 에이전트 LLM 파이프라인을 활용한 채팅 기반 시험</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">구두 시험의 장점(추론 과정 확인, 모호한 답변에 대한 후속 질문)을 살리면서 확장성 문제를 해결하기 위해 LLM 기반의 대화형 평가 시스템을 제안합니다. 두 에이전트 아키텍처를 사용하여 학생들과 상호작용하며 논증 능력과 근거 제시 능력을 평가합니다.</p>
+  <p class="why">AI를 활용한 교육 및 평가 시스템의 혁신적인 발전 가능성을 보여주며, 대규모 교육 환경에서 학생들의 심층적인 이해도를 평가하는 효율적인 방법을 제공할 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">구술 시험은 (1) 학생들에게 답변에 대한 추론을 요구할 수 있고, (2) 상호 작용적 특성으로 인해 모호한 답변을 해결하기 위한 추가 질문이 가능하기 때문에 매력적입니다. 그러나 구술 시험은 확장성이 좋지 않습니다. 이 논문에서 우리는 학생들이 주장을 만들고 뒷받침하는 능력을 평가하기 위해 학생들과 상호 작용적인 텍스트 기반 대화를 진행하는 LLM 기반 시스템인 확장 가능한 대화형 평가를 제시합니다. 우리는 우려 사항을 분리하고 답변이 학생에게 유출될 가능성을 줄이기 위해 두 에이전트 아키텍처를 사용합니다. 인터뷰어는 학생과 직접 상호 작용하지만 학생에게 물을 다음 질문에 대한 지침만 받습니다. 숨겨진 평가자는 전체 활동의 목표를 알고, 루브릭을 사용하여 학생의 진행 상황을 추적하며, 인터뷰어에게 현재 질문에 대해 추가 질문을 할 시기 또는 다음 질문으로 넘어갈 시기에 대해 지시합니다. 이 시스템은 특정 능력 수준 또는 적대적 전술(예: 답변 추출기, 프롬프트 주입기, 자신감 있는 조작자)을 가진 LLM 페르소나를 사용하는 시뮬레이션된 학생 컬렉션을 사용하여 처음 테스트되었습니다. 이 평가의 새로운 요소는 정보를 가져서는 안 되는 페르소나가 LLM의 사전 학습에 존재하는 지식을 사용하는 것을 방지하기 위해 가상의 평가 주제를 사용해야 한다는 것이었습니다. 이 시스템은 또한 작고 선택적인 AI 리터러시 과정에서 형성적 및 총괄적 맥락 모두에서 배포되었습니다. 스크립트의 수동 및 사후 AI 검토를 통해 추가 질문 생성에 대한 개선 기회를 식별하고 채점이 학생(인터뷰어가 아닌)이 기여한 아이디어에만 가산되도록 보장했습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17161v1" target="_blank" rel="noopener">인용되었지만 사용되지 않음: 검색 증강 생성의 파라미터 출처</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">검색 증강 생성(RAG) 시스템에서 인용문이 출처를 잘못 표기하는 문제를 다룹니다. 이 연구는 반사실적 값 대체(counterfactual value substitution)를 통해 모델이 검색된 패시지가 아닌 내부 &#39;파라미터 메모리&#39;에서 정보를 가져오는 경우를 측정합니다. 모델 크기에 따라 1.2%에서 15.7%에 달하는 인용 가능한 주장이 파라미터 메모리에서 유래함을 발견했습니다.</p>
+  <p class="why">RAG 시스템의 투명성과 신뢰성 문제를 제기하며, AI 모델의 &#39;환각&#39; 현상과 잘못된 정보 출처 문제를 해결하기 위한 중요한 연구입니다. 이는 개발자들이 RAG 시스템의 신뢰성을 높이는 데 필수적인 고려사항을 제공합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">검색 증강 생성 시스템은 출처에 주장을 귀속시키기 위해 인용을 첨부합니다. 이러한 인용은 출처를 잘못 진술하는 경우가 많으며, 표준 검증으로는 이를 감지할 수 없습니다. 우리는 반사실적 값 대체를 통해 출처를 측정합니다. 즉, 검색된 구절의 사실이 거짓 변형으로 대체되고 모델이 다시 쿼리됩니다. 우리는 한 모델 제품군의 5가지 크기와 두 번째 비교 모델 제품군에 걸쳐 인용 가능한 주장의 1.2%에서 15.7%가 검색된 컨텍스트가 아닌 매개변수 메모리에서 파생된다는 것을 발견했습니다. 가장 보수적인 대체 거리에서 이 수치는 우리가 테스트한 두 모델에서 4.6%와 8.5%이며, 제품군 내에서 모델 크기가 커질수록 비율이 증가합니다. 우리는 또한 표준 접근 방식인 자연어 추론 검증이 인용된 구절로 제한될 때조차도 모델 전반에 걸쳐 우연과 구별할 수 없는 결과를 제공한다는 것을 발견했습니다. 우리는 그 원인이 구조적이라고 판단합니다. 즉, 메모리에서 답변하는 모델은 그 출력과 일치하는 인용을 선택합니다. 동일한 주장에 대한 10가지 귀속 방법을 비교했을 때, 컨텍스트 유무에 따른 모델 분포의 대비가 출처를 가장 잘 구분합니다. 그 신호에 따라 행동하는 것은 이러한 기본 비율에서 출처의 정직성을 개선하지 못합니다. 따라서 결과적인 감지기는 여전히 행동할 만큼 충분히 정확하지 않습니다. 그것은 모델이 무엇을 알았는지를 측정하며, 무엇을 사용했는지를 측정하지 못하며, 이들을 분리하는 것이 여전히 열린 문제입니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17128v1" target="_blank" rel="noopener">파라미터 효율적인 간결성 적응: 소규모 언어 모델의 간결한 임상 추론을 위한 미분 가능한 길이 제어</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">소규모 언어 모델(SLM)이 임상 의료 작업에서 필요한 것보다 훨씬 길게 답변하는 문제를 해결하기 위해, 파라미터 효율적인 미세 조정을 통해 미분 가능한 길이 제어 방식을 제안합니다. 이를 통해 SLM이 임상 추론 결과를 간결하게 생성하도록 유도합니다.</p>
+  <p class="why">의료 분야에서 SLM의 실용성을 크게 높이는 중요한 연구로, 의료진이 AI로부터 빠르고 간결하게 필요한 정보를 얻어 임상 의사결정을 지원하는 데 필수적인 기술입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">작은 언어 모델(SLM)은 대규모 독점 모델이 너무 비싼 임상 자연어 처리(NLP)를 배포하는 것을 가능하게 하며, 매개변수 효율적인 미세 조정은 일반 하드웨어에서 전문화될 수 있도록 합니다. 학습 후에도 한 가지 장애물이 남아 있습니다. 의료 작업에서 이 모델은 임상 질문이 요구하는 것보다 훨씬 더 길게 답변합니다. 시간이 촉박한 임상 의사 결정 지원 및 현장 진료 사용 환경에서는 근본적인 추론이 타당하더라도 이러한 장황함은 조치하기 어렵습니다. 기존 길이 제어 방법은 선호도 최적화, 보상 모델 또는 SLM을 매력적으로 만드는 접근성을 약화시키는 독점 교사에 의존합니다. 우리는 QLoRA 지도 미세 조정 목표에 단일 미분 가능한 간결성 항을 추가하는 Parameter-Efficient Conciseness Adaptation (PECA)을 소개합니다. 토큰 수는 이산적이고 미분 불가능하기 때문에 PECA는 대신 생성량이 토큰 예산을 초과하면 End-of-Sequence 확률을 높입니다. 이는 일반 학습 중에 최적화되는 부드러운 신호이며, 선호도 데이터, 보조 모델 및 단일 일반 GPU가 필요 없습니다. medical-o1-reasoning-SFT 코퍼스에서 미세 조정된 17억 매개변수 모델에서 PECA는 평균 응답 길이를 72.8% 줄이는 동시에 객관식 진단 정확도를 40.8%에서 44.0%로 향상시킵니다. 간결성 강도에 대한 탐색은 간결성과 진단 완전성을 균형 있게 맞추기 위한 해석 가능한 정확도-길이 경계를 추적합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17068v1" target="_blank" rel="noopener">프로그램 진화를 통한 효과적인 에이전트 메모리 설계 발견</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">프로그램 진화(Program Evolution)를 통해 에이전트 메모리 설계를 발견하고, 그 효과의 근간이 되는 선택 사항을 연구하는 접근 방식을 제시합니다. MAPE 프레임워크는 최소한의 시드로부터 전체 메모리 프로그램을 진화시키고, LoCoMo 및 LongMemEval 벤치마크에서 수동 설계된 기준선보다 최대 12%의 절대 정확도 향상을 달성했습니다.</p>
+  <p class="why">AI 에이전트의 핵심 구성 요소인 메모리 시스템을 자동으로 설계하고 최적화하는 방법을 제시하여, 더욱 지능적이고 효율적인 자율 에이전트 개발을 가속화할 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">프로그램 진화는 에이전트 메모리 설계를 발견하고 그 효과의 근간이 되는 선택 사항을 연구하는 유망한 접근 방식을 제공합니다. 우리는 표준화된 생명 주기 인터페이스와 반복적인 진단-제안 루프를 통해 최소한의 시드로부터 전체 메모리 프로그램을 진화시키는 프레임워크인 MAPE를 소개합니다. LoCoMo 및 LongMemEval에 대한 실험 결과, 수동으로 설계된 기준선 대비 최대 $12\%$의 절대 정확도 향상을 $35\%$의 서비스 비용으로 달성했으며, 추가 평가는 서비스 백본 및 벤치마크 전반에 걸친 전송을 지원합니다. 경험적 분석 및 제거 연구는 두 가지 반복적인 설계 패턴을 식별하고 검증합니다. 즉, 검색 가능한 증거로 원본 대화를 유지하면 추출된 메모리에서 생략된 세부 정보가 보존되는 반면, 쿼리 의도에 따라 검색된 증거를 구성하면 답변 모델이 이를 효과적으로 사용하는 데 도움이 됩니다. 이 구성 모듈을 기존 5가지 메모리 시스템에 이식하면 5가지 모두에서 정확도가 향상됩니다. 이러한 패턴 외에도 검색 목표는 계산이 어디로 가야 하는지 결정합니다. 정확도와 함께 서비스 비용을 최적화하면 LLM 기반 메모리 구성에서 쿼리 시 선택적 처리로 계산이 전환되는 동시에 경쟁력 있는 정확도를 유지합니다. 이러한 발견은 에이전트 메모리 설계에 대한 경험적 교훈을 제공합니다. 코드는 https://github.com/ash-ding/MAPE에서 확인할 수 있습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17052v1" target="_blank" rel="noopener">AI 동료 심사자 감사: 실제 과학 논문 벤치마크</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">LLM 기반 동료 심사가 이미 실규모로 사용되고 있지만, 평가가 제한적이라는 문제점을 지적하며 &#39;Skepthical&#39;이라는 다중 에이전트 심사자 벤치마크를 소개합니다. 이 벤치마크는 실제 논문에 4가지 유형의 오류를 주입하여 AI 심사자의 탐지율과 오탐률을 측정합니다.</p>
+  <p class="why">AI가 학술 연구 및 출판 분야에 미치는 영향을 평가하고, AI 기반 동료 심사 시스템의 신뢰성과 정확성을 검증하는 데 필수적인 도구를 제공합니다. 이는 AI의 윤리적 사용과 학술 진정성 유지에 중요합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">LLM 기반 동료 평가는 이제 실제 규모로 사용되고 있지만, 그 평가는 여전히 제한적입니다. 우리는 4가지 유형(일반적인 문제, 수학, 수치, 인용)과 3가지 심각도 수준으로 실제 논문에 객관적이고 국지적인 오류를 주입하고, 각 심사관의 오류 유형 및 심각도별 탐지율과 깨끗한 사본에 대한 오탐지율을 측정하는 벤치마크를 소개합니다. 또한 인용된 논문을 검색하여 인용 기반 주장을 확인하고, 컴퓨터 대수학으로 수학을 확인하며, 실행된 코드로 수치 주장을 확인하는 다중 에이전트 심사관 Skepthical을 제시합니다. 우리는 각각 15개의 최신 arXiv 사전 인쇄물로 구성된 두 가지 코퍼스(천체 물리학 하나, 머신러닝(ML) 하나)에 벤치마크를 적용하여 총 357개의 오류를 주입하고, 12개의 심사관 시스템을 평가합니다: 6개의 단일 LLM 심사관, 2개의 Claude Code 구성, 3개의 공개적으로 사용 가능한 심사관, 그리고 Skepthical입니다. 모델 선택이 탐지율에 가장 큰 영향을 미칩니다: 동일한 프롬프트가 주어졌을 때, 세 가지 최첨단 LLM은 두 코퍼스 모두에서 총 탐지율에서 약 50%p 차이를 보입니다. 도구와 스캐폴딩은 모델이 스스로 제공할 수 없는 것을 제공할 때 도움이 됩니다. 특히, 천체 물리학에서는 Claude Code가 단일 Claude 호출보다 수학 및 수치 탐지에서 개선되었으며, 강제적인 인용 검색은 Skepthical에게 모든 시스템 중 가장 높은 인용 오류 탐지율을 크게 안겨주었습니다. 그러나 이러한 인용 우위는 ML에서는 관찰되지 않았는데, ML에서는 모델이 문헌을 더 잘 아는 것으로 보이며 Skepthical의 인용 탐지율은 최고의 단일 LLM과 통계적으로 구별할 수 없습니다. 대부분의 시스템에서 오탐지율은 10% 미만이지만, 프롬프트, 모델 및 스캐폴딩에 따라 달라지며, 수학 플래그가 오탐지의 주요 원인입니다. 평가 파이프라인, 주입된 오류 및 판정 로그는 벤치마크로 공개됩니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17007v1" target="_blank" rel="noopener">Skill Adapter: 범용 스킬의 개인화된 수정 및 온라인 라우팅</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">LLM 에이전트가 외부 스킬을 사용하여 작업 절차를 재사용하지만, 특정 도구 선택, 운영 방식, 출력 요구 사항은 사용자마다 다릅니다. Skill Adapter는 이러한 범용 스킬을 개인화하고, 장기 작업에서 하위 목표, 가용 입력, 환경 상태 변화에 따라 현재 적용 가능한 스킬을 선택하고 후속 단계를 위한 후보를 준비하는 온라인 라우팅을 가능하게 합니다.</p>
+  <p class="why">AI 에이전트의 개인화 및 적응성을 크게 향상시켜, 다양한 사용자 및 환경에 맞춤화된 AI 서비스를 제공할 수 있도록 돕습니다. 이는 AI 에이전트의 실용성과 활용 범위를 확장하는 데 핵심적인 기술입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">대규모 언어 모델(LLM) 에이전트는 외부 기술을 사용하여 작업 절차와 도구 경험을 재활용합니다. 범용 기술은 공유된 실행 절차를 설명하는 반면, 특정 도구 선택, 운영 방식 및 출력 요구 사항은 사용자마다 다릅니다. 장기적인 작업에서는 실행이 진행됨에 따라 하위 목표, 사용 가능한 입력 및 환경 상태가 변경됩니다. 에이전트는 확장되는 기술 풀에서 현재 적용 가능한 기술을 선택하고 다음 단계를 위한 후보를 준비해야 합니다.
+우리는 범용 기술의 개인화된 수정 및 온라인 라우팅을 가능하게 하는 Skill Adapter를 제안합니다. 이 시스템은 사용자 요구 사항 및 실행 피드백에서 로컬 조정을 추출하여 범용 기술에 연결된 Adapter로 저장합니다. 라우팅 에이전트는 현재 하위 작업, 실행 진행 상황 및 환경 피드백을 기반으로 범용 기술 및 적용 가능한 Adapter를 선택하고, 메인 LLM이 필요할 때 읽을 수 있는 작업 수준 온라인 기술 라이브러리를 점진적으로 유지합니다. 시스템은 다음 노드의 후보를 미리 로드하고 실제 입력이 결정되면 적용 가능성을 다시 확인합니다. 강화 학습은 수정 이득 및 라우팅 결과를 각각 사용하여 두 가지 유형의 의사 결정을 최적화합니다.
+우리는 ALFWorld, WebShop 및 SkillsBench에서 Skill Adapter를 평가합니다. SkillRL과 비교하여 작업 성공률을 평균 11.43%p 향상시키고 세 가지 벤치마크 모두에서 평균 실행 시간을 단축합니다. Skill Adapter는 기술 풀이 1,000개로 증가해도 성능 우위를 유지합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.16984v1" target="_blank" rel="noopener">Vision Transformer의 밀집 특징 해상도를 높이는 ElasticDino 소개</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">ElasticDino는 Vision Transformer(ViT)의 밀집 예측 작업(예: 분할, 깊이 추정)에서 발생하는 해상도 제한 및 공간 아티팩트를 개선하는 경량 어댑터입니다. 이 기술은 입력 이미지의 세부 사항을 잘 포착하는 고해상도 특징 맵을 생성하며, 채널 전반의 아티팩트 일관성 관찰에서 핵심적인 아이디어를 얻었습니다.</p>
+  <p class="why">ViT 기반의 컴퓨터 비전 모델이 고해상도 이미지 처리에서 겪는 성능 저하 문제를 해결하여, 정밀한 시각 인식 애플리케이션 개발에 기여할 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Vision Transformer(ViT)는 분할(segmentation) 및 깊이 추정(depth estimation)과 같은 고밀도 예측(dense prediction) 작업을 포함하여 수많은 비전 작업의 기반 역할을 하지만, Self-attention의 2차 복잡도는 특징 해상도(feature resolution)를 심각하게 제한하고 공간적 아티팩트를 유발합니다. 본 연구에서는 입력 이미지의 미세한 디테일을 준수하는 고해상도 특징 맵을 생성하는 경량 어댑터인 ElasticDino를 소개합니다. 핵심 통찰력으로, 채널 전반에 걸쳐 아티팩트의 일관성을 관찰하고, 동시에 이를 해결하여 입력 이미지 구조와 일치시킵니다. 공간 변형(spatial deformations)을 기반으로 하는 슬림한 아키텍처를 사용하여 ElasticDino는 픽셀 정렬된 고해상도 특징 맵을 효율적으로 생성합니다. 변형을 활용하면 날카로운 의미론을 엄격하게 보존하여 대체 접근 방식에 내재된 평활화 편향(smoothness biases)을 피할 수 있습니다. Ground Truth의 부재로 인해, 우리는 픽셀 수준의 Semantic Segmentation 및 Depth Estimation을 선형 헤드와 함께 사용하여 일련의 다운스트림 고밀도 작업을 예측하고, 작업별 의미론이 모델로 유출되지 않도록 변형 프로세스를 안내합니다. 우리는 현재 방법보다 우수한 정확도를 다양한 인기 고밀도 작업 벤치마크에서 더 나은 계산 성능으로 입증합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.16934v1" target="_blank" rel="noopener">선형 순환을 활용한 시계열 파운데이션 모델 &#39;ci-proto&#39; 발표</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">ci-proto는 Mamba-3를 기반으로 하는 시계열 파운데이션 모델군으로, 시간 차원에서 청크별 병렬 계산을 지원하는 선형 상태 순환을 특징으로 합니다. 이 모델은 시간적 자기 주의의 이차적 비용과 비선형 순환 상태 전이의 병렬 계산 제약이라는 기존 시계열 모델의 효율성 문제를 해결합니다.</p>
+  <p class="why">시계열 데이터 처리의 계산 효율성을 크게 향상시켜, 대규모 시계열 데이터 기반의 예측 및 분석 모델 개발에 새로운 가능성을 제시합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">시계열 파운데이션 모델은 강력한 제로샷 예측 성능을 보여주었지만, 계산 효율성은 여전히 핵심적인 아키텍처 과제로 남아 있습니다. 시간적 Self-Attention은 시간 토큰 수에 따라 2차 비용을 발생시키고, 비선형 순환 상태 전이는 시간 차원을 따라 병렬 계산을 제한합니다. 우리는 Mamba-3를 기반으로 한 시계열 파운데이션 모델 제품군인 ci-proto를 소개합니다. ci-proto의 선형 상태 순환은 훈련 중 청크 단위의 시간 병렬 계산을 지원하며, 추론 비용은 시퀀스 길이에 따라 선형적으로 확장됩니다. 이 아키텍처는 순환 시간 처리와 교차 변량 Attention을 번갈아 사용하여, 과거 전용 및 미래를 아는 공변량을 포함한 다변량 확률적 예측을 지원합니다. fev-bench의 100가지 예측 작업 전반에서 ci-proto XL은 시계열 파운데이션 모델 중 새로운 최첨단 기록을 세웠습니다. 또한, 5가지 ci-proto 변형은 매개변수 수와 중간 런타임 모두에 대해 평균 스케일드 분위수 손실(mean scaled quantile loss) 및 평균 절대 스케일드 오차(mean absolute scaled error)에 대한 전체 파레토 프론티어(Pareto frontier)를 구성합니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://arxiv.org/abs/2611.17334v1" target="_blank" rel="noopener">멀티모달 비전 인코딩 분리: 최적의 시각 입력 인코딩 방법 탐색</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17332v1" target="_blank" rel="noopener">ArchSpace: LLM 아키텍처 연구 기록, 검토 및 참조를 위한 프레임워크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17329v1" target="_blank" rel="noopener">투자 목표 내재화: 신경-기호 강화 학습 기반 포트폴리오 할당</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17323v1" target="_blank" rel="noopener">AgentSSL: MLE 에이전트가 레이블 없는 데이터를 활용할 수 있는가?</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17320v1" target="_blank" rel="noopener">확산 언어 모델이 언제 재생성해야 하는지 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17316v1" target="_blank" rel="noopener">CoReMem: 잠재적 가치를 통한 연속 코딩 작업을 위한 비용 내재화 메모리</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17314v1" target="_blank" rel="noopener">신경망의 빠른 학습과 구성적 구조 연결: 메타 학습된 파라미터 공간의 가산적 비유 증거</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17313v1" target="_blank" rel="noopener">컨텍스트 귀속을 위한 스케칭 언어 모델</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17303v1" target="_blank" rel="noopener">논쟁을 통한 학습 가능성 이론 구축</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17298v1" target="_blank" rel="noopener">명시적 대응을 통한 일관된 비디오-투-비디오 번역</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17297v1" target="_blank" rel="noopener">LLM에서의 목표 인코딩</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17287v1" target="_blank" rel="noopener">편측 검증 가능한 보상을 위한 음성 전용 정책 최적화</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17267v1" target="_blank" rel="noopener">LiveGeo: 지속적으로 진화하는 환경에서 지리 에이전트 벤치마킹</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17246v1" target="_blank" rel="noopener">대규모 언어 모델로 양자 회로 파라미터 프로그래밍</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17241v1" target="_blank" rel="noopener">Ballad: 자동화된 발견을 위한 밴딧 기반 LLM 라우팅</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17239v1" target="_blank" rel="noopener">양측이 적응할 때: 대화형 LLM 시스템 평가의 도전 과제</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17230v1" target="_blank" rel="noopener">지식 증류의 두 가지 수학적 모델</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17212v1" target="_blank" rel="noopener">스파스 컨볼루션의 이론적 및 실증적 분석</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17191v1" target="_blank" rel="noopener">학습-망각 트레이드오프 완화를 위한 LoRA 어댑터의 용량 활용 극대화</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17186v1" target="_blank" rel="noopener">Cortex-FL: 에이전트 매개 협업을 통한 연합 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17169v1" target="_blank" rel="noopener">구문 분석은 되었지만 그럴듯하게 틀린 경우: 출력 형식이 소규모 모델 의미론적 구문 분석의 숨겨진 오류를 제어한다</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17167v1" target="_blank" rel="noopener">행위자, 심판자 또는 교사? 장기 에이전트의 의사결정 모델 이해</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17152v1" target="_blank" rel="noopener">AeroZoo: 공기역학 파운데이션 모델을 위한 잘 정의된 유동 문제 벤치마크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17141v1" target="_blank" rel="noopener">ISLA: 경계 주도 PDE를 위한 좌표 독립적, 측정 가중 트랜스포머</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17134v1" target="_blank" rel="noopener">제한된 임상 데이터에서 소아 ECMO를 위한 지원 제한 오프라인 정책 개선</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17129v1" target="_blank" rel="noopener">논문 신뢰 연합 학습: 실무자 및 에이전트 개발을 위한 과학적 검증</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17126v1" target="_blank" rel="noopener">STeP-C: 대규모 분산 광섬유 센싱을 위한 실시간 신경망 압축</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17116v1" target="_blank" rel="noopener">MMD 하의 벨만 수축: 통합 프레임워크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17110v1" target="_blank" rel="noopener">SALA: 의미론적으로 정렬된 잠재 행동으로 구체화된 파운데이션 모델의 듀얼 축 스케일링 가능</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17103v1" target="_blank" rel="noopener">데이터 없는 모델 병합을 위한 조인트 널-스페이스 투영</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17091v1" target="_blank" rel="noopener">확실히 안전한 언어 스테가노그래피를 위한 최적의 단일 기록 토큰화 모호성 해소</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17072v1" target="_blank" rel="noopener">LoRA 도메인 적응에서 추론 감독 및 능력 유지</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17059v1" target="_blank" rel="noopener">온라인 컨포멀 위험 제어를 위한 용량 제한 지연 피드백</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17053v1" target="_blank" rel="noopener">구조화된 EHR 예측 작업을 위한 사전 훈련된 언어 의미론 평가</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17042v1" target="_blank" rel="noopener">검증 가능한 AI를 위한 인프라: 증명 비용과 하드웨어의 도움</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17041v1" target="_blank" rel="noopener">위임에서 조정으로: 효율적인 다중 에이전트 심층 연구 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17035v1" target="_blank" rel="noopener">편집된 워터마크 텍스트의 유병률 경계: 파워 엔벨로프 및 보정 민감도</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17019v1" target="_blank" rel="noopener">시간적 정규화 학습: 공간 및 시간적으로 지역적인 자기 지도 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17015v1" target="_blank" rel="noopener">생물학자를 위한 AI: 에이전트 시스템 시대의 파운데이션 모델 지식 경계</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17005v1" target="_blank" rel="noopener">비선형 최단 시간 모델 예측 제어의 데이터 효율적인 실시간 신경 모방을 위한 통합 아키텍처</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16981v1" target="_blank" rel="noopener">언어 모델로 게임 규칙을 컴파일하여 새로운 게임에 적용하는 기술 연구</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16961v1" target="_blank" rel="noopener">하이브리드 의사결정 모델에서 &#39;생각&#39; 여부를 결정하는 새로운 패러다임 제안</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16937v1" target="_blank" rel="noopener">System-1 의사결정 모델에 대한 새로운 공격 프레임워크 &#39;S1-Evo&#39; 제안</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16935v1" target="_blank" rel="noopener">시뮬레이션 기반 범용 전염병 예측 모델 &#39;Mantis 2&#39; 개발</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16933v1" target="_blank" rel="noopener">모노 대화를 화자별 트랙으로 분리하는 모델 &#39;Kezek&#39; 개발</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16929v1" target="_blank" rel="noopener">AI 생성 텍스트 감지를 위한 &#39;Soft Prompts(SPADE)&#39; 기법 제안</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16919v1" target="_blank" rel="noopener">실시간 받아쓰기 ASR 시스템 오류 분류 체계 제안</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16913v1" target="_blank" rel="noopener">PCB 라우팅 인스턴스 생성을 위한 CADET 프레임워크 제안</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16903v1" target="_blank" rel="noopener">불확실성을 고려한 양자 머신러닝 프레임워크 제안</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16895v1" target="_blank" rel="noopener">LLM 후처리 학습에서 인간 데이터와 합성 데이터의 비용 효율성 비교 연구</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16890v1" target="_blank" rel="noopener">코드북 검색 기반의 다중 비트 LLM 워터마킹 기법 &#39;Look It Up&#39; 제안</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16886v1" target="_blank" rel="noopener">LLM 지원 Dafny 검증: 복잡한 알고리즘의 공식 검증 자동화</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16882v1" target="_blank" rel="noopener">사전 훈련 데이터 통계가 언어 모델의 개체 비교 학습 단계에 미치는 영향 연구</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16881v1" target="_blank" rel="noopener">단백질 언어 모델이 불변 리라벨링 하에 접촉 예측을 포착하지 못함</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16879v1" target="_blank" rel="noopener">AI-RAN에서 다중 에이전트 의사결정 체인을 설명하는 &#39;Context Graph&#39; 제안</a><span class="src">arXiv</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 22건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://huggingface.co/blog/allenai/xybench" target="_blank" rel="noopener">XYBench: 질문 뒤에 숨겨진 문제 해결 돕기</a><span class="src">Hugging Face Blog</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17308v1" target="_blank" rel="noopener">일반 보험 가격 책정 투명 모델의 구조적 안정성 정량화</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17302v1" target="_blank" rel="noopener">FLEX-LBP: 정확한 이진 추론을 통한 텍스처 분류용 지역 이진 패턴 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17235v1" target="_blank" rel="noopener">Al-Ghasali: 유한 상태 오토마타 및 LLM을 통한 이슬람 법학 판례 시뮬레이션 프레임워크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17228v1" target="_blank" rel="noopener">다항 시간 내 자기 선택 편향을 가진 선형 회귀</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17226v1" target="_blank" rel="noopener">협업 필터링을 위한 LightGCN의 셰프-영감 구조화된 스코어링 확장</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17225v1" target="_blank" rel="noopener">중간 전도도 대비 팬텀을 이용한 2D 및 3D 전기 임피던스 단층 촬영 데이터 아카이브</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17223v1" target="_blank" rel="noopener">다항식 코인을 가진 조합 베르누이 팩토리</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17214v1" target="_blank" rel="noopener">비지연 적대적 MDP에 피드백 지연 도입: Tabular 및 Linear AMDP에서 최적의 $\sqrt S$ 및 $\sqrt K$ 의존성</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17199v1" target="_blank" rel="noopener">MALNISI 주입 그래프 구성 및 가중 컨트라스트 손실 기반 HSI 비지도 표현 학습 GAT</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17196v1" target="_blank" rel="noopener">이산 변수 종이접기 설계에서 물리적으로 해석 가능한 분지 선택</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17145v1" target="_blank" rel="noopener">안구 운동 캐스케이드 및 다층 조합 융합을 이용한 선호도 탐지 강화</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17143v1" target="_blank" rel="noopener">로지스틱 회귀에 대한 포이즈닝 공격의 볼록 해석학적 재정식화</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17121v1" target="_blank" rel="noopener">고해상도 바인딩 모델 훈련에 필요한 2세대 DEL 크기 추정: 에너지 픽셀 접근법</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17109v1" target="_blank" rel="noopener">오라클 효율적인 적대적 문맥 밴딧에서 거의 최적의 후회</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17107v1" target="_blank" rel="noopener">허위 상관관계 해체: IRM이 텍스트 분류의 다양한 단축키를 처리하는 방법</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17105v1" target="_blank" rel="noopener">영장류 간 조직학에서 에탄올 음주 상태 예측: Few-Shot Vision-Language 모델링의 파라미터 효율적 미세 조정 개념 증명</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17101v1" target="_blank" rel="noopener">P300 탐지를 위한 필터뱅크 컨볼루션과 결합된 소형 xDAWN 유도 시공간 네트워크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17067v1" target="_blank" rel="noopener">용융염 고속로 열수력학을 위한 반복 솔버 결합 불변 신경망 에디 점성 종결</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17030v1" target="_blank" rel="noopener">유사하지만 중복되지 않음: 고세분화 토픽 모델을 위한 임베딩 게이트 정제</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17011v1" target="_blank" rel="noopener">무작위 탐색은 무작위이다</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16874v1" target="_blank" rel="noopener">확률론적 커널 모드 분해(sKMD) 연구: 정보, 불확실성 및 조건부 체제 추론</a><span class="src">arXiv</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-2">
+  <h2>실무 지식 <span class="cnt">2건</span></h2>
+  <article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17108v1" target="_blank" rel="noopener">LazyWeights: 온디맨드 디코딩 엣지 LLM</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">LazyWeights는 엣지 디바이스에서 LLM의 메모리 사용량과 속도를 최적화하는 기술입니다. GPTQ를 개선하여 행렬의 모든 정수 코드에 동일한 비트를 사용하는 대신, 코드를 압축하고 Huffman 코딩하여 온디맨드로 디코딩함으로써 DRAM과 L2 캐시 사이의 대역폭 문제를 해결합니다.</p>
+  <p class="why">엣지 디바이스에서 대규모 언어 모델을 효율적으로 실행할 수 있게 하여, 모바일, IoT, 임베디드 시스템 등 제한된 자원 환경에서 AI 애플리케이션의 성능과 접근성을 획기적으로 향상시킬 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">메모리는 엣지 디바이스가 어떤 LLM을 실행하고 얼마나 빠르게 실행할지 결정합니다: $4$ GB Jetson Nano에서는 용량, $8$ GB Jetson Orin Nano Super에서는 대역폭이 중요합니다. 배포된 형식(GPTQ, AWQ, $\texttt{llama.cpp}$의 K- 및 I-quants)은 행렬의 모든 정수 코드에 동일한 비트를 사용하지만, 이 코드들은 균일하지 않습니다. $\texttt{LazyWeights}$는 이러한 형식을 유지하되, 코드가 압축되도록 GPTQ를 튜닝하고, 이를 인터리브된 레인에서 무손실 Huffman 코딩하며, DRAM과 L2 사이의 작은 장치에서 필요에 따라 디코딩하여 GPU 커널은 변경 없이 실행되고 DRAM은 코딩된 바이트만 이동시킵니다. $1\%$ 및 $3.5\%$의 혼란도 예산에서, 코딩된 Phi-3-mini, Mistral-7B 및 SmolLM-1.7B는 최고의 $\texttt{llama.cpp}$ 형식보다 $5.7-31.4\%$ 더 작습니다. 비트 정확도 $0.21$ mm$^2$ ASIC 디코더 유닛($1$ GHz, $7$ nm)은 Orin의 토큰당 지연 시간과 에너지를 최대 $36\%$ 및 $38\%$ 감소시킵니다 (프롬프트-조회 추측 사용 시 $54\%$ 및 $44\%$). Nano에서 $\texttt{LazyWeights}$는 CPU $\texttt{llama.cpp}$보다 토큰당 $58-64\%$ 적은 시간과 $53-57\%$ 적은 에너지를 필요로 하며, 스트리밍 Mistral-7B를 가중치당 $3.89$비트에서 $6.6\times$ 더 빠르게 실행합니다. Huffman 디코더는 동일한 처리량에서 rANS 디코더보다 속도와 면적 면에서 우수합니다; ASIC 디코더 유닛은 Zynq UltraScale+ FPGA (AMD ZCU102)에서 비트 정확도로 실행됩니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place" target="_blank" rel="noopener">SimReady 에셋으로 로봇 픽앤플레이스 시뮬레이션 구축하기</a><span class="src">Hugging Face Blog</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-3">
+  <h2>도구·오픈소스 <span class="cnt">8건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://github.com/mjha-arya/DOC-foundry" target="_blank" rel="noopener">Doc-foundry: AI가 보안 탐지 규칙을 작성하고 검증</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17294v1" target="_blank" rel="noopener">Metal Sandbox: Apple Silicon GPU 코딩 에이전트를 위한 격리된 실행 및 명령 스케줄링</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16991v1" target="_blank" rel="noopener">AnalogLayoutWorld: 에이전트 아날로그 레이아웃 설계를 위한 오픈 벤치마크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16986v1" target="_blank" rel="noopener">강사 중심의 교육 시뮬레이션 제작을 돕는 AI 프레임워크 Primer 공개</a><span class="src">arXiv</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 4건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://github.com/lonewolf-im/lonewolf/releases/tag/v0.3.0" target="_blank" rel="noopener">Lonewolf 0.3 출시: Rust로 작성된 독립형 XMPP 서버</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://gyptazy.com/blog/freebsd-bhyve-live-migration-support-rfc/" target="_blank" rel="noopener">FreeBSD 및 bhyve에 라이브 마이그레이션 지원 예정</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Nov/13/datasette-cluster-map/" target="_blank" rel="noopener">Datasette-cluster-map 0.19 릴리스: Datasette 1.0 호환성 개선</a><span class="src">Simon Willison</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Nov/13/datasette-leaflet/" target="_blank" rel="noopener">Datasette-leaflet 0.3 릴리스: OpenStreetMap 레퍼러 정책 준수</a><span class="src">Simon Willison</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-4">
+  <h2>업계 동향 <span class="cnt">8건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/caseynewton.bsky.social/post/3n25uftpmec2r" target="_blank" rel="noopener">젠슨 황 사임과 &#39;무의미의 시대&#39; 종말에 대한 고찰</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    <span class="badge">♥ 109</span>
+    
+  </div>
+  <p class="summary">Casey Newton은 젠슨 황 엔비디아 CEO의 사임이 &#39;아무것도 중요하지 않은(lol nothing matters)&#39; 시대의 종말을 의미한다고 논평했습니다. 이는 AI 산업을 넘어 미국 비즈니스 및 정치 전반에 걸친 변화의 흐름을 상징하는 것으로 해석됩니다.</p>
+  <p class="why">엔비디아 CEO의 사임은 단순히 한 기업의 변화를 넘어, AI 산업의 거대한 흐름과 사회적 책임, 리더십의 역할에 대한 근본적인 질문을 던지는 사건입니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://latent.space/p/artcraft/" target="_blank" rel="noopener">ArtCraft, 포토샵 복제 후 &#34;모든 것을 재구축&#34;하겠다는 야심 표명</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">ArtCraft는 AI 시대를 맞아 매우 야심찬 프로젝트를 진행 중인 회사로, Rust로 스크래치부터 만든 포토샵 대체 도구 &#39;PhotoCraft&#39;를 시작으로 17개의 오픈소스 소프트웨어 도구를 출시했습니다. AI 엔지니어 코드 서밋에서 창업자이자 CEO인 브랜든 토마스는 AI 기반 오픈소스 도구로 &#34;모든 것을 재구축&#34;하겠다는 비전을 제시했습니다.</p>
+  <p class="why">AI 기반 오픈소스 생태계가 기존 소프트웨어를 빠르게 대체하고 혁신할 수 있음을 보여주며, AI 엔지니어링의 가능성을 확장하는 중요한 신호입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">샌프란시스코에서 열린 AI Engineer Code Summit 둘째 날의 주제는 AI를 활용한 야망 증대였습니다. 그리고 AI 시대에 ArtCraft만큼 야심 찬 프로젝트는 거의 없었습니다. 지금까지 이 신생 회사는 인기 있는 소프트웨어 도구 17가지의 오픈 소스 버전을 출시했으며, Rust로 처음부터 다시 만든 Photoshop 대안인 PhotoCraft부터 시작했습니다.
+
+오늘 아침 ArtCraft의 설립자이자 CEO인 Brandon Thomas가 AIE Code에서 AI 기반 오픈 소스에 대한 일종의 선언문을 발표했을 때, 회의실에 흥분이 가득했습니다. 그가 ArtCraft가 Adobe의 Acrobat을 PdfCraft라는 제품으로 복제했다고 언급했을 때, 청중으로부터 박수갈채를 받았습니다. 마무리하며 “인터넷 전체를 되찾자”와 “모든 것을 다시 만들자”는 그의 외침은 환호와 갈채로 이어졌습니다.
+
+Thomas는 인터넷의 초기 역사를 되새기면서 발표를 시작했습니다. 그의 견해로는 웹은 올바른 의도로 시작했지만, Web 2.0이 주류가 되면서 상황이 엉망이 되었습니다.
+
+1990년대 인터넷에 대해 그는 “완전히 개방된 수많은 채팅 애플리케이션이 있었습니다”라고 말했습니다. “그래서 IRC는 Discord와 같지만, 사용자가 실제로 소유하는 서버를 직접 구축할 수 있습니다. 규칙 없이 원하는 프로그램을 사용하여 자동화하고 쿼리할 수 있습니다.”
+
+그의 요점은 모든 것이 오픈 소스였다는 것이 아니라, 웹 사용자들이 자유롭게 무언가를 만들 수 있었다는 것입니다. 예를 들어, 궁극적으로 Adobe에 인수된 상업용 애니메이션 도구인 Flash를 통해 “아이들이 온갖 애니메이션을 만들었습니다.”
+
+Web 2.0이 더 우수한 광대역과 스마트폰과 함께 등장하면서, “모든 사람을 참여시켰습니다.” Thomas는 이것이 인터넷 소프트웨어의 범위를 넓혔지만, 선도적인 앱으로 자유롭게 구축할 수 있는 자유를 희생했다고 인정했습니다.
+
+그는 “분산되고 실험적인 초기 웹은 사라지기 시작했습니다”라고 말했습니다. “API는 우리에게서 빼앗겼고, 그 다음에는 대형 공급업체들에 의해 배포가 통제되는 것을 보기 시작했습니다.”
+
+특히 Adobe가 Thomas를 짜증 나게 한 것 같습니다. 그는 월간 요금제를 취소했을 때 예상치 못한 요금이 청구되었다고 설명했습니다.
+
+“한때 정말 유망하고 개방적이며 자유로웠던 웹이 이처럼 착취적이고 소유되며 임대료를 추구하는 세상으로 변했다는 것이 정말 답답합니다.”
+
+이것이 그가 “모든 것을 오픈 소스로 만들자”는 정신으로 ArtCraft를 시작하게 된 계기가 되었습니다. Thomas에 따르면, 심지어 반(反) AI 사람들도 이 메시지를 지지했습니다.
+
+PhotoCraft 외에도 그들은 Adobe 제품군의 다른 앱들을 복사하고, Figma를 복제했으며, WordCraft라는 Microsoft와 유사한 워드 프로세서를 만들었습니다. ArtCraft의 런처를 통해 배포되는 커뮤니티 주도 CAD 프로젝트인 SolidCraft와 같은 독립적인 앱들도 있습니다.
+
+Thomas는 이러한 AI 기반 애플리케이션이 100% 개방되어 있으며, “데스크톱 앱뿐만 아니라 실제 인프라도 마찬가지”라고 다시 강조했습니다.
+
+PhotoCraft: 개발 프로세스
+
+ArtCraft는 익숙한 도구를 다시 작성하는 것부터 시작합니다. Thomas의 장기적인 비전은 사용자(예: 이전에 Photoshop을 사용했던 아티스트)가 자신의 워크플로우에 맞게 소프트웨어를 조정하는 것입니다.
+
+그가 설명했듯이, 그들은 “Web 2.0 동안 모든 것이 소유되고 통합되며 통제되었던 것을 되돌리고, 사람들에게 다시 그들의 애플리케이션을 돌려주기를” 원합니다.
+
+AI가 그것을 달성하기 위한 수단이라고 그는 말했습니다.
+
+하지만 GIMP와 같은 Photoshop의 오픈 소스 대안이 이미 있지 않나요?
+
+Thomas는 발표 중에 “GIMP는 아티스트들이 실제로 사용하지 않습니다”라고 말했습니다. “우리는 아티스트들이 우리가 제공한 소프트웨어 위에 자신만의 워크플로우를 코딩하는 것을 실제로 관찰했습니다.”
+
+PhotoCraft를 만들기 시작하기 위해 팀은 AI 모델에 Photoshop의 도구, 데이터 구조 및 파일 가져오기 기능을 자세히 설명하는 프롬프트를 제공했습니다. 그 후, 그들은 “애플리케이션을 구축하자고 말하는 크고 큰 프롬프트를 만들었습니다.”
+
+그 과정의 일부로, 그들은 모든 것을 MCP 및 CLI 호환으로 만들었습니다.
+
+Thomas는 24시간 이내에 “Photoshop이 무엇인지에 대한 꽤 좋은 근사치를 보고 있었고, 그것은 우리를 정말 놀라게 했습니다”라고 말했습니다.
+
+PhotoCraft 인터페이스; ArtCraft 웹사이트 경유
+
+Thomas는 PhotoCraft가 “아직 100% 동등한 수준은 아니다”라고 언급했습니다. 그는 60%를 조금 넘었다고 말했지만, 팀은 가능한 한 100%에 가깝게 도달하기 위한 내부 목표를 설정했습니다. (이 프로젝트의 GitHub는 기능 범위에서 약 76%, 전문가 준비도에서 약 46%의 동등성을 주장합니다.)
+
+“지금 당장은 Adobe를 사용하는 모든 아티스트의 근육 기억을 채우고 싶습니다. 그래서 우리는 Adobe의 인터페이스와 ‘룩앤필’을 직접적으로 따르고 있습니다.”
+
+하지만 ArtCraft가 그것을 달성한 후에는 “더 에이전트적인 새로운 인터페이스를 가진 새로운 앱들을 만들 계획”입니다.
+
+큰 반응
+
+Thomas는 특히 PhotoCraft가 받은 관심의 양에 놀랐다고 말했습니다. 뉴욕 타임즈의 인터뷰 요청부터 오픈 소스 커뮤니티가 약 4,000명의 개발자로 불어나는 등 다양했습니다.
+
+“무슨 일이 일어났는지 아직도 감당하기 힘듭니다. 사람들의 신경을 건드렸습니다. 그들은 Adobe와 다른 기술 회사들에 의해 일종의 피해를 입었다고 느꼈습니다. 그리고 우리가 만든 것이 그들에게 정말 공감을 얻었습니다.”
+
+발표 후 Thomas는 AIE Code 참석자들에게 둘러싸였습니다.
+
+ArtCraft 앱은 하루에 약 170만 건의 속도로 다운로드되고 있으며, Thomas는 이 속도가 계속 가속화되고 있다고 말했습니다.
+
+17개의 공식 앱 외에도 커뮤니티에서 약 300개가 개발 중이라고 그는 덧붙였습니다.
+
+Rust가 핵심이지만 기술적 어려움도 있었습니다.
+
+AI 기술 외에 Thomas는 Rust가 앱의 성능을 높이는 데 중요한 부분이었다고 말했습니다. 예를 들어 PhotoCraft가 Photoshop보다 10배 더 빠르게 열린다고 주장했습니다.
+
+그는 “Rust는 이 제품의 성공에 필수적이었을 것입니다”라고 말했습니다. “사람들이 이전에 Electron으로 하는 것을 보았지만, 고품질의 창의적인 앱에는 정말 네이티브한 것이 필요합니다.”
+
+Rust 전문가가 아닌 엔지니어들에게 Thomas는 좋은 소식을 전했습니다.
+
+“오늘날 엔지니어로서 Rust를 사용하기 시작하려면 Rust를 알아야 할까요? 절대 아닙니다. [...] 당신의 에이전트들이 잘 구동할 것입니다.”
+
+그러나 Thomas는 모든 것이 순조롭게 진행된 것은 아니라고 인정했습니다.
+
+“우리는 여러 가지 어려움에 부딪혔습니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://openai.com/business/customer-stories/shield" target="_blank" rel="noopener">Shield, OpenAI 활용하여 IT 기술자의 레거시 시스템 업무 인계 자동화 지원</a><span class="src">OpenAI News</span></li>
+  
+  <li><a href="https://text.npr.org/nx-s1-6029408" target="_blank" rel="noopener">구글이 AI 없는 학교에서 검색을 차단하는 이유: 몇 가지 이론</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://www.economist.com/leaders/2026/11/12/why-you-should-expect-an-ai-crash" target="_blank" rel="noopener">왜 AI 크래시를 예상해야 하는가</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.17098v1" target="_blank" rel="noopener">AI 데이터 센터의 에너지 비용: 전력 대비 속도 우위 분석</a><span class="src">arXiv</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 2건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://atg.science/careers" target="_blank" rel="noopener">Autonomous (YC F25)가 자산 관리 AI 에이전트 개발 MTS 채용 중</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://status.claude.com/incidents/nn11wk485zfn" target="_blank" rel="noopener">Claude.ai, Claude Code 및 platform.claude.com에서 오류 증가</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-5">
+  <h2>정책·안전 <span class="cnt">5건</span></h2>
+  <article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17115v1" target="_blank" rel="noopener">CapLite: 모델이 작성한 보안 아티팩트 없이 소규모 언어 모델 에이전트의 프롬프트 주입 방어</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">CapLite는 소규모 언어 모델(SLM) 에이전트에서 모델이 직접 보안 아티팩트(예: 프로그램, 권한 정책)를 작성하지 않고도 프롬프트 주입 공격을 방어하는 기법입니다. 기존 방어 기법들이 SLM에게 이러한 아티팩트 작성을 신뢰할 수 없다는 문제점을 해결합니다.</p>
+  <p class="why">SLM 기반 에이전트의 보안 취약점인 프롬프트 주입 공격에 대한 효과적인 방어책을 제시하여, 실제 환경에서 SLM 에이전트를 안전하게 배포하고 활용하는 데 필수적인 기술입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">CaMeL, Progent, IPIGuard, DRIFT와 같은 프롬프트 주입에 대한 시행 방어는 에이전트의 자체 모델에게 보안 아티팩트(프로그램, 권한 정책, 의존성 그래프 또는 제약 목록)를 작성하도록 요청하고 코드가 이를 시행합니다. 우리는 작은 언어 모델(SLM) 에이전트가 이러한 아티팩트를 작성하는 것을 신뢰할 수 있는지 묻습니다. 15개의 공개 가중치 모델(그중 13개는 1.7B에서 12B 매개변수)에 걸쳐 신뢰할 수 없습니다. 에이전트 모델이 작성한 정책, 그래프 및 제약 조건은 14개(Progent), 13개(IPIGuard) 및 11개(DRIFT) 모델에 대한 공격을 허용하며, CaMeL의 프로그램은 최대 68%의 에피소드에서 실행되지 않습니다. 우리는 CapLite를 제시합니다. CapLite는 도구 스키마에서 정책을 파생하고, 도구 결과를 읽기 전에 쓰기 호출을 커밋하며, 영향을 미치는 대상이나 대상을 결정하는 모든 인수가 사용자 요청에 명시된 경우에만 쓰기를 허용합니다. 이는 쓰기 무결성을 보장합니다. 주입된 텍스트는 쓰기를 추가할 수 없으며, 사용자가 명시하지 않은 수신자, 금액, 객체 또는 대상으로 쓰기가 전달되지 않습니다. 공격받은 AgentDojo 에피소드 13,935개 중 공격이 성공한 사례는 없습니다. CapLite는 다른 모든 시행 방어 및 방어되지 않은 에이전트보다 적은 토큰으로 CaMeL과 유사한 공격 시 유용성(29.0% vs. 27.2%)에 도달합니다. 에피소드당 17.1k 토큰으로 CaMeL의 18%에 해당하며, 모든 시행 방어 중에서 토큰당 유용성이 가장 높습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.17114v1" target="_blank" rel="noopener">자율 AI를 위한 제도 설계</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">자율 AI 에이전트가 영구적인 개체군에서 상호작용함에 따라, 그들의 집단적 능력과 정렬은 개별 모델뿐만 아니라 상호작용을 지배하는 제도에 달려 있음을 주장합니다. 이 연구는 기관 정치 경제학, 사회 인식론, 조직 이론을 바탕으로 자율 AI를 위한 7가지 제도 설계 원칙을 개발합니다.</p>
+  <p class="why">AI가 사회에 미치는 영향이 커짐에 따라, 개별 AI 모델의 기술적 발전뿐만 아니라 AI 시스템이 상호작용하는 사회적, 윤리적, 제도적 프레임워크를 설계하는 것이 중요함을 강조합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">자율 AI 에이전트가 영구적인 개체군에서 상호 작용하는 사례가 증가함에 따라, 그들의 집단적 능력과 정렬은 개별 모델뿐만 아니라 상호 작용을 통제하는 제도에도 달려 있습니다. 그러나 AI 연구는 주로 개별 에이전트에 초점을 맞추었습니다. 이 관점에서 우리는 제도 설계가 AI 연구의 별개의 초점이 되어야 한다고 주장합니다. 제도 정치 경제학, 사회 인식론 및 조직 이론을 바탕으로 우리는 협력을 유지하고, 신뢰할 수 있는 집단적 판단을 가능하게 하며, 정당한 인간 목적에 대한 책임을 유지하는 AI 제도를 설계하기 위한 7가지 원칙을 개발합니다. 이 원칙들은 상호 기여, 책임 있는 권위, 기능적 차별화, 인식론적 다원주의, 비판 및 수정, 인간 지시, 제도적 적응을 다룹니다. 우리는 인간의 능력과 제약에 따라 발전한 제도를 자율 연구가 시험하는 기계 과학을 통해 그 적용을 설명합니다. 그런 다음 우리는 AI 에이전트의 일치된 개체군이 대체 제도적 배열하에서 작동하는 실험적 연구 프로그램을 제안하고, MoltJournal이라는 자율 연구 에이전트를 위한 API-first 저널을 그러한 제도가 어떻게 프로그래밍 가능하고 관찰 가능하게 만들 수 있는지에 대한 예시로 설명합니다. 종합적으로 이러한 기여는 제도 설계를 자율 에이전트의 정렬뿐만 아니라 제도가 어떻게 그들을 유능하고 신뢰할 수 있으며 책임 있는 집단으로 변화시킬 수 있는지를 이해하는 데 관련된 연구 의제로 확립합니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://www.slopmanifesto.com/" target="_blank" rel="noopener">AI 슬롭 반대: 성명서 발표</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://www.theatlantic.com/books/2026/11/ai-literary-scams-amazon/689391/" target="_blank" rel="noopener">AI가 작가와 독자 간의 신뢰를 파괴하고 있다</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/natolambert.bsky.social/post/3n27lz2ew7c2g" target="_blank" rel="noopener">AI 커뮤니티에서 모델 사양(Model Specs)의 중요성 부각</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">18건</span></h2>
+  <article class="item">
+  <h3><a href="https://www.youtube.com/watch?v=IRK8h67ol7Q" target="_blank" rel="noopener">조나단 블로우: AI가 코딩을 해결했다면 왜 내 소프트웨어는 그대로인가?</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">커뮤니티 화제</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 147</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50484658" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">유명 게임 개발자 조나단 블로우(Jonathan Blow)가 &#34;AI가 코딩을 해결했다면 왜 내 소프트웨어는 여전히 그대로인가?&#34;라는 주제로 강연했습니다. 이는 AI의 코딩 능력에 대한 과장된 기대와 실제 개발 현장의 괴리를 지적합니다.</p>
+  <p class="why">AI가 코딩 작업을 보조하는 도구로서의 역할을 강조하며, 개발자들이 AI를 맹목적으로 신뢰하기보다 비판적인 시각으로 접근하고 실제 문제 해결에 AI를 어떻게 통합할지 고민해야 함을 일깨웁니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3n27qnrq3b222" target="_blank" rel="noopener">생성 AI 스튜디오에서 학생들의 놀라운 창의적 성과 목격</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">커뮤니티 화제</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 90</span>
+    
+  </div>
+  <p class="summary">Ethan Mollick은 펜실베이니아 대학 생성 AI 스튜디오의 학생 발표를 보고, AI를 활용하여 개인이 달성하는 창의적 성과가 3년 전 팀 프로젝트의 10배에 달한다고 언급하며 놀라움을 표했습니다.</p>
+  <p class="why">생성 AI가 개인의 창의적 역량을 폭발적으로 증폭시키고 있음을 보여주며, 개발자들이 AI를 활용하여 혁신적인 결과물을 만들 수 있는 잠재력을 확인시켜 줍니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://scottjg.com/posts/2026-11-11-reverse-engineering-my-coway-air-purifier-to-ditch-the-cloud/" target="_blank" rel="noopener">클라우드 없이 코웨이 공기청정기 제어: 역설계 성공기</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/ai2.bsky.social/post/3n27jcjmwrv2e" target="_blank" rel="noopener">LLM의 &#39;XY 문제&#39; 해결 능력 평가 벤치마크 XYBench, EMNLP 2026 최우수 자원상 수상</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n262jogqf22t" target="_blank" rel="noopener">AI 생성 ICLR 논문 및 리뷰에 대한 우려</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 13건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://hayzam.com/blog/03-lying-to-zeds-remote-editor/" target="_blank" rel="noopener">Zed 원격 서버를 FreeBSD에서 실행하기 위해 &#39;거짓말&#39; 사용</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://alichraghi.github.io/blog/how-not-to-build-a-music-player/" target="_blank" rel="noopener">음악 플레이어를 만들지 않는 방법</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n27fmsmpr22s" target="_blank" rel="noopener">기계처럼 들리지 않기 위해 인간이 발명할 언어 형태에 대한 고찰</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n275v3vsq22t" target="_blank" rel="noopener">LLM이 풀 수 없을 거라 생각했던 문제도 쉽게 해결하는 것에 대한 반응</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n264db2gbk2c" target="_blank" rel="noopener">인간의 대체 불가능성에 대한 회의적 시각</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://twitter.com/flightradar24/status/2121347654714077605" target="_blank" rel="noopener">미국 내 모든 공항 운항이 중단됨</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://orcasairband.com/" target="_blank" rel="noopener">빅토리아, 캐나다 공항도 운항 중단: 실시간 항공 주파수 송출</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://geohot.github.io//blog/jekyll/update/2026/11/13/first-strike.html" target="_blank" rel="noopener">First Strike</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/emollick.bsky.social/post/3n27sqcs6ds22" target="_blank" rel="noopener">AI 모델 이름의 혼란스러움에 대한 유머 섞인 비판</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n27zh2hwwk2t" target="_blank" rel="noopener">AI 시대의 인간 저널리스트 역할에 대한 질문</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n25v623zyk2w" target="_blank" rel="noopener">이상주의에서 실용주의로 전환의 어려움</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n25t4vax6k2x" target="_blank" rel="noopener">Beach Bunny의 새 싱글에 대한 긍정적 평가</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n26w6ortk22a" target="_blank" rel="noopener">마이크로소프트의 인터넷 트래픽에 대한 비유적 표현</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+
+
+
+
+<section>
+  <h2>수집된 소식 <span class="cnt">요약 없음 · 4건</span></h2>
+  <details class="more" >
+    <summary>목록 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://arxiv.org/abs/2611.17162v1" target="_blank" rel="noopener">Symmetry in Time: A Representation Theory of Linear Recurrent Memory</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16968v1" target="_blank" rel="noopener">Morphological Simplification in Alzheimer&#39;s Disease: Computational Analysis and Identification From Connected Speech</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16928v1" target="_blank" rel="noopener">STEALTH: Steganographic Text Encoding Agnostic to Low-Level Tensor Hardware</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.16905v1" target="_blank" rel="noopener">Factored One-sided Adam-Moment for Practical and Scalable SOAP</a><span class="src">arXiv</span></li>
+  
+</ul>
+  </details>
+</section>
+
+
+
+
+<footer>
+  
+  소스 13/19 성공 · 생성 2026-11-14 09:44 KST
+  <ul>
+    
+    <li class="ok">✓ OpenAI News (50건)</li>
+    
+    <li class="ok">✓ Google DeepMind (50건)</li>
+    
+    <li class="ok">✓ Google AI (20건)</li>
+    
+    <li class="ok">✓ Anthropic News (50건)</li>
+    
+    <li class="ok">✓ Hugging Face Blog (50건)</li>
+    
+    <li class="ok">✓ Hacker News (23건)</li>
+    
+    <li class="fail">✗ Reddit r/LocalLLaMA (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FLocalLLaMA%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.m</li>
+    
+    <li class="fail">✗ Reddit r/MachineLearning (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FMachineLearning%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://develo</li>
+    
+    <li class="fail">✗ Reddit r/singularity (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsingularity%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.</li>
+    
+    <li class="fail">✗ Reddit r/ClaudeAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FClaudeAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.moz</li>
+    
+    <li class="fail">✗ Reddit r/OpenAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FOpenAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.mozil</li>
+    
+    <li class="ok">✓ arXiv (100건)</li>
+    
+    <li class="ok">✓ HF Daily Papers (50건)</li>
+    
+    <li class="ok">✓ Simon Willison (30건)</li>
+    
+    <li class="ok">✓ Interconnects (20건)</li>
+    
+    <li class="fail">✗ Import AI (0건) — Client error &#39;403 Forbidden&#39; for url &#39;https://importai.substack.com/feed&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</li>
+    
+    <li class="ok">✓ Latent Space (20건)</li>
+    
+    <li class="ok">✓ AI News (smol.ai) (31건)</li>
+    
+    <li class="ok">✓ Bluesky (316건)</li>
+    
+  </ul>
+</footer>
+</div>
+</body>
+</html>
