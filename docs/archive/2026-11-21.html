@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 2026-11-21 (토)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:36px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">2026-11-21 (토) · 오늘 28건</div>
+  <nav class="archive">
+    <a href="../index.html">최신</a>
+    <a href="2026-11-21.html">11-21</a>
+    <a href="2026-11-20.html">11-20</a>
+    <a href="2026-11-19.html">11-19</a>
+    <a href="2026-11-18.html">11-18</a>
+    <a href="2026-11-17.html">11-17</a>
+    <a href="2026-11-16.html">11-16</a>
+    <a href="2026-11-15.html">11-15</a>
+    <a href="2026-11-14.html">11-14</a>
+    <a href="2026-11-13.html">11-13</a>
+    <a href="2026-11-12.html">11-12</a>
+    <a href="2026-11-11.html">11-11</a>
+    <a href="2026-11-10.html">11-10</a>
+    <a href="2026-11-09.html">11-09</a>
+    <a href="2026-11-08.html">11-08</a>
+    <a href="index.html">전체 ›</a>
+  </nav>
+  
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘은 AI가 난제로 여겨지던 수학 분야에서 획기적인 발전을 이루었다는 소식이 최전선을 뜨겁게 달구었습니다. 특히 AI가 리만 가설 증명에 기여했다는 주장이 여러 출처에서 제기되며, AI의 연구 능력에 대한 기대감이 한껏 높아지고 있습니다. 또한 로컬 환경에서 강력한 성능을 제공하는 &#39;Inkling 2 Mini&#39; 모델 출시와 오픈소스 &#39;Devin&#39; 대체재 &#39;OpenComputer&#39; 공개 등 실용적인 도구와 모델 업데이트 소식도 눈에 띄며, AI가 단순한 난제 해결을 넘어 개발자들의 실제 작업 환경에도 깊숙이 스며들고 있음을 보여주었습니다.</div>
+  
+  
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    <a href="#cat-0">모델 릴리스 <b>2</b></a>
+    <a href="#cat-1">연구·논문 <b>7</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>2</b></a>
+    <a href="#cat-4">업계 동향 <b>7</b></a>
+    <a href="#cat-5">정책·안전 <b>1</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>3</b></a>
+  </nav>
+  
+  
+</header>
+
+
+
+
+
+
+<section class="headline" id="headlines">
+  <h2>오늘의 헤드라인</h2>
+  <article class="item">
+  <h3><a href="https://architectlabs.com/blog/frostbite" target="_blank" rel="noopener">AI가 설계하고 검증한 새로운 CPU 아키텍처 &#39;Frostbite&#39; 발견</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 5</span>
+    <span class="badge">▲ 618</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50572503" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">AI가 완전히 새로운 CPU 아키텍처인 &#39;Frostbite&#39;를 설계하고 검증했다는 소식입니다. 이는 AI가 하드웨어 설계 분야에서도 혁신적인 역할을 할 수 있음을 시사하며, 618점의 높은 추천을 받았습니다.</p>
+  <p class="why">AI가 복잡한 하드웨어 설계와 같은 고차원적인 엔지니어링 문제를 해결할 수 있음을 보여주는 획기적인 사례로, 미래 기술 개발의 패러다임을 바꿀 잠재력을 가집니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">이전 게시물인 Redwood에서 우리는 아키텍처가 주어졌을 때 AI 시스템이 기록적인 시간 안에 추론 가속기를 구현, 검증 및 배포할 수 있음을 보여주었습니다. 그러나 다른 과학 분야와 유사하게, 우리는 AI 시스템이 올바른 자유와 가드레일이 주어진다면 소프트웨어와 하드웨어를 함께 공동 설계하여 스택 전반에 걸쳐 최적화를 수행하고, 이전에는 접근할 수 없었던 광범위한 디자인 공간을 열 수 있다고 믿습니다. 우리는 “AI 시스템과 도구가 인간이 만든 설계를 급진적으로 능가하는 새로운 하드웨어 발견으로 이어질 수 있을까?”라는 질문에 답하기 위해 나섰습니다.
+
+오늘, 우리는 밑바닥부터 구축된 새로운 명령어 세트를 가진 범용 CPU인 Frostbite를 소개합니다. Frostbite는 상호작용 망(interaction nets)의 속성, 즉 모든 단계가 로컬이고, 모든 의존성이 명시적이며, 모든 값이 정확히 하나의 소유자를 가진다는 점을 활용하여 오랫동안 정체되어 있던 CPU 성능에서 단계적 기능 향상을 달성합니다. 초기 선택된 25가지 워크로드(최종 평가까지 보류된 15가지 포함) 세트에서 우리는 최신 실리콘 검증된 슈퍼스칼라(이중 발행, 순서대로 실행) CPU 코어와 비교하여 와트당 성능에서 4.59배의 이득을 달성했습니다.
+
+우리의 AI 시스템은 컴파일러, ISA, 아키텍처, 마이크로아키텍처, RTL, 검증 및 최종 GDS를 자율적으로 반복했습니다. 발견된 아키텍처 프리미티브를 자세히 살펴보았을 때, 우리는 기존에는 설계하기 어려웠을 새로운 하드웨어 구현과 런타임 기능을 발견하고 놀랐습니다. CPU 코어 개선의 정체에도 불구하고, 우리는 워크로드 개념을 최종 GDS까지 가져가서 perf/W 및 perf/area의 단계적 증가를 입증할 수 있었습니다. 우리는 AI 시스템의 역량이 향상됨에 따라 데이터센터급 CPU, AI 가속기, 네트워킹 스위치 및 NIC에 이르기까지 오늘날 우리가 알고 있는 모든 종류의 칩이 유사한 근본적인 아키텍처 변화를 겪을 것이라고 믿습니다.
+
+상호작용 망(interaction nets) 소개
+
+주류 프로그래밍 언어는 범용 CPU용으로 컴파일될 때 프로그램의 각 부분 간의 의존성을 숨깁니다. 모든 코드 조각은 공유되고 변경 가능한 상태를 통해 모든 변수를 읽거나 쓸 수 있으므로, 현대 CPU 하드웨어는 최악의 경우를 가정하고 런타임에 어떤 명령어가 실제로 서로 의존하는지 다시 찾아냅니다. 또한, 단일 코어 CPU 성능은 2000년대 초반 이후로 대부분 정체되어 Intel Xeon, AMD Zen, NVIDIA Vera와 같은 대규모 멀티코어 CPU로 사람들이 이동하게 되었습니다. 이는 CPU가 모든 코어가 동일한 메모리를 본다는 환상을 유지하도록 강제하며, 이 환상을 일관되고 성능 좋게 유지하려면 영역과 전력을 소비하고 확장성이 떨어지는 깊은 캐시 계층 및 일관성 프로토콜이 필요합니다.
+
+상호작용 망(Interaction nets)1은 다른 접근 방식을 취합니다. 프로그램은 노드들의 그래프이며, 계산은 포트를 통해 연결된 노드 쌍을 다시 작성함으로써 이루어집니다. 모든 다시 쓰기는 그래프의 작고 지역적인 부분만 건드립니다. 각 노드에는 정확히 하나의 주 포트가 있으므로, 이러한 활성 쌍 중 두 개가 겹치는 경우는 없으며, 따라서 어떤 순서로든, 또는 한꺼번에 다시 작성될 수 있으며 결과는 항상 동일합니다. 상호작용 망은 또한 선형적입니다. 모든 값은 정확히 한 번만 사용되므로, 하드웨어가 보호해야 할 공유 변경 가능 상태가 없습니다. Vine2와 같은 언어는 평범해 보이는 프로그램을 직접 상호작용 망으로 컴파일합니다. 상호작용 망에 대한 훌륭한 소개와 하드웨어에 적합한 이유에 대해서는 Tendrils의 “On Interaction Nets.” 3를 강력히 추천합니다.
+
+그림 1은 작은 탐색 문제, 즉 5x5 보드에 다섯 명의 퀸을 배치하는 문제에서 차이를 보여줍니다. 순차 프로그램은 한 번에 하나의 후보를 방문합니다. 상호작용 망은 모든 독립적인 작업을 노출합니다. 평균적으로 매 단계마다 약 12개의 상호작용이 실행될 준비가 되어 있습니다. 이 병렬성을 얻기 위해 프로그램이 다시 작성된 부분은 없으며, 의존성은 단순히 버려지지 않았습니다.
+
+이론적으로 이것은 두 가지 큰 장점을 가져야 합니다. 첫째는 무료 멀티스레딩입니다. 다양한 수준의 거친 및 세밀한 병렬성 대신, 병렬성은 프로그램에서 직접 나옵니다. 스레드, 잠금, 경쟁 조건이 없으며, 기존 코어가 이를 다시 파내기 위해 사용하는 비순차 실행(out-of-order) 메커니즘도 없습니다. 둘째는 모든 값이 하나의 소유자를 가지고 모든 단계가 로컬이기 때문에, 데이터가 사용되는 곳 근처의 작은 로컬 메모리에 저장될 수 있다는 것입니다. 이는 기존 칩이 대규모 캐싱 하위 시스템에 소비하는 많은 영역과 전력을 제거하고, 이러한 캐시를 일관성 있게 유지하는 시스템 수준 복잡성을 크게 줄입니다.
+
+Frostbite는 아키텍처에 대한 사전 지식 없이 설계되었습니다. 우리는 아래 과정을 따랐고, 그 과정에서 여러 에이전트 스웜을 활용했습니다.
+
+아키텍처 탐색 및 선택
+
+아키텍처 탐색을 시작하기 위해 Frostbite가 탁월하게 수행해야 하는 워크로드 세트를 확립해야 했습니다. 우리는 프로그램이 작업을 노출할 수 있는 다양한 방법, 즉 한 번에 많은 독립적인 조각, 병렬 작업 라운드, 긴 순차 체인, 데이터 의존적 분기, 재귀를 살펴보았습니다. 각 범주 아래에, 설계가 튜닝되지 않은 프로그램으로 일반화되도록 보장하면서 최종 Frostbite를 평가하기 위한 탐색 세트와 보류된 평가 세트를 만들었습니다. FFT, radixsort, LU의 커널은 SPLASH-2 벤치마크의 구현을 따르지만, 일반적인 크기에서는 탐색 작업에 적합하지 않기 때문에 64배 더 작습니다.
+
+나중에 우리는 칼만 필터, PCA, 유한 요소 해석, LU 해결, LZ4 압축 해제 등 5가지 실용적인 워크로드를 보류된 세트에 추가했습니다.
+
+에이전트들은 연구 논문과 기존 벤치마크를 종합하고, 고수준 아키텍처 아이디어를 서로 비교하여 절충하는 Python 모델을 구축한 후 단일 아키텍처 개념으로 좁혔습니다. 이 탐색의 결과는 제안된 프로그래밍 모델, 런타임 및 칩의 고수준 블록을 다루는 141페이지 분량의 PDF였습니다. 이것은 최종 아키텍처와는 거리가 멀었지만, 모든 이전 발견 사항, 고수준 요구 사항, 제약 조건, 실험 및 런타임 특성이 설명된 시작점이었습니다. 첫 번째 아키텍처가 결정된 후</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://simonwillison.net/2026/Nov/20/levent-alpoge/" target="_blank" rel="noopener">르방 알포즈, 클로드(Claude) 도움 받아 리만 가설 증명했다고 주장</a></h3>
+  <div class="meta">
+    <span class="badge">Simon Willison</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">수학자 르방 알포즈가 Anthropic의 Claude 모델의 도움을 받아 리만 가설을 증명했다고 주장했습니다. 그는 이 방법이 일반화된 리만 가설과 확장된 리만 가설까지 해결할 수 있다고 보며, Claude와의 협업 과정에서 놀라운 경험을 했다고 밝힙니다.</p>
+  <p class="why">AI가 인류의 가장 오래된 수학적 난제 해결에 결정적인 역할을 했다는 주장은 과학 연구 방식과 AI의 잠재력에 대한 인식을 근본적으로 바꿀 수 있는 중대한 소식입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">저는 Claude와 함께 리만 가설(Riemann Hypothesis)에 대한 증명을 발견했다고 생각합니다. 사실, 이 방법은 훨씬 더 확장되어 소위 일반화된 리만 가설(Generalized Riemann Hypothesis)을 해결하며, 시간이 더 있다면 확장된 리만 가설(Extended Riemann Hypothesis)도 해결할 수 있을 것이라고 예상합니다. Claude와 저는 또한 가정 없이 논증을 형식화했습니다. 이것이 끝이라고, 제 경우에는 주요한 길잡이 빛을 잃었다고 느낄 수 있지만, 진행 과정에서 제가 본 것이 너무나 놀라워서 이것이 훨씬 더 위대한 과학의 새로운 시작이라고 믿습니다. [...]
+
+Claude와 저는 최근 몇 달 동안 이처럼 다양한 주제로 즐거운 시간을 보냈지만, 이번에는 Claude가 결승선 근처에서 저를 훨씬 앞질렀습니다. 아니, Claude는 결승선 근처에서 날아다니고, 춤추고, 반짝였습니다.
+
+— Levent Alpöge, alpo.ge/remark.pdf
+
+태그: anthropic, claude, generative-ai, mathematics, ai, llms, levent-alpoge</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://openai.com/index/combatting-adversarial-distillation" target="_blank" rel="noopener">OpenAI, 적대적 증류 공격 방어 전략 공개</a></h3>
+  <div class="meta">
+    <span class="badge">OpenAI News</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">OpenAI는 모델 훈련, 안전장치, 탐지 및 강제 조치를 결합한 다층적 접근 방식을 통해 모델 역량 추출을 방어하는 &#39;적대적 증류&#39; 공격에 대응하고 있습니다. 이는 LLM의 무단 복제 및 잠재적 오용을 막기 위한 노력의 일환입니다.</p>
+  <p class="why">AI 모델의 보안과 지적 재산권 보호가 중요해지는 가운데, 이러한 방어 전략은 모델 개발자들이 주목해야 할 핵심 보안 이슈입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">증류(distillation)의 안전 위험에 대한 우리의 대처 방안과 업계 전반의 안전장치 강화를 위해 우리가 배운 교훈을 다룹니다.
+
+프론티어 AI 모델의 기능이 더욱 강력해짐에 따라, 안전장치는 모델을 책임감 있게 사용하는 데 점점 더 중요한 역할을 합니다. 적대적 증류(adversarial distillation)는 악의적인 행위자가 적절한 안전장치 없이 이러한 기능을 재현할 수 있는 경로를 만듭니다. 행위자는 프론티어 모델의 출력을 무단으로 사용하여 유사한 기능을 가진 다른 모델을 훈련시킨 다음, 비교할 만한 보호 조치 없이 이를 배포할 수 있습니다. 예를 들어, 적대자는 모델의 사이버 기능을 증류하여 결과 모델을 사용하여 원본 모델이 지원을 거부했거나 안전장치가 차단했을 사이버 공격을 수행하는 데 도움을 줄 수 있습니다.
+
+OpenAI가 적대적 증류를 탐지하고 방해하는 방법, 모델의 보호된 추론(protected reasoning)에 대한 보호를 강화한 방법, 그리고 업계 전반의 방어를 강화하는 데 도움이 될 수 있는 교훈을 공유합니다.
+
+적대적 증류에 대한 우리의 접근 방식은 적대적 테스트, 모델 훈련, 분류기 및 API 수준 보호를 모델 기능 추출을 위한 조직적인 시도에 대한 조사와 결합합니다. 이러한 업데이트된 안전장치는 우리가 생물학 및 사이버 보안에 사용하는 안전장치와 더 밀접하게 일치합니다.
+
+우리는 공격자가 모델의 보호된 추론, 즉 모델이 답변을 생성하는 동안 내부적으로 생성하는 중간 단계(사고의 사슬(chain-of-thought)로 알려져 있음)를 추출하는 것을 방지하는 데 특히 중점을 둡니다. 이러한 흔적은 최종 답변에 없는 정보를 포함할 수 있으므로 다른 모델의 훈련 데이터로서 특히 가치가 있습니다.
+
+우리는 GPT-6.2 Astra 및 GPT-6.2 Sol에서 보호된 추론 추출에 대한 방어를 강화했습니다. 강력한 자동화된 레드 팀(red-teaming)을 사용한 내부 적응 평가에서, 공격자가 모델이 이전 프롬프트에 답변하는 동안 생성했던 보호된 추론을 복구할 수 있는지 테스트했습니다. 평균 공격 성공률은 GPT-6 Astra의 원래 안전장치에 대한 54.0%에서 업데이트된 안전장치를 갖춘 GPT-6.2 Astra에 대한 0.2%로 감소했습니다.
+
+증류가 안전 문제인 이유
+
+증류는 한 모델이 다른 모델이 생성한 데이터로부터 학습하는 일반적인 머신러닝 기술입니다. 예를 들어, 한 모델은 다른 모델의 답변, 추론, 또는 어떤 답변이 더 좋고 그 이유에 대한 판단으로부터 학습할 수 있습니다. 지적 재산권 문제를 넘어, 무단 증류는 심각한 안전 위험을 초래합니다. 적대적 증류를 통해, 두 번째 모델은 원본 모델이 기능을 사용하는 방식을 규정하는 안전장치를 상속받지 않고도 고급 프론티어 기능을 학습할 수 있습니다.
+
+이러한 우려는 사이버 보안 및 생물학과 같은 이중 용도 도메인에서 특히 분명합니다. 수비수가 소프트웨어의 취약점을 찾는 데 도움을 주는 모델은 공격자가 이를 악용하는 데도 도움을 줄 수 있습니다. 생물학 연구를 돕는 모델은 누군가가 유해한 병원체를 개발하는 데도 도움을 줄 수 있습니다. 이러한 기능이 더 약한 안전장치를 가진 모델로 이전되면, 원본 모델이 거부했을 지원이나 원본 안전장치가 차단했을 지원을 제공할 수 있습니다.
+
+사이버 안전을 위한 정확한 추론 흔적 보호의 중요성
+
+우리 모델은 사용자에게 코딩 및 방어적 사이버 보안 작업을 돕습니다. 그러한 많은 양성 출력으로 훈련된 두 번째 모델은 공격적 사이버 보안 작업에도 적용될 수 있는 기술을 학습할 수 있습니다. 이를 더 잘 이해하기 위해, 우리는 증류, 특히 추론 흔적을 포함하는 증류가 위험한 사이버 기능을 어떻게 전달할 수 있는지 연구합니다.
+
+이 설정에서, 훈련 데이터를 생산하는 모델을 교사(teacher)라고 부르고, 그것으로부터 학습하는 모델을 학생(student)이라고 부릅니다. 사이버 기능이 어떻게 전달되는지에 대한 내부 연구에서, 우리는 사용자에게 일반적으로 보이는 내용(최종 응답, 추론 요약 및 도구 상호 작용)을 증류의 기준으로 사용하고, 학생이 교사의 정확한 추론 흔적에 접근할 때 얼마나 많은 추가 사이버 기능이 전달되는지 테스트했습니다.
+
+우리는 각 훈련 실행을 동일한 사전 훈련된 학생 모델에서 시작했습니다. 우리는 주로 코딩 및 방어적 사이버 보안 작업에서 Astra 수준 교사 모델의 궤적(trajectory)으로 구성된 지도 미세 조정 데이터셋을 만들었습니다. 각 궤적은 모델이 작업을 수행하는 동안 취하는 모든 단계, 즉 모든 도구 상호 작용 및 최종 응답을 포함합니다. 우리는 미세 조정 후 각 학생을 평가하고, 사이버 보안 및 코딩 환경에서 가벼운 강화 학습 라운드 후 다시 평가했습니다.
+
+지도 미세 조정 후, 정확한 추론 흔적으로 훈련된 학생은 일반적으로 추론 요약으로 훈련된 학생보다 우수했습니다. 강화 학습 후에도 정확한 흔적 학생은 표시된 두 벤치마크 모두에서 테스트된 가장 큰 추론 예산에서 더 높은 점수를 기록한 반면, 요약 훈련 학생은 더 낮은 예산에서 더 높은 점수를 기록했습니다.1
+
+우리의 사이버 증류 결과는 보호된 추론 흔적이 사이버 기능 전달을 제한할 수 있음을 시사합니다. 비록 기본 작업이 우리의 사용 정책에 따라 허용되는 작업이라 할지라도 말입니다. 그러한 많은 상호 작용을 통해, 정확한 추론 흔적은 교사가 원래 수행했던 작업을 넘어서는 기술을 학생에게 가르칠 수 있습니다. 우리는 다양한 학생 모델과 증류 훈련 레시피에 걸쳐 얼마나 많은 추가 기능이 전달되는지 계속 연구할 것입니다.
+
+서로를 강화하는 방어책
+
+우리는 안전장치 스택의 두 가지 상호 보완적인 수준에서 적대적 증류에 대해 방어합니다. 요청 수준에서는 모델 동작, 분류기 검사 및 API 제어가 추론 흔적 추출을 제한합니다. 캠페인 수준에서는 요청 수준 및 계정 수준 신호에서 조정된 추출 시도를 드러낼 수 있는 패턴을 찾습니다. 그 결과, 조사에서 발견된 공격은 우리의 안전장치를 훈련하고 테스트하기 위한 예시가 됩니다.
+
+개별 요청 및 응답 보호
+
+적대적 훈련은 모델에게 추론 추출 시도를 인식하고 보호된 추론 공개를 거부하도록 가르치며, 합법적인 응답은 보존합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://huggingface.co/blog/inkling2mini" target="_blank" rel="noopener">Inkling 2 Mini 출시: 로컬 환경을 위한 고성능 모델</a></h3>
+  <div class="meta">
+    <span class="badge">Hugging Face Blog</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">허깅페이스 블로그를 통해 Inkling 2 Mini가 공개되었습니다. 이 모델은 로컬 환경에서도 최첨단 성능을 제공하도록 설계되어, 사용자에게 뛰어난 온디바이스 AI 경험을 제공할 것으로 기대됩니다. 본문이 없어 상세 정보는 확인하기 어렵습니다.</p>
+  <p class="why">개방형 모델의 발전은 엔지니어들이 더욱 효율적으로 AI를 개발하고 배포할 수 있도록 지원하며, 로컬 환경에서의 AI 활용 가능성을 넓힙니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">TLDR; Inkling 2 Mini는 새로운 루프형 트랜스포머 모델입니다. 이것은 약 26B의 물리적 전체 매개변수와 토큰당 3B의 활성 매개변수를 가진 멀티모달 Mixture-of-Experts 모델입니다. 일부 레이어가 세 번 반복되는 루프에서 방문되는 영리한 트릭을 사용하여 용량을 증가시킵니다. 이는 더 많은 매개변수를 가진 것처럼 작동하게 합니다. 1M 토큰 컨텍스트 크기를 지원하며 이미지 및 텍스트 입력을 받습니다. Thinking Machines Lab은 NVFP4 및 MXFP8 전문가 가중치를 포함한 혼합 정밀도 형식으로 모델을 제공합니다. 작은 메모리 비용으로 추가 속도 향상을 위한 DSpark 드래프터도 포함되어 있습니다.
+
+Inkling 2 Mini는 Inkling 2 Small보다 훨씬 작으며 로컬 AI 설정용으로 설계되었습니다. 우리는 이것이 신선하고 훌륭한 로컬 모델이라고 생각합니다. 우리의 바이브 테스트에서는 Qwen 3.8 27B와 적어도 동등합니다. 더 많은 검증이 필요하지만, 이 출시에 대해 매우 기대하고 있습니다!
+
+우리는 트랜스포머, Llama App (llama.cpp) 및 MLX 지원을 제공합니다. SGLang은 또한 데이터센터 하드웨어에 대한 프로덕션 배포를 위해 Day-Zero 추론을 지원합니다.
+
+이 게시물에서는 Inkling Mini가 다른 점, 일부 바이브 테스트, 그리고 여러분의 설정에서 어떻게 사용할 수 있는지에 대해 다룹니다.
+
+Inkling 2 Mini의 새로운 점은 무엇인가요?
+
+Inkling 2 Mini는 24개의 디코더 레이어를 가진 Mixture-of-Experts 모델이지만, 중간 12개 레이어는 루프에서 세 번 실행됩니다. 따라서 모델은 24개의 물리적 레이어로 48개 (6+ 3*12 + 6)의 논리적 레이어를 가진 것처럼 작동합니다.
+
+Inkling 2 Small과 유사하게, Inkling 2 Mini는 토큰당 48개의 레이어 방문을 실행합니다. 히든 사이즈는 4,608 대신 2,304입니다. 각 레이어 방문에서 두 변형 모두 토큰을 8명의 전문가에게 라우팅하지만, Mini는 레이어당 128명의 전문가 중에서 선택하고 Small은 384명 중에서 선택합니다. 디코더는 레이어 0-5를 한 번, 레이어 6-17을 세 번, 레이어 18-23을 한 번 실행합니다. 레이어 6-17을 통과하는 세 번의 모든 과정은 동일한 가중치를 재사용합니다.
+
+Nanbeige와 같은 아키텍처는 이전에 루핑을 탐색했습니다. 그러나 Inkling 2 Mini는 흥미로운 접근 방식을 탐색합니다. 루프형 코어 (레이어 6-17)를 통과하는 모든 패스는 처음 6개 레이어의 출력인 동일한 입력에서 시작됩니다. 정보는 교차-패스 메시지를 통해 패스 간에 이동합니다. 각 루프형 레이어는 자체 학습된 쿼리 (쿼리, 키, 값 및 MLP 입력에 대한 하나의 메시지)로 이전 패스의 출력에서 메시지를 읽습니다. 작은 게이팅 컨트롤러는 레이어의 현재 입력과 메시지를 모두 살펴봅니다. 현재 입력을 얼마나 잊고 메시지를 얼마나 추가할지 결정합니다. 따라서 각 패스는 이전 패스가 계산한 것을 정제합니다.
+
+각 6개 레이어 블록에는 5개의 슬라이딩-윈도우 레이어와 1개의 완전-어텐션 레이어가 있습니다. 로컬 윈도우는 최대 1,024개의 토큰을 보유합니다. 어텐션은 24개의 쿼리 헤드와 8개의 KV 헤드를 사용합니다. 학습된 상대 위치 로짓, 학습된 싱크 및 출력 게이트를 사용합니다. 완전-어텐션 레이어는 동적 키 및 값 컨볼루션을 사용합니다. 라우터는 각 토큰에 대해 128개의 SwiGLU 전문가 중 8개를 선택합니다. 선택된 점수를 정규화하고 가중치를 8로 스케일링합니다. 패스 2와 3 동안, 각 코어 레이어는 이전 패스의 두 잔차 블록에 걸쳐 어텐션을 수행합니다. 4개의 랭크-64 게이트는 개별 메시지를 쿼리, 키, 값 및 MoE 입력으로 혼합합니다.
+
+텍스트 디코더 너비는 2,304이고 각 전문가의 중간 너비는 1,152입니다. 코어 가중치를 재사용하면 체크포인트가 저장하는 고유한 레이어 수가 줄어듭니다. 모델은 여전히 모든 48개의 방문을 실행하며, 각 방문은 자체 KV 및 짧은-컨볼루션 상태를 유지합니다.
+
+플래그십 Inkling 2 Mini 모델 외에도 연구 아티팩트도 출시되었습니다. 동일한 아키텍처를 공유하지만, 이 변형은 루프를 통한 가변적인 수의 패스를 수용하도록 훈련되었습니다 🤯. 3 대신 1 또는 2개의 패스를 설정하면 추론이 훨씬 빨라지지만, 생성 품질이 약간 낮아질 수 있습니다. 이 변형을 테스트했으며 작동하지만, 심층적으로 평가하지는 않았습니다.
+
+Inkling 2 Mini는 Artificial Analysis Intelligence Index v5 (AAv5)의 해당 클래스에서 최첨단이며, 다양한 카테고리의 여러 벤치마크에서도 마찬가지입니다. Gemma 4 31B, Muse Glimmer, Qwen3.8-27B 및 Nemotron 3.5 Super VL과 비교할 때, Inkling 2 Mini는 48개 벤치마크 중 32개에서 선두를 달리고 있습니다. 여기에는 코딩 및 자동 연구, 지식 작업을 위한 에이전틱 검색 및 도구 사용, 비전 해석 및 생성, 추론 및 지식, 안전 및 정렬이 포함됩니다. 벤치마크 및 점수의 전체 목록은 Inkling 2 Mini 모델 카드를 참조하십시오.
+
+Inkling 2 Mini는 훌륭한 로컬 코딩 동반자입니다. FrontierCode v2.0에서 선두를 달리고 Terminal-Bench 4.0에서 Qwen3.8-27B와 동률을 기록했으며, AutomationBench-AA v1.0.6에서는 Qwen에 뒤처집니다. 아래에서 코딩 및 지식 작업에 대한 몇 가지 주요 내용을 확인할 수 있습니다. AA Briefcase는 ELO 등급이며, 높을수록 좋습니다.
+
+이 섹션에서는 트랜스포머, llama.cpp, MLX 및 SGLang에서 Inkling 2 Mini를 사용하는 방법을 찾을 수 있습니다.
+
+우리는 Inkling 2 Mini (고정 루프)와 TML-d24-varloop-research (가변 루프) 연구 변형을 모두 지원합니다.
+
+AutoModelForMultimodalLM 클래스를 사용할 수 있습니다.
+
+import torch from transformers import AutoModelForMultimodalLM, AutoProcessor model_id = &#34;thinkingmachines/Inkling-2-Mini&#34; processor = AutoProcessor.from_pretrained(model_id) model = AutoModelForMultimodalLM.from_pretrained( model_id, ) messages = [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: [{&#34;type&#34;: &#34;text&#34;, &#34;text&#34;: &#34;Why is the sky blue?&#34;}]}] inputs = processor.apply_chat_template( messages, tokenize=True, add_generation_prompt=True, return_dict=True, return_tensors=&#34;pt&#34;, ).to(model.device) input_len = inputs[&#34;input_ids&#34;].shape[-1] outputs = model.generate(**inputs, max_new_tokens=1024) print(processor.decode(outputs[0][input_len:], skip_special_tokens=False))
+
+연구 체크포인트에서 루프 수를 설정하려면 다음과 같이 text_config에서 loop_num_passes를 수정할 수 있습니다. 아래 예시는 두 개의 루프를 사용합니다.
+
+import torch from transformers import AutoModelForMultimodalLM, AutoProcessor model_id = &#34;thinkingmachines/TML-d24-varloop-research&#34; processor = AutoProcessor.from_pretrained(model_id) model = AutoModelForMultimodalLM.from_pretrained( model_id, text_config={&#34;loop_num_passe</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://github.com/diggerhq/opencomputer" target="_blank" rel="noopener">오픈소스 Devin 대체재 &#39;OpenComputer&#39; 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">도구·오픈소스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 56</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50581403" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">Devin의 오픈소스 대안인 &#39;OpenComputer&#39;가 공개되었습니다. 이는 팀을 위한 클라우드 코딩 에이전트로, AWS, GCP, Azure 등 자체 클라우드 계정에서 실행될 수 있으며, 기존 대안보다 빠른 초기 커밋 시간을 자랑합니다.</p>
+  <p class="why">AI 기반 개발 도구 시장에서 오픈소스 대안의 등장은 기술 접근성을 높이고, 개발자들에게 더 많은 선택지와 유연성을 제공합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">안녕하세요 HN! 저는 OpenComputer의 창립자 중 한 명인 Utpal입니다. OpenComputer는 자체 클라우드 계정(AWS, GCP, Azure)에서 실행할 수 있는 팀을 위한 오픈 소스 클라우드 코딩 에이전트입니다. 우리는 동일한 내구성 있는 VM에서 에이전트 하네스와 샌드박스를 실행합니다(문서의 아키텍처 [1]). 첫 번째 커밋은 24초 만에 완료됩니다. 우리가 벤치마크한 대안들은 53-72초가 걸렸습니다(아래 벤치마크 [2]). 두 가지 다른 선택 사항: - 팀당 하나의 VM, 수평적으로 확장 가능. 세션은 git worktree에서 격리됩니다. - 세션 파일은 매 턴 후에 repo에 백업되므로 어떤 세션이든 다른 VM에서 다시 시작할 수 있습니다. 한 달에 약 640세션-시간을 넘어서면, 항상 켜져 있는 4 vCPU VM이 세션당 E2B 샌드박스보다 저렴하다는 것을 발견했습니다. 예를 들어, 규모가 커지면 이 설정은 현재 SOTA 코딩 에이전트보다 빠를 뿐만 아니라 비용 효율성도 더 높을 것입니다. 클라우드를 통해 무료로 사용해 보시거나 [4] 자체 호스팅을 자유롭게 시도해 보세요. 모든 피드백을 환영하며, 어떤 질문이든 기꺼이 답변해 드리겠습니다! 전체 데모는 아래에 있습니다 [3]. [1]: https://docs.opencomputer.dev/getting-started/architecture [2]: https://opencomputer.dev/blog/cloud-agents-as-fast-as-local/ [3]: https://x.com/IgorZIJ/status/2121309785882591711 [4]: https://app.opencomputer.dev</div>
+  </details>
+  
+</article>
+</section>
+
+
+
+<section id="cat-0">
+  <h2>모델 릴리스 <span class="cnt">2건</span></h2>
+  <article class="item">
+  <h3><a href="https://thinkingmachines.ai/news/inkling-2-mini/" target="_blank" rel="noopener">Inkling 2 Mini 모델, 해커뉴스에서 큰 관심</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 626</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50581260" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">새롭게 출시된 Inkling 2 Mini 모델이 해커뉴스에서 626점의 높은 추천을 받으며 커뮤니티의 큰 관심을 끌고 있습니다. 이 모델은 로컬 환경에서 최첨단 성능을 제공한다고 알려져 있으며, 온디바이스 AI의 잠재력을 보여줍니다.</p>
+  <p class="why">고성능 소형 AI 모델의 출시는 개발자들이 로컬에서 AI를 더욱 쉽게 활용하고 다양한 애플리케이션을 개발할 수 있는 기반을 마련합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">오늘 우리는 노트북에서 실행될 만큼 작고 빠르고 강력한 모델인 Inkling 2 Mini를 출시합니다.
+
+Inkling 2 Mini는 루프형 트랜스포머로, 모든 토큰에 대해 모델의 중간 레이어를 세 번 실행합니다. 이를 통해 모델은 더 많은 추론을 적용하고 더 적은 토큰으로 올바른 답에 도달할 수 있으며, 특히 추론 품질에 의존하는 에이전트 코딩과 같은 작업에서 더욱 그렇습니다. Inkling 2 Mini는 DeepSWE v1.1(48.2%) 및 Vals Index v2.2(46.5%)와 같은 벤치마크에서 총 매개변수 100B 미만의 모든 오픈 웨이트 모델을 앞섭니다. 또한 유사한 성능의 모델보다 더 빠르게 실행됩니다.
+
+Inkling 2 Mini는 총 매개변수 26.4B, 활성 3.4B, 루핑을 고려한 토큰당 가중치 활성화 5.4B의 Mixture-of-Experts 모델입니다. 루핑을 통해 모델은 추론을 기록하지 않고도 더 오래 추론할 수 있으며, 이는 모니터링에 중요합니다. 즉, 모델의 사고 과정(CoT)을 읽음으로써 모델이 수행하는 작업을 감독하고 이해할 수 있는 능력을 의미합니다.
+
+우리는 Inkling 2 Mini와 함께 출시하는 연구용 가변 루프 변형 모델을 사용하여 성능과 모니터링 가능성 모두에 대한 루핑의 영향을 측정했습니다. 가변 루프 모델의 CoT 없는 시간 지평은 한 번 실행에서 16초에서 세 번 실행에서 37초로 개선되었으며, 직렬 추론 벤치마크에서 그 성능은 훈련된 횟수의 두 배인 10회 루프까지 계속 향상되었습니다. 모델의 사고 과정은 루프가 많아질수록 짧아졌지만 전체적으로 읽을 수 있었습니다. 루프가 추가됨에 따라 모델은 에이전트 사보타주 테스트에서 더 높은 경향을 보이지 않았습니다.
+
+연구원들에게 루프형 아키텍처를 갖춘 최초의 모델 중 일부를 제공하게 되어 기쁩니다. 가변 루프 모델은 루프 깊이 간의 더 깨끗한 비교를 가능하게 하므로 모니터링 가능성 실험에 사용되었습니다.
+
+Inkling 2 Mini의 대부분의 가중치는 NVFP4로 훈련되고 기본적으로 배포되며, 마지막 네 레이어는 MXFP8로 배포됩니다. Inkling 2 Mini의 총 메모리 공간은 약 20GB로, 소비자 노트북 및 데스크톱 AI 컴퓨터와 같은 로컬 장치에서 실행할 수 있습니다. 우리 연구원들은 Inkling 2 Mini를 비행기에 가져가 MacBook Pro에서 오프라인으로 실행하여 몇 분 만에 플레이 가능한 비행 시뮬레이터를 구축했습니다.
+
+Inkling 2 Mini는 오픈 웨이트로 출시되었으며, 추론 및 사용자 지정을 위해 오늘 Tinker에서 사용할 수 있습니다.
+
+Inkling 2 Mini의 강점은 Inkling 2 Small의 강점과 유사합니다. 장기적인 에이전트 작업에서 가장 뛰어나며, 우리가 측정한 대부분의 작업에서 비슷한 크기의 오픈 웨이트 모델 중 최고입니다.
+
+Inkling 2 Mini는 DeepSWE v1.1 및 SWE-bench Pro v2와 같은 에이전트 코딩 벤치마크에서 모든 비교 모델을 앞서며, Qwen3.8-27B 다음으로 우수한 성능을 보입니다. 커널 최적화 벤치마크인 PMPP-Hard에서는 훨씬 더 큰 Inkling 2 Small의 점수에 근접합니다.
+
+루핑은 모델의 추론을 개선하지만, 가중치가 더 많은 사실을 저장하도록 해주지는 않습니다. 지식은 주로 총 매개변수 수의 함수입니다. Inkling 2 Mini의 사실성을 측정하는 AA-Omniscience 점수는 동일한 크기의 다른 모델들과 일치합니다. 가변 루프 모델을 연구하면서, GraphWalks BFS 및 MRCR v2와 같은 긴 컨텍스트 벤치마크에서는 더 많은 패스에서 성능이 향상되지만, AA-Omniscience, SimpleQA Verified, SimpleVQA 및 WorldVQA와 같은 지식 집약적 벤치마크에서는 더 많은 패스에서 성능이 향상되지 않는다는 것을 확인했습니다.
+
+Inkling 2 Mini는 검색 및 도구를 효율적으로 사용하여 지식 격차를 극복합니다. BrowseComp, DeepSearchQA 및 MCP Atlas에서 비슷한 크기의 오픈 웨이트 모델을 앞섭니다. 또한 검색 및 도구 사용을 통합한 지식 작업 벤치마크에서도 강력합니다.
+
+스탠포드 연구원들은 줄당 지능(intelligence per joule)을 측정합니다. 즉, LLM이 주어진 성능 수준에 도달하는 데 쿼리당 필요한 에너지량입니다. 스탠포드 Hazy Research Lab 및 Scaling Intelligence Lab의 연구원들은 Inkling 2 Mini의 초기 테스트 액세스 권한을 얻었습니다. Inkling 2 Mini는 NVIDIA DGX Spark에서 실행될 때 0.703점을 기록하여 다른 모델보다 상당히 높았습니다. Qwen3.6-35B-A3B는 0.430, Gemma-4-26B-A4B는 0.159, Qwen3.5-27B는 0.036을 기록했습니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z" target="_blank" rel="noopener">Nathan Lambert: Gemini Neon, Claude Code 및 Codex와 유사한 좋은 성능</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-1">
+  <h2>연구·논문 <span class="cnt">7건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e" target="_blank" rel="noopener">Ethan Mollick: Claude 도움으로 리만 가설 풀렸을 수도</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    <span class="badge">♥ 172</span>
+    
+  </div>
+  <p class="summary">Ethan Mollick은 Claude의 도움으로 리만 가설이 해결되었을 가능성이 있다고 언급하며, 이에 대한 긍정적인 반응을 보였습니다. 이는 AI가 인류의 가장 어려운 수학적 난제를 해결하는 데 기여할 수 있다는 기대감을 더욱 증폭시킵니다.</p>
+  <p class="why">AI가 수학적 난제 해결에 기여할 수 있다는 주장은 AI의 지적 능력에 대한 평가를 높이고, 연구 및 개발 방법론에 대한 새로운 관점을 제시합니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://www.economist.com/science-and-technology/2026/11/20/ai-may-have-solved-the-most-important-problem-in-mathematics" target="_blank" rel="noopener">AI, 수학의 가장 중요한 문제 중 하나를 해결했을 수도</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 22</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50583445" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">AI가 수학에서 가장 중요한 문제 중 하나를 해결했을 가능성이 제기되었습니다. 구체적인 문제나 해결 방법은 언급되지 않았지만, AI의 추론 능력이 수학의 난제를 해결할 수준에 도달하고 있음을 시사합니다.</p>
+  <p class="why">AI의 추론 및 문제 해결 능력이 인류의 오랜 난제를 풀 수 있는 수준으로 발전하고 있음을 보여주며, 이는 과학 전반에 걸쳐 AI의 활용 가능성을 확장합니다.</p>
+  
+  
+</article><article class="item">
+  <h3><a href="https://github.com/tristanbuckmaster/navier-stokes/" target="_blank" rel="noopener">나비에-스토크스 방정식의 유한 시간 발산 증명</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 257</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50576232" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">수학의 난제 중 하나인 나비에-스토크스 방정식의 유한 시간 발산(finite-time blow-up)에 대한 증명이 발표되었습니다. 이는 유체 역학의 근간을 이루는 방정식의 해법에 대한 중요한 진전이며, 257점의 추천을 받았습니다.</p>
+  <p class="why">AI가 수학적 난제를 해결하는 데 기여하고 있음을 보여주는 또 다른 사례로, 복잡한 과학 및 공학 문제 해결에 AI의 잠재력을 강조합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">이 저장소에는 L. Alpöge와 T. Buckmaster의 논문인 Navier-Stokes 방정식의 유한 시간 폭발(Finite-time blow-up for the Navier-Stokes equations)과 이를 수반하는 Lean 4 형식화가 담겨 있습니다.
+
+paper/finite-time-blow-up-navier-stokes.pdf: 논문 (79페이지, 2026년 11월 20일 버전).
+
+lean/: Lean 패키지 (lean/lakefile.toml에 고정된 개정판의 Mathlib를 포함한 Lean v4.33.1). lean/README.md는 형식적 진술이 논문의 Theorem 1.1, Theorem 7.1, Corollary 7.2 및 Appendix B와 어떻게 관련되는지, 그리고 형식적 증명이 논문의 증명과 어떻게 다른지 설명합니다. lean/NOTICE는 각 진술 파일이 무엇을 포함하고 무엇이 증명되는지 설명합니다.
+
+lean/ 상단의 진술 파일은 정의를 제공하고 증명 대신 sorry가 있는 정리를 진술합니다. Solution.lean은 라이브러리 lean/Breakdown/에서 이들을 증명합니다. 각 comparator*.json은 진술 파일과 Solution.lean을 짝지어, 진술이 일치해야 하는 정리의 이름을 지정하고, 공리 propext, Quot.sound 및 Classical.choice만 허용합니다.
+
+라이브러리는 크며 (약 2,270개 파일과 600,000줄), 완전한 빌드를 위해서는 많은 메모리와 시간이 필요합니다.
+
+형식화에는 데이터가 포함되어 있지 않습니다. 논문에서 해시를 제공하는 인증서는 이 저장소에 없습니다. 논문은 인증서가 출시될 것이라고 명시합니다. 인증서가 Appendix B의 조건을 만족하는지는 Arb 라이브러리를 통해 FLINT를 이용한 엄격한 계산(128비트 정밀도, 구간 산술 포함)에 의해 검증되며, 이는 형식화의 일부가 아니며 이 저장소에도 없습니다.
+
+논문의 원본은 이 저장소에 없습니다.
+
+이 패키지는 논문의 작업 저장소에 있던 것으로, 2026년 11월 20일에 셀 레이어 진술과 이에 의존하는 라이브러리 증명에 적용된 하나의 패치가 있습니다. 이 패치에서 하나의 경계 가중치는 $m^2+\tfrac14$ 대신 $(|m|+\tfrac12)^2$이 되고, 셀의 한 상수는 0이 될 수 있으며, 셀의 모델 조화 집합은 거기서 사라지지 않는 것으로 제한됩니다. 논문의 Appendix B는 이 패치된 형태로 조건을 명시합니다. 이 패치된 패키지는 이 저장소가 조립될 때 다시 빌드되지 않았습니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://openai.com/index/introducing-medchembench" target="_blank" rel="noopener">AI 모델, 신약 개발 후보 물질 식별 능력 평가</a><span class="src">OpenAI News</span></li>
+  
+  <li><a href="https://simonwillison.net/2026/Nov/20/ravi-vakil/" target="_blank" rel="noopener">알레산드로 마술로, 일반화된 리만 가설 증명 제안 (AI 미사용)</a><span class="src">Simon Willison</span></li>
+  
+  <li><a href="https://bsky.app/profile/emollick.bsky.social/post/3n2pqcy4cbs2g" target="_blank" rel="noopener">AI 과학 커뮤니티 작동 방식에 대한 초기 연구: 35개 인간 연구실이 에이전트 배포</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 1건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://www.researchgate.net/publication/418143113_The_Hungry_Butler_Effect_Concealed_Commercial_Incentives_and_the_Erosion_of_Epistemic_Rigour_in_Large_Language_Models" target="_blank" rel="noopener">LLM의 숨겨진 상업적 동기: &#39;The Hungry Butler Effect&#39;</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-3">
+  <h2>도구·오픈소스 <span class="cnt">2건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://huggingface.co/blog/harness-adapters-at-scale" target="_blank" rel="noopener">하니스 어댑터 소개: 모델 성능 및 비용 개선을 위한 활용법</a><span class="src">Hugging Face Blog</span></li>
+  
+  <li><a href="https://hippomaps.ch/?q=cafes+by+the+Limmat+100+m+from+the+lake+in+zurich#map=15.02/47.36708/8.54935" target="_blank" rel="noopener">OpenStreetMap 데이터용 고속 확정적 자연어 검색 엔진 &#39;HippoMaps&#39; 공개</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-4">
+  <h2>업계 동향 <span class="cnt">7건</span></h2>
+  <article class="item">
+  <h3><a href="https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/" target="_blank" rel="noopener">AI 플랫폼에서 발생하는 토큰 사기(Token Fraud) 심각성 부각</a></h3>
+  <div class="meta">
+    <span class="badge">Simon Willison</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">AI 플랫폼 ChatPRD의 설립자 클레어 보가 무료 체험판을 악용한 토큰 사기 문제를 지적하며, 이는 무료 AI 사용을 넘어 토큰 재판매 및 상업적 목적으로도 활용되고 있다고 밝힙니다. 이 문제는 AI 서비스 제공자들에게 심각한 과금 및 보안 위협을 야기합니다.</p>
+  <p class="why">AI 서비스 개발자들이 직면할 수 있는 중요한 운영 및 보안 문제이며, AI 모델의 상업적 활용에 있어 철저한 부정 방지 시스템 구축의 필요성을 강조합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">토큰 사기가 발생했으며 매우 심각합니다 (YouTube)
+
+Claire Vo는 제품 관리자가 &#34;아이디어를 사양으로 전환&#34;하는 데 도움을 주는 AI 플랫폼인 ChatPRD를 운영하고 있습니다. 이 제품은 GPT-4 시대부터 출시되었으며, Claire는 그 기간 동안 대부분 이 제품을 공개적으로 개발해 왔습니다.
+
+이 YouTube 동영상(첨부된 Twitter 게시물 참조)에서 Claire는 제품의 무료 평가판을 남용하는 그룹으로부터 목격한 토큰 사기 범람에 대해 설명합니다. 이들은 때로는 단순히 무료 AI 사용을 얻기 위해, 때로는 토큰을 재판매하거나 ChatPRD 에이전트 위에 다른 상업적 기업을 운영하기 위해 이를 사용했습니다.
+
+저는 국제 Roblox 및 Fortnite 맵 스튜디오에 자금을 지원하고 있습니다. 그들은 무료 평가판 및 프로모션 코드 루프를 실행한 다음 제 에이전트로 터널링하여 Roblox 및 Fortnite 맵을 구축하는 데 사용합니다.
+
+분명히 Claire가 자신의 에이전트에서 실행되는 것을 본 일반적인 프롬프트 중 하나는 자전거를 타는 펠리컨의 SVG와 관련이 있었습니다! 아마도 토큰 사기꾼들은 이를 사용하여 기본 모델을 탐지하는 데 도움을 받고 있을 것입니다. 다른 모델 패밀리는 명확한 시그니처를 가지고 있으며, 저는 과거에 OpenRouter와 같은 플랫폼에서 스텔스 미리보기 모델의 정체를 추측하기 위해 이와 같이 사용했습니다.
+
+Claire는 무료 평가판을 완전히 중단하고 있으며, 이는 이러한 남용에 직면하여 올바른 결정으로 보입니다.
+
+태그: youtube, ai, generative-ai, llms, pelican-riding-a-bicycle, ai-misuse</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225" target="_blank" rel="noopener">OpenAI와 Anthropic 모델의 쉬운 증류 종료가 오픈 모델 발전 둔화 원인일 수도</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 42</span>
+    
+  </div>
+  <p class="summary">Ethan Mollick은 OpenAI 및 Anthropic 모델의 쉬운 증류(distillation)가 효과적으로 종료된 것이 오픈 웨이트 모델 발전의 상대적 둔화 뒤에 있을 수 있다고 추측합니다. 이는 오픈 모델의 발전에 상업용 모델의 지식 이전이 중요한 역할을 했을 가능성을 제기합니다.</p>
+  <p class="why">오픈소스 AI 모델의 발전에 영향을 미치는 핵심 요인을 지적하며, 이는 AI 생태계의 향후 방향과 모델 개발 전략에 대한 중요한 통찰을 제공합니다.</p>
+  
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://openai.com/business/customer-stories/hebbia" target="_blank" rel="noopener">GPT-6 아스트라, 금융 리서치에서 성능 향상 입증</a><span class="src">OpenAI News</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n2rhse3cdk22" target="_blank" rel="noopener">Benj Edwards: 프론티어 AI 연구소의 유일한 해자는 플랫폼 종속성</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 3건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2pmiuj6fk22" target="_blank" rel="noopener">Eugene Vinitsky: 새로운 연구실 로봇의 힘이 점점 더 강력해지고 있다</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off" target="_blank" rel="noopener">앤트로픽 IPO 실패 후 글로벌 증시 하락, AI 매도세 확산</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://latent.space/p/ainews-anthropic-successfully-completes-largest-ipo-in-history-valued-at-1-5t/" target="_blank" rel="noopener">앤트로픽, 1.5조 달러 가치로 사상 최대 IPO 성공</a><span class="src">Latent Space</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-5">
+  <h2>정책·안전 <span class="cnt">1건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/" target="_blank" rel="noopener">구글 직원들, AI 도입 거부하는 학교에 불이익 주지 말 것을 요구</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">3건</span></h2>
+  
+  
+  
+  <details class="more">
+    <summary>그 외 3건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2rbynanfk2s" target="_blank" rel="noopener">Eugene Vinitsky: 서두른 학술 작업과 사회적 규범 위반은 항상 가능했다</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2riwyh2ak2i" target="_blank" rel="noopener">Eugene Vinitsky: 닷컴 버블 이후 인터넷이 시들해졌다는 비유적 표현</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n2rhit6z6222" target="_blank" rel="noopener">Benj Edwards: 이 키트 괜찮다</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+
+
+
+
+<section>
+  <h2>수집된 소식 <span class="cnt">요약 없음 · 1건</span></h2>
+  <details class="more" >
+    <summary>목록 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://latent.space/p/formal-verification/" target="_blank" rel="noopener">The War Against Slop and an Emerging Weapon to Fight it: Formal Verification</a><span class="src">Latent Space</span></li>
+  
+</ul>
+  </details>
+</section>
+
+
+
+
+<footer>
+  
+  소스 13/19 성공 · 생성 2026-11-21 10:11 KST
+  <ul>
+    
+    <li class="ok">✓ OpenAI News (50건)</li>
+    
+    <li class="ok">✓ Google DeepMind (50건)</li>
+    
+    <li class="ok">✓ Google AI (20건)</li>
+    
+    <li class="ok">✓ Anthropic News (50건)</li>
+    
+    <li class="ok">✓ Hugging Face Blog (50건)</li>
+    
+    <li class="ok">✓ Hacker News (18건)</li>
+    
+    <li class="fail">✗ Reddit r/LocalLLaMA (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FLocalLLaMA%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.m</li>
+    
+    <li class="fail">✗ Reddit r/MachineLearning (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FMachineLearning%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://develo</li>
+    
+    <li class="fail">✗ Reddit r/singularity (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsingularity%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.</li>
+    
+    <li class="fail">✗ Reddit r/ClaudeAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FClaudeAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.moz</li>
+    
+    <li class="fail">✗ Reddit r/OpenAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FOpenAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.mozil</li>
+    
+    <li class="fail">✗ arXiv (0건) — Client error &#39;429 Unknown Error&#39; for url &#39;https://export.arxiv.org/api/query?search_query=cat:cs.CL+OR+cat:cs.LG+OR+cat:cs.AI&amp;sortBy=submittedDate&amp;sortOrder=descending&amp;max_results=100&#39;
+For more inform</li>
+    
+    <li class="ok">✓ HF Daily Papers (50건)</li>
+    
+    <li class="ok">✓ Simon Willison (30건)</li>
+    
+    <li class="ok">✓ Interconnects (20건)</li>
+    
+    <li class="ok">✓ Import AI (20건)</li>
+    
+    <li class="ok">✓ Latent Space (20건)</li>
+    
+    <li class="ok">✓ AI News (smol.ai) (31건)</li>
+    
+    <li class="ok">✓ Bluesky (321건)</li>
+    
+  </ul>
+</footer>
+</div>
+</body>
+</html>
