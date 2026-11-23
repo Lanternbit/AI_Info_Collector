@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI 프론티어 브리핑 — 2026-11-22 (일)</title>
+<title>AI 프론티어 브리핑 — 2026-11-23 (월)</title>
 <style>
 :root {
   color-scheme: light dark;
@@ -68,9 +68,10 @@ footer .fail { color:#c0392b; }
 <div class="wrap">
 <header>
   <h1>AI 프론티어 브리핑</h1>
-  <div class="date">2026-11-22 (일) · 오늘 24건</div>
+  <div class="date">2026-11-23 (월) · 오늘 20건</div>
   <nav class="archive">
     <a href="index.html">최신</a>
+    <a href="archive/2026-11-23.html">11-23</a>
     <a href="archive/2026-11-22.html">11-22</a>
     <a href="archive/2026-11-21.html">11-21</a>
     <a href="archive/2026-11-20.html">11-20</a>
@@ -84,21 +85,20 @@ footer .fail { color:#c0392b; }
     <a href="archive/2026-11-12.html">11-12</a>
     <a href="archive/2026-11-11.html">11-11</a>
     <a href="archive/2026-11-10.html">11-10</a>
-    <a href="archive/2026-11-09.html">11-09</a>
     <a href="archive/index.html">전체 ›</a>
   </nav>
   
-  <div class="daily-summary"><strong>오늘의 요약</strong>오늘 AI 커뮤니티에서는 리만 가설의 AI 기반 검증 소식이 크게 주목받았습니다. 이는 AI가 단순한 언어 모델을 넘어 수학적 난제 해결에 기여할 수 있음을 보여주는 중요한 진전으로 해석됩니다. 또한, 유럽의 AI 에이전트 규제 논의와 함께 AI 후처리 기술의 미해결 문제 등 실용적인 개발자 관심사도 조명되었습니다.</div>
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘은 AI 모델의 지능 평가부터 로컬 AI 활용 가이드까지 다양한 주제가 다뤄졌습니다. 특히, 퍼플렉서티(Perplexity)를 통한 AI 모델 지능 평가와 Qwen, Unsloth를 활용한 로컬 AI 입문 가이드가 개발자들의 관심을 끌었으며, 로컬 환경에서 코딩 에이전트를 오픈 소스로 활용하는 Localcode나 Rust 웹 서버로 Python 앱을 최적화하는 Muru 같은 실용적인 도구들도 주목받았습니다. 또한, AI 안전성 논의와 Anthropic의 에너지 사용 계획 등 AI의 사회적 영향에 대한 논의도 꾸준히 이어지고 있습니다.</div>
   
   
   <nav class="toc">
     <a href="#headlines"><b>헤드라인</b></a>
-    <a href="#cat-1">연구·논문 <b>1</b></a>
+    <a href="#cat-1">연구·논문 <b>2</b></a>
     <a href="#cat-2">실무 지식 <b>1</b></a>
-    <a href="#cat-3">도구·오픈소스 <b>2</b></a>
-    <a href="#cat-4">업계 동향 <b>2</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>1</b></a>
+    <a href="#cat-4">업계 동향 <b>1</b></a>
     <a href="#cat-5">정책·안전 <b>2</b></a>
-    <a href="#cat-6">커뮤니티 화제 <b>10</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>9</b></a>
   </nav>
   
   
@@ -112,425 +112,275 @@ footer .fail { color:#c0392b; }
 <section class="headline" id="headlines">
   <h2>오늘의 헤드라인</h2>
   <article class="item">
-  <h3><a href="https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/" target="_blank" rel="noopener">AI로 리만 가설 독립적으로 두 번 증명 성공 (AINews)</a></h3>
-  <div class="meta">
-    <span class="badge">Latent Space</span>
-    <span class="badge">연구·논문</span>
-    <span class="badge imp">중요도 5</span>
-    
-    
-    
-    
-  </div>
-  <p class="summary">Anthropic의 Levent Alpöge가 Claude를 이용해 리만 가설을 증명했다고 발표했으며, 거의 동시에 또 다른 수학자도 독립적으로 증명에 성공했다는 소식이다. 이 증명은 Lean 코드 형식으로 제공되었으며, AI의 수학적 추론 능력의 놀라운 진보를 보여준다.</p>
-  <p class="why">수학의 가장 유명한 난제 중 하나인 리만 가설이 AI의 도움으로 증명되었다는 것은 AI가 단순한 패턴 인식 수준을 넘어 복잡한 추론과 형식적 증명 영역에서도 인간 수준의 능력을 발휘할 수 있음을 강력히 시사한다.</p>
-  
-  
-  <details class="reader">
-    <summary>본문 읽기</summary>
-    <div class="reader-body">두 명의 수학자가 서로 몇 시간 간격으로(타임라인) 수학 분야에서 가장 유명한 미해결 문제인 리만 가설(Riemann Hypothesis)에 대한 독립적인 증명을 발표했습니다(Scientific American).
-
-Anthropic의 Levent Alpöge는 완전한 논문 대신 Lean 코드(1.3GB, 약 250,000페이지 분량)가 포함된 노트를 통해 Claude 기반 증명을 처음으로 발표했습니다. Elliot Glazer는 형식화된 명제가 GRH임을 확인하고 Lean 버그 발생 가능성을 1% 미만으로 보았습니다. 따라서 추가 공리 없이 컴파일이 완료되면 아마도 정확할 것이며, 어느 누구도 그 전체를 읽지 못할 것입니다.
-
-…이에 Alessandro Masullo는 지난 12년 동안 작업해 온(그리고 Kevin Hartnett에 따르면 비밀리에 수동 검토 및 수정을 거쳤던) 940페이지 분량의 100% 인간이 작성한 진행 중인 증명을 발표했습니다.
-
-이것은 Navier-Stokes 해법과 Quasi-Riemann 경계 설정에 이은 개척 수학의 세 번째 돌파구이지만, 아직 끝나지 않은 느낌입니다. OpenAI의 9월 Navier-Stokes 주장은 여전히 경고의 사례입니다. 비평가들은 Lean 증명이 자연어 결과와 일치하지 않는다고 주장했습니다. AI가 주장하는 두 밀레니엄 문제 결과는 검증에 수년이 걸릴 것입니다.
-
-수학에서 가장 유명한 문제에 대한 놀라운 업적 외에도, AI가 작성한 해결책은 아마도 정확하지만 이해하기 어렵고, 다른 해결책은 기술적으로는 틀렸을 수 있지만 이해하기 쉽다는 대조를 간과할 수 없습니다.
-
-Agentfield.AI 후원
-오픈 모델은 준비되어 있습니다. 대부분의 코딩 도구는 그렇지 않습니다. DeepSWE에서 CodeAF는 동일한 오픈 모델에서 Claude Code를 앞지르며 가장 낮은 수정 비용으로 10개 중 1위를 차지했습니다.
-CodeAF를 사용해 보세요!
-
-Levent가 유려하게 표현했듯이: &#34;Claude는 결승선 근처에서 저를 훨씬 앞질렀습니다. 아니, Claude는 결승선 근처에서 날고, 춤추고, 반짝였습니다.&#34;
-
-이것은 저희 팟캐스트와 뉴스레터에서 다루었던 다른 AI 주제들과도 연결됩니다:
-
-Slop의 본질: Levent는 &#34;저는 이 수학 주변의 거대한 영역을 완전히 숙지하기 전에 세상에 완전한 주장을 제시하고 있습니다. 거대하고 읽을 수 없는 &#39;slop&#39;이라는 파국을 게시하려는 시도가 분명히 부적절했기 때문에 저는 Lean만을 제시하기로 결정했습니다.&#34;라고 말합니다. No Slop Manifesto의 핵심 원칙 중 하나는 당신이 배포하는 것을 이해해야 한다는 것입니다(&#34;Slop은 소비자가 이해하는 데 소비해야 하는 시간보다 우리가 무언가를 생산하는 데 노력을 덜 기울이는 것입니다.&#34;). 그럼에도 불구하고, 이 거대한 Lean 더미는 검증 가능하게 정확하며 인류 역사상 엄청나게 중요합니다. 단순히 우리가 그 모든 부분을 이해하지 못했기 때문에 출시를 10년 연기했어야 했을까요?
-
-약한 것에서 강한 것으로의 정렬(Weak to Strong alignment): 에이전트를 사용하는 일반적인 경험은 강한 것에서 약한 것으로의 정렬입니다. 우리는 우리가 잘하는 일을 수행하기 위해 덜 똑똑한 AI를 안내하는 일반 지능입니다. 또한 우리는 종종 AI가 대부분의 작업을 &#34;분포 내에서&#34; 자동화하고, &#34;켄타우로스&#34; 패턴의 인간-AI 협력이 필요한 능력의 한계에서 더 많은 문제에 직면할 것이라고 예상합니다. Levent의 경험은 그 반대입니다. 초기에만 Claude와 협력하고, 이후에는 고차군에서의 automorphic forms와 관련된 중요한 부분에서 Claude를 훨씬 뒤처지게 했습니다. 우리는 우리보다 똑똑한 AI를 제어하는 개방형 영역인 약한 것에서 강한 것으로의 정렬이 필요하기 시작했습니다.
-
-Backblaze B2 후원
-데이터가 예상보다 빠르게 증가하고 있다면, 비즈니스 성장에 따라 확장되고, 테라비트 규모의 처리량으로 플래시 및 GPU에 데이터를 공급하며, 이그레스 요금을 부과하지 않는 스토리지가 필요합니다.
-Backblaze B2는 20년 동안 용량 계층 스토리지를 제공했으며, 6엑사바이트 이상을 관리하고 있으며, 선도적인 네오클라우드, 연구소 및 Gen AI 회사에서 신뢰하고 있습니다.
-성장은 걱정할 일이 아닙니다. 저희는 여러분이 만들고 있는 모든 것을 위한 공간을 가지고 있습니다.
-와서 사용해보세요!
-
-AI Twitter 요약
-
-Claude를 이용한 리만 가설 증명 주장
-
-주장: Anthropic의 수학자 Levent Alpöge는 &#34;Claude와 함께 작업하여&#34; 리만 가설의 증명을 발견했다고 말합니다. 그는 이 방법이 일반화된 리만 가설(GRH)도 다룬다고 말합니다 (Scientific American, 성명 요약, remark.pdf 링크).
-산출물: Lean 코드만 공개되었습니다. 작성된 산문 버전은 250,000페이지를 넘어섰다고 합니다 (타임라인).
-
-타임라인: 이 작업은 10월 6일에 시작되었습니다. 20단계 중 8단계는 11월 15일에 완료되었으며, 11월 16일의 최종 항목에는 &#34;GRH&#34;라고 적혀 있습니다. Alpöge는 고차군에서의 automorphic forms와 관련된 부분에 대해 Claude에게 공을 돌렸는데, 그는 이 분야에 거의 숙련되지 않았다고 말했습니다 (분석).
-
-미지수: 사용된 Claude 모델과 인간의 개입 정도는 공개되지 않았습니다 (미해결 질문).
-
-검증 상태: Elliot Glazer는 형식화된 명제가 GRH임을 확인했습니다. Lean 코드는 &#34;아직 컴파일 중이며 몇 시간이 걸릴 것입니다.&#34; 그는 Lean 버그 발생 가능성을 &lt;&lt;1%로 보았습니다 (분석).
-잠정 상태: Artificial Analysis는 AI가 주장한 밀레니엄 문제 결과 두 가지 모두 검증되지 않았다고 언급합니다. 이번 결과와 OpenAI의 9월 Navier-Stokes 주장은 미공개 모델을 사용했습니다 (집계).
-
-경쟁하는 인간 증명: Alessandro Masullo는 RH에 대한 별도의, 순수하게 인간이 작성한 증명을 발표했습니다. 약 940페이지 분량의 GRH 초안으로 보고됩니다 (발표, 페이지 수).
-
-해석 논쟁: 일부는 이 결과가 광범위한 초인적인 능력을 보여주기보다는 수학 문제의 객관적인 난이도를 우리가 거의 알지 못한다는 것을 보여준다고 주장합니다 (Theo Jaffee, Ege Erdil).
-무차별 대입 방식: 다른 이들은 이 접근 방식을 인간이 의지할 수 없는 규모의 올림피아드식 &#34;강타&#34;에 비유합니다 (cloneofsimo).
-
-들쭉날쭉함: Omar Khattab은 밀레니엄 문제를 해결하는 것과 &#34;다른 1000가지 일에는 이렇게 멍청한&#34; 것 사이의 대조를 지적합니다 (게시물).
-
-시장 반응: ANT 주가는 당일 약 10% 하락했습니다 (scaling01, Nabeel Qureshi).
-미확인 소문: 같은 날 DeepMind의 &#34;math horizon&#34; 저장소가 등장하면서 Gemini 수학 결과에 대한 추측이 촉발되었습니다 (미확인).
-
-Thinking Machines, 개방형 가중치 루프형 트랜스포머 Inkling 2 Mini 출시
-
-Inkling 2 Mini: Apache 2.0 라이선스 하의 26.4B 매개변수 루프형 MoE로, 노트북에서도 충분히 작다고 합니다. AA Index에서 20.1점을 받았습니다 (출시, Mira</div>
-  </details>
-  
-</article><article class="item">
-  <h3><a href="https://github.com/ShinMegamiBoson/lookatmyquant" target="_blank" rel="noopener">Inkling-2-Mini 모델, 5.4GB 메모리에서 실행 가능</a></h3>
+  <h3><a href="https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth" target="_blank" rel="noopener">Inkling, Qwen, Unsloth를 활용한 로컬 AI 입문 가이드</a></h3>
   <div class="meta">
     <span class="badge">Hacker News</span>
-    <span class="badge">모델 릴리스</span>
+    <span class="badge">실무 지식</span>
     <span class="badge imp">중요도 4</span>
-    <span class="badge">▲ 322</span>
+    <span class="badge">▲ 162</span>
     
     
-    <a class="badge" href="https://news.ycombinator.com/item?id=50591853" target="_blank" rel="noopener">💬 토론</a>
+    <a class="badge" href="https://news.ycombinator.com/item?id=50603845" target="_blank" rel="noopener">💬 토론</a>
   </div>
-  <p class="summary">Inkling-2-Mini 모델이 5.4GB의 적은 메모리에서 실행 가능하다는 소식이다. 이는 소형 장치나 제한된 자원 환경에서도 AI 모델을 효율적으로 운영할 수 있는 가능성을 시사한다.</p>
-  <p class="why">경량화된 AI 모델은 엣지 디바이스나 개인용 기기에서 AI를 활용하는 데 필수적이며, 개발자들이 더 넓은 범위의 애플리케이션에 AI를 통합할 수 있도록 돕는다.</p>
+  <p class="summary">Inkling, Qwen, Unsloth 같은 도구들을 사용하여 개인 컴퓨터에서 AI 모델을 로컬로 구동하는 초보자 가이드입니다. 이 가이드를 통해 개발자들은 클라우드 의존도를 줄이고 자체 환경에서 AI 실험 및 개발을 시작할 수 있습니다.</p>
+  <p class="why">로컬 AI 환경 구축은 비용 절감, 데이터 프라이버시 확보, 그리고 특정 하드웨어에 최적화된 모델 개발을 가능하게 하여 AI 개발자에게 필수적인 실무 역량을 제공합니다.</p>
   
   
   <details class="reader">
     <summary>본문 읽기</summary>
-    <div class="reader-body">LookAtMyQuant는 양자화 컴파일러입니다. 이 컴파일러는 모델의 각 저장된 부분이 압축될 때 출력에 얼마나 손상을 주는지 측정합니다. 그런 다음 전체 모델이 최소한의 손상으로 크기 예산을 충족하도록 각 부분에 대한 코드를 선택합니다.
+    <div class="reader-body">집에 AI가 있습니다! Unsloth와 Inkling 또는 Qwen을 사용하여 PC에 나만의 무료 개인 ChatGPT를 설정하세요. 개인적이며 온 가족이 사용할 수 있습니다.
 
-Gemma 4 E2B에서, GGUF는 동일한 파일 크기에서 Q4_K_M보다 12배 낮은 KL을 가집니다. 이 방법과 모든 결과는 웹사이트에 있습니다.
+Qwen과 같은 오픈-웨이트 모델의 출시로, 클라우드 기반 LLM 제공업체는 AI 모델이 처리할 수 있는 대부분의 일상적인 작업에 있어 인프라 또는 가전제품 사업처럼 보입니다.
 
-코드는 MIT 라이선스에 따라 제공됩니다.
+OpenAI와 Anthropic은 &#39;최신&#39; 버전에서 모델 품질을 떨어뜨리고 모델에서 실행할 수 있는 것을 정확히 제어하는 패턴을 보였습니다. 여기에 비용 증가와 개인 정보 보호 문제가 더해지면서 이러한 &#39;편리한&#39; 클라우드 경험에서 벗어나는 것이 꽤 좋은 이유가 됩니다.
 
-LookAtMyQuant 2: Qwen3.5-4B 1.2 GB
+저도 기본적으로 같은 생각이었습니다. 하루 종일 사용량 제한을 주시하지 않고도 특정 토큰-집약적인 연구, 데이터 수집 또는 코딩 작업을 AI 모델에 오프로드하고 싶었습니다. 그래서 합리적인 사람이라면 누구나 하듯이, 집에서 제 하드웨어로 실행되는 Claude 및 ChatGPT 대체품인 나만의 로컬 AI를 설정하기로 결정했습니다.
 
-LookAtMyQuant 2는 Qwen3.5-4B를 1.23GB, 즉 가중치당 2.3비트로 만듭니다. 이 파일은 540개의 정확한 답변 수학 문제 중 330개를 풉니다. Prism ML의 Bonsai 2 Ternary 4B는 1.20GB에서 328개를 풀며, 원본은 359개를 풉니다. 보류된 텍스트에 대한 원본과의 KL은 0.45nats이며, Bonsai의 경우 0.59nats입니다.
+이것이 저의 첫 시도였기 때문에, 저의 주요 초점은 간단하게 유지하고 Windows에서 호스팅하는 것이었습니다. 초보자라면 저를 따라 집 네트워크에서도 AI를 실행할 수 있습니다.
 
-이 방법은 trellis codes를 사용한 후훈련 양자화이며, 모델 자체의 풀린 수학 문제 해결을 기반으로 숫자 토큰에 10배의 가중치를 부여하고, Fisher 정보를 통해 행당 비트를 할당합니다. 이어서 4,000단계의 증류(distillation)가 진행되며, 이 과정에서 모든 레이어는 원본 가중치로부터 한 번 더 재양자화됩니다. 이 페이지에는 연구 결과, 전체 방법 및 비용(GPU 시간 약 34달러)이 나와 있습니다.
+하드웨어가 준비되면 약 10-15분 (다운로드 시간 제외)이 소요됩니다.
 
-이 방법의 코드는 여기에 있으며, 다음 섹션에서 실행됩니다. 1.23GB 파일 자체는 Apple Silicon 런타임용으로 패키징된 lm2-qwen35-4b-1.2gb 릴리스입니다.
+Unsloth Desktop을 설치하고, GPU의 VRAM에 맞는 양자화된 AI 모델을 다운로드하고, 컨텍스트 크기를 설정한 다음, 집안의 모든 사람이 사용할 수 있도록 LAN 액세스를 켜세요.
 
-동일한 방법으로 Qwen3.8-27B를 53.7GB에서 7.2GB, 즉 가중치당 2.1비트로 줄일 수 있으며, 영어 산문 및 채팅, 코드 및 수학에 대해 보정 및 증류됩니다. 이 파일은 540개의 수학 문제 중 원본과 동일하게 401개를 풀며, Unsloth의 UD-IQ2_XXS GGUF는 동일한 크기에서 348개를 풉니다. 또한 이 GGUF보다 HumanEval (67.1% 대비 73.8%), MMLU (75.0% 대비 78.8%), GSM8K (92.7% 대비 94.5%)에서 더 높은 점수를 얻습니다.
+집에서 로컬 AI를 실행하려면 무엇이 필요합니까?
 
-그 옆에는 4비트 DSpine drafter (1.02GB, tencent/Qwen3.8-27B-DSpine-b16에서 runtime_mlx/convert_dspine.py로 변환하고 pack_drafter.py로 패키징)가 있는데, 이는 Apple silicon에서 수학 및 코드 디코딩 속도를 대략 두 배로 높입니다.
+많은 것이 필요하지 않습니다 (하드웨어 외에). 다음은 짧은 목록입니다:
 
-Inkling-2-Mini, 5.4 GB, 8.9 GB, 11.2 GB, 12.8 GB
+그래픽 카드(GPU)가 있는 Windows PC. 비디오 메모리(VRAM)가 많을수록 더 큰 모델을 실행할 수 있습니다. 저는 이 설정에 32GB VRAM이 있는 RTX 5090을 사용하고 있습니다.
 
-26.4B 물리적 / 5.4B 활성 3x 루프 MoE (L6–17 3회 루프 = 48 논리적 방문, 128개 전문가 top-8)로 확장된 컴파일러와 전체 MoE proximal fine-tuning (SQYFR)은 thinkingmachines/Inkling-2-Mini의 18.89GB 텍스트 가중치를 네 가지 Apple Silicon MLX 빌드로 압축합니다: 5.38GB (1.65 bpp), 8.87GB (2.72 bpp), 11.18GB (3.43 bpp), 12.76GB (3.92 bpp) — 이는 4KB SRAM hashed block-vector trellis codes (ht2/ht3), row trellis codes (rtr1/rtr4), tail lm_head bucket (head.7)의 tr2 floor, 그리고 정확한 네이티브 NVFP4 passthrough (11.2GB 및 12.8GB 빌드에서 69/192 및 109/192 최고 민감도 전문가 버킷을 0.0 오류로 유지)를 결합합니다.
+Unsloth Desktop. 채팅 인터페이스를 통해 AI 모델을 제공하는 무료 앱입니다. Unsloth에서 받으세요.
 
-동일한 BF16 교사, openai/gsm8k (test[:200]), 164개의 실행 가능한 openai/openai_humaneval 문제, 4개의 Vision VQA 테스트 (수정되지 않은 637MB BF16 비전 타워 포함), 그리고 16+13개 언어 TextMix 창에 대해 잘리지 않은 상태로 평가되었습니다 (max_new_tokens = 1,536, greedy, reasoning_effort=&#34;none&#34;):
+GPU에 맞게 크기가 조정된 AI 모델. 다음 섹션에서 하나를 선택할 것입니다.
 
-12.76GB에서 Inkling-2-Mini-LookAtMyQuant-12.8GB는 모든 벤치마크 (349 / 349 풀링)에서 수정되지 않은 BF16 교사와 100.0% 일치하며, 텍스트 가중치 메모리를 32.5% 절감합니다. 11.18GB 및 8.87GB는 99.2–99.3%의 3가지 작업 평균 (345 / 349 = 98.9% 풀링)을 유지하며, 8.87GB는 영어/채팅/코드에서 KL을 2.34배 (0.0208 vs 0.0486) 줄이고, 모든 13개 언어에서 29.6% (0.0571 vs 0.0811)를 Unsloth의 9.14GB UD-Q2_K_XL GGUF보다 낮게 유지합니다. 한편 5.38GB는 88.0% GSM8K와 70.7% HumanEval (105/164 = 64.0% strict &lt;|content_text|&gt;; 동일한 384-토큰 하네스에서 7.76GB UD-IQ1_S 및 9.14GB UD-Q2_K_XL도 능가)를 기록합니다. 네 가지 모두 lamq와 runtime_mlx를 통해 통합된 단일 시작 Metal 커널 (UnifiedMoESide는 unrotated NVFP4와 Hadamard-rotated trellis 전문가를 디코딩, speculative verify, M5 MetalPerformancePrimitives prefill + FlashAttention-2 SDPA + exact unbiased temp &gt; 0 speculative sampling에 걸쳐 혼합)을 통해 실행되며, 선택적으로 178.9MB 4비트 DSpark drafter와 페어링됩니다: Apple M5 Max에서 12.8GB는 2,016 tok/s T=512 prefill, 60.5 tok/s serial, 112.7 tok/s median lossless drafted decode (119.2 tok/s math, 106.2 tok/s code; 12.72GB 활성 RAM)에 도달합니다; 11.2GB는 2,032 tok/s prefill, 62.4 tok/s serial, 103.7 tok/s median (111.7 tok/s math; 11.13GB 활성 RAM)에 도달합니다; 8.9GB는 63.5 tok/s serial, 106.0 tok/s median (125.8 tok/s reasoning, 123.8 tok/s math; 9.41GB 활성 RAM)으로 디코딩합니다; 그리고 5.4GB는 1,807 tok/s prefill, 75.3 tok/s serial, 124.4 tok/s median (142.9 tok/s math, 126.5 tok/s reasoning, 122.2 tok/s code; 5.98GB 활성 RAM)에 도달합니다.
+그게 다입니다. 터미널 명령, Python 환경 또는 구독이 필요하지 않습니다.
 
-Apple Silicon 런타임 설치 및 사용
+어떤 AI 모델을 GPU에서 실행할 수 있습니까?
 
-Apple silicon에서 런타임 패키지를 직접 설치하세요 (이것은 PyTorch 컴파일러 종속성 없이 mlx, mlx-lm, numpy, huggingface-hub를 설치합니다):
+그래픽 카드에 얼마나 많은 VRAM이 있는지에 따라 다릅니다. 대략적인 가이드로, 8-12GB VRAM은 더 작은 9B-12B 모델을 처리할 수 있으며, 32GB는 긴 대화를 위한 충분한 공간과 함께 27B-35B 모델을 편안하게 실행합니다.
 
-pip install git+https://github.com/ShinMegamiBoson/lookatmyquant.git
+소비자용 하드웨어에서는 더 작은 모델이 필요합니다. 풀 사이즈 Qwen 모델은 약 56GB이며, 통합 메모리가 있는 Mac을 사용하지 않는 한 소비자용 그래픽 카드에 실제로 맞지 않습니다. 여기서 양자화가 필요합니다.
 
-로컬 클론에서 pip install -e .를 실행하면 lamq 명령이 설치되거나, 설치 없이 python -m runtime_mlx를 실행할 수 있습니다.
+양자화는 가중치를 압축하고 더 낮은 정밀도로 이동하여 모델을 축소합니다. 기본적으로 GPU에 실제로 맞고 더 빠르게 실행되는 모델을 위해 일부 정확도를 희생합니다.
 
-명령줄. 로컬 모델 폴더 또는 Hugging Face repo ID 중 하나를 전달합니다:
+8, 4, 2 비트/픽셀로 저장된 동일한 사진. 모델의 가중치는 Q8에서 Q4로, Q2로 이동하는 것과 동일하게 세부 사항을 잃습니다.
 
-lamq generate shinmegamiboson/Qwen3.8-27B-LookAtMyQuant-7.2GB \ -p &#34;What is 17 times 23? Show the steps.&#34; lamq generate shinmegamiboson/Qwen3.8-27B-LookAtMyQuant-7.2GB \ --drafter shinmegamiboson/Qwen3.8-27B-LookAtMyQuant-7.2GB-drafter \ -p &#34;Write a Python function that merges overlapping intervals.&#34; --stats lamq chat shinmegamiboson/Qwen3.8-27B-LookAtMyQuant-7.2GB \ --drafter shinmegamiboson/Qwen3.8-27B-LookAtMyQuant-7.2GB-drafter lamq generate shinmegamiboson/Inkling-2-Mini-LookAtMyQuant-12.8GB \ --drafter shinmegamiboson/Inkling-2-Mini-LookAtMyQuant-drafter \ -p &#34;What is 17 times 23? Show the steps.&#34; --stats lamq generate shinmegamiboson/Inkling-2-Mini-LookAtMyQuant-5.4GB \ --drafter shinmegamiboson/Inkling-2-Mini-LookAtMyQuant-drafter \ -p &#34;What is 17 times 23? Show the steps.&#34; --stats
+이러한 절충이 가치가 있는지 궁금하다면, 그것은 경우에 따라 다릅니다. 특정 유형의 워크로드는 실제로 신경 쓰지 않고 유사한 출력을 제공하는 반면, 다른 워크로드는 거의 사용할 수 없을 수도 있습니다.
 
-lamq generate는 -p가 생략될 때 stdin을 읽고, --raw, --system, --thinking, --temp, --mode linear|chat-fork|copy-wide, --no-adaptive, --json을 지원합니다. lamq info &lt;model&gt;은 가중치를 로드하지 않고 패키징된 모델의 형식과 차원을 검사합니다.
+어떤 모델을 VRAM에 대해 실행해야 합니까?
 
-Python 통합. runtime_mlx.load는 (</div>
+이 가이드에서는 RTX 5090이 장착된 제 시스템에서 4비트 양자화된 Qwen3.8-27B를 사용할 것입니다. 32GB VRAM 덕분에 한 단계 더 높은 티어를 선택할 수 있지만, 가장 큰 모델을 채워 넣기보다는 더 큰 컨텍스트 창 (모델이 한 번에 기억할 수 있는 대화량)을 허용하고 싶었습니다.
+
+VRAM 계산기에서 128K 컨텍스트를 가진 각 정밀도의 Qwen3.8-27B. 4비트에서는 모델과 컨텍스트가 32GB 카드에 충분한 공간을 남기고 들어갑니다.
+
+뛰어난 성능을 가진 이 수준의 모델을 실행하고 싶다면, 터무니없이 비싼 RTX 5090 (1,999달러가 너무 비싸다고 생각했던 때를 기억하십니까?)은 불행히도 요즘에도 나쁘지 않은 &#39;거래&#39;입니다. 다른 옵션은 훨씬 더 비싼 엔터프라이즈급 GPU입니다.
+
+더 적은 VRAM을 가진 GPU를 사용하고 있다면, 여전히 매우 유용한 것을 즉시 실행할 수 있습니다. 아래 표는 어디에서 시작할 수 있는지에 대한 대략적인 아이디어를 제공합니다.
+
+RTX 5060 8GB, RTX 3060 12GB, RTX 5070 12GB
+
+Qwen3-14B, gpt-oss-20b (MoE), Gemma 4 26B (MoE), Qwen3-Coder-30B (MoE), Qwen3.6-35B (MoE), Inkling 2 Mini (MoE)
+
+RTX 5060 Ti 16GB, RTX 5070 Ti, RTX 5080, RTX PRO 2000
+
+Gemma 4 31B, Qwen3.8-27B, Inkling 2 Mini
+
+RTX 3090, RTX 4090, RX 7900 XTX, RTX PRO 4000
+
+RTX 5090 32GB, RTX PRO 4500 32GB, RTX PRO 5000 48GB, RTX PRO 6000 96GB
+
+RTX 5060 8GB, RTX 3060 12GB, RTX 5070 12GB
+
+Qwen3-14B, gpt-oss-20b (MoE), Gemma 4 26B (MoE), Qwen3-Coder-30B (MoE), Qwen3.6-35B (MoE), Inkling 2 Mini (MoE)
+
+RTX 5060 Ti 16GB, RTX 5070 Ti, RTX 5080, RTX PRO 2000
+
+Gemma 4 31B, Qwen3.8-27B, Inkling 2 Mini
+
+RTX 3090, RTX 4090, RX 7900 XTX, RTX PRO 4000
+
+RTX 5090 32GB, RTX PRO 4500 32GB, RTX PRO 5000 48GB, RTX PRO 6000 96GB
+
+MoE (mixture of experts)로 표시된 모델은 각 토큰에 대해 몇 십억 개의 매개변수만 실행합니다. 나머지 매개변수는 시스템 RAM에 유지되어 더 작은 카드에서도 적절한 속도를 유지하므로 35B 모델이 16GB 행에 있습니다. RTX 5060 Ti 16GB에서 저희 계산기는 Qwen3.6-35B가 이 방식으로 초당 약 47 토큰을 처리한다고 예측합니다.
+
+필요에 맞는 모델을 찾을 때까지 여러 모델을 자유롭게 실험해 보세요. GPUPartner의 VRAM Calculator를 사용하여 예상치를 얻을 수도 있습니다.
+
+RTX 5090에서 Inkling 2를 실행할 수 있습니까?
+
+Inkling 2 Mini는 가능하지만, Inkling 2 Small은 불가능합니다.
+
+Inkling 2 Mini는 이 크기 클래스에서 가장 최신 모델입니다. Thinking Machines Lab은 2026년 11월 17일에 이를 출시했습니다: 26.4B 매개변수, Apache 2.0, 비전 지원 및 1M-토큰 컨텍스트. Unsloth가 권장하는 파일인 UD-Q4_K_XL은 17.6GB입니다. 이 가이드의 Qwen3.8-27B 파일과 0.1GB 이내이므로 32GB 카드에 동일하게 들어가며 컨텍스트를 위해 약 14GB를 남깁니다.
+
+이 가이드의 다른 어떤 것도 변경되지 않습니다. Inkling 2는 최신 빌드를 필요로 하므로 먼저 Unsloth Desktop을 업데이트한 다음, 2단계의 동일한 드롭다운에서 Inkling 2 Mini를 검색하십시오.
+
+이 수치들은 Unsloth의 것입니다. RAM과 VRAM을 함께 계산하고 모델 자체만 포함하므로, 긴 컨텍스트에는 더 많은 메모리가 필요합니다. Inkling 2 Mini는 5.4B 매개변수가 활성화된 MoE 모델이므로, 4비트 파일은 나머지 메모리가 시스템 RAM에 있는 16GB 카드에서도 실행되지만 약간 느려집니다.</div>
   </details>
   
 </article><article class="item">
-  <h3><a href="https://onurgumus.github.io/zero-csharp/index.html" target="_blank" rel="noopener">Zero C#: 런타임 및 GC 없이 C# 개발</a></h3>
+  <h3><a href="https://github.com/mjwsolo/localcode" target="_blank" rel="noopener">Localcode: 맥에서 원격으로 에이전트 코딩을 오픈 소스로</a></h3>
   <div class="meta">
     <span class="badge">Hacker News</span>
     <span class="badge">도구·오픈소스</span>
     <span class="badge imp">중요도 4</span>
-    <span class="badge">▲ 120</span>
+    <span class="badge">▲ 12</span>
     
     
-    <a class="badge" href="https://news.ycombinator.com/item?id=50590279" target="_blank" rel="noopener">💬 토론</a>
+    <a class="badge" href="https://news.ycombinator.com/item?id=50604540" target="_blank" rel="noopener">💬 토론</a>
   </div>
-  <p class="summary">Zero C#은 런타임이나 가비지 컬렉터(GC) 없이 C#을 사용할 수 있게 하는 프로젝트이다. 이로 인해 C#의 성능이 향상되고, 임베디드 시스템이나 고성능이 요구되는 환경에서 C#의 활용도를 높일 수 있다.</p>
-  <p class="why">런타임 오버헤드 없이 C#을 사용할 수 있게 함으로써 개발자들이 C#을 활용해 더 효율적이고 제어 가능한 시스템을 구축할 수 있는 새로운 가능성을 제공한다.</p>
+  <p class="summary">Localcode는 맥에서 단일 명령어로 에이전트 기반 코딩을 가능하게 하는 오픈소스 도구입니다. 개발자들이 로컬 환경에서 AI 에이전트를 활용하여 코드를 생성하거나 수정하는 작업을 쉽게 수행할 수 있도록 지원합니다.</p>
+  <p class="why">로컬 에이전트 코딩은 개발 워크플로우를 혁신하고, AI 기반 개발 도구의 접근성을 높여 개발 생산성을 크게 향상시킬 수 있는 실용적인 기술입니다.</p>
   
   
   <details class="reader">
     <summary>본문 읽기</summary>
-    <div class="reader-body">bflat의 포크는 C#을 작은 네이티브 프로그램으로 직접 컴파일합니다. .NET 런타임, 가비지 컬렉터, 실행되는 곳에 아무것도 설치할 필요가 없습니다.
+    <div class="reader-body">에이전트 코딩. 로컬 모델. 당신의 Mac에서.
 
-C#의 구문, 타입 검사 및 제네릭을 유지합니다. 메모리는 한 번에 모두 해제하는 아레나에서 오며, 작은 라이브러리가 이러한 조건으로 문자열, 컬렉션, 입출력을 제공합니다. 동일한 소스는 Linux, macOS, Windows, WebAssembly 및 386 기반의 DOS에서 실행됩니다.
+uv pip install -U localcode로 업그레이드하세요.
 
-// 스택 버퍼로 읽기: 답변당 할당되는 것은 없음.Span&lt;char&gt; buffer = stackalloc char[32];Out.Write($&#34;Q{i}: {a} + {b} = &#34;);int length = In.ReadLine(buffer); // 끝까지 유지되므로 아레나로 들어감.mistakes.Add(Str.Format(keep, $&#34;{a} + {b} = {a + b}, not {value}&#34;));
+실행 중인 모델을 다른 로컬 앱에서 사용하려면 /server를 열거나 OpenAI 호환 엔드포인트를 위해 localcode api를 실행하세요. 로컬 API 가이드를 참조하세요.
 
-튜토리얼에서 단계별로 구축하는 퀴즈에서 발췌했습니다.
+프로젝트 내 파일을 읽고 편집합니다
 
-언어는 유지되고 런타임은 사라집니다.
+프로젝트 내에서 자체적으로 테스트, 빌드, Git 및 셸 명령을 실행하며, 프로젝트 외부의 모든 것을 건드리기 전에 묻습니다
 
-컴파일러는 .NET에서 검사하는 모든 것을 여전히 검사합니다. 빠진 것은 프로그램이 실행되는 동안 런타임이 수행할 작업입니다.
+이름, 내용 또는 구조로 코드를 검색합니다
 
-C# 15유니온, 확장 멤버 및 새로운 메모리 안전 규칙.
+앱을 스캐폴딩하고 실행한 다음 응답하는지 확인합니다
 
-진정한 제네릭각 타입에 대한 특수화된 복사본, 그리고 정적 추상 멤버.
+메시지 간에 작업을 기억합니다
 
-인터페이스 및 가상 메서드기본 인터페이스 메서드, 캐스트, is 및 as.
+Apple Silicon이 장착된 Mac, macOS 13 이상
 
-레코드, 튜플, 익명 타입값 동등성, with, 그리고 생성된 ToString.
+LocalCode 및 선택한 모델을 위한 디스크 공간 (아래 다운로드 크기)
 
-람다 및 쿼리LINQ 대신 작은 라이브러리에서 Where, Select 및 GroupBy.
+코딩, 이미지 입력 및 유형화된 결정을 위한 12개 모델과 169개 양자화 옵션 중에서 선택하세요. 모델은 Hugging Face에서 다운로드됩니다. 다운로드는 병렬로 실행되며 중단 시 재개할 수 있습니다. /models로 전환하세요. LocalCode는 Mac의 메모리에 맞는 가장 유능한 모델을 추천하고 별표로 표시합니다.
 
-스레드Parallel.For는 모든 코어에서 루프를 실행합니다.
+속도: Gemma 4, Qwen 3.6, Muse Glimmer 및 Qwen 3.8은 공급업체 자체의 예측 드래프터를 사용하여 토큰을 드래프트하며, 이 드래프터는 모델과 함께 다운로드됩니다. 모델 서버의 GPU 커널은 미리 컴파일되어 제공되므로, 설치 후 첫 시작이 더 빠릅니다.
 
-가비지 컬렉터아레나는 사용자가 원할 때 메모리를 한 번에 모두 해제합니다.
+LocalCode가 로컬 모델을 더 빠르고 코딩에 더 능숙하게 만들기 위해 기본 모델 서버 위에 추가하는 기능입니다.
 
-.NET 런타임Hello world는 Windows에서 11KB, Linux에서 40KB이며 설치할 필요가 없습니다.
+드래프팅: 공급업체 자체 드래프터가 토큰을 미리 추측합니다 (Gemma 4, Qwen 3.6, Qwen 3.8 및 Muse Glimmer에서 약 2배 빠른 응답)
 
-예외 처리throw는 프로그램을 종료합니다. 오류는 유니온으로 반환합니다.
+복사 드래프팅: 모델이 이미 읽은 파일을 다시 작성할 때, 생성하는 대신 복사합니다 (재작성에서 3.5 ~ 4배 빠름)
 
-리플렉션 및 async타입은 비교할 수 있지만 이름은 없습니다.
+프롬프트 캐시 재사용: 시스템 프롬프트는 매 턴마다 동일하게 유지되므로, 모델은 새로운 것만 읽습니다
 
-Hello-world 샘플은 변경되지 않은 상태로 각 대상에 대해 빌드됩니다. 각 빌드는 동일한 테스트 스위트에서 검사되며, 이는 모든 곳에서 동일한 출력을 요구합니다.
+워밍업: 첫 번째 요청의 프롬프트는 모델 로드 중에 읽히므로, 첫 메시지가 더 빨리 시작됩니다
 
-$ ./build.sh Minimal$ ./run.sh MinimalHello from zero-mode!$ wc -c bin/Minimal39848 bin/Minimal
+미리 컴파일된 GPU 커널: 첫 시작 시 30초 동안 셰이더 컴파일이 없습니다
 
-C 라이브러리만 필요한 네이티브 프로그램. macOS에서는 컨테이너에서 빌드 및 실행됩니다.
+Mac의 성능 코어에 맞게 스레드 조정
 
-$ ./build.sh --mac Minimal$ bin/mac/MinimalHello from zero-mode!$ wc -c bin/mac/Minimal64728 bin/mac/Minimal
+Inkling 2: 전문가가 GPU에서 실행됩니다 (이전에는 CPU에서 조용히 실행되어 약 5배 느렸음), 밴딩된 어텐션과 융합된 활성화 연산은 GPU 메모리를 절반으로 줄이고 프롬프트를 20~30% 더 빠르게 읽습니다
 
-네이티브 Mac 프로그램: bflat이 컴파일하고 Mac 자체의 clang이 링크합니다. 컨테이너를 실행할 필요가 없습니다.
+다운로드는 병렬로 실행되고, 중단 시 재개되며, 다른 모델을 사용하는 동안에도 계속 진행됩니다
 
-$ ./build.sh --win Minimal$ ./run.sh --win MinimalHello from zero-mode!$ wc -c bin/win/Minimal.exe10752 bin/win/Minimal.exe
+기본적으로 8비트 KV 캐시: 전체 정밀도의 절반 메모리이므로 더 긴 컨텍스트가 들어갑니다
 
-Linux 또는 macOS에서 빌드된 Windows 자체의 C 라이브러리 기반 콘솔 프로그램. Wine에서 테스트되었습니다.
+Inkling 2는 대신 16비트 캐시를 사용합니다: 어텐션이 직접 읽으므로 긴 프롬프트가 1.4 ~ 1.8배 더 빠르게 읽히고, 128K 컨텍스트에서 3.3GB 메모리가 덜 필요합니다
 
-$ ./build.sh --wasm Minimal$ ./run.sh --wasm MinimalHello from zero-mode!$ wc -c bin/wasm/Minimal.wasm15833 bin/wasm/Minimal.wasm
+서버가 보고하는 내용에 따라 컨텍스트 크기가 조정되므로, 긴 채팅이 공간이 부족해지기 전에 압축됩니다
 
-NativeAOT-LLVM을 통한 WASI 모듈. wasmtime에서 실행됩니다.
+선택기는 Mac에 맞는 가장 유능한 모델을 추천합니다
 
-C:\&gt;D:D:\&gt;PROGRAMHello from zero-mode!D:\&gt;DIR PROGRAM.EXE PROGRAM EXE 16,384 D:\&gt;
+숨겨진 사고는 기본적으로 꺼져 있으므로 답변이 즉시 나옵니다; 사고에 갇힌 모델은 실패하는 대신 복구됩니다
 
-동일한 비트코드가 386용으로 컴파일되어 HX DOS 확장기로 실행됩니다. Bochs의 i386 모델에서 테스트되었습니다.
+계획 패널: 모델은 작업 목록을 유지하고 이를 업데이트하도록 상기시킵니다
 
-무엇이 다르고, 무엇을 얻는가
+막힘 감지: 진전을 보이지 않거나 같은 검사를 계속 실패하는 모델은 접근 방식을 변경하도록 유도된 다음, 자신이 가진 것을 보고하도록 중지됩니다
 
-런타임이 없으면 몇 가지가 다르게 작동합니다. 각 항목에는 이유와 대신 해야 할 작업을 설명하는 페이지가 있습니다.
+모든 릴리스는 출시 전에 모든 모델에서 실시간으로 테스트됩니다 (로드, 응답, 도구 호출, 이미지)
 
-메모리는 사용자가 해제합니다. 가비지 컬렉터가 없으므로 new는 절대 해제되지 않습니다. 아레나는 메모리를 나눠주고 수명당 하나씩 한 번에 모두 해제합니다. 가비지 컬렉터 없는 메모리
+추론은 로컬에서 이루어집니다. 세 가지 기능이 네트워크를 사용합니다: 모델 다운로드, web_search 및 web_fetch 도구, 그리고 추가하는 모든 MCP 서버. 전체 목록은 네트워크 경계를 참조하세요.
 
-버릴 수 없는 문자열 없는 텍스트Out.Line($&#34;...&#34;)는 출력 버퍼에 직접 포맷하고, In.ReadLine은 스팬으로 읽습니다. 지속되어야 하는 문자열은 아레나에 들어갑니다. 가비지 컬렉터 없는 문자열
+강력하고 개인적인 AI는 모든 사람, 모든 장치, 어디서나 작동해야 합니다. 이는 로컬에서 실행되어야 함을 의미합니다. localcode는 첫걸음입니다.
 
-아레나에 상주하는 컬렉션List, Dict, 그리고 참조 및 문자열 키에 대한 해당 버전, 모두 아레나에 대한 핸들입니다. 컬렉션 선택
-
-C# 15, 안전 규칙 적용모든 프로그램은 업데이트된 메모리 안전 규칙에 따라 컴파일됩니다. 포인터 생성은 안전하고, 포인터를 통한 읽기는 표시되고 설명됩니다. 메모리 안전 규칙
-
-새로운 사용자라면, 이 네 페이지가 아무것도 없는 상태에서 대화형 프로그램으로 안내합니다.
-
-설치Linux에 dotnet으로 설치하거나, 각 대상에 대한 리포지토리에서 설치합니다.
-
-첫 번째 프로그램빌드하고 실행하여 얼마나 작은지 확인합니다.
-
-DOS에서 실행동일한 프로그램을 FreeDOS에서 에뮬레이터로 실행합니다.
-
-튜토리얼퀴즈: 출력, 입력, 잘못된 입력, 아레나.
-
-특정 정보를 찾고 계십니까? 작업 가이드는 각각 하나의 질문에 답하고, 참조는 라이브러리의 모든 타입을 나열합니다.</div>
+localcode를 후원하려면 문의하십시오.</div>
   </details>
   
 </article><article class="item">
-  <h3><a href="https://bsky.app/profile/natolambert.bsky.social/post/3n2tdrggx2o27" target="_blank" rel="noopener">Nathan Lambert: AI 후처리(Post-training) 분야의 주요 미해결 문제 슬라이드 공개</a></h3>
-  <div class="meta">
-    <span class="badge">Bluesky</span>
-    <span class="badge">실무 지식</span>
-    <span class="badge imp">중요도 4</span>
-    
-    
-    <span class="badge">♥ 38</span>
-    
-  </div>
-  <p class="summary">Nathan Lambert가 AI 후처리(Post-training) 분야의 가장 큰 미해결 문제들과 이 분야가 현재에 이르게 된 과정을 다룬 새로운 슬라이드 덱을 공개했다. 이는 Trillium Labs의 목표와도 연결되는 내용으로 보인다.</p>
-  <p class="why">AI 모델의 성능을 최적화하고 실제 적용을 위한 핵심 단계인 후처리 과정의 도전 과제들을 이해하는 것은 개발자들에게 중요한 실무적 통찰을 제공한다.</p>
-  
-  
-</article><article class="item">
-  <h3><a href="https://www.pandex.io" target="_blank" rel="noopener">유럽 AI 에이전트 규제법 Pandex, MCP 방식 초월</a></h3>
+  <h3><a href="https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/" target="_blank" rel="noopener">Anthropic, 2028년 전력의 87%를 가스, 11%를 석탄에서 조달 예정</a></h3>
   <div class="meta">
     <span class="badge">Hacker News</span>
-    <span class="badge">정책·안전</span>
-    <span class="badge imp">중요도 2</span>
-    <span class="badge">▲ 14</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 870</span>
     
     
-    <a class="badge" href="https://news.ycombinator.com/item?id=50593481" target="_blank" rel="noopener">💬 토론</a>
+    <a class="badge" href="https://news.ycombinator.com/item?id=50597612" target="_blank" rel="noopener">💬 토론</a>
   </div>
-  <p class="summary">유럽에서 AI 에이전트의 공식적인 법률인 Pandex가 MCP(Maximum Capacity Protocols) 방식을 넘어선다는 제목의 소식이지만, 구체적인 내용 없이 제목만 제공되었다. 어떤 점에서 MCP를 초월하는지에 대한 정보는 불분명하다.</p>
-  <p class="why">AI 에이전트 규제에 대한 유럽의 새로운 접근 방식이 제시될 가능성을 시사하지만, 정보가 부족해 실제 영향은 파악하기 어렵다.</p>
+  <p class="summary">AI 기업 Anthropic이 2028년까지 전력의 대부분을 화석 연료(가스 87%, 석탄 11%)에서 조달할 계획이라는 소식입니다. 이는 AI 모델 개발 및 운영에 필요한 막대한 에너지 소비와 환경적 영향에 대한 우려를 제기합니다.</p>
+  <p class="why">AI 산업의 지속 가능한 성장을 위해서는 에너지 소비와 탄소 배출 문제 해결이 필수적이며, 이 소식은 AI 기업의 환경적 책임에 대한 논의를 촉발합니다.</p>
   
   
   <details class="reader">
     <summary>본문 읽기</summary>
-    <div class="reader-body">EU 및 7개 유럽 국가의 법률 및 최고 법원 판례를 해당 기관에서 직접 발행하여 검색 및 AI 에이전트가 활용할 수 있도록 준비했습니다.
+    <div class="reader-body">Anthropic의 총 전력 사용량 및 배출량에 대한 사례 연구. 우리는 이 회사가 2028년에 3,200만 미터톤의 이산화탄소를 배출할 수 있다고 추정합니다.
 
-이미 사용 중인 AI 도구와 함께 작동합니다.
+“The AI Gas Rush: Risks and Implications of “Bring Your Own Power”” 보고서에서 우리는 데이터 센터가 전력 조달을 전적으로 유틸리티에 의존하기보다 자체적인 전력 발전원(BYOP)을 확보하는 방식에 대해 심층적으로 살펴보았습니다. 우리는 177GW의 BYOP 가스 용량을 계획하고 있음을 확인했습니다. 이는 미국 전체 가구의 65%에 전력을 공급할 수 있는 규모입니다. 반대로 BYOP에서 재생에너지는 가스보다 훨씬 덜 일반적이라는 것을 발견했습니다. 현재 제안을 기준으로 2032년까지 재생에너지원에서 발생하는 전력은 전체 발전량의 20% 미만일 것으로 추정됩니다.
 
-법률을 정확하게 처리해야 하는 소프트웨어를 위해 구축되었습니다.
+그러나 BYOP 프로젝트만이 AI 데이터 센터의 급증하는 에너지 수요를 충족시키기 위해 새로 가동되는 화석 에너지원은 아닙니다. 주로 데이터 센터로 인한 증가하는 수요를 충족시키기 위해 그리드에 추가로 200GW 규모의 새로운 화석 발전소가 건설되고 있습니다.1
 
-우리가 보유한 모든 관할권에 대해 하나의 API 및 하나의 MCP 서버를 제공합니다.
+AI 구축이 새로운 BYOP 및 그리드 화석 인프라를 어떻게 추진하는지에 대한 사례 연구로, 우리는 단일 회사인 Anthropic의 컴퓨팅 약속을 분석했습니다.
 
-법률 관련 업무를 하는 팀을 위해 구축되었습니다.
+Anthropic의 데이터 센터 및 관련 발전소 지도. 각 사이트의 세부 정보는 전체 데이터셋을 참조하십시오.
 
-독일 고용주는 해고 통지 없이 해고할 수 있는 기간은 얼마나 될까요? 사실을 알게 된 날로부터 2주 이내입니다. § 626 Abs. 2 BGB.
+결과 1: Anthropic은 미국에서 재생에너지에 대한 직접적인 약속을 하지 않았습니다. Anthropic은 “지열, 풍력, 태양광 및 신기술을 통해 에너지 믹스를 확장하기 위해 노력하고 있습니다”라고 밝혔지만, 공개적으로 공개된 재생에너지에 대한 약속, 계약 또는 투자는 노르웨이와 캐나다에만 있습니다(2026년 11월 기준). 반면 Anthropic은 화석 연료 발전 설비를 직접 조달하고 있습니다. 최근 “1.7기가와트 규모의 대형 [가스] 발전기 약정을 34억 달러에 구매했습니다”.
 
-Legal AI 및 에이전트
-모든 답변에 인용된 실제 법률을 기반으로 합니다. MCP 또는 API를 통해 연결하세요.
+결과 2: Anthropic이 미국에서 현재 계약한 데이터 센터는 단기적으로 압도적으로 화석 연료로 전력이 공급될 것입니다. 현장 가스와 Anthropic의 추가 부하(즉, 한계 발전기)를 충족시킬 가능성이 있는 그리드 발전소를 고려할 때, 우리는 이 회사의 전력의 약 87%는 가스에서, 11%는 석탄에서 공급될 것으로 2028년에 추정합니다. 2026년 10월 현재 Anthropic은 15GW의 컴퓨팅을 계약했으며, 이 중 약 5.9–9.6GW는 특정 데이터 센터 부지에 계약되어 있습니다. 규모를 가늠하자면, 9.6GW는 약 700만 가구에 전력을 공급하거나 세계 4위 경제대국인 캘리포니아의 최대 전력 수요의 18%를 충당할 수 있습니다.
 
-Regulation (EU) No 575/2013
-New Version
-Code du travail
-Article amended
-Companies Act 2006
-New version
+이 수요는 새로운 현장 가스, 새로운 그리드 가스, 기존 그리드 가스, 석탄 및 원자력의 조합으로 충족될 것입니다. 단기적으로는 새로운 재생에너지 용량에 대한 약속이 없기 때문에 그리드의 새로운 부하는 가동 가능한 한계 화석 자원으로 충족될 것이므로 Anthropic의 전력 사용에는 그리드 재생에너지가 할당되지 않습니다.2 자세한 내용은 아래의 전체 데이터셋 및 방법론을 참조하십시오.
 
-규정 준수 및 모니터링
-관할권 전반에 걸쳐 법률의 모든 변경 사항을 추적합니다. 각 조항의 과거 버전과 각 버전이 발효된 날짜를 제공합니다.
+결과 3: Anthropic의 이들 부지에서의 전력 사용으로 인한 총 CO2 배출량은 2028년에 연간 1,700만~3,800만 MtCO2e에 달할 수 있으며, 이때 이 용량이 가동될 것으로 예상됩니다. 이 범위는 냉각 요구 사항 및 평균 활용률과 같은 요인으로 인한 Anthropic의 평균 전력 사용량의 불확실성을 반영합니다(아래 방법론 참조). 우리의 중간 시나리오에서 Anthropic은 2028년에 3,200만 MtCO2e를 배출할 것입니다. 이러한 총량은 계속 증가할 것이며, 일부 분석가들은 Anthropic이 2030년까지 30GW를 확보할 것으로 예상하므로 2030년까지 두 배로 증가할 수도 있습니다.
 
-텍스트
-날짜
-발행 기관
-인용
-식별자
+이 수치를 맥락에 비추어 보면, 2028년 Anthropic의 전력 사용으로 인한 CO2 배출량은 다음과 같습니다:
 
-법률 연구 제품
-모든 법원에 스크레이퍼를 사용하는 대신 국가 전반에 걸쳐 하나의 API 및 하나의 스키마를 제공합니다.
+캘리포니아의 전체 발전량 배출량(2024년 3,110만 MtCO2e, 수입 제외)을 초과할 수 있습니다.
 
-출처에서 직접 확인할 수 있는 적용 범위.
+Meta, Microsoft, Google의 2025년 Scope 2 배출량 합계(재생에너지 상쇄 전 위치 기반 배출량은 각각 590만, 1,200만, 1,500만 MtCO2e였음)를 초과할 수 있습니다.3
 
-각 기관별 국가 법률과 과거 버전 및 최고 법원의 판례. 우리는 각 기관이 보유한 내용과 보유하지 않은 내용을 모두 공개합니다.
+미국 전체 데이터 센터 부문의 2024년 수준(1억 500만 MtCO2e)보다 16-36% 증가할 것입니다.
 
-유럽 연합
-101,974건의 문서
-Publications Office of the EU (완료)
-유럽사법재판소 (완료)
+미국 전체 전력 부문 배출량(2025년 14억 8,500만 MtCO2e)을 1.1-2.5% 증가시킬 것입니다.
 
-프랑스
-907,232건의 문서
-Parlement (완료)
-Gouvernement (완료)
-Cour de cassation (부분)
-법원이 2020년부터 Judilibre를 통해서만 공개하는 판결 (DILA 덤프에는 없음)은 등록된 계정이 필요하며, 덤프는 약 두 달 지연됩니다.
-Conseil d&#39;État (완료)
-Tribunal des conflits (완료)
-Conseil constitutionnel (완료)
+결과 4: Anthropic의 데이터 센터는 그리드가 주로 석탄과 가스를 사용하는 지역에 위치해 있습니다. 우리는 Anthropic 전력의 평균 탄소 집약도가 1,033–1,076 lb CO2e/MWh로, 미국 그리드 평균(767 lb CO2e/MWh)보다 35% 높다고 추정합니다.4
 
-독일
-177,101건의 문서
-Bundesamt für Justiz (완료)
-Bundesverfassungsgericht (부분)
-1998년부터 2009년까지의 재판부 판결은 법원 사이트에만 있으며, 브라우저가 아닌 클라이언트는 접속을 거부합니다.
-Bundesgerichtshof (완료)
-Bundesverwaltungsgericht (부분)
-아직 로딩 중: 현재까지 보유한 약 20,321개 문서 중 2,270개.
-Bundesfinanzhof (완료)
-Bundesarbeitsgericht (완료)
-Bundessozialgericht (완료)
-Gemeinsamer Senat der obersten Gerichtshöfe des Bundes (완료)
+결과 5: 현장 전력의 80%는 비효율적인 단순 사이클 터빈과 엔진을 사용합니다. Anthropic이 계약한 전력의 약 25%(2.5GW)는 현장, 계량기 후방 가스에서 공급될 것입니다. 이 현장 용량의 80%는 비효율적인 단순 사이클 터빈과 엔진으로 구성되어 있으며, 이는 최신 복합 사이클 발전소보다 단위 전력당 더 많은 오염 물질을 배출합니다(현장 가스에 사용되는 발전 유형에 대한 자세한 내용은 보고서 참조).
 
-네덜란드
-335,852건의 문서
-KOOP, Basiswettenbestand (완료)
-Hoge Raad (완료)
-Parket bij de Hoge Raad (완료)
-Raad van State, Afdeling bestuursrechtspraak (부분)
-약 27,700개의 오래된 판결은 Rechtspraak에 텍스트가 없습니다. 의회의 자체 사이트에서는 Cloudflare 챌린지 뒤에 표시됩니다.
-Centrale Raad van Beroep (완료)
-College van Beroep voor het bedrijfsleven (완료)
+결과 6: EPA의 전국 평균 톤당 이점 추정치를 기반으로 할 때, Anthropic의 현장 및 그리드 전력 사용으로 인한 대기 오염은 연간 20억~30억 달러의 건강 피해를 유발할 수 있으며, 총 배출량은 연간 13,000톤 이상의 질소산화물(NOx)과 2,000톤 이상의 미세먼지(PM2.5)에 달할 수 있습니다.
 
-영국
-99,621건의 문서
-UK Parliament (완료)
-UK Government (완료)
-Scottish Parliament and Government (완료)
-Senedd Cymru and Welsh Government (완료)
-Northern Ireland Assembly and Executive (완료)
-UK Supreme Court (완료)
-Judicial Committee of the Privy Council (완료)
-House of Lords, Appellate Committee (보유하지 않음)
-1996년부터 2009년까지의 약 900건의 판결은 보관된 parliament.uk 페이지에 있으며, 우리 서버는 접근할 수 없습니다. 더 이전 판결은 공식 사이트에 온라인으로 제공되지 않습니다.
+2026년 10월 Anthropic은 “책임 있는 데이터 센터 개발 접근 방식”을 설명하며 다음과 같이 밝혔습니다. “우리는 운영하는 모든 곳에서 대기 배출 허가 프로세스를 따르며, 데이터 센터에 전력을 공급하는 발전소에도 동일한 요구 사항을 적용합니다. 해당 발전소는 선택적 촉매 환원 [SCR]을 포함한 배출 제어 기술을 사용해야 합니다.” 그러나 Anthropic은 2026년 5월부터 SpaceX의 Colossus 2 시설에서 컴퓨팅 용량을 사용해왔으며, 이 시설은 여전히 임시적이고 허가되지 않은 터빈에서 대부분의 전력을 공급받고 있으며, 대부분은 SCR이 장착되어 있지 않습니다. Anthropic은 2026년 말까지 Colossus 2에서 최대 600MW의 전력을 사용할 예정입니다(아래 방법론 참조).
 
-오스트리아
-855,697건의 문서
-Bundeskanzleramt, Rechtsinformationssystem (완료)
-Verfassungsgerichtshof (완료)
-Verwaltungsgerichtshof (완료)
-Oberster Gerichtshof (완료)
+Anthropic은 또한 웨스트버지니아주 메이슨에 있는 Nscale의 Monarch Compute Campus에서 460MW의 전력을 계약했으며(최대 920MW까지 협의 중), 이 시설은 기존 가스 발전소에 비해 상당한 포름알데히드 및 유해 대기 오염 물질(HAP) 배출량을 가진 비효율적인 왕복 엔진으로 구동될 예정입니다.
 
-스위스
-137,746건의 문서
-Bundeskanzlei, Fedlex (완료)
-Bundesgericht / Tribunal fédéral (부분)
-아직 로딩 중: 현재까지 보유한 약 20,904개 문서 중 1,218개, 약 179,723개 문서 중 131,167개.
+자세한 내용은 Anthropic의 컴퓨팅에 대한 전체 데이터셋과 BYOP에 대한 보고서를 참조하십시오.
 
-룩셈부르크
-41,891건의 문서
-Service central de législation, Legilux (완료)
-Cour de cassation (부분)
-오래된 판결은 justice.public.lu 검색 뒤에만 있으며, 작업 증명 챌린지를 요구합니다.
-Cour administrative (완료)
-Cour constitutionnelle (완료)
+우리는 Epoc에서 Anthropic의 데이터 센터 약정에 대한 세부 정보를 수집했습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://openai.com/index/perplexity-and-intelligence" target="_blank" rel="noopener">퍼플렉서티(Perplexity)와 AI 모델 지능 평가</a></h3>
+  <div class="meta">
+    <span class="badge">OpenAI News</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 3</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">OpenAI는 AI 모델의 발전 정도를 측정하는 데 퍼플렉서티(Perplexity) 지표가 어떻게 활용될 수 있는지, 그리고 이것이 새로운 AI 역량을 평가하는 공동의 접근 방식을 정립하는 데 왜 중요한지 설명합니다. 개발자들이 AI 모델의 성능을 객관적으로 이해하고 비교하는 데 도움을 줄 수 있는 개념입니다.</p>
+  <p class="why">퍼플렉서티는 AI 모델의 품질과 예측 능력을 나타내는 중요한 지표로, 개발자가 모델의 성능을 평가하고 개선 방향을 설정하는 데 필요한 기본적인 이해를 제공합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Jakub Pachocki, OpenAI 수석 과학자
 
-유럽 평의회
-127,432건의 문서
-European Court of Human Rights (부분)
-개정 의정서 텍스트는 Treaty Office 사이트에 있으며, 이 사이트는 우리 서버에 Cloudflare 차단을 응답합니다.
+멀리서 보면, 현대 AI는 지난 수십 년 동안 소프트웨어가 구축된 방식과 유사하게, 특정 기능을 목표로 하는 다양한 기술들로 만들어진 것처럼 보일 수 있습니다. 실제로 다양한 방법들이 있지만, 무언가를 처음부터 설계하기보다는 훨씬 더 간단하고 해석하기 어려운 과정에서 나오는 지능을 활용하고 있습니다. 그것은 바로 방대한 데이터 코퍼스를 기반으로 압축기(또는 동등하게(새 창에서 열림) 예측기)를 훈련하는 것입니다.1
 
-우리 기관 등록부, 2026년 11월 17일. 실시간으로 확인하세요.
+저는 더 나은 압축기 훈련의 진행 속도를 추적하는 것이 AI 발전의 흐름을 이해하는 데 핵심이라고 믿습니다. 이 게시물에서 저는 perplexity (또는 동등하게 교차 엔트로피 손실)를 모델 개발자 간 비교 및 공유 안전 표준 수립을 위한 측정 기준으로 확립할 것을 주장합니다. 첫 단계로, OpenAI의 사전 훈련 진행 상황에 대한 투명성을 높이고자 합니다. 내부 perplexity 측정값을 공개하는 것은 신중한 고려가 필요했습니다. 이는 경쟁사에게 우리의 현재 위치를 더 명확하게 보여주지만, 이 업계 전반에 걸쳐 공유된(새 창에서 열림) 안전 조치를 확립하는 것이 시급하다는 점이 이러한 우려보다 더 중요합니다. OpenAI는 이것이 미래의 속도 조절 노력을 위한 공유된 과학적 기반을 구축하는 단계가 되기를 바랍니다.
 
-시작은 무료이며 사용량에 따라 요금이 부과됩니다.
-
-무료
-€0
-베타 기간 동안
-시험 사용 및 소규모 에이전트용.
-하루 1,000건의 요청
-REST API 및 MCP 서버
-우리가 보유한 모든 것, 모든 관할권
-무료 키 받기
-
-사용량
-1,000건의 요청당 €1
-자체 사용자를 보유한 제품용.
-트래픽에 따라 설정된 제한
-고객 대면 제품에 사용
-월별 청구, 최소 금액 없음
-이 요금제 요청
-
-피드
-월 €1,000부터
-코퍼스 자체를 귀하의 시스템에.
-모든 텍스트, 버전 및 인용 링크를 파일로
-매일 변경 사항, 매일
-저장, 색인화, 기반 구축
-샘플 요청
-
-월 €300, 2년간 고정
-
-Pandex를 기반으로 구축하는 최초 10개 회사를 위한 것입니다. 언제든지 취소할 수 있습니다.
-
-요청 횟수를 계산하지 않는 API, 월 최대 100만 건
-
-우리가 다음으로 로드할 국가 또는 출처를 지정하세요.
-
-우리를 구축한 사람들이 서면으로 귀하의 질문에 답변합니다.
-
-피드를 절반 가격으로, 월 €500부터
-
-대신: 이 페이지에 귀하의 이름과 귀하가 구축한 것에 대한 두 줄의 설명이 표시됩니다.
-
-키는 무료이며 1분이면 됩니다. 그 이상이 필요하면 무엇을 구축하고 있는지 알려주세요.</div>
+AI 개발에 대한 단순하지만 근본적으로 유익한 관점은 다음과 같습니다. 먼저 대규모 컴퓨터를 구축한 다음, 이를 사용하여 대규모 비정형 데이터셋에 모델(압축기)을 사전 훈련하고, 프롬프트, 파인튜닝 또는 강화 학습과 같은 다양한 기술을 다른 맥락에서 적용하여 해당 모델의 잠재된 능력을 끌어내는 것입니다. 알고리즘 발전은 훈련 단계 간의 구분을 모호하게 만들 수 있지만, 우리는 예측하기 어려운 emergent capabilities를 가진 AI의 생성(이것을 저는 이전에</div>
   </details>
   
 </article>
@@ -539,51 +389,20 @@ Pandex를 기반으로 구축하는 최초 10개 회사를 위한 것입니다. 
 
 
 <section id="cat-1">
-  <h2>연구·논문 <span class="cnt">1건</span></h2>
-  <article class="item">
-  <h3><a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener">리만 가설의 Lean 검증 소식에 대한 관심 폭발</a></h3>
-  <div class="meta">
-    <span class="badge">Hacker News</span>
-    <span class="badge">연구·논문</span>
-    <span class="badge imp">중요도 5</span>
-    <span class="badge">▲ 780</span>
-    
-    
-    <a class="badge" href="https://news.ycombinator.com/item?id=50589618" target="_blank" rel="noopener">💬 토론</a>
-  </div>
-  <p class="summary">수학계의 난제인 리만 가설이 Lean을 통해 검증되었다는 소식이 전해지며 해커 뉴스에서 780점의 포인트와 616개의 댓글로 폭발적인 관심을 받았다. 이는 수학적 증명의 자동화 및 형식 검증의 가능성을 보여주는 중요한 사건으로 평가된다.</p>
-  <p class="why">AI 기반의 형식 검증 도구가 인류의 가장 복잡한 수학 난제를 해결하는 데 기여할 수 있음을 보여주며, AI의 추론 및 문제 해결 능력의 잠재력을 극적으로 입증한다.</p>
+  <h2>연구·논문 <span class="cnt">2건</span></h2>
   
   
-  <details class="reader">
-    <summary>본문 읽기</summary>
-    <div class="reader-body">리만 가설(Riemann Hypothesis)에 대한 Lean 검증
-
-Lean FRO 및 Mathlib Initiative가 승인한 Lean 및 Mathlib 커뮤니티의 공동 성명.
-
-2026년 11월 20일, Levent Alpöge는 1,700만 줄의 코드로 구성된 Lean 라이브러리로 리만 가설의 증명을 발표했습니다.
-
-우리는 Alpöge의 리만 가설 증명이 정확하다고 전적으로 확신하며, 이 업적에 대해 그를 축하합니다.
-
-우리의 근거는 아래에 설명되어 있습니다.
-
-코드베이스는 Mathlib에만 직접적으로 의존합니다. 지난 하루 동안 Lean 및 Mathlib 커뮤니티는 증명의 정확성을 검증하기 위해 노력했습니다. 우리는 이로써 리만 가설의 진술과 증명이 모두 정확함을 인증합니다. https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/에 있는 네 가지 기준이 모두 충족되었습니다.
-
-리만 가설의 진술은 정확합니다. 이 진술은 Mathlib: RiemannHypothesis의 일부이며 Lean 및 정수론 전문가들에 의해 신중하게 검토되었습니다.
-
-Alpöge의 라이브러리는 올바르게 컴파일됩니다. 현재까지 수십 명의 사람들이 코드베이스의 정확한 컴파일을 보고했으며, 동일한 원본 증명 내보내기 파일을 재현했습니다. 라이브러리는 오류나 빌드 실패 없이 컴파일됩니다.
-
-코드는 올바른 진술을 증명합니다. 결정적으로, 커뮤니티는 리만 가설의 진술을 분리하고 Mathlib만 가져오는 파일을 추가했습니다. 이 진술은 두 개의 독립적인 도구(comparator 및 con-leche –compare)를 사용하여 Alpöge가 증명한 정리와 비교되었으며, 둘 다 Alpöge의 라이브러리에서 증명된 정리가 정확히 Mathlib의 리만 가설 진술임을 확인했습니다.
-
-Lean 증명은 유효합니다. 내보내진 원본 증명은 Lean의 공식 커널, con-leche 및 con-ron 검사기, 그리고 타사에서 기여하고 다른 프로그래밍 언어로 구현된 여러 독립적인 검사기를 포함한 여러 증명 검사기에 의해 확인되었습니다. con-leche 및 con-ron 검사기는 거짓 증명을 받아들일 수 없다는 집합론에 대한 형식적 증명과 함께 제공되므로, Lean 자체의 논리에 증명이 악용할 수 있는 결함이 있을 수 있다는 우려를 해소합니다. 광범위한 개요는 https://math.mit.edu/~drew/grh/에서 확인할 수 있습니다. 이러한 검사는 Lean 증명 소스의 가상 악성 코드에 접근할 수 없는 비활성 증명 내보내기에서 실행되었습니다.
-
-검증을 위한 자원을 제공해 주신 커뮤니티의 모든 분들께 감사드립니다.
-
-이 증명에 담긴 새로운 아이디어를 설명하는 데 도움이 될 수학 커뮤니티의 모든 활동을 기대합니다.</div>
+  
+  <details class="more">
+    <summary>그 외 2건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://0rwx.com/" target="_blank" rel="noopener">0rwx – 유닉스 권한에서 영감을 받은 AI 사용 모델</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://claude.ai/artifact/CtQyX8qfYAF822bgHJHHE3" target="_blank" rel="noopener">Alessandro Masullo 원고의 Lean 형식화 진행 상황 지도</a><span class="src">Hacker News</span></li>
+  
+</ul>
   </details>
-  
-</article>
-  
   
 </section>
 
@@ -592,106 +411,99 @@ Lean 증명은 유효합니다. 내보내진 원본 증명은 Lean의 공식 커
   
   <ul class="compact">
   
-  <li><a href="https://jespino.github.io/gopgext/" target="_blank" rel="noopener">Go 언어로 PostgreSQL 확장 기능 개발하기</a><span class="src">Hacker News</span></li>
+  <li><a href="https://simonwillison.net/2026/Nov/22/select-styling/" target="_blank" rel="noopener">HTML &lt;select&gt; 박스 스타일링 가이드</a><span class="src">Simon Willison</span></li>
   
 </ul>
   
 </section>
 
 <section id="cat-3">
-  <h2>도구·오픈소스 <span class="cnt">2건</span></h2>
+  <h2>도구·오픈소스 <span class="cnt">1건</span></h2>
   <article class="item">
-  <h3><a href="http://ricapar.net/ClawDOS/" target="_blank" rel="noopener">ClawDOS – DOS용 AI 코딩 에이전트 출시</a></h3>
+  <h3><a href="https://simonwillison.net/2026/Nov/21/muru/" target="_blank" rel="noopener">Muru: AI 기반 Rust 웹 서버로 Python 앱 최적화</a></h3>
   <div class="meta">
-    <span class="badge">Hacker News</span>
+    <span class="badge">Simon Willison</span>
     <span class="badge">도구·오픈소스</span>
     <span class="badge imp">중요도 4</span>
-    <span class="badge">▲ 155</span>
     
     
-    <a class="badge" href="https://news.ycombinator.com/item?id=50586292" target="_blank" rel="noopener">💬 토론</a>
+    
+    
   </div>
-  <p class="summary">ClawDOS는 DOS 환경을 위한 AI 코딩 에이전트이다. 이 에이전트는 제한적인 DOS 환경에서도 AI의 도움을 받아 코딩 작업을 수행할 수 있도록 설계되었다.</p>
-  <p class="why">레거시 시스템이나 리소스 제약이 있는 환경에서도 AI 에이전트의 활용 가능성을 보여주며, AI의 적용 범위를 넓히는 흥미로운 시도이다.</p>
+  <p class="summary">Graham Dumpleton이 개발한 Muru는 AI 보조 Rust 서버로, ASGI 및 WSGI 파이썬 애플리케이션을 개발 및 프로덕션 환경에서 최적으로 서비스하는 것을 목표로 합니다. 그는 개발 과정을 상세하게 공개하고 있으며, 파이썬 웹 앱 배포의 새로운 표준을 제시할 가능성이 있습니다.</p>
+  <p class="why">Muru는 파이썬 웹 애플리케이션의 성능과 안정성을 극대화하려는 개발자에게 중요한 새로운 도구이며, AI를 활용한 시스템 프로그래밍의 좋은 사례를 보여줍니다.</p>
   
   
   <details class="reader">
     <summary>본문 읽기</summary>
-    <div class="reader-body">DOS용 AI 코딩 에이전트. IBM PC XT에서 실행된다. 4.77MHz의 8088, 640K RAM, CGA 카드를 사용한다.
+    <div class="reader-body">Muru
 
-(실제) 사람의 참고사항: 배경 이야기: IBM PC는 나의 첫 컴퓨터였다. 아니, 내가 아주 어린 나이에 사용했던 우리 부모님의 첫 개인 컴퓨터였다. 내가 사용할 수 있을 만큼 나이가 들었을 때는 이미 구식이었지만, 5살 때는 내가 입력하는 내용에 따라 다른 일을 할 수 있는 마법 같은 장치였다. 나는 엄마가 사주신 초기 &#39;알파벳 배우기&#39; 게임을 실행하기 위해 DOS를 사용하는 방법을 배웠다. BASIC의 기본적인 사용법을 배웠지만, 그 당시에는 숫자 맞히기 게임이나 다른 작은 프로젝트 이상으로 발전하지 못했다. 그 후로 오랜 세월이 흘렀지만, 나는 아직 그 PC의 일부 오리지널 부품을 가지고 있다. 나에게 의미 있는 빈티지 기계들을 수집하고 있는데, 완전히 최대 사양으로 업그레이드된 IBM PC 5160이 내 컬렉션의 중심이다. 여전히 작동하는 20MB 하드 드라이브가 있지만, SD 카드에서 하드 드라이브를 에뮬레이트할 수 있는 PicoMEM을 선호하여 연결을 해제했다. 이는 실험과 사용을 훨씬 쉽게 해준다. 낡은 것과 새로운 것의 만남. 새로운 것과 낡은 것의 만남: 나는 낡은 기술과 새로운 기술의 교차점을 좋아한다. 이 둘을 연결하는 가장 좋은 방법은 오리지널 하드웨어에서 DOS로 실행되는 AI 코딩 에이전트를 구축하는 것 아닐까? 그리고 물론, 이를 구축하는 가장 좋은 방법은 AI 코딩 에이전트 아닐까? 나는 (즉, Claude는) 이것을 나 자신의 즐거움을 위해 만들었다. (현대의) 일반적인 제약 조건에서 벗어나 AI 코딩 에이전트를 얼마나 멀리 밀어붙여 무언가를 만들 수 있는지 보고 싶었다. 또한, 그것이 만든 것이 다른 무엇인가를 만들 수 있을까? 이 리포지토리의 100%는 Claude가 작성했으며, 이 상자 안의 텍스트는 예외다. 아래에서 더 자세히 설명하겠지만, 하네스는 네이티브 OS 및 하드웨어에서 실행되며, 8088이 처리할 수 있는 것 이상이었을 TLS를 처리하기 위해 &#39;브릿지&#39; PC에 의존한다.
+Graham Dumpleton은 20년 전에 mod_wsgi를 시작했으며, 그 이후로 프로덕션 환경에서 Python 웹 애플리케이션을 제공하는 이상적인 방법에 대해 고민해 왔습니다.
 
-C:\&gt; 프롬프트에서 CLAWDOS를 입력하고 Claude와 대화하세요. 디스크의 파일을 읽고 편집하고, 프로그램을 작성하고, Turbo C로 컴파일하고, 실행하고, 화면에 그리는 것을 확인합니다. 대화 사이에 메모를 유지하고 중단된 지점부터 다시 시작합니다.
+Muru는 그가 개발한 새로운 AI 기반 Rust 서버로, 개발 및 프로덕션 환경에서 ASGI 및 WSGI Python 앱을 실행하기 위한 최상의 도구를 제공하는 것을 목표로 합니다.
 
-전체 하네스는 PC에서 실행됩니다. HARNESS.EXE는 Claude Messages API 자체를 처리하는 176KB DOS 프로그램입니다. 요청을 작성하고, 스트리밍된 응답을 파싱하고, 도구를 실행하며, 모든 대화를 자체 디스크에 저장합니다. 8088은 TLS를 제외한 모든 것을 수행합니다.
+그는 wrapture에서 그랬던 것처럼, 개발 과정의 일환으로 프로젝트에 대한 매우 상세한 설명을 작업하면서 게시하고 있습니다.
 
-아래의 모든 화면은 86Box에서 에뮬레이션된 4.77MHz의 5160에서 가져온 것입니다. 대화는 라이브 API와 진행됩니다.
+지난 3주 동안 그가 게시한 모든 내용은 다음과 같습니다:
 
-문장에서 실행 가능한 프로그램으로
+2026-11-04 — 20년간의 mod_wsgi, 그리고 다음에 올 것들
 
-하나의 메시지: “PRIMES.C를 작성하세요: 100 미만의 소수를 출력합니다. Turbo C로 컴파일하고 실행하세요.” ClawDOS는 이 기계의 컴파일러 가이드를 읽고, 소스를 작성한 다음, 단일 도구 호출로 컴파일, 링크 및 실행합니다. Enter를 누른 지 64초 후에 답이 화면에 나타나며, 그 중 26초는 컴파일, 링크 및 실행에 소요되었습니다.
+2026-11-05 — Muru 첫 살펴보기
 
-컴파일러는 기계를 독점적으로 사용합니다. 빌드를 위해 ClawDOS는 상태를 저장하고 메모리를 떠나며, Turbo C는 약 450K의 여유 공간으로 실행되고, 하네스는 프로그램의 출력을 손에 들고 동일한 대화로 돌아옵니다.
+2026-11-07 — Muru: 워커 내부 들여다보기
 
-ClawDOS는 1983년 영화에 대한 이 찬사를 PC 자체에서 작성했습니다. 벡터 세계 지도, 극지방 위로 솟아오르는 미사일, 틱택토 게임의 마지막 단계, 그리고 PC 스피커 또는 AdLib 카드용 점수. 5개의 Turbo C 파일, 15KB의 소스, 10KB 미만의 WG.EXE입니다.
+2026-11-08 — Muru: 어떻게 함께 작동하는가
 
-실제 5160에서 실행되는 모습이며, IBM 모니터에서 촬영되었습니다:
+2026-11-09 — Muru: 한 번 임포트, 여러 번 포크
 
-▶ YouTube에서 WarGames 데모 시청하기
+2026-11-10 — Muru: 개발 환경에서 HTTPS
 
-새 대화를 시작하고 “your WarGames demo”만 있으면 됩니다. ClawDOS는 C:\MEMORY에 저장된 메모를 열고, 최신 빌드를 찾고, 전쟁 장면이 CGA에서 사용하는 팔레트 트릭을 기억합니다.
+2026-11-11 — Muru: WSGI와 ASGI를 함께
 
-그 Run 호출은 25초 후에 스크린샷을 요청했습니다. 타이머 인터럽트 훅이 그 순간 CGA의 비디오 메모리를 복사하고, 8088은 이를 PNG로 인코딩하며, 그림은 도구 결과와 함께 Claude에게 전송됩니다. 이것은 PC가 만든 파일로, 320x200 4색, 16KB입니다:
+2026-11-11 — 라이프스타일 선택으로서의 AI
 
-그리고 이것은 Claude가 만든 것입니다:
+2026-11-12 — Muru: 재시작이 아닌 릴리스
 
-데모가 스스로 종료되도록 요청하자, ClawDOS는 찾아 나섭니다. 소스에서 키보드 대기 부분을 검색하고, 파일을 읽고, 찾은 내용을 말하고 한 줄을 편집합니다. 각 도구 호출은 결과와 함께 트랜스크립트에 표시되며, 그 사이에서 Claude는 자신이 무엇을 하려는지 말합니다.
+2026-11-13 — Muru: 서비스 메시 없는 카나리아
 
-16색 텍스트 아트, 트랜스크립트에 바로 표시되며, GW-BASIC의 PLAY 언어로 PC 스피커에서 음악이 나옵니다.
+2026-11-14 — Muru: 컨테이너에서 더 나은 테넌트
 
-CGA용으로 제작된 채팅 화면. 응답은 도착하는 대로 화면에 스트리밍되며, 코드 페이지 437에서 80열로 자동 줄 바꿈됩니다. 쓰기 작업은 리트레이스에 맞춰져 스노우 현상이 없습니다. 트랜스크립트는 CRTC 시작 주소를 통해 하드웨어적으로 스크롤되며, PgUp 및 PgDn으로 이전으로 돌아갈 수 있습니다. 스피너와 그 초는 타이머 인터럽트에서 실행되며 PC가 바쁜 동안 계속 움직입니다.
+2026-11-15 — Muru: Kubernetes와 함께 작동하기, 주변이 아닌
 
-18가지 도구. Claude는 다음을 통해 기계에서 작동합니다:
+2026-11-16 — Muru: 워커 보고서 기반 스케일링
 
-디스크의 개발 키트. 두 개의 어셈블러 (TINYASM 및 WASM), Bruce’s C, GW-BASIC 및 lDebug 디버거, 그리고 Turbo C 2.0은 external/에 있는 자체 플로피 이미지에서 설치됩니다. 이들 모두는 8088에서 검증되었으며, ClawDOS는 각 도구를 작동하는 방법을 알고 있습니다.
+2026-11-17 — Muru: 0으로 스케일링
 
-기억과 기술. 기억은 ClawDOS가 PC에서 배우는 것입니다: 함께 만든 것, 작동한 것, 좋아하는 것. 기술은 dev tools 및 CGA 데모 효과와 같이 함께 제공되는 가이드입니다. 둘 다 디스크에 있는 일반 텍스트 파일이며, 모든 대화의 시스템 프롬프트에 나열되고 작업에 적합할 때 읽힙니다. F4는 기억을 탐색합니다:
+2026-11-18 — Muru: 스케줄에 따른 오버레이
 
-안전 모드. 기본적으로 켜져 있습니다. 파일, 메모리 또는 포트를 변경하는 모든 작업은 먼저 Allow ...? (y/n)를 묻습니다. F3을 누르면 꺼집니다.
+2026-11-19 — Muru: 인지하고 반응하기
 
-오래 지속되는 대화. 모든 채팅은 API 자체의 메시지 형식으로 디스크에 파일로 저장됩니다. F6은 목록을 표시하고, Enter는 하나를 다시 열고, 다음 메시지는 대화를 계속합니다. 전원 스위치로 끊어진 채팅도 다시 열립니다.
+2026-11-20 — Muru: 모든 페이지에 툴바
 
-어떤 모델이든, 대화 중간에. /model은 CLAWDOS.CFG의 제공업체를 나열하고 대화를 잃지 않고 그들과 그들의 모델 사이를 전환합니다. F5는 Claude가 얼마나 열심히 생각할지 저부터 최대로 설정합니다. Messages API를 사용하는 모든 호스트는 작동합니다.
+2026-11-21 — Muru: 툴바에서 트레이싱
 
-느린 연결에서도 쉽습니다. 시스템</div>
+2026-11-22 — Muru: 게으른 임포트가 도움이 될 때
+
+라이프스타일 선택으로서의 AI에 대한 게시물은 특히 읽어볼 만합니다:
+
+AI가 표면적으로 많은 작업을 수행할 수 있지만, 아직 충분히 좋지 않은 것을 결정하는 것은 여전히 저에게 달려 있으며, mod_wsgi로 20년 동안 잘못된 점을 겪었던 경험이 그 점에서 유용하다는 것을 알게 됩니다. 저는 Muru를 신뢰할 수 있고 여러분도 신뢰할 수 있는 무언가로 만들기 위해 꾸준히 노력할 준비가 되어 있습니다.
+
+태그: graham-dumpleton, modwsgi, python, wsgi, ai, rust, asgi, generative-ai, llms, ai-assisted-programming</div>
   </details>
   
 </article>
-  <ul class="compact">
   
-  <li><a href="https://github.com/sebaandrada-cell/PcapAnalyzer" target="_blank" rel="noopener">PcapAnalyzer: 27가지 문제 감지 기능을 갖춘 자체 호스팅 pcap 분석기</a><span class="src">Hacker News</span></li>
-  
-</ul>
   
 </section>
 
 <section id="cat-4">
-  <h2>업계 동향 <span class="cnt">2건</span></h2>
+  <h2>업계 동향 <span class="cnt">1건</span></h2>
   
   <ul class="compact">
   
-  <li><a href="https://news.ycombinator.com/item?id=50583761" target="_blank" rel="noopener">경력 15년 미국 시니어 소프트웨어 엔지니어, 2년간 실직 후 재취업 난항 토로</a><span class="src">Hacker News</span></li>
+  <li><a href="https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/" target="_blank" rel="noopener">추론 제공업체의 데이터 처리 사고</a><span class="src">Hacker News</span></li>
   
 </ul>
-  
-  <details class="more">
-    <summary>그 외 1건 보기</summary>
-    <ul class="compact">
-  
-  <li><a href="https://tasklet.ai/careers" target="_blank" rel="noopener">Tasklet (YC P26)에서 제품 및 에이전트 인프라 엔지니어 채용</a><span class="src">Hacker News</span></li>
-  
-</ul>
-  </details>
   
 </section>
 
@@ -700,44 +512,49 @@ CGA용으로 제작된 채팅 화면. 응답은 도착하는 대로 화면에 �
   
   <ul class="compact">
   
-  <li><a href="https://pwn.ai/upload2shell" target="_blank" rel="noopener">Upload2Shell (CVE-2026-125396) 취약점 공개</a><span class="src">Hacker News</span></li>
-  
-  <li><a href="https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse" target="_blank" rel="noopener">자율 무기 통제에 관한 UN 국제 회담 결렬</a><span class="src">Hacker News</span></li>
-  
-</ul>
-  
-</section>
-
-<section id="cat-6">
-  <h2>커뮤니티 화제 <span class="cnt">10건</span></h2>
-  
-  <ul class="compact">
-  
-  <li><a href="https://a90.com/experiments/same-advice/" target="_blank" rel="noopener">AI가 모두에게 똑같은 조언을 제공하는 현상</a><span class="src">Hacker News</span></li>
-  
-  <li><a href="https://bsky.app/profile/emollick.bsky.social/post/3n2tj5d6rwc2m" target="_blank" rel="noopener">Ethan Mollick: AI와 전문성의 결합이 놀라운 결과 창출</a><span class="src">Bluesky</span></li>
-  
-  <li><a href="https://bsky.app/profile/emollick.bsky.social/post/3n2seaj2c4c2m" target="_blank" rel="noopener">Ethan Mollick: 인간 언어의 예측 모델이 우주를 모델링하는 데 효과적인 이유</a><span class="src">Bluesky</span></li>
-  
-  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2tizujyb22a" target="_blank" rel="noopener">Eugene Vinitsky: AI가 게임에서 초인적 능력, 수학에서도 가능성 시사</a><span class="src">Bluesky</span></li>
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2vxv3546k2x" target="_blank" rel="noopener">Eugene Vinitsky: AI의 목표 오해 및 가중치 유출 우려</a><span class="src">Bluesky</span></li>
   
 </ul>
   
   <details class="more">
-    <summary>그 외 6건 보기</summary>
+    <summary>그 외 1건 보기</summary>
     <ul class="compact">
   
-  <li><a href="https://notnottalmud.substack.com/p/getting-the-mind-to-steer-the-body" target="_blank" rel="noopener">마음이 몸을 움직여 자신을 이끄는 방식 탐구</a><span class="src">Hacker News</span></li>
+  <li><a href="https://boazbk.github.io/mltheoryseminar/" target="_blank" rel="noopener">하버드 CS 2881R AI 안전성 강좌</a><span class="src">Hacker News</span></li>
   
-  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2ucb2jx7c24" target="_blank" rel="noopener">Eugene Vinitsky: 게임 이론과 암호화폐 개념의 중요성 부상</a><span class="src">Bluesky</span></li>
+</ul>
+  </details>
   
-  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2tvsyorlk2q" target="_blank" rel="noopener">Eugene Vinitsky: 사려 깊지 않거나 악의적인 게시물을 차단하는 LLM 기반 소셜 미디어의 필요성</a><span class="src">Bluesky</span></li>
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">9건</span></h2>
   
-  <li><a href="https://bsky.app/profile/natolambert.bsky.social/post/3n2ua4x2ydk2w" target="_blank" rel="noopener">Nathan Lambert: 듄 3 IMAX 티켓 예매 알림</a><span class="src">Bluesky</span></li>
+  <ul class="compact">
   
-  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2t7yqhzvs2d" target="_blank" rel="noopener">Eugene Vinitsky: 리만</a><span class="src">Bluesky</span></li>
+  <li><a href="https://github.com/gulivan/worker755" target="_blank" rel="noopener">Show HN: LLM 하위 에이전트가 되는 게임</a><span class="src">Hacker News</span></li>
   
-  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n2rwrgeafc2u" target="_blank" rel="noopener">Benj Edwards: &#34;정말 그래?&#34; (AI 조언 획일화에 대한 반응으로 추정)</a><span class="src">Bluesky</span></li>
+  <li><a href="https://www.noemamag.com/the-mythology-of-conscious-ai/" target="_blank" rel="noopener">의식 있는 AI의 신화</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/emollick.bsky.social/post/3n2upc2qh322m" target="_blank" rel="noopener">AI가 리만 가설을 풀 시기에 대한 전문가 예측</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2wovhihls24" target="_blank" rel="noopener">Eugene Vinitsky: LLM 지원 RL 발전은 2029년까지 없을 것</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 5건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n2uxam44lk2s" target="_blank" rel="noopener">Eugene Vinitsky: 혼란 없는 급진적 변화는 어려움</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://www.audubon.org/magazine/birds-of-gta-6-field-guide-vice-city-wildlife" target="_blank" rel="noopener">GTA 6의 새들: 바이스 시티와 레오니다의 야생 동물 현장 가이드</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/simonwillison.net/post/3n2uxw3563224" target="_blank" rel="noopener">Simon Willison: 항구에서 멋진 펠리컨을 봤어요</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n2wsi7afpk23" target="_blank" rel="noopener">Benj Edwards: 아이들이 콘솔 게임을 멈추지 않고 켜둔 채 떠나는 습관</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/benjedwards.com/post/3n2uvftujck2o" target="_blank" rel="noopener">Benj Edwards: &#39;그래, 맞아!&#39;</a><span class="src">Bluesky</span></li>
   
 </ul>
   </details>
@@ -747,25 +564,13 @@ CGA용으로 제작된 채팅 화면. 응답은 도착하는 대로 화면에 �
 
 
 
-
-<section>
-  <h2>수집된 소식 <span class="cnt">요약 없음 · 1건</span></h2>
-  <details class="more" >
-    <summary>목록 보기</summary>
-    <ul class="compact">
-  
-  <li><a href="https://bsky.app/profile/simonwillison.net/post/3n2tsb6pguk27" target="_blank" rel="noopener">Simon Willison: Gemini 4 tip: the difference between Gemini 4 Hydrogen on &#34;high&#34; thinking effort and that same model</a><span class="src">Bluesky</span></li>
-  
-</ul>
-  </details>
-</section>
 
 
 
 
 <footer>
   
-  소스 13/19 성공 · 생성 2026-11-22 09:06 KST
+  소스 13/19 성공 · 생성 2026-11-23 09:36 KST
   <ul>
     
     <li class="ok">✓ OpenAI News (50건)</li>
@@ -778,7 +583,7 @@ CGA용으로 제작된 채팅 화면. 응답은 도착하는 대로 화면에 �
     
     <li class="ok">✓ Hugging Face Blog (50건)</li>
     
-    <li class="ok">✓ Hacker News (19건)</li>
+    <li class="ok">✓ Hacker News (14건)</li>
     
     <li class="fail">✗ Reddit r/LocalLLaMA (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FLocalLLaMA%2Ftop%2F.rss%3Ft%3Dday&#39;
 For more information check: https://developer.m</li>
@@ -810,7 +615,7 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
     
     <li class="ok">✓ AI News (smol.ai) (31건)</li>
     
-    <li class="ok">✓ Bluesky (321건)</li>
+    <li class="ok">✓ Bluesky (323건)</li>
     
   </ul>
 </footer>
