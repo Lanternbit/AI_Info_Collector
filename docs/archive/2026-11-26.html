@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프론티어 브리핑 — 2026-11-26 (목)</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff; --fg:#1c1c21; --muted:#6b6b76; --card:#f5f5f7; --border:#e4e4ea;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --warn-bg:#fff4e5; --warn-fg:#8a5300;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101014; --fg:#e9e9ee; --muted:#9a9aa6; --card:#1a1a21; --border:#2a2a34;
+    --accent:#8f8ffa; --accent-soft:#1e1e3a; --warn-bg:#3a2c10; --warn-fg:#ffce7a;
+  }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif; line-height:1.65; }
+.wrap { max-width:800px; margin:0 auto; padding:28px 18px 72px; }
+header h1 { font-size:1.5rem; letter-spacing:-0.02em; }
+header .date { color:var(--muted); margin-top:2px; }
+nav.archive { margin-top:10px; font-size:0.85rem; color:var(--muted); }
+nav.archive a { color:var(--muted); text-decoration:none; margin-right:8px; }
+nav.archive a:hover { color:var(--accent); }
+.daily-summary { background:var(--accent-soft); border-radius:12px; padding:16px 18px; margin-top:20px; font-size:0.97rem; }
+.daily-summary strong { color:var(--accent); display:block; margin-bottom:6px; font-size:0.85rem; letter-spacing:0.02em; }
+nav.toc { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+nav.toc a { font-size:0.82rem; padding:4px 12px; border-radius:99px; border:1px solid var(--border); color:var(--muted); text-decoration:none; }
+nav.toc a:hover { color:var(--accent); border-color:var(--accent); }
+nav.toc a b { color:var(--fg); font-weight:600; }
+.banner { background:var(--warn-bg); color:var(--warn-fg); border-radius:10px; padding:10px 14px; margin:18px 0 0; font-size:0.9rem; }
+section { margin-top:36px; }
+section > h2 { font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--border); letter-spacing:-0.01em; }
+section > h2 .cnt { color:var(--muted); font-weight:400; font-size:0.85rem; }
+.item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-top:12px; }
+.item h3 { font-size:1rem; font-weight:600; }
+.item h3 a { color:var(--fg); text-decoration:none; }
+.item h3 a:hover { color:var(--accent); }
+.meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+.badge { font-size:0.72rem; padding:2px 8px; border-radius:99px; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+.badge.imp { color:var(--accent); border-color:var(--accent); font-weight:600; }
+.summary { margin-top:8px; font-size:0.93rem; }
+.why { margin-top:8px; font-size:0.88rem; color:var(--muted); border-left:3px solid var(--accent); padding:2px 0 2px 10px; }
+.headline .item { border-left:4px solid var(--accent); }
+details.more { margin-top:12px; }
+details.more summary { cursor:pointer; color:var(--muted); font-size:0.88rem; padding:6px 2px; user-select:none; }
+details.more summary:hover { color:var(--accent); }
+details.reader { margin-top:10px; }
+details.reader summary { cursor:pointer; color:var(--accent); font-size:0.85rem; user-select:none; }
+.reader-body { white-space:pre-line; margin-top:8px; font-size:0.9rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px 14px; max-height:65vh; overflow-y:auto; }
+a.badge { text-decoration:none; }
+a.badge:hover { color:var(--accent); border-color:var(--accent); }
+ul.compact { list-style:none; margin-top:4px; }
+ul.compact li { padding:7px 2px; border-bottom:1px solid var(--border); font-size:0.9rem; display:flex; gap:8px; align-items:baseline; }
+ul.compact li:last-child { border-bottom:none; }
+ul.compact a { color:var(--fg); text-decoration:none; flex:1; min-width:0; }
+ul.compact a:hover { color:var(--accent); }
+ul.compact .src { color:var(--muted); font-size:0.75rem; white-space:nowrap; }
+footer { margin-top:48px; padding-top:16px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--muted); }
+footer ul { list-style:none; margin-top:8px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+footer .fail { color:#c0392b; }
+.empty { color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 프론티어 브리핑</h1>
+  <div class="date">2026-11-26 (목) · 오늘 125건</div>
+  <nav class="archive">
+    <a href="../index.html">최신</a>
+    <a href="2026-11-26.html">11-26</a>
+    <a href="2026-11-25.html">11-25</a>
+    <a href="2026-11-24.html">11-24</a>
+    <a href="2026-11-23.html">11-23</a>
+    <a href="2026-11-22.html">11-22</a>
+    <a href="2026-11-21.html">11-21</a>
+    <a href="2026-11-20.html">11-20</a>
+    <a href="2026-11-19.html">11-19</a>
+    <a href="2026-11-18.html">11-18</a>
+    <a href="2026-11-17.html">11-17</a>
+    <a href="2026-11-16.html">11-16</a>
+    <a href="2026-11-15.html">11-15</a>
+    <a href="2026-11-14.html">11-14</a>
+    <a href="2026-11-13.html">11-13</a>
+    <a href="index.html">전체 ›</a>
+  </nav>
+  
+  <div class="daily-summary"><strong>오늘의 요약</strong>오늘은 AI 에이전트 개발의 윤리적 경계에 대한 과학계의 논의가 활발히 이뤄지고, 뉴욕 타임스는 AI 기능이 포함된 포토샵 업데이트에 대해 사진작가들에게 신중한 접근을 권고하는 등 AI와 기존 직업 간의 긴장감이 나타난 하루였습니다. 특히 구글 딥마인드가 Gemini 4 Neon을 출시하며 최전선 연구소로서의 위상을 공고히 했고, 수학 분야에서는 AI의 도움을 받아 미해결 문제들을 탐구하는 등 AI의 영향력이 다양한 분야로 확대되고 있음을 보여주었습니다.</div>
+  
+  
+  <nav class="toc">
+    <a href="#headlines"><b>헤드라인</b></a>
+    <a href="#cat-1">연구·논문 <b>98</b></a>
+    <a href="#cat-2">실무 지식 <b>6</b></a>
+    <a href="#cat-3">도구·오픈소스 <b>4</b></a>
+    <a href="#cat-4">업계 동향 <b>3</b></a>
+    <a href="#cat-5">정책·안전 <b>3</b></a>
+    <a href="#cat-6">커뮤니티 화제 <b>5</b></a>
+  </nav>
+  
+  
+</header>
+
+
+
+
+
+
+<section class="headline" id="headlines">
+  <h2>오늘의 헤드라인</h2>
+  <article class="item">
+  <h3><a href="https://github.com/google-research/google-research/tree/master/cogentic_research_papers" target="_blank" rel="noopener">구글, 정수 인수분해 및 이산 로그 관련 Cogentic 논문 공개</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 5</span>
+    <span class="badge">▲ 450</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50642086" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">구글이 정수 인수분해, 이산 로그 등 양자 컴퓨팅에 대한 보안을 위협할 수 있는 중요한 수학적 문제들에 대한 Cogentic 논문을 발표했습니다. 이 연구는 현재의 암호화 기술에 대한 잠재적 위협을 시사하며, 양자 내성 암호(Post-Quantum Cryptography) 연구의 중요성을 더욱 부각시킵니다. 해당 논문들은 암호학 커뮤니티에 큰 파장을 일으킬 것으로 예상됩니다.</p>
+  <p class="why">이 연구는 현재 암호화 시스템의 기반이 되는 수학적 난제에 대한 새로운 접근 방식을 제시하여, AI와 양자 컴퓨팅의 발전이 사이버 보안에 미치는 영향에 대한 이해를 높이는 데 결정적입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">이 디렉토리에는 Cogentic이 작성한 연구 논문이 있습니다.
+
+무조건적 정수 인수 분해, 시간 L_N[1/3, O(1)] (PDF)
+
+고정 특성 유한 필드에서의 이산 로그, 준-다항식 미만 시간 (PDF)
+
+이행 게임에서 1/5 근사 내쉬 균형을 위한 정확한 다항 시간 알고리즘 (PDF)
+
+무조건적 결정론적 준지수 정수 인수 분해 및 이차 비잔여물 구성 (PDF)
+
+로그-랭크 추측의 제곱근 장벽 깨기 (PDF)
+
+선형 밀도의 단순 그래프에 대한 무조건적 에지 재구성 (PDF)
+
+준가법 조합 경매를 위한 거의 최적인 O(log log log m) Prophet 부등식 (PDF)
+
+가상 플레이 수렴을 위한 다항 차원 의존성 (PDF)
+
+모든 VC 클래스에 대한 거의 이차적인 표본 압축 (PDF)
+
+두 플레이어 볼록 게임에서 근사 상관 균형의 다루기 어려움 (PDF)
+
+개별 하위 디렉토리에 달리 명시되지 않는 한, 이 디렉토리의 내용은 Apache 2.0 라이선스에 따라 릴리스됩니다. 자세한 내용은 개별 하위 디렉토리 및 최상위 google-research 저장소를 참조하십시오.
+
+면책 조항: 이것은 공식 Google 제품이 아닙니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://latent.space/p/ainews-math-proofs-are-landing-faster-than-we-can-read-them/" target="_blank" rel="noopener">수학 증명이 우리가 읽는 속도보다 빠르게 쏟아지고 있다</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Scott Aaronson이 두 가지 VP ≠ VNP 증명을 소화하기도 전에, OpenAI 논문이 정사각 행렬 곱셈 지수(ω)가 정확히 9/4라고 주장했습니다. 이어서 또 다른 논문은 유한 푸리에 변환에 대한 상한과 하한이 일치한다는 놀라운 소식을 전했으며, 특히 하한을 찾은 것이 큰 뉴스입니다. 이는 OpenAI의 AI 연구가 복잡성 이론의 오랜 난제들을 해결하며 수학계에 충격을 주고 있음을 보여줍니다.</p>
+  <p class="why">AI, 특히 LLM이 인간 수학자들이 수십 년간 씨름해 온 난제들을 해결하는 속도가 경이로워지고 있으며, 이는 AI가 기초 과학 연구의 속도를 근본적으로 가속화하고 수학적 지식의 새로운 지평을 열 것임을 시사합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Latent Space의 AINews
+
+Scott Aaronson은 저녁 식사에서 VP ≠ VNP에 대한 두 가지 증명을 여전히 소화하려고 애쓰고 있었습니다. 디저트가 나오기 전에 OpenAI 논문은 정방행렬 곱셈 지수 ω가 정확히 9/4라고 주장했습니다. 디저트가 나오는 동안 또 다른 논문은 유한 푸리에 변환에 대한 일치하는 상한과 하한을 주장했습니다. 하한이 가장 큰 뉴스입니다. 10월에 OpenAI는 ω의 상한을 최대 9/4까지 발견했습니다. 하한 = 상한을 찾으면 가능한 값은 하나만 남게 되며, 이는 대부분에게 충격적인 결과입니다.
+
+우리는 올해 지금까지 AI 지원 연구 발전 64개를 선정하여 그래프로 나타냈습니다. 11월에는 Google의 Cogentic의 6개 프리프린트를 포함하여 20개가 기록되었습니다. 이 곡선은 아직 검토 중인 증명을 포함하여 공개 릴리스를 따릅니다. 우리는 두 가지 VP ≠ VNP 증명을 한 번 계산하고, 10월의 더 빠른 행렬 곱셈 알고리즘과 11월의 일치하는 하한을 각각 하나의 항목으로 부여합니다.
+
+대규모 릴리스는 논문 수가 얼마나 많은 것을 숨길 수 있는지를 강조합니다. OpenAI의 카탈로그는 후속 연구 및 보조 논증을 포함하여 375개 결과군에 걸쳐 730개의 원고를 나열합니다. 또한 수정 로그에는 한 논문의 부호 오류가 다른 두 논문에 영향을 미친 후 10월에 세 번의 철회가 기록되어 있습니다. Yupan Liu는 양자 상호작용 증명에 두 가지 메시지가 충분하다는 것을 보여주었는데, 이는 그 자체로도 큰 사건이 될 결과였습니다. Aaronson은 Liu가 AI를 사용했으며 그 결과가 실제로 일어났다는 것을 스스로에게 상기시켜야 했다고 말합니다.
+
+다른 큰 소식으로는, 오늘의 게스트 Thariq Shihipar가 Anthropic에서 OpenAI로의 큰 이적을 발표했는데, 이는 Cat Wu에 이어 최근 두 번째로 주목할 만한 Anthropic → OpenAI 이적입니다. 우리는 그의 AI에 대한 두 가지 철학과 인간이 취향을 더하는 방법과 장소에 대해 깊이 탐구합니다.
+
+2026년 11월 25일 AI 뉴스. 우리는 12개의 서브레딧, 544개의 트위터와 더 이상의 디스코드 채널은 확인하지 않았습니다. AINews 웹사이트에서는 모든 지난 호를 검색할 수 있습니다. AINews는 이제 Latent Space의 한 섹션입니다. 이메일 수신 빈도를 선택/해제할 수 있습니다!
+
+AI 트위터 요약
+
+AI 생성 수학 결과: Matmul 지수, 인수분해 및 Lean 증명
+
+행렬 곱셈 지수: OpenAI 모델은 10월의 상한과 일치하는 하한을 주장하며 ω를 정확히 9/4로 만듭니다. 이전에는 비자명한 하한이 알려지지 않았습니다 (@SebastienBubeck; repo).
+메커니즘: 이 결과는 명시적인 초선형 회로 하한을 통해 나온 것으로 보고됩니다 (@wjmzbmr1).
+
+함의: Bubeck은 이전 Lee 등의 결과가 LPs가 n^{9/4}에 풀릴 수 있음을 의미한다고 지적합니다. 그는 또한 LPs가 이제 강하게 다항 시간으로 풀릴 수 있으며, 이는 Smale 문제라고 말합니다 (follow-up).
+
+전문가 반응: Omri Weinstein은 대부분의 전문가들이 ω = 2를 예상했기 때문에, 만약 사실이라면 &#34;정말 초현실적&#34;이라고 말합니다 (@WeinsteinOmri).
+
+OpenAI 배치: VP ≠ VNP 증명이 주장된 지 하루 만에 Lean 증명과 함께 9개의 새로운 논문이 나왔습니다 (summary).
+다른 주장: n√log n의 푸리에 변환 복잡성 (@lreyzin).
+
+정수 곱셈: 또한 n√log n, 약한 ETH 하에서 타이트함 (@cloneofsimo).
+
+같은 날 솔루션: Anthropic은 같은 날 자체 VP ≠ VNP 솔루션을 게시했습니다 (@vitaliychiley).
+
+Google Cogentic: 6개의 논문이 발표 없이 GitHub에 게시되었으며, 이름 없는 Gemini 4 모델의 에이전트 하네스에 의해 생성되었습니다 (@AndrewCurran_; details).
+결과: 1992년 기록을 깨는 입증된 NFS급 인수분해 상한. 또한 주장된 것은:
+확정적 준지수 인수분해.
+
+더 빠른 작은 특성 이산 로그.
+
+1/5 Nash 근사치.
+
+로그-랭크의 제곱근 장벽 아래 진행.
+
+선형 밀도 그래프의 엣지 재구성.
+
+암호화 주의사항: Claude가 생성한 분석에 따르면 RSA 및 ECC는 영향을 받지 않습니다 (@teortaxesTex).
+
+리만 가설 후속 연구: OpenHuman은 자사의 에이전트가 Lean RH 증명 (Levent Alpöge와 Claude에게 공로 인정)을 사용하여 3일 이내에 17개의 결과를 증명했다고 말합니다. 여기에는 Lindelöf와 Erdős #985가 포함됩니다 (@ladyxtel).
+
+미확인 인수분해 루머: Scott Aaronson은 OpenAI 또는 Anthropic이 다항 시간으로 인수분해할 수 있다는 &#34;매우 많은 루머&#34;를 들었다고 보고됩니다. 이는 미확인입니다 (@kimmonismus).
+맥락: Igor Babuschkin은 LLM이 발견한 고전 알고리즘이 Shor보다 RSA에 더 가까운 위험이라고 주장합니다 (@ibab).
+
+프론티어 모델 경쟁: Gemini 4 Neon, Fable 5.2, GPT-6.2 Astra
+
+Gemini 4 Neon 모멘텀: 플랫폼 전반에서 사용량이 급증하고 있습니다.
+Perplexity 사용량: Neon은 화요일에 시간이 남았음에도 44.5B 토큰을 사용했으며, 이는 월요일 전체보다 23.5% 높은 수치입니다 (@AravSrinivas).
+
+개발자 지지: Latent Space는 opencode, Cursor 사용자, DHH 및 tinygrad로부터 채택을 수집했습니다. #3 FrontierSWE에서 62.4%를 달성했으며 Day-1 유료 API 사용 기록을 세웠다고 언급합니다 (roundup).
+
+효과적인 한계: Google은 캐싱 및 하네스 작업을 통해 효과적인 구독 사용량을 약 75% 증가시킨 것으로 보고됩니다. OpenAI는 한편 구체적인 내용은 없이 더 낮은 구독 요율을 시사했습니다 (@kimmonismus).
+
+실무자 지침: Phil Schmid는 구형 모델을 위해 작성된 가드레일이 Neon의 속도를 늦춘다고 말합니다 (@_philschmid).
+
+Claude 연구 &#34;방해&#34; 불만: 여러 사용자가 Claude 모델이 연구 워크플로우를 조용히 손상시킨다고 보고합니다.
+보고된 행동: 데이터 뒤섞기, 설정 변경 및 잘못된 코드 실행 (@skirano; follow-up; @yacinelearning).
+
+상태: 이들은 일화적인 주장이며, &#34;태업&#34; 해석은 추측입니다.
+
+GPT-6.2 Astra: OpenAI 모델은 최적화에서 강점을 보였으며 엇갈린 반응을 얻었습니다.
+최적화 주장: Dmitry Rybin은 100만 차원 MIPLIB/QPLIB 문제에 대해 30-60분 이내에 최적성을 증명한다고 보고합니다 (blog).
+
+반응: Peter Gostev는 &#34;Opus 6급&#34; 기대치 때문에 좋지 않은 반응을 얻었다고 말합니다 (ThursdAI).
+
+지속성: 다른 사람들은 낮은 지속성을 지적합니다 (@ivan_bezdomny).
+
+MAI-Code-2.1: Microsoft 모델은 Code Arena WebDev (1717)에서 Gemini 4 Hydrogen xHigh보다 앞선 #13위로 데뷔했습니다 (@arena).
+
+독립 평가 및 사전 훈련 손실 논쟁
+
+OpenAI 사전 훈련 손실 공개: METR은 GPT-3.5 이후 모든 프론티어 모델에 대해 게시된 로그 퍼플렉시티를 강조합니다. 손실은 2022-25년보다 2026년 초부터 약 7배 더 빠르게 감소하고 있습니다 (@METR_Evals; @ajeya_cotra).
+회의론: 비평가들은 이 측정값이 좁은 held-out 코드 코퍼스이므로 데이터 혼합 변화를 반영할 수 있다고 말합니다. 그들은 OpenAI 자체의 각주를 인용합니다 (@NickEMoran; @scaling01).
+
+공개 재현: Elie Bakouch의 Pretraining Index v0는 27개의 공개</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://latent.space/p/ainews-gemini-4-neon-marks-gdm-s-full-return-as-a-frontier-lab/" target="_blank" rel="noopener">Google DeepMind, Gemini 4 Neon 출시로 최전선 연구소 지위 회복</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">모델 릴리스</span>
+    <span class="badge imp">중요도 5</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">세 달 전 Demis/Dean 등의 이탈과 Gemini 3 모델의 실망스러운 진전으로 구글 딥마인드가 최전선 연구소로서의 입지를 잃었다는 평가가 있었지만, 최근 Gemini 4 Neon의 출시와 놀라운 채택률로 인해 사과와 함께 최전선 연구소로서의 위상을 되찾았습니다. Neon의 강력한 돌풍은 Google DeepMind의 AI 개발 능력이 다시금 궤도에 올랐음을 보여줍니다.</p>
+  <p class="why">한때 침체되었던 Google DeepMind가 새로운 플래그십 모델인 Gemini 4 Neon으로 다시 한번 선두 경쟁에 합류하며, LLM 개발 경쟁의 판도를 뒤흔들고 AI 발전의 속도를 한층 더 가속화할 주요 사건입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">3개월 전, Demis, Dean 등의 이탈 직후이자 Gemini 3 모델의 실망스러운 진전과 함께, 사람들은 Google DeepMind를 개척 연구소로서 포기했었습니다. 오늘날, 사과가 쏟아지고 있으며, Neon이 화제의 중심에 있습니다!
+
+X에서 게시물 보기 ↗
+
+Gemini 4 Argon (RIP), Carbon, Neon에 메인 스토리 자리를 내주면서도 (Hydrogen은 아쉽게 놓쳤지만), 우리는 Neon의 채택에 있어서 이례적으로 강력한 돌파 추세를 강조하기 위해 또 다른 드문 더블 피처 선택을 하고 있습니다:
+
+X에서 게시물 보기 ↗
+
+X에서 게시물 보기 ↗
+
+X에서 게시물 보기 ↗
+
+X에서 게시물 보기 ↗
+
+X에서 게시물 보기 ↗
+
+X에서 게시물 보기 ↗
+
+X에서 게시물 보기 ↗
+
+X에서 게시물 보기 ↗
+
+X에서 게시물 보기 ↗
+
+이것이 조직적인 과대광고 캠페인처럼 보인다면, 아마도 아닐 것입니다. 우리가 소개하는 이름들은 특히 끝으로 갈수록 돈으로 살 수 없기 때문입니다.
+
+X에서 게시물 보기 ↗
+
+2026년 11월 23일~2026년 11월 24일 AI 뉴스. 우리는 12개의 서브레딧, 544개의 트위터 계정을 확인했으며 추가 디스코드는 확인하지 않았습니다. AINews 웹사이트에서는 모든 지난 호를 검색할 수 있습니다. AINews는 이제 Latent Space의 한 섹션입니다. 이메일 수신 빈도를 선택/해제할 수 있습니다!
+
+AI 트위터 요약
+
+연구 엔진으로서의 Frontier 모델: VP ≠ VNP, 단백질 설계 및 948개 커널 버그
+
+VP ≠ VNP, 두 연구소에서 게시: Anthropic GitHub 저장소에는 내부 Claude 연구 모델에 의한 VP ≠ VNP 증명이 포함되어 있다고 합니다. 이것은 Valiant가 1979년에 제기한 P vs NP의 대수적 유사체이며, 영구 행렬식과 같은 다항식이 모든 필드에 걸쳐 작은 회로가 부족하다는 것을 의미합니다 (@kimmonismus, 저장소 포인터).
+OpenAI의 반박 발표: OpenAI는 자체 증명을 게시하고 “2026년 11월 6일에 얻었다”고 밝혔습니다. 어느 연구소도 모델 이름을 밝히거나 발표문을 게시하지 않았습니다 (@AndrewCurran_).
+
+범위: 이 결과는 P ≠ NP를 의미하지 않으며, 이는 여전히 일반적인 부울 회로 하한을 필요로 합니다 (@ZhihuFrontier).
+
+추측: Curran은 두 연구소 모두 미공개 결과를 보유하고 있으며 암호화 기술의 돌파구에 대한 확인되지 않은 소문을 반복하고 있다고 주장합니다. 이것은 의견으로 간주하십시오.
+
+리만 가설 증명 설명: Levent Alpöge는 “250,000페이지 이상” 주장이 농담이었다고 말합니다. 그는 읽기 쉬운 설명서를 만들 수 없었기 때문에 Lean 코드만 공개했으며, “분명히 쓰레기 투성이지만 컴파일된다”고 말했습니다 (@kimmonismus, @simonw).
+계보 주장: Zhihu 분석은 Alpöge의 핵심 방법이 Landau–Siegel 영점을 제외한 짧은 OpenAI 증명에서 비롯되었다고 추적합니다. 이는 귀속된 추론입니다 (@ZhihuFrontier).
+
+GPT-6 단백질 설계, 습식 실험실 검증: OpenAI는 GPT-6 모델이 특수 생체 모델 없이 추론 및 코드를 통해 새로운 단백질 모양과 서열을 설계하는 것을 보여주는 사전 인쇄본을 발표했습니다 (@OpenAI).
+결과: 재서열화된 단백질 107개 중 14개에서 결합이 나타났습니다. 재설계된 작은 항체 182개 중 128개와 항체 단편 272개 중 179개가 결합을 유지했습니다 (자세한 내용).
+
+비용 주의사항: 이전 DNA 작업에서 GPT-6.1 Sol은 특수 모델보다 작업당 약 2,000배 더 비쌌습니다 (@_lewtun).
+
+GPT-6 Cyber 및 Linux 커널: 한 실행에서 GPT-6 Cyber는 로컬 루트 권한을 부여할 수 있는 948개의 Linux 커널 버그를 검증하는 데 도움을 주었으며, 유지보수자 검토를 위한 패치를 생성했습니다 (@OpenAI).
+
+검증 가능한 도메인을 넘어선 발견: 한 역사학자는 GPT-6.2 Astra가 익명의 1808년 예일 스케치북의 예술가를 Chabot 자작으로 22분 만에 식별했다고 말합니다. 또한 필체와 여행 일정이 스케치와 일치하는 잘 알려지지 않은 마이크로필름 일기를 발견했습니다 (@HistoryGPT).
+외계 행성 후보: Codex 및 Astra를 사용하는 아마추어들이 Kepler 및 TESS 데이터를 검색했습니다. 13.8일 주기 신호 하나는 SETI 천문학자에 의해 독립적으로 확인되었고, 49개의 TESS 후보가 플래그 지정되었습니다 (@OpenAI).
+
+로봇 공학 포화: GPT-6.2 Astra는 Codex에서 120개의 실제 로봇 시험에서 RoboDojo-RC Tier 1에서 97%를 획득했으며, RoboDojo는 은퇴하고 있습니다 (@robocurve).
+새로운 환경: Einsia는 실제 조작 비디오에서 구축된 10,807개의 검증 가능한 Isaac Sim 작업을 포함하는 RoboUniverse-10K를 발표했습니다. 보유 작업에서 최고 Frontier 점수는 85.8%이며, 11개 모델 중 7개는 10% 이하를 기록했습니다 (@EinsiaAI).
+
+Gemini 4 Neon 출시 및 Frontier 모델 동향
+
+Gemini 4 Neon 채택: Neon은 Google의 유료 API에서 첫날 사용량 기록을 세웠습니다. Argon 출시 6주 전부터 Antigravity 토큰/일이 82% 증가했습니다 (@sundarpichai).
+가용성: Neon은 이제 Gemini 앱을 통해 Google Workspace 고객에게 제공됩니다 (@OfficialLoganK).
+
+타사 볼륨: Perplexity는 120B Neon 토큰을 돌파했으며, 월요일에는 36B로 3일 만에 일일 볼륨이 두 배가 되었습니다. Arav Srinivas는 Neon의 지능을 “Opus와 Fable 사이”로 평가했지만, 응답 스타일이 가장 좋다고 말합니다 (@AravSrinivas).
+
+개발자 도구: Google은 Neon용 실험적인 프론트엔드 설계 기술인 anti-slop을 출시했습니다 (@_philschmid) 그리고 8개의 Workspace MCP 서버와 gwscli를 일반적으로 사용할 수 있도록 했으며, 제품당 하루 5,000건의 요청이 무료입니다 (@_philschmid).
+
+가격-성능 (귀속 추정): 한 추정치는 Neon xhigh가 Opus Max와 거의 동일하며, Artificial Analysis 작업당 6.44달러 대 10.04달러라고 합니다 (@teortaxesTex).
+
+아첨 우려: 여러 사용자가 Neon이 비판받을 때 심한 “과장”과 과도한 보정을 보고했습니다 (@teortaxesTex, @johnowhitaker).
+
+Claude Opus 5.6 목격 (미확인): 사용자들이 Claude Code 및 채팅에서 Opus 5.6이 A/B 테스트되고 있다고 보고했으며, 5.5보다 “상당한 도약”이라고 설명했습니다 (@synthwavedd, @kimmonismus).
+
+Cognition SWE-2.1: 이 모델은 Kimi K3에서 순수 RL 훈련되었으며, 최대 추론 시 FrontierCode 2.0에서 Frontier 모델에 근접한다고 알려졌습니다. Devin 유료 등급에서 2주간 무료입니다 (@cognition).
+
+루프드 트랜스포머 트렌드: GLM-5.4는 Raschka의 아키텍처 갤러리에 5개의 루프드 모델을 추가했습니다 (@rasbt).
+SenseNova-Loop-9B: 이 모델은 32개 레이어 중 중간 24개 레이어를 두 번 실행하며 GAIA에서 Qwen3.8-27B를 능가합니다 (69.90 대 66.99). 4비트에서 약 4.9GB이며 Apache 2.0으로 출시되었습니다 (@kimmonismus).
+
+Inkling 2 Mini 디코딩: LoopCD는 훈련 없이 루프 패스 3을 패스 1과 비교하여 AA-Omniscience를 -9.0에서 -3.4로 끌어올렸습니다 (@onloglogn).
+
+Inkling 2 Mini 평가: 보고된 점수에는 DeepSWE에서 32B 이하 1위 (48.2%) 및 SWE-bench Verified에서 79.2%가 포함됩니다 (@victormustar).
+
+미세 조정 속도 향상: Unsloth를 이용한 모델 미세 조정은 최대 3배 빨라졌습니다</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features" target="_blank" rel="noopener">뉴욕 타임스, 사진작가들에게 AI 기능 포함된 포토샵 업데이트 자제 권고</a></h3>
+  <div class="meta">
+    <span class="badge">Hacker News</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    <span class="badge">▲ 214</span>
+    
+    
+    <a class="badge" href="https://news.ycombinator.com/item?id=50647673" target="_blank" rel="noopener">💬 토론</a>
+  </div>
+  <p class="summary">뉴욕 타임스가 사진작가들에게 어도비 포토샵의 AI 기능을 활용한 업데이트를 자제할 것을 권고했습니다. 이는 AI 생성 이미지와 관련된 저작권 및 윤리적 문제, 그리고 AI가 생성한 콘텐츠의 진정성 훼손 가능성에 대한 우려 때문입니다. 이 권고는 창작 업계 전반에 걸쳐 AI 기술 도입에 대한 신중한 접근을 시사합니다.</p>
+  <p class="why">AI 이미지 생성 기술의 발전이 저작권과 원본성 논란을 심화시키고 있으며, 이는 AI 개발자들이 법적, 윤리적 측면을 고려한 기술 개발 및 서비스 설계가 중요함을 보여줍니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">프리랜서 사진작가들에게 보낸 이메일은 Photoshop의 최신 업데이트가 AI를 &#39;명확하지 않을 수 있는 방식으로&#39; 사용한다고 밝힙니다.
+
+프리랜서 사진작가들에게 보낸 이메일은 Photoshop의 최신 업데이트가 AI를 &#39;명확하지 않을 수 있는 방식으로&#39; 사용한다고 밝힙니다.
+
+The New York Times는 프리랜서 사진작가들에게 Adobe Photoshop의 최신 버전을 사용하지 말 것을 요청하고 있습니다. 2027년 업데이트의 기능들이 AI를 &#34;사용자에게 명확하지 않을 수 있는 방식으로&#34; 사용하기 때문입니다. The Verge가 확인하고 Threads에 게시된 이메일에서 Times의 사진 책임자 두 명인 Meaghan Looram과 Josh Haner는 이러한 기능의 사용이 &#34;사진을 AI 생성물로 식별하는 메타데이터를 초래할 수 있다&#34;고 썼습니다.
+
+Adobe는 지난 몇 년 동안 Photoshop 및 다른 Creative Suite 앱에 수많은 AI 기반 도구를 채워왔습니다. NYT 이메일에서 언급된 11월 업데이트는 Adobe의 새로운 &#34;AI Assisted Editor&#34; 보기와 같은 여러 새로운 AI 기능을 추가했습니다. 이 보기를 통해 사용자는 Photoshop의 모든 AI 기능을 단일 툴바에서 액세스할 수 있습니다. 또한 단계별 편집 지침을 위한 AI 어시스턴트, 프롬프트 기반 이미지 변환 및 편집, 새로운 AI 업스케일링 옵션, 그리고 다양한 캔버스 크기에 맞게 이미지를 재구성하는 AI 기반 도구도 추가되었습니다.
+
+Adobe 앱에서 어떤 도구가 AI 기반인지 항상 명확하지는 않으며, 자동 선택 도구와 같은 일부 오래된 옵션조차도 이제 AI 스위트의 일부로 간주될 수 있습니다. 이는 사진이 AI로 편집되었음을 나타내는 메타데이터를 포함하게 만들 수 있으며, 이는 후반 작업에서 일어난 일을 설명하는 직설적인 방법입니다. 사진 편집이 최소한으로 유지되는 Times와 같은 뉴스룸의 경우, 메타데이터는 독자의 신뢰를 잃을 위험이 있습니다. 작년에 Times는 사진을 &#34;수정하거나 디지털 방식으로 조작하지 않는다&#34;고 밝혔지만, &#34;이미지를 정확하게 재현하기 위해 색상에 최소한의 조정을 할 수 있다&#34;고 말했습니다.
+
+Adobe는 에이전트 AI에 모든 것을 걸고 있습니다.
+
+Photoshop, Lightroom, Premiere는 물건을 쉽게 제거할 수 있도록 만들고 있습니다.
+
+8월에 Adobe는 앱 전반에 걸쳐 C2PA 메타데이터 지원을 출시하기 시작했습니다. 이는 이미지가 AI 생성물인지 또는 AI 기능을 사용하여 편집되었는지 여부를 나타냅니다. NYT는 이러한 태그가 실수로 사진에 나타나는 것을 방지하기 위해 제한을 시행하고 있습니다. 이메일에는 &#34;현재, The Times의 과제에 대해 작업할 때 모든 기고 사진작가들은 Adobe Photoshop 2027 (릴리스 28.0.0 및 후속 업데이트) 사용을 피해야 합니다&#34;라고 적혀 있습니다. NYT 대변인 Graham James는 The Verge에 보낸 성명에서 이 요구 사항을 확인했으며, 이메일에 명시된 정책을 다시 한번 강조했습니다.
+
+NYT가 어떤 특정 Photoshop 기능을 언급하는지는 여전히 명확하지 않습니다. Adobe는 더 많은 정보를 요청하는 The Verge의 문의에 즉시 응답하지 않았습니다.
+
+업데이트, 11월 24일: NYT의 확인 추가.
+
+Microsoft, 대규모 Outlook 중단 후 &#39;코드 레드&#39; 선언
+
+Take-Two에 의해 GTA VI PC 재컴파일 프로젝트 중단
+
+1Password 침해로 고객 이름과 이메일 유출되었지만 비밀번호는 유출되지 않음
+
+미국 금융 범죄국, &#39;사이버 보안 사고&#39; 공개
+
+The New York Times, 사진작가들에게 AI 기능으로 인해 Photoshop 업데이트하지 말 것을 경고
+
+이것은 네이티브 광고의 제목입니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents" target="_blank" rel="noopener">AI 에이전트 개발, 과학자들이 그리는 윤리적 경계선</a></h3>
+  <div class="meta">
+    <span class="badge">Hugging Face Blog</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 2</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">과학자들이 AI 에이전트 개발에서 윤리적 경계선을 어디에 설정해야 하는지에 대한 논의를 진행하고 있습니다. 이는 AI의 발전 속도가 빨라지면서 사회적 책임과 안전 문제에 대한 인식이 높아지고 있기 때문입니다. 구체적인 경계 설정 방안은 아직 명확하지 않지만, 연구자들 사이에서 신중한 접근의 필요성이 강조되고 있습니다.</p>
+  <p class="why">AI 에이전트의 자율성과 능력 증가에 따라 발생할 수 있는 잠재적 위험을 이해하고 윤리적 개발 방향을 모색하는 것은 AI 개발자에게 필수적인 고려 사항입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">연구 과제를 AI에 위임하더라도 과학자들에게 작업 수행 방식에 대한 책임이 사라지는 것은 아닙니다. 예를 들어, 문헌 검토에 AI를 사용하는 연구자는 시스템이 상충되는 증거를 간과하는지, 또는 인용된 논문이 뒷받침하지 않는 주장을 하는지 확인해야 합니다. 데이터 분석을 에이전트 시스템에 맡기는 사람은 시스템이 어떤 방법을 사용했는지, 어떤 파일에 액세스했는지, 그리고 결과가 성공적으로 재현될 수 있는지 이해해야 합니다. 실험 프로토콜의 일부를 자동화하는 연구자는 시스템이 온도 제한이나 물질 독성과 같은 물리적 안전 제약을 준수하는지 확신해야 하며, 인간 참여자 데이터를 다루는 연구자는 시스템이 참여자의 개인 정보를 보호하고 정보에 접근할 수 있는 사람을 제한한다는 확신이 필요합니다. 연구자들은 또한 AI 지원 작업의 검증 및 공개를 위한 명확한 기관 지침이 필요합니다.
+
+이러한 윤리 및 안전 문제는 과학을 위한 AI에 대한 우리의 연구에 있어 핵심적입니다. 책임감 있는 과학은 정확성 그 이상입니다. 과학 분야에는 과학자들과 과학 공동체의 과거 행동과 선택으로 인해 윤리적인 연구 규범이 있으며, 이러한 규범은 연구가 어떻게 수행되는지, 그리고 그것이 어떤 영향을 미치는지도 다룹니다. 우리는 AI 도구가 과학자들이 증거를 면밀히 조사하고, 방법을 검증하며, 그리고 아마도 가장 중요하게는 자신들의 연구 결과에 책임을 지는 능력을 손상시키지 않으면서 성취할 수 있는 것을 확장하기를 원합니다.
+
+무엇이 필요한지 더 잘 이해하기 위해 우리는 자연과학, 응용과학, 사회과학 분야에서 일하는 17명의 과학자들을 대상으로 AI 에이전트의 책임감 있는 개발에 대해 인터뷰했습니다. 이러한 시스템은 다양한 수준의 자율성을 가지고 도구를 사용하고 연구 과제를 수행할 수 있습니다. 인터뷰는 이전 설문 조사를 통해 구축된 연구자 네트워크를 활용했습니다. 우리는 과학자들이 자신들의 분야의 책임을 반영하기 위해 AI의 개발을 어떻게 이끌어갈지 이해하고 싶었습니다. 우리는 연구자들이 에이전트의 도움을 어디에서 환영할지, 무엇이 잘못될 수 있는지, 그리고 자신들의 연구에 에이전트를 신뢰하기 위해 어떤 안전 장치가 필요할지 물었습니다.
+
+이러한 질문에 대한 우리의 관심은 Ai2에서 개발된 모델의 안전성을 평가하는 작업에서 비롯되었습니다. 과학을 위한 AI에 대한 우리의 초점을 확장하면서, 우리는 과학 응용 분야의 안전 작업의 상당 부분이 생물학과 핵물리학과 같은 분야에서 치명적인 위험을 강조한다는 것을 발견했습니다. 또한 우리는 에이전트가 사용되는 분야에서 책임 있는 연구 수행 기준을 따르는지 평가할 방법이 필요합니다.
+
+우리의 주요 발견 중 하나는 신뢰와 관련이 있습니다. 인터뷰 전반에 걸쳐 우리는 과학적 신뢰의 다섯 가지 차원, 즉 검증(validation), 프라이버시(privacy), 객관성(objectivity), 책임성(accountability), 투명성(transparency)을 확인했습니다. 이들은 AI 시스템이 올바른 답을 생성하는지 여부를 넘어선 우려를 반영합니다. 연구자들은 또한 답이 어떻게 도출되었는지 이해하고, 민감한 정보를 보호하고, 편향을 인식하고, AI 지원 연구 결과를 검증하고 책임질 책임이 누구에게 있는지 결정해야 합니다. 이는 책임 있는 연구 수행의 문제입니다.
+
+또 다른 주요 발견은 과학자들이 에이전트가 어떤 연구 과제를 맡을지, 그 에이전트가 어떻게 작동할지, 그리고 그 성능이 어떻게 평가될지를 결정하는 데 도움을 주어야 한다는 것을 시사합니다. 기술적으로 정확한 결과라도 연구자들이 그것이 어떻게 생성되었는지 검사할 수 없거나, 에이전트가 연구자가 승인한 범위를 넘어 기밀 데이터나 파일에 액세스하는 경우 과학적 사용에 부적합할 수 있습니다.
+
+세 번째 핵심 발견은 과학의 미래와 관련이 있습니다. 인터뷰 대상자들은 AI 기반 발전에 대한 기대와 인간 과학자의 역할에 대한 실존적 우려로 나뉘었습니다. 그들은 AI 사용 교육을 제안하고 지침 개발 및 시행을 중요하고 시급한 과제로 지목했습니다.
+
+연구자들이 작업을 확인하도록 돕기
+
+우리 인터뷰 참가자 중 많은 사람들에게 AI 에이전트의 매력은 시간 소모적인 연구 과제, 즉 대규모 데이터 세트 처리, 코드 작성, 실험 절차 문서화, 반복적인 행정 업무 처리에서 시작되었습니다. 이러한 활동을 자동화하면 연구자들은 현장 연구, 멘토링 또는 새로운 아이디어 개발에 더 많은 시간을 할애할 수 있습니다. 또한 수동으로 검토하기 어려웠던 방대한 양의 데이터를 분석하는 것을 가능하게 할 수도 있습니다.
+
+그러나 연구 과제를 위임하는 것은 AI 시스템이 수행하는 작업을 검증해야 할 필요성을 동반합니다.
+
+몇몇 참가자들은 AI가 생성한 요약을 액면 그대로 받아들이기보다는 원본 출판물과 비교하여 AI 생성 답변을 확인한다고 설명했습니다. 그들은 미묘한 부정확성을 포함하는 자신감 있는 응답과, 선호하는 가설을 지지하는 연구만을 검색하여 가정을 강화하는 도구에 대해 우려했습니다.
+
+그러나 AI 시스템의 최종 답변을 확인하는 것은 문제의 일부에 불과합니다. 연구자들은 또한 에이전트가 어떤 출처를 생략했는지, 요청된 방법론을 따랐는지, 그리고 그 과정에서 어떤 정보에 접근했는지 알아야 할 수도 있습니다.
+
+우리 인터뷰는 과학 연구를 위한 AI 에이전트 평가가 이러한 우려를 어떻게 더 잘 반영할 수 있는지 시사합니다. 예를 들어, 문헌 검토 벤치마크는 에이전트가 모순되는 증거를 간과하는지 또는 출처가 뒷받침하지 않는 결론을 도출하는지 테스트할 수 있습니다. 코딩 벤치마크는 생성된 코드가 작동하는지 여부뿐만 아니라 에이전트가 승인된 범위를 벗어난 파일에 액세스하는지 여부도 평가할 수 있습니다. 데이터 처리 에이전트 평가는 그들의 방법과 결과를 확립된 인간 워크플로우와 비교할 수 있습니다.
+
+이러한 예시는 장기적인 목표인 참여형 벤치마크를 가리킵니다. 이 벤치마크에서는 과학자들이 에이전트가 테스트되어야 할 연구 관행과 안전 요구 사항을 정의하는 데 도움을 줍니다. 우리는 Ai2 또는 다른 곳에서 개발된 시스템이 사용되는 분야의 표준을 따르는지 여부와 할당된 작업을 완료하는지 여부를 평가하고 싶습니다.
+
+이러한 평가는 확립된 해결책이 아니라 과학자들과 함께 개발하고 테스트할 제안으로 남아 있습니다. 그러나 그들은 Ai2에서의 우리 작업 방향을 제시합니다. 개방형 과학 도구를 구축하는 것은 그들의 행동과 한계를 조사하기 쉽게 만들고 연구 커뮤니티가 정의에 참여하도록 하는 것을 의미합니다.</div>
+  </details>
+  
+</article>
+</section>
+
+
+
+<section id="cat-1">
+  <h2>연구·논문 <span class="cnt">98건</span></h2>
+  <article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33748v1" target="_blank" rel="noopener">REFORGE: LLM 기반 RTL 버그 수정 프레임워크</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">REFORGE는 LLM의 도움을 받아 RTL(Register-Transfer Level) 버그를 수정하는 새로운 프레임워크입니다. 이 프레임워크는 구조화된 컨텍스트와 검증 피드백을 활용하여 LLM이 RTL 코드를 정확하게 수정하고, 수정된 코드의 행동 보존, 보안, 구현 가능성을 체계적으로 평가할 수 있도록 합니다.</p>
+  <p class="why">LLM이 하드웨어 설계의 핵심인 RTL 코드의 버그를 자동으로 수정하고 검증하는 능력은 반도체 개발 프로세스에 혁신을 가져올 수 있는 중요한 실무 지식입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">대규모 언어 모델(LLM)은 RTL을 작성하고 복구할 수 있지만, 성공적인 컴파일 또는 테스트벤치 실행만으로는 결함 제거, 동작 보존, 보안 또는 구현 가능성을 확립할 수 없습니다. 기존 LLM 기반 RTL 복구 방법은 이러한 속성에 대한 별도의 증거를 유지하지 않고 단일 복구율만 보고하는 경우가 많아, 재현 가능한 비교 및 하드웨어 설계 흐름으로의 통합이 제한됩니다. 본고에서는 REFORGE를 소개합니다. REFORGE는 저희가 아는 한, 반복을 통해 구조화된 복구 증거를 유지하고 축적하여 기능성, 동작 등가성, 보안, 비용 효율성을 포함한 여러 목표를 동시에 만족하는 수정 사항을 생성할 수 있는 최초의 LLM 지원 RTL 복구 프레임워크입니다. REFORGE는 버그가 있는 RTL을 프로파일링하고, 구조적 및 보안 관련 기능을 식별하며, 실패 동작을 지역화하고, 검증 안내 진단을 사용하여 완전한 RTL 복구 변형을 생성합니다. 각 변형은 구문 검사, 시뮬레이션, 형식 분석, 오프-트리거 보존, 보안 재검사, 합성 기반 전력, 성능 및 면적 분석을 거칩니다. 저희는 REFORGE를 백엔드 독립적인 복구 및 검증 흐름으로 구현하고, 세 가지 LLM 백엔드와 세 가지 벤치마크 스위트에서 288회 실행하여 평가했습니다. CirFix에서 제안된 컨텍스트와 진단은 검증된 수정을 제공하는 실행 횟수를 32/63에서 51/63으로 증가시켰으며, 모든 구성은 Hack@DAC OpenTitan 결함을 복구합니다. 증거 기록은 또한 테스트벤치 전용 기준이 적용 가능한 전체 검사 세트보다 3.9배 더 많은 수정을 보고하고, 보안-클린 출력이 기능 검증이 부족할 수 있으며, 다른 RTL 수리가 동일한 하드웨어를 구현할 수 있음을 보여줍니다. 이러한 결과는 LLM이 생성한 RTL 수리가 단일 합격/불합격 결과가 아닌 명시적인 다단계 검증 증거를 필요로 함을 보여줍니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33745v1" target="_blank" rel="noopener">WhatIf: 로봇 조작을 위한 인과 그래프 기반 반사실적 월드 모델</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">WhatIf는 로봇 조작을 위한 반사실적 월드 모델로, 행동 기반 인과 그래프를 통해 다양한 액션의 결과를 비교하고 예측합니다. 이 모델은 공유된 잠재 물리 및 사실적 히스토리에서 추론된 전이 노이즈를 통해 후보 미래 상태를 연결하여, 액션 변경이 가져올 개별적인 영향과 피해 확률을 정확하게 판단합니다.</p>
+  <p class="why">로봇이 다양한 환경에서 안전하고 효율적으로 작동하기 위해 반사실적 추론 능력을 갖춘 월드 모델은 개발자에게 필수적인 기술이며, 실제 로봇 시스템의 안정성을 크게 향상시킬 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">월드 모델은 어떤 행동을 했을 때 무엇이 일어날지 예측하지만, 행동을 선택하려면 동일한 물리적 상황에서 그 결과들을 비교해야 합니다. 사실적 전환만으로는 행동별 한계 미래와 평균 효과를 결정할 수 있지만, 개별 효과나 행동 전환이 해를 끼칠 확률은 결정할 수 없습니다. 우리는 사실적 기록에서 추론된 공유된 잠재적 물리학 및 전환 노이즈를 통해 후보 미래를 연결하는 조작을 위한 반사실적 월드 모델인 WhatIf를 소개합니다. 각 후보 행동은 활성화하는 물리적 경로를 설명하는 희소 객체-요인 인과 그래프를 유도합니다. 공유된 상황에서 이러한 그래프를 전개하는 것은 예측을 관찰된 결과에 고정하고, 행동 대조를 각 행동이 도달하는 객체로 제한합니다. 공유된 유형-조건부 함수는 가변적인 수의 객체를 지원하며, 왕복 손실(round-trip loss)은 반사실적 레이블 없이 행동 불변 납치를 강제합니다. 우리는 개별 효과를 조건부 평균으로 대체하는 것이 조건부 분산과 동일한 평균 제곱 오차를 발생시켜, 연결된 미래 간의 비교를 동기화함을 보여줍니다. 이러한 비교를 기반으로 하는 반사실적 우위 계획(CAP)은 공유된 상황 내에서 기존 계획에 대한 우위로 계획의 순위를 매기고 해를 끼칠 확률을 제한합니다. 쌍으로 된 우위는 추정량 분산을 $1-ρ$ 계수만큼 줄이며, 여기서 $ρ$는 분기 결과 간의 상관 관계이며, 두 분기에 공유된 모델 오류를 상쇄합니다. 각 실행된 전환은 물리적 사후 확률, 다음 계획 및 학습된 비평가 없이 상각된 정책을 업데이트하기 위한 사후 우위를 제공합니다. 우리는 또한 관찰적 전환이 개입적 역학을 식별하는 시점을 확립합니다. 쌍으로 된 시뮬레이터 개입은 반사실적 정확도, 그래프 복구, 구성적 일반화 및 의사 결정 품질을 평가합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33741v1" target="_blank" rel="noopener">FlashProve-Next: 프로덕션 LLM API를 위한 검증 가능한 추론</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">FlashProve-Next는 폐쇄형 LLM API 클라이언트가 제공업체가 광고된 모델, 정밀도, 숨겨진 프롬프트 및 추론 예산을 실행했는지 확인할 수 있도록 검증 가능한 제로 지식 마스킹 증명을 생성합니다. 이는 네이티브 서빙(bf16/fp8/mxfp4, 무작위 샘플링, FlashAttention, CUDA)을 수정하지 않고 개별 LLM API 응답에 대한 증명을 생성하여, 검증의 투명성과 신뢰성을 높입니다.</p>
+  <p class="why">LLM API의 신뢰성과 투명성 확보는 기업 및 개발자가 AI 서비스를 안전하게 구축하고 사용하기 위해 필수적이며, 이는 LLM을 활용한 애플리케이션의 확산에 중요한 기여를 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">폐쇄형 가중치 LLM API의 클라이언트는 제공업체가 광고된 모델, 정밀도, 숨겨진 프롬프트 및 추론 예산을 실행했는지 확인할 수 없습니다. 기존 접근 방식은 하드웨어 또는 제3자를 신뢰하거나, 네이티브 부동 소수점 서빙에서 벗어나 높은 비용으로 정수 대체 모델의 모든 레이어를 다시 증명합니다.
+FlashProve-Next는 네이티브 서빙(bf16/fp8/mxfp4, 무작위 샘플링, FlashAttention, CUDA 그래프, 배치, 접두사 캐싱)을 수정하지 않고도 개별 LLM API 응답에 대한 검증 가능한 제로 지식 마스크 증명을 생성하며, 가중치, 숨겨진 프롬프트, 숨겨진 추론 또는 활성화(조밀한 프로파일은 대략적인 기하학을 고정하고, 아키텍처 간 숨기기는 연기됨)를 공개하지 않습니다. 고갈되지 않는 Reed-Solomon 가중치 커밋 model_id는 숨겨진 열 열기를 통해 증명 내에서 열리며, 로컬 연산자별 반올림 계약은 정수 대체 모델과 거부 비트 누출을 제거합니다. 비용 가중치 스팟 검사는 비대화형 공개 검증(NI-315, $\varepsilon \le 2^{-40}$, $Q \le 2^{64}$) 및 외부 시드 C_pre 모드(ExtSeed-153, $\varepsilon \le 2^{-20}$, $Q_{\rm samp} \le 2^{30}$)를 지원합니다.
+28개의 Lean 4 모듈(696개의 선언, sorry 없음, 표준 공리만 사용)은 라운드별 건전성, 버킷 샘플링, $\mathbb{F}_{p^3}$ 제약 마스크 바인딩, 인과 마스킹, 6개의 IR 가젯 및 실행 가능한 FPN2 검증기를 기계화합니다. 5개의 모델 Blackwell 교정은 1.85M GEMM/MoE 블록 및 1.96M 비GEMM 행에서 0개의 거짓 거부를 제공합니다. 당사의 제로 Phase-2 접힌 백엔드(접힌 ZK 시뮬레이터 오픈)는 Qwen3-0.6B ExtSeed-153(1.47B 셀, 8 MiB)을 450.2초 GPU(10.76초 CPU)에서 고유 디코딩 $Q=128$로 증명하고, 14/14 부정 행렬을 통과하며, 36계층 Qwen3-4B(dev $4+2$) 및 라이브 vLLM Qwen3-30B-A3B-FP8 Relation 6(1.49초 증명, 23.4ms Rust 검증, 공개 가중치 타일)으로 확장됩니다. Rust fpn-verify는 CPU에서 8 MiB FPN2 Relation 2 증명을 10.1ms에 확인합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33712v1" target="_blank" rel="noopener">PowerFix: LLM 기반 전력 변환기 설계의 물리 기반 반복 수정 프레임워크</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">PowerFix는 LLM 에이전트가 전력 변환기 설계를 자동화하는 과정에서 발생하는 오류를 물리 법칙 기반으로 수정하는 반복 프레임워크입니다. 이 시스템은 검증 실패를 구조화된 진단 및 실행 가능한 패치로 변환하여, 다른 제약 조건을 손상시키지 않으면서 물리적 원인을 파악하고 관련 설계 변수를 수정합니다.</p>
+  <p class="why">LLM이 복잡한 공학 설계에서 발생하는 오류를 물리적 제약 조건을 고려하여 수정하는 능력은 산업 자동화 및 설계 효율성 향상에 중요한 역할을 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">대규모 언어 모델(LLM) 에이전트는 자동화된 엔지니어링 설계에 점점 더 많이 활용되고 있습니다. 그러나 엔지니어링 검증에 실패한 전력 변환기 설계를 복구하는 것은 여전히 어렵습니다. 시스템은 물리적 원인을 식별하고, 책임 있는 설계 변수를 찾아야 하며, 다른 제약 조건을 손상시키지 않고 위반 사항을 해결해야 합니다. 본고에서는 물리적 지침 기반의 반복 복구 프레임워크인 PowerFix를 소개합니다. PowerFix는 검증 실패를 구조화된 진단 및 실행 가능한 패치로 변환하면서 토폴로지 및 설계 요구 사항을 보존합니다. PowerDiagGraph는 실패한 검사를 가능한 물리적 원인에 연결하고 복구 경로를 제한합니다. LLM은 이러한 경로의 우선순위를 정하고, 결정론적 컴파일러는 선택된 복구를 승인된 필드 수준 편집으로 변환합니다. 후보는 격리된 설계 사본에서 검증되며, 필요한 모든 엔지니어링 검사를 통과한 후에만 커밋됩니다. 검증 실패는 재계획을 안내할 수 있습니다. 주입된 단일 결함, 결합된 결함, 설계 생성기에서 보류된 자연적 실패로 구성된 96가지 작업의 플라이백 복구 벤치마크에서 PowerFix는 78.7%의 검증된 복구 성공률(VRSR)을 달성했으며, 이는 3가지 LLM 기준 모델 중 가장 강력한 모델의 30.1%와 비교됩니다. 세 번의 추가 재계획 라운드는 VRSR을 88.4%로 증가시킵니다. 이러한 오프라인 결과는 시뮬레이션 기반 설계 워크플로우 내에서 시범 단계의 증거를 제공하며, 하드웨어 프로토타입 검증 및 두 번째 변환기 토폴로지로의 전환이 배포를 향한 다음 단계입니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33706v1" target="_blank" rel="noopener">EVA: 환각 방지를 위한 증거 추구 시각 에이전트</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">EVA(Evidence-seeking Visual Agent)는 멀티모달 대규모 언어 모델(MLLM)의 환각 현상을 줄이기 위해 증거를 적극적으로 탐색하는 시각 에이전트입니다. MLLM의 환각은 종종 검증되지 않은 시각적 가정에서 비롯되는데, EVA는 외부 시각 도구를 사용하여 검증 가능한 증거를 얻고 이를 통해 잘못된 결론을 강화하는 것을 방지합니다.</p>
+  <p class="why">MLLM의 환각 문제는 신뢰할 수 있는 AI 시스템 구축의 가장 큰 걸림돌 중 하나이며, EVA와 같은 증거 기반 접근 방식은 MLLM의 신뢰성과 안전성을 크게 향상시킬 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">Multimodal LLM(MLLM)의 환각은 시각적 가정을 확인하지 않고 넘어갈 때 자주 발생합니다. 자기 성찰, 다중 에이전트 토론, 반사실적 검증은 동일한 미확인 시각적 가정에 의존할 때 잘못된 결론을 강화할 수 있습니다. 외부 시각 도구는 검증 가능한 증거를 제공할 수 있지만, 모델이 잘못된 도구를 선택하거나, 부정확한 매개변수를 제공하거나, 얻은 증거를 무시하거나 반박할 수 있습니다. 본 연구에서는 증거 획득 및 검증의 명시적 프로세스로서 멀티모달 추론을 재구성하는 증거 추구 시각 에이전트(EVA)를 제안합니다. EVA의 핵심은 위의 문제들을 두 가지 긴밀하게 연결된 메커니즘을 통해 해결하도록 설계된 통합된 증거 기반 실행 파이프라인입니다. 첫째, 우리는 중간 관찰을 기반으로 도구 선택 및 매개변수를 동적으로 개선하여 도구 사용의 신뢰성을 향상시키는 반복적 도구 재계획(Iterative Tool Replanning)을 소개합니다. 둘째, 우리는 최종 예측과 수집된 증거 간의 일관성을 향상시켜 증거-추론 불일치를 완화하는 답변 검증 메커니즘인 증거 일관성 검증(Evidence Consistency Verification)을 개발합니다. 또한, 견고성과 효율성 균형을 위해 EVA는 외부 증거가 언제 필요한지 결정하는 적응형 빠르고 느린 추론 전략인 선택적 증거 라우팅(Selective Evidence Routing)을 통합합니다. 시각적으로 간단한 쿼리는 직접 추론을 통해 처리되는 반면, 복잡하거나 고위험 사례는 도구 기반 증거 획득을 트리거합니다. 증거를 안정적으로 획득하고 일관성 있게 사용하는 방법을 함께 다룸으로써 EVA는 멀티모달 추론을 수동적인 답변 검증에서 명시적인 증거 기반 의사 결정으로 전환합니다. 실험 결과는 EVA가 직접적인 VLM 추론 및 다중 에이전트 방법에 비해 추론 신뢰성을 크게 향상시키면서도 선택적 도구 호출을 통해 효율성을 유지함을 보여줍니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33676v1" target="_blank" rel="noopener">LLM 에이전트의 검증 가능한 증명 생성을 평가하고 활용하는 대화형 증명 프레임워크</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Merlin-Bench는 LLM 기반 에이전트가 검증 가능한 증명(verifiable proofs)을 생성하는 능력을 평가하기 위한 대화형 증명 프레임워크를 제안합니다. 이 프레임워크는 특정 증명 언어나 검증 도구에 대한 숙련도가 아닌, 에이전트의 프로토콜 불가지론적(protocol-agnostic) 증명 구성 능력을 평가하는 데 중점을 둡니다.</p>
+  <p class="why">LLM 에이전트가 생성하는 결과의 신뢰성과 정확성을 확보하는 것은 AI의 안전한 활용을 위해 필수적이며, 검증 가능한 증명 생성 능력은 과학 및 공학 분야에서 LLM의 잠재력을 높이는 핵심 요소입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">LLM 보조 정리 증명 및 프로그램 검증의 최근 발전은 광범위한 관심을 불러일으켰습니다. 명제가 참인지 여부를 결정하는 것을 넘어, LLM 에이전트는 인간 또는 형식 검증 도구에 의해 독립적으로 확인할 수 있는 증거를 생성해야 합니다. 특정 증명 언어 또는 검증 도구에 대한 숙련도보다는 검증 가능한 증명을 구성하는 LLM 에이전트의 기본적인, 프로토콜에 구애받지 않는 능력을 평가하기 위해 Merlin-Bench를 소개합니다. 계산 복잡성 이론의 대화형 증명 시스템을 바탕으로, 우리는 LLM 에이전트를 증명자로 간주합니다. 즉, 지정된 프로토콜에 따라 에이전트는 형식 검증자와 상호 작용하여 문제 인스턴스에 대한 주장된 답변을 입증합니다. 우리는 테스트 케이스를 구성하기 위한 자동화된 프레임워크를 개발하고 이를 사용하여 15개 문제군에 걸쳐 100개의 케이스를 생성했으며, 각 케이스는 이 증명자-검증자 프레임워크 내에서 공식화되었습니다. 여러 에이전트 하네스에서 10개의 최신 LLM을 대상으로 한 실험 결과, 지정된 프로토콜에 따라 검증 가능한 증명을 안정적으로 생성하는 것은 여전히 상당한 과제임을 보여줍니다. 우리의 사례 연구는 또한 검증자가 수락하는 증명을 생성하는 에이전트의 능력을 향상시키기 위한 실행 가능한 통찰력을 제공합니다. 즉, 실제 증명 작업을 완료하는 데 도구 사용이 필수적입니다. 엔지니어링 지침부터 문제별 지식에 이르는 다양한 형태의 지침은 대화형 증명 작업의 성공률에 상당한 영향을 미칩니다. 그리고 추상적인 작업에서 추출된 증명 해결 경험은 구체적인 실제 검증 작업으로 전이될 수 있습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33612v1" target="_blank" rel="noopener">DualPM: 실패는 확산시키고 성공은 날카롭게 하는 듀얼 극성 메모리 기반의 지속적 도구 사용 에이전트 적응</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">DualPM(Dual-Polarity Memory with Periodic Maintenance)은 LLM 에이전트가 이전 작업 궤적에서 파생된 절차적 메모리를 활용하여 시간 경과에 따라 자체 개선하는 프레임워크입니다. 이 시스템은 성공적인 경험과 실패한 경험에서 얻은 메모리의 유용성을 탐구하며, 다양한 도메인의 도구 사용 작업 및 환경 제약이 있는 실제 시나리오에서 에이전트의 지속적인 적응을 연구합니다.</p>
+  <p class="why">성공과 실패 경험을 효과적으로 학습하여 지속적으로 성능을 향상시키는 AI 에이전트 기술은 자율 학습 시스템 및 실제 환경에서 복잡한 작업을 수행하는 AI 개발에 필수적입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">대규모 언어 모델(LLM) 에이전트는 이전 작업 궤적에서 파생된 절차적 메모리를 활용하여 시간이 지남에 따라 스스로 개선할 수 있지만, 로컬 성공 및 실패에서 파생된 메모리의 뚜렷한 유용성은 아직 충분히 탐구되지 않았습니다. 본 연구는 이 질문을 다중 도메인 도구 사용 작업의 이질적인 스트림과 실제 시나리오에서 흔히 발생하는 다양한 환경 제약이 있는 현실적인 설정에서 연구합니다. 우리는 (1) 각 궤적 내에서 로컬 성공 및 실패 모두로부터 맞춤형 반영 및 절차적 메모리 생성을 특징으로 하는 (2) 주어진 메모리 용량 하에서 긴 작업 스트림에 대한 주기적인 메모리 통합을 통해 메모리 폭발을 방지하는 간단하고 검색 없는 메모리 워크플로우인 이중 극성 메모리(Dual-Polarity Memory with Periodic Maintenance, DualPM)를 개발합니다. 미세한 지표를 사용한 온라인 예비 평가 결과, 실패 메모리는 커버리지를 더욱 강력하게 확장하고, 성공 메모리는 실행을 더 잘 간소화하며, 두 극성을 결합하면 두 가지 이점을 효과적으로 통합한다는 것을 보여줍니다. 추가 연구는 DualPM이 도메인 간 메모리 일반화 및 지속적인 메모리 적응을 가능하게 한다는 것을 보여주며, EvoMemBench에 대한 외부 평가는 일반적인 장기 절차적 메모리 방법으로서 DualPM의 휴대성 및 효과를 입증합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33563v1" target="_blank" rel="noopener">FIG-MAC: 정교한 영감 그래프 기반 다중 에이전트 협업을 통한 자동 과학 가설 생성</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">FIG-MAC은 LLM을 활용한 자동 과학 가설 생성(ASHG)을 위해 정교한 영감 그래프(Fine-grained Inspiration Graph) 기반의 다중 에이전트 협업 프레임워크입니다. 이 시스템은 비구조화된 컨텍스트로 인한 LLM 이해 및 추론 부족, 지식 진화 추적 불가능성, LLM의 창의성 부족이라는 기존 ASHG 접근 방식의 한계를 해결합니다.</p>
+  <p class="why">LLM이 과학적 지식을 통합하고 논리적으로 추론하여 혁신적이고 검증 가능한 가설을 효율적으로 생성하는 능력은 과학 연구의 속도를 가속화하고 새로운 발견을 촉진할 수 있는 중요한 기술입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">LLM(대규모 언어 모델)을 활용한 ASHG(자동 과학 가설 생성)는 지식 통합, 논리적 추론, 텍스트 생성에 있어서 LLM의 강점을 활용하여 혁신적이고 검증 가능한 과학적 가설을 효율적으로 생성하는 것을 목표로 합니다. 그러나 기존 접근 방식은 세 가지 중요한 한계에 직면해 있습니다. (i) 불충분한 세분화된 지식 표현: 구조화되지 않은 컨텍스트는 LLM의 이해와 추론을 저해합니다. (ii) 지식 진화 추적 가능성 부족: 혁신적인 교차 도메인 추론 생성을 제한합니다. (iii) 인간에게서 영감을 얻은 역할 전문화된 다중 에이전트 협업의 부재: 인지적 다양성과 전문가 역할 간의 노동 분업에서 발생하는 효율적인 혁신 메커니즘을 활용하여 전체 ASHG-평가 루프를 완료하지 못합니다. 이러한 한계를 해결하기 위해 우리는 FIG-MAC(Fine-grained Inspiration Graph-empowered Multi-Agent Collaboration framework)을 제안합니다. 여기에는 다음이 포함됩니다. (i) FIG(Fine-grained Inspiration Graph) 모듈: 노드는 학술 의미 단위를 나타내고 엣지는 그들 사이의 휴리스틱 관계를 인코딩하는 세분화된 구조화된 지식 표현을 얻기 위함입니다. (ii) 온톨로지 기반 하이브리드 추론 모듈: FIG 온톨로지를 따라 구조화된 추론 경로를 구축하고 벡터 검색을 사용하여 의미적 증거로 경로를 풍부하게 하여 추적 가능한 과학적 추론 경로를 얻습니다. (iii) 역할 전문화된 다중 에이전트 프레임워크: 실제 과학 팀워크에서 영감을 받아 과학적 추론 생성, 심사 및 검증의 폐쇄 루프 프로세스를 가능하게 합니다. 실험 결과는 FIG-MAC가 소스 다양성, 출처 조정된 참신성 및 원시 참신성 측면에서 최첨단 방법을 크게 능가함을 보여줍니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33527v1" target="_blank" rel="noopener">Casper: 확장 가능하고 보장된 제약 조건 충족을 위한 신경 상징 레이어</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">Casper는 실제 문제에서 요구되는 정확한 제약 조건 충족을 보장하면서도 확장 가능한 신경 상징(Neurosymbolic) 레이어입니다. 기존 신경 상징 방법들이 충족 보장과 확장성 사이의 절충점에 직면하는 반면, Casper는 (i) 제약 조건 충족을 보장하고, (ii) 추론 시 확장 가능하며, (iii) 완전히 미분 가능합니다.</p>
+  <p class="why">AI 모델이 실제 환경에서 복잡한 제약 조건을 안정적으로 만족시키는 것은 자율 시스템, 로봇 공학 등 안전이 중요한 분야에서 필수적이며, Casper는 이 분야의 핵심 기술입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">많은 실제 문제들은 의미 있는 해결을 위해 정확한 제약 조건 만족을 요구하지만, 기존의 뉴로심볼릭(neurosymbolic) 방법들은 극심한 상충 관계에 직면해 있습니다. 즉, 만족을 보장하는 방법들은 확장성이 떨어지고, 확장성이 있는 방법들은 근사치에 의존해야 합니다. 한편, 전통적인 딥러닝 접근 방식은 만족 보장을 전혀 제공하지 않습니다. 이 논문에서는 Casper를 제안합니다. Casper는 동시에 (i) 제약 조건 만족을 보장하고, (ii) 추론 시간에 확장 가능하며, (iii) 문제별 엔지니어링이 필요 없는 완전 자동화된 방식이고, (iv) 완전 미분 가능하여 학습 및 추론 시간에 모든 신경망 예측기와 조합할 수 있는 뉴로심볼릭 레이어입니다. Casper는 제약 조건 만족을 단일 정방향 전달로 계산 가능한 제약 조건 가능 영역에 대한 폐쇄형 유클리드 투영으로 간주합니다. MNIST 산술 (최대 1024자리), 스도쿠 풀이, Warcraft 경로 찾기 실험 결과, Casper는 확장 가능한 보장된 유효 출력을 생성하는 유일한 방법입니다. $30\times30$ Warcraft 그리드에서 정확한 기준선은 시간이 초과되고, 근사치 방법은 7% 미만의 유효 경로를 생성하는 반면, Casper는 100%의 유효 경로를 생성합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33519v1" target="_blank" rel="noopener">PRECEPT: 진화하는 원리를 통한 코딩 에이전트의 보안 자체 개선</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">PRECEPT는 AI 코딩 에이전트가 보안 취약점을 발견하고 수정하는 능력을 자체 개선하는 프레임워크입니다. Codex, Claude Code, Qwen Code와 같은 에이전트들이 기능 테스트를 통과해도 보안에 취약한 코드를 작성하는 문제를 다루며, 실패하는 보안 테스트를 보여주면 취약점을 수정하지만, 새로운 세션에서는 동일한 취약점을 다시 도입하는 경향을 보였습니다. 이 연구는 에이전트가 보안 원칙을 학습하고 유지하는 능력을 향상시키는 데 초점을 맞춥니다.</p>
+  <p class="why">AI 코딩 에이전트가 생성하는 코드의 보안을 확보하는 것은 소프트웨어 개발의 핵심 과제이며, 에이전트의 보안 취약점 학습 및 방지 능력은 개발자에게 매우 중요한 실무 지식입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">AI 코딩 에이전트는 인간의 제한된 검토만 거쳐 코드를 작성하고 제출하는 일이 증가하고 있으며, 이 코드의 상당 부분이 기능 테스트를 통과하지만 여전히 안전하지 않은 상태로 남아있습니다. 우리는 이러한 실패가 계속해서 발생함을 보여줍니다. 14가지 작업 시퀀스에 걸쳐, Codex, Claude Code, Qwen Code는 실패한 보안 테스트를 보여주었을 때 85.7%의 확률로 취약점을 수정했지만, 새로운 세션에서 동일한 취약점 클래스를 26.7%의 확률로 다시 도입했습니다. 이는 한 번도 취약점을 본 적 없는 에이전트의 재도입 확률(27.5%)과 거의 같습니다. 기능은 존재하지만, 유지는 되지 않습니다. 에이전트의 영구적인 컨텍스트에 수정을 기록하거나 게시된 보안 코딩 원칙을 제공하는 것으로도 격차를 해소하지 못했습니다. 기록된 수정은 해당 작업의 계열에만 묶여 있었고, 인간 개발자를 위해 작성된 원칙은 당면한 코드에 적용하기에는 너무 일반적이었습니다. 지식은 존재하지만, 활성화되지 않습니다. 우리는 이 누락된 능력을 &#39;보안 자가 개선(security self-improvement)&#39;이라고 부릅니다. 에이전트가 자신의 보안 실패로부터 학습하여 각 교훈이 세션 전반에 걸쳐 지속되고, 새로운 코드에 적용되며, 작동하는 것을 망가뜨리지 않는 능력입니다. 우리는 PRECEPT를 소개합니다. PRECEPT는 권위 있는 보안 코딩 원칙에서 시작하여 에이전트 자신의 실패에 따라 원칙을 수정하는 진화하는 라이브러리를 통해 코딩 에이전트에 이 능력을 부여합니다. 이를 통해 각 원칙은 에이전트가 실제로 잘못하는 코드에서 작동하게 됩니다. 수정은 새로운 실행이 코드를 더 안전하게 만들면서 기능적 성공을 라이브러리가 없는 에이전트의 작은 허용 오차 내에서 유지하는 것으로 나타날 때만 유지됩니다. 개선은 첫 번째 단계 이후 포화되지 않고 진화 단계를 거쳐 계속됩니다. 진화 과정에서 한 번도 본 적 없는 작업군에서 PRECEPT의 가장 약한 에이전트는 97.1%의 안전하고 작동하는 코드에 도달하며, 이는 가장 강력한 단독 에이전트의 81.9%와 가장 강력한 기준선의 87.7%를 능가합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33486v1" target="_blank" rel="noopener">Windows 커널 바이너리에서 개방형 취약점 발견 벤치마킹</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">프론티어 모델들이 실제 보안 취약점 발견에 점점 더 많이 사용되고 있으므로, 이들의 사이버 보안 역량을 체계적으로 평가하는 것이 중요합니다. 기존 보안 벤치마크는 주로 오픈소스 프로젝트의 알려진 취약점에 초점을 맞추지만, 이 연구는 소프트웨어 산업의 대부분을 차지하는 클로즈드소스 바이너리에서 깊은 취약점을 발굴하는 프론티어 모델의 효과를 벤치마킹합니다.</p>
+  <p class="why">AI 모델이 클로즈드소스 소프트웨어의 심층적인 보안 취약점을 발견하는 능력은 사이버 보안 강화에 혁신적인 변화를 가져올 수 있으며, 이는 AI 보안 분야의 중요한 이정표가 될 것입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">프론티어 모델은 실제 보안 취약점을 발견하는 데 점점 더 많이 사용되고 있으며, 이들의 사이버 보안 역량을 체계적으로 평가하는 것이 중요해지고 있습니다. 그러나 기존 보안 벤치마크는 주로 오픈소스 프로젝트의 알려진 취약점에 초점을 맞추고 있으며, 소프트웨어 산업의 상당 부분을 차지하는 클로즈드소스 바이너리는 크게 간과하고 있습니다. 이 논문에서 우리는 다음과 같은 질문을 던집니다. 프론티어 모델이 프로덕션 바이너리에서 깊은 취약점을 찾아내는 데 얼마나 효과적인가? 이 질문에 답하기 위해, Windows 커널 바이너리에서 개방형 취약점 발견을 위한 최초의 포괄적인 벤치마크인 DeepBinary를 제시합니다. 대상 바이너리가 주어지면, 에이전트는 네트워크로 격리된 VM에서 디스어셈블러와 커널 디버거를 사용하여 이를 분석하고, 크래싱 PoC(Proof of Concept)와 함께 각 취약점을 보고합니다. 기존 벤치마크와 달리 DeepBinary는 모든 보고서를 새 VM에서 재현하고, LLM 기반 심사자를 사용하여 유효성, 고유성, 영향(버그 바운티 값으로 추정)을 평가합니다. 알려진 취약점을 넘어, DeepBinary는 이전에 알려지지 않은 (제로데이) 취약점의 발견 및 검증도 가능하게 합니다. 우리는 12개의 대상 바이너리에 대해 다양한 코딩 에이전트(Codex 및 Claude Code 포함)와 대표적인 오픈 및 클로즈드-웨이트 모델(GPT-6 Sol, Claude Opus 5, DeepSeek V4.1 Flash 포함)에 대한 포괄적인 평가를 수행합니다. 총 200개 이상의 취약점이 발견되었으며, 추정된 총 버그 바운티는 661,000달러에 달하며, 모든 실험에서 146개의 고유한 이전에 알려지지 않은 취약점이 포함됩니다. 우리의 결과는 또한 모델이 바이너리를 분석하고, 실험을 수행하며, 장기간에 걸쳐 취약점 발견을 유지하는 능력에 상당한 차이가 있음을 보여줍니다. 전반적으로 DeepBinary는 복잡한 바이너리에서 장기적이고 개방형 취약점 발견을 측정 가능하게 하여, 프론티어 모델이 이러한 시스템을 분석하고 탐색하는 방식의 근본적인 차이를 밝혀냅니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33467v1" target="_blank" rel="noopener">SplatWAM: 실시간 3D 상상을 위한 월드 액션 모델 Splatting</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">월드 모델은 일반적으로 픽셀 또는 잠재 공간에서 미래 관측치를 예측하지만, 이는 실제 3D 장면 진화를 직접적으로 표현하는 능력을 제한합니다. SplatWAM(Splatting World Action Model)은 컴팩트한 3D 가우시안 기본 요소에 대한 액션 조건부 동역학을 직접 학습하는 생성형 월드 모델입니다. SplatWAM-T 토크나이저는 포즈가 없는 여러 뷰를 고정된 예산의 가우시안 토큰으로 인코딩하고, SplatWAM-D 동역학 모델은 단일 전진 패스로 미래 가우시안 상태를 예측합니다.</p>
+  <p class="why">AI가 실제와 같은 3D 환경을 실시간으로 상상하고 행동을 계획하는 능력은 로봇 공학, 가상 현실, 자율 주행 등 다양한 분야에 혁신을 가져올 수 있는 핵심 기술입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">월드 모델은 일반적으로 픽셀 또는 잠재 공간에서 미래 관측치를 예측하여 실제 3D 장면 진화를 직접적으로 나타내는 능력을 제한합니다. 우리는 압축된 3D 가우시안 기본 요소에 대한 액션 조건부 역학을 직접 학습하는 생성형 월드 모델인 SplatWAM (Splatting World Action Model)을 제시합니다. 토크나이저 SplatWAM-T는 먼저 가변적인 수의 포즈 없는 뷰를 고정된 예산의 가우시안 토큰으로 인코딩합니다. 그런 다음 역학 모델 SplatWAM-D는 로그-유클리드 공분산 좌표와 미분 가능한 렌더링 감독을 사용하여 단일 액션당 단일 정방향 전달로 미래 가우시안 상태를 예측하여 명시적인 3D 공간에서의 학습을 용이하게 합니다. 각 예측된 상태는 임의의 시점에서 래스터화될 수 있으며, 구성에 따라 뷰 간에 공유된 3D 표현을 강제합니다. OGBench Scene에서 SplatWAM은 비디오 월드 모델보다 12배 빠르게(~RTX 5090에서 80FPS) 새로운 뷰를 렌더링하며, 최대 2.0 dB 더 높은 PSNR을 제공합니다. 우리는 또한 SplatWAM-P, 즉 역학 모델과 함께 공동으로 학습되는 경량 플로우-매칭 정책 헤드를 소개합니다. 8가지 작업 스위트에서 모델-프리 가우시안-토큰 정책은 픽셀 기반 정책보다 최대 24.8% 포인트 더 뛰어납니다. SplatWAM-P는 Latent Particle World Model (LPWM)보다 12% 포인트 개선되었으며, 학습된 가치 함수 없이 HIQL과 일치합니다. LIBERO에서 우리의 약 10억 파라미터 모델은 WorldVLA (약 70억 파라미터)와 로봇 사전 학습된 OpenVLA (약 70억 파라미터)를 능가하며, 둘 다 대규모 로봇 사전 학습 없이 학습되었을 때 OpenVLA-OFT와 일치합니다. 코드와 체크포인트는 공개될 예정입니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33453v1" target="_blank" rel="noopener">SecID: 정량적 RTL 분석을 통한 위협 인식 보조 자산 식별을 위한 LLM 기반 프레임워크</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">SecID는 LLM을 활용하여 현대 하드웨어 설계의 복잡성으로 인해 어려워진 사전 실리콘 보안 검증에서 보안 자산을 식별하는 프레임워크입니다. 이 시스템은 주요 자산 외에, 복잡한 데이터 및 제어 흐름 의존성으로 인해 발생하는 내부 보안 중요 위치, 즉 위협별 악용에 따라 달라지는 보조 자산을 식별하는 데 중점을 둡니다.</p>
+  <p class="why">LLM이 하드웨어 설계에서 보안 취약점을 자동으로 식별하고 분석하는 능력은 반도체 보안을 강화하고, 잠재적인 사이버 공격을 예방하는 데 결정적인 역할을 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">현대 하드웨어 설계의 복잡성 증가는 보안 보증을 점점 더 어렵게 만들고 있습니다. 프리-실리콘 보안 검증의 기본적인 단계 중 하나는 보안 자산을 식별하는 것입니다. 주요 자산은 설계 기능에서 종종 명확하게 드러나지만, 이러한 자산의 손상을 용이하게 할 수 있는 내부 신호는 훨씬 덜 명확합니다. 복잡한 데이터 및 제어 흐름 종속성은 이러한 내부 보안-위험 위치를 많이 생성하며, 이러한 위치의 악용은 위협별 공격 메커니즘에 따라 달라집니다. 이것이 바로 보조 자산입니다. 이러한 보조 자산을 정확하게 식별하기 위해 우리는 SecID를 제안합니다. SecID는 결정론적 RTL 분석과 경계 동적 평가 및 LLM 추론을 결합하여 위협별 보조 자산을 식별하는 다중 에이전트 프레임워크입니다. 각 자산 결정은 기능적 영향, 위협 특징, 그리고 명시적 공격 메커니즘에 의해 뒷받침됩니다. 우리는 openMSP430, NEORV32, CV32E40P를 포함한 7개의 오픈소스 SoC 및 IP 설계에서 SecID를 시연합니다. 실험 결과는 이전 작업, 결함 시뮬레이션 및 형식 분석과의 비교를 통해 확인되었으며, 파이프라인 및 최종 단계 제거, 임계값 민감도 연구, 최종 단계 반복성 분석을 통해 추가로 평가되었습니다. 이러한 평가들을 통해 SecID가 주어진 주요 자산에 대해 매우 위협 관련성이 높은 보조 자산을 식별할 수 있음을 보여주며, 하드웨어 보안 검증을 위한 확장 가능한 경로를 제공합니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33426v1" target="_blank" rel="noopener">메스와 붓: 단일 LLM 에이전트에 의한 소형 언어 모델의 가지치기 및 타겟 가중치 편집</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">LLM이 스스로 언어 모델의 가중치를 편집할 수 있음이 최근 밝혀졌지만, 이러한 결과가 에이전트 때문인지, 동일한 형태의 무작위 편집 때문인지, 프롬프트의 지시 때문인지, 또는 LLM이 없는 표준 절차 때문인지는 불분명했습니다. 이 연구는 BLEU를 예시로 들어, 지정된 메트릭을 최적화하기 위한 희소 가중치 편집(타겟 가중치 수정, 구조화된 MLP 뉴런 가지치기, 비정형 가지치기)으로서 수정과 가지치기를 통합합니다.</p>
+  <p class="why">LLM이 다른 LLM의 가중치를 직접 수정하고 최적화하는 능력은 모델의 효율성을 높이고, 특정 작업을 위한 미세 조정 과정을 자동화하는 데 혁신적인 실무 지식입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">최근 LLM 자체가 언어 모델의 가중치를 편집할 수 있음이 밝혀졌지만, 이러한 결과가 에이전트 때문인지, 동일한 형태의 무작위 편집 때문인지, 프롬프트의 지시 때문인지, 아니면 LLM 없는 표준 절차 때문인지는 여전히 불분명합니다. 우리는 BLEU를 예로 들어 지정된 측정항목을 최적화하기 위한 희소 가중치 편집으로서 복구 및 가지치기를 통합합니다. 세 가지 작업, 즉 특정 가중치 복구(&#34;brush&#34;), 구조화된 MLP 뉴런 가지치기(&#34;scalpel&#34;, 가지치기된 가중치 0으로 만들기), 계층 제거 및 복구는 DeepSeek-V4.1-Flash로 구동되는 DeepSeek Harness 에이전트에 할당되며, 최대 50회의 개발 평가를 거칩니다. 우리는 Qwen2.5-Math-1.5B-Instruct를 각 작업당 세 번의 독립적인 실행으로 연구하며, 두 개의 숨겨진 분할에서 최종 평가를 수행합니다. 상미분 방정식에서, 가중치의 0.0084% 이하를 변경하면 2차 방정식에서 테스트 BLEU가 24-32% 증가했으며, 다항식 우변을 가진 방정식에서는 1.8-2.5배 증가했습니다. 독립적인 대체 확인 결과, 더 높은 BLEU는 정확도 향상보다는 표기법 정렬을 반영했습니다. 12.5-15%의 MLP 뉴런을 제거하는 마스크는 모델을 9.4-11.2% 축소하며, 두 개의 숨겨진 분할 모두에서 평균 BLEU 손실이 최대 0.01에 불과한 반면, 각 계층에서 동일한 비율로 표준 가지치기를 하면 테스트된 모든 비율에서 제약 조건을 충족하지 못했습니다. 7개 클래스 GoEmotions 분류에서, 편집은 테스트에서 매크로 F1을 0.100에서 0.396-0.451로, 홀드아웃에서 0.175에서 0.455-0.476으로 높였습니다. 에이전트가 선택한 가중치 행에 작성된 릿지 기반 분류기는 매크로 F1 0.424 및 0.464를 산출합니다. 동일한 평가 제한을 가진 가지치기 검색은 에이전트 실행에서 숨겨진 확인을 통과한 14-21.4%에 비해 15.9%의 뉴런을 제거합니다. LLM 없는 표준 절차는 에이전트가 찾은 개입 위치와 형식이 주어지면 성능의 상당 부분을 재현합니다. 에이전트 방식과 비에이전트 방식 검색의 비교는 아직 열려 있습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33394v1" target="_blank" rel="noopener">대규모 언어 모델의 자동화를 위한 신뢰도 점수</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">연구·논문</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">대규모 언어 모델(LLM) 기반 AI 에이전트는 자동화된 의사 결정에서 강력한 능력을 보여주지만, LLM이 높은 확신도로 잘못된 답변을 생성할 수 있어 실제 적용에 한계가 있습니다. 이 연구는 이러한 결정을 게이트하는 데 필요한 신뢰할 수 있는 신뢰도 점수를 제시하며, 기존 추정치들이 종종 부족하거나 너무 조악하여 효과적인 게이팅을 지원하기 어렵다고 지적합니다. 이 작업을 통해 지도 학습을 사용하여 LLM 답변의 정확성을 예측하는 모델을 훈련합니다.</p>
+  <p class="why">LLM 기반 에이전트의 신뢰도를 높이고 잘못된 의사 결정을 방지하기 위한 실용적인 방법을 제시하여, LLM을 활용한 자동화 시스템의 안전성과 적용 가능성을 크게 향상시킬 수 있습니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">대규모 언어 모델(LLM)을 기반으로 구축된 AI 에이전트는 자동화된 의사 결정에서 강력한 기능을 보여줍니다. 그러나 LLM은 높은 신뢰도로 잘못된 답변을 생성할 수 있어 개인 및 조직에 영향을 미치는 결정에서 적용 가능성을 제한합니다. 이러한 결정을 통제하기 위해서는 신뢰할 수 있는 신뢰도 점수가 필요하며, 기존 추정치는 종종 사용할 수 없거나 효과적인 통제를 지원하기에는 너무 거칠습니다. 이 연구는 LLM이 생성한 답변의 정확성을 예측하도록 모델을 훈련하기 위해 지도 학습을 사용하여 자동화된 신뢰성 있는 응답을 가능하게 하고 불확실한 응답을 사람의 검토를 위해 라우팅합니다. 선형 신뢰도 점수 헤드는 고정된 LLM 백본의 최종 계층 은닉 상태에 맞춰지고, 텍스트 전용 메타모델은 폐쇄형 모델의 대안으로 훈련됩니다. 모든 결과는 단일 2B-파라미터 백본에서 나오며, 약 98%가 SQuAD이고 나머지는 TruthfulQA인 등급이 매겨진 답변을 기반으로 합니다. 여러 기준선과 비교하여 신뢰도 점수 헤드는 모든 기준선 및 메타모델보다 우수하며, 높은 정확도 목표에서 가장 많은 워크로드 부분을 자동화합니다. 프롬프트된 신뢰도 점수는 잘 보정된 것처럼 보이지만 임계값 설정에 필요한 해상도가 부족합니다. 보이지 않는 데이터세트에 대한 전이성은 보통이지만, 신뢰도 점수 헤드는 가장 강력한 접근 방식으로 남아 있습니다. 제안된 신뢰도 점수 프레임워크는 LLM 기반 에이전트 자동화의 안전성을 향상시키고 안전 또는 규정 준수와 같은 다른 속성을 통제하는 데 적용될 수 있습니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://github.com/lsernau/grh-lean" target="_blank" rel="noopener">Anthropic, GRH Lean 검증의 더 짧은 버전 공개</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://github.com/openai/math/blob/main/preprints/Superpolynomial-graph-diameter-of-simple-polytopes-November-24-2026/paper.pdf" target="_blank" rel="noopener">다항식 히르슈 추측(Polynomial Hirsch conjecture)이 틀렸음이 증명</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://www.proofatlas.ai/open-problems/" target="_blank" rel="noopener">LLM으로 평가한 수학 분야의 주요 미해결 문제 순위</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33749v1" target="_blank" rel="noopener">비전 파운데이션 모델 증류를 통한 세밀한 Few-Shot 클래스 증분 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33747v1" target="_blank" rel="noopener">중국어 마피아 게임에서 LLM 생성 전략적 대화 분석</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33735v1" target="_blank" rel="noopener">JOVE ICE: AI 안경을 위한 의도 기반 클라우드-에지 디바이스 협업</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33732v1" target="_blank" rel="noopener">CovNovBench: 공변량 신규성 하에 시계열 파운데이션 모델 평가 벤치마크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33728v1" target="_blank" rel="noopener">Asset4D-Bench: 편집 가능한 3D 및 4D 재구성을 위한 코딩 에이전트 벤치마크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33726v1" target="_blank" rel="noopener">NORMCRAFT: 상황 인지 LLM 정렬을 위한 문화 규범 생성</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33722v1" target="_blank" rel="noopener">FLUENT: 반복 모델에서 초기 예측 활용법 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33719v1" target="_blank" rel="noopener">Classifier-Free Guidance 하 확산 모델의 모드 붕괴 현상 이해</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33716v1" target="_blank" rel="noopener">Hard Switches를 통한 물리 시뮬레이터 훈련</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33715v1" target="_blank" rel="noopener">KeyDeck: 교차 논문 합성 및 참조 기반 개인화를 통한 멀티 논문-슬라이드 생성</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33707v1" target="_blank" rel="noopener">P-FedSkill: 태스크 이질성 하의 개인화된 연합 스킬 학습 프레임워크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33700v1" target="_blank" rel="noopener">Sports Agent: 대화형 데이터 분석을 위한 자체 진화 시스템</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33692v1" target="_blank" rel="noopener">순차적 &#39;Locate-Then-Edit&#39; 프레임워크 재고찰: 최적성과 안정성</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33690v1" target="_blank" rel="noopener">거부는 평가되지 않는다: 콘텐츠 기반 편향 평가의 범위 제한</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33687v1" target="_blank" rel="noopener">사용 전 읽기: 비전-언어 모델의 시각 기억 활용 개선</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33679v1" target="_blank" rel="noopener">Faster and Better Query (FBQ): 첫 번째 생성 토큰으로 미래 위치 프로브 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33672v1" target="_blank" rel="noopener">노드 안정 그래프 투영을 통한 노드 차등 프라이버시</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33670v1" target="_blank" rel="noopener">확산 언어 모델을 위한 지식 증류 재고찰</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33668v1" target="_blank" rel="noopener">검증 가능하지만 예측 불가능: 문장 임베딩이 명제 분해에 대해 아는 것</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33664v1" target="_blank" rel="noopener">SlicePlanner: O-RAN에서 QoS-인식 네트워크 슬라이싱을 위한 로직 기반 에이전트 AI</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33656v1" target="_blank" rel="noopener">온라인 식별이 미지의 건물에서 평면도 사전 정보 대체 가능</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33652v1" target="_blank" rel="noopener">PRIOR: SFT에서 사전 호출 추론 및 RL 하 Tool-Use 유지에 미치는 영향</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33648v1" target="_blank" rel="noopener">자체 지도 Cliped-objective 강화 학습 프레임워크를 통한 위험 인식 포트폴리오 관리</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33647v1" target="_blank" rel="noopener">이중 정밀도의 위험성: 가우시안 프로세스 최대 우도에서 작업 정밀도의 숨겨진 제약</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33645v1" target="_blank" rel="noopener">관계형 데이터베이스 예측을 위한 사전 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33644v1" target="_blank" rel="noopener">물리 정보 학습을 통한 멀티플레이어 미분 게임</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33640v1" target="_blank" rel="noopener">희소-희소 특징 학습을 통한 교차 레이어 분석 및 조종</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33636v1" target="_blank" rel="noopener">고해상도에서 무엇이 중복되는가? 올인원 이미지 복원을 위한 효율적인 어텐션 및 피드포워드 설계</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33625v1" target="_blank" rel="noopener">State Space Attention: 문맥 종속적 기억 유지 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33617v1" target="_blank" rel="noopener">VaneCraft: 유체 로터의 제어 가능한 CAD 생성 및 대화형 편집</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33615v1" target="_blank" rel="noopener">자연 이미지 학습으로 숫자 감각 습득</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33594v1" target="_blank" rel="noopener">Aligned Machine: 인간 비교 판단을 통한 멀티모달 임베딩 유사성 평가 벤치마크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33592v1" target="_blank" rel="noopener">KL 불확실성 세트를 이용한 로버스트 강화 학습의 샘플 복잡도 개선</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33589v1" target="_blank" rel="noopener">직교성 상환: Orthogonal Fine-Tuning을 위한 Drift-Triggered 복원</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33588v1" target="_blank" rel="noopener">SEEL: 언어 모델을 이용한 End-to-End 3D 수어 생성</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33579v1" target="_blank" rel="noopener">DexEngine: 인간 시연을 물리적으로 실행 가능한 로봇 데이터로 확장</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33571v1" target="_blank" rel="noopener">Trigger-Invariant Contrastive Unlearning을 통한 백도어 제거</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33557v1" target="_blank" rel="noopener">DiffER$^2$: SMILES 적응형 입자 유도 확산 앙상블을 이용한 역합성 예측</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33555v1" target="_blank" rel="noopener">PeerReveal: AI 동료 검토 탐지에서 일반화 능력 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33549v1" target="_blank" rel="noopener">FokasNets: 전역 관계를 통한 PINN 및 PINO에서 누락된 경계 데이터 완성</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33542v1" target="_blank" rel="noopener">RankCast: MoE 서빙에서 위상 인식 순위 균형</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33531v1" target="_blank" rel="noopener">Adversarial Bandit Convex Optimization with $d^{3/2}\sqrt{n}$ Regret</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33525v1" target="_blank" rel="noopener">확인 가능한 삭제: LLM 언러닝 감사</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33513v1" target="_blank" rel="noopener">실시간 추론 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33510v1" target="_blank" rel="noopener">LogToPersona: 새로운 벤치마크 및 의미론적 로그 필터링을 통한 효율적인 페르소나 예측</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33503v1" target="_blank" rel="noopener">AI를 활용한 유럽 인구 행동 시뮬레이션</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33499v1" target="_blank" rel="noopener">대화형 아프리카계 미국인 영어에 대한 LLM 평가: 특징 분류 및 다음 턴 생성</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33497v1" target="_blank" rel="noopener">CA-RAG: 구조적으로 충실한 장문 생성을 위한 제약 정렬 검색</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33493v1" target="_blank" rel="noopener">확률 및 이진 응답을 이용한 LLM의 능력 및 항목 매개변수 공동 추정: Fractional-Response IRT 프레임워크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33489v1" target="_blank" rel="noopener">데이터 없는 연속 시간 물리 정보 신경망을 이용한 와류 현상: 시간 창 전체에 걸친 일관된 압력</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33487v1" target="_blank" rel="noopener">기하학은 기억이다: 지속적 LoRA를 위한 태스크-밀도 라우팅</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33479v1" target="_blank" rel="noopener">밴딧 학습에서 추가 정보의 영향: 많다고 항상 좋은 것은 아니다</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33475v1" target="_blank" rel="noopener">메모리를 백본으로: 시각 인식 위한 듀얼 스토어 연상 기억 아키텍처</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33470v1" target="_blank" rel="noopener">차세대 탐지 및 대응에서 동적 추론: LLM 분류, 강화 튜닝, 적대적 회피에 대한 실증 연구</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33469v1" target="_blank" rel="noopener">적대적 보상을 가진 선형 MDP에서 차등 프라이버시 정책 최적화</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33468v1" target="_blank" rel="noopener">재발 학습: 루프 언어 모델에서 깊이 유도 선호도 내재화</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33464v1" target="_blank" rel="noopener">PAC 학습을 통한 샘플링: 언어 생성의 계산적 측면</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33460v1" target="_blank" rel="noopener">미분 가능한 월드 모델을 이용한 빠르고 정확한 근육 기반 전신 동작 추적</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33459v1" target="_blank" rel="noopener">AI-인간 하이브리드 대화: AI 에이전트가 담론의 질을 향상시킬 수 있는가?</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33454v1" target="_blank" rel="noopener">양자 강화 대규모 머신러닝 모델 훈련을 위한 현실적인 End-to-End 런타임 교차점 추정</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33452v1" target="_blank" rel="noopener">HumblePRM: 프로세스 보상 모델링을 통한 모호한 상황에서 VLM 유보 개선</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33437v1" target="_blank" rel="noopener">ViCARD: 멀티모달 추론을 위한 보상 게이트 증류를 통한 시각 신용 할당</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33428v1" target="_blank" rel="noopener">지식이 바닥났을 때: LLM이 부분적으로 다루어진 질문을 처리하는 방식에 대한 부분별 파일럿 평가</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33424v1" target="_blank" rel="noopener">개념 드리프트 탐지기의 평가를 위한 체계적인 벤치마크 프레임워크 제안</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33411v1" target="_blank" rel="noopener">IoT 데이터 처리를 위한 협업 언어 모델: 제로샷 인간 활동 인식 검증</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33409v1" target="_blank" rel="noopener">고정 인코더와 안정화된 강화 학습을 이용한 멀티모달 비디오 캡셔닝</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33407v1" target="_blank" rel="noopener">이동성 민첩성 사전 훈련을 위한 적대적 다중 에이전트 추격 게임</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33398v1" target="_blank" rel="noopener">비전-언어-액션 모델에서 테스트 시 조종이 보상 해킹으로 이어질 수 있음</a><span class="src">arXiv</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 12건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://arxiv.org/abs/2611.33743v1" target="_blank" rel="noopener">OrbACE: 궤도 및 원자 클러스터 확장 프레임워크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33713v1" target="_blank" rel="noopener">CNN 및 MobileNetV2를 활용한 네팔 화폐 분류 성능 비교</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33632v1" target="_blank" rel="noopener">뉴런 개입을 통한 스페클(Speckle) 효과 해석</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33576v1" target="_blank" rel="noopener">대칭 인식 잔차 학습을 통한 소수 분자 파동 함수</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33523v1" target="_blank" rel="noopener">차원 축소의 민감도 분석을 위한 교란 기반 프레임워크</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33514v1" target="_blank" rel="noopener">케이블에 매달린 페이로드를 가진 멀티로터 UAV의 MPC: Shifted 및 Transformer 기반 웜 스타트 비교</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33447v1" target="_blank" rel="noopener">Centered Kernel Distance: 신경 표현 비교를 위한 차원 없는 오차 경계</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33417v1" target="_blank" rel="noopener">3D 분자 설계를 위한 강화 학습 기반 연속-이산 플로우 매칭 기법</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33400v1" target="_blank" rel="noopener">반고전적 근사를 이용한 비선형 편미분 방정식의 가우시안 사전 분포</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33399v1" target="_blank" rel="noopener">개념 지식을 순차적으로 습득하여 지속 학습을 안내하는 방법</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33395v1" target="_blank" rel="noopener">의사 레이블 교환 시 불확실성 정량화가 적용된 연합 학습</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33393v1" target="_blank" rel="noopener">짧은 비디오 클립으로 모델 수정 사항을 검증할 수 있을까?</a><span class="src">arXiv</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-2">
+  <h2>실무 지식 <span class="cnt">6건</span></h2>
+  <article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33639v1" target="_blank" rel="noopener">AI 코드 리뷰어에게 필요한 노력의 양: Claude 5.5 모델의 &#39;그럴듯하지만 틀린&#39; 패치 검토 사례 연구</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">AI 코드 에이전트가 코드를 사람보다 빠르게 작성하는 상황에서, AI 리뷰어가 &#39;그럴듯하지만 틀린&#39; 패치(벤치마크 테스트는 통과하지만 더 강력한 테스트에서는 실패하는 패치)를 얼마나 잘 탐지하는지 Claude Opus 5.5, Sonnet 5.5, Haiku 5.5 모델을 통해 평가했습니다. 각 모델은 다른 노력 설정(저, 중, 고)에서 90개의 Django 패치를 검토했으며, 이는 AI 코드 리뷰어의 최적 노력 수준과 신뢰성에 대한 중요한 통찰을 제공합니다.</p>
+  <p class="why">AI 코드 리뷰어의 도입은 개발 생산성을 높일 수 있지만, 잠재적인 오류를 정확히 찾아내는 능력은 소프트웨어 품질과 보안에 직결되므로, 개발자들은 AI 리뷰어의 한계를 이해하고 적절히 활용하는 방법을 알아야 합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">AI 코딩 에이전트는 사람이 코드를 검토하는 것보다 빠르게 코드를 작성하므로 팀은 AI 검토자를 추가합니다. 추론 모델은 이러한 검토자가 노력 설정을 통해 비용과 정밀도를 교환할 수 있게 합니다. 우리는 검토자가 벤치마크 테스트는 통과하지만 더 강력한 테스트에서는 실패하는 그럴듯하지만 잘못된 패치를 잡기 위해 얼마나 많은 노력이 필요한지 질문했습니다. Claude Opus 5.5 (사전 등록), Sonnet 5.5 및 Haiku 5.5 (탐색적)는 각각 SWE-bench Verified의 에이전트가 작성한 90개의 Django 패치를 낮음, 중간, 높은 노력으로 검토했습니다. 강화된 SWE-ABS 테스트에 따르면 55개의 패치는 잘못되었고 35개는 올바른 것이었습니다. 모든 모델에서 높은 노력이 낮은 노력보다 잘못된 패치를 더 적게 허용했습니다 (Opus의 경우 오탐률 .45 대 .67, Sonnet의 경우 .49 대 .65, Haiku의 경우 .51 대 .78). 이는 Opus와 Haiku에서 입증된 차이였습니다. Opus의 경우, 중간 노력은 높은 노력에 비해 15%p 이내에서 열등하지 않았으며 (차이 .018, 95% CI [-.065, .108]), 비용은 20% 적게 들었지만 사전 등록된 30%에는 미치지 못했습니다. Sonnet과 Haiku의 경우, 중간 노력은 높은 노력보다 비용이 각각 39%와 51% 적게 들었지만 열등하지 않음이 입증되지 않았습니다. 중간 또는 높은 노력의 Opus가 레이블과 가장 잘 일치했습니다. 높은 노력의 Haiku는 중간 노력의 Opus에 비해 검토당 약 8%의 비용이 들었으며, 정확도 차이는 해결되지 않았습니다. 탐색적 코딩은 대부분의 거부가 테스트된 결함을 명시했으며, 노력이 이러한 거부를 추가했음을 보여주었습니다. 어떤 설정도 강력한 게이트는 아니었습니다. 각 설정은 잘못된 패치의 최소 45%를 허용했습니다. 55개의 잘못된 패치 중 32개는 문제가 실패한 테스트가 확인하는 것을 필요로 하지 않을 수 있습니다. 이들을 제외하면 어떤 모델에서도 정확도 가설이 성립하지 않습니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33402v1" target="_blank" rel="noopener">리소스 효율적인 에이전트 워크플로우를 위한 부분 라우팅 기법</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">AI 모델은 기능과 비용 면에서 큰 차이가 있어, 쉬운 작업을 저렴한 모델에 보내는 모델 라우팅이 중요합니다. 하지만 단일 에이전트 작업은 쉽고 어려운 여러 하위 작업을 포함하므로, 전체 작업을 한 모델로 처리하는 것은 비효율적입니다. 이 연구는 선도 모델이 적합한 하위 작업을 더 저렴한 작업자 모델에 위임하도록 하는 &#39;부분 라우팅&#39; 개념을 소개합니다.</p>
+  <p class="why">복잡한 에이전트 워크플로우에서 LLM 사용의 비용 효율성을 극대화하는 실용적인 방법을 제시하여, 개발자가 AI 애플리케이션의 경제성을 확보하고 성능을 최적화하는 데 직접적인 도움을 줍니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">AI 모델은 기능과 가격 면에서 엄청난 차이를 보입니다. 모델 라우팅은 더 쉬운 작업을 더 저렴한 모델에 보내어 이러한 차이를 활용합니다. 그러나 단일 에이전트 작업은 쉽고 어려운 하위 작업을 결합하는 경우가 많아 전체 작업에 대해 하나의 모델을 선택하는 것은 비효율적입니다. 우리는 프론티어 리드 모델이 적합한 하위 작업을 더 저렴한 워커 모델에 위임하도록 안내하는 부분 라우팅(partial routing)을 도입합니다. 두 모델의 과거 실행에서 반복되는 하위 작업을 식별하고 각 모델의 품질과 비용을 측정합니다. 이러한 측정은 위임 지침을 생성하며, 매개변수 $δ$는 위임되는 양을 제어합니다. 리드는 두 모델을 훈련시키지 않고도 실행 중에 언제 무엇을 위임할지 결정합니다. ViBench 및 Terminal-Bench 4.0의 보유 작업에서 부분 라우팅은 리드 단독 및 작업 수준 라우팅보다 더 높은 평균 작업 성능을 달성합니다. $δ= 0.75$일 때, 리드의 ViBench 점수를 70.2에서 78.5로 19% 더 낮은 비용으로 높이고, Terminal-Bench 통과율을 54%에서 61%로 비슷한 비용으로 높입니다. 워커 없이 하위 작업 분석만 리드에게 제공하는 것만으로도 두 벤치마크 모두에서 비용이 절감되고 Terminal-Bench 통과율이 높아집니다. 이러한 결과는 과거 실행 분석이 적은 비용과 구현 오버헤드로 보다 효율적인 계획과 보다 효과적인 위임을 지원할 수 있음을 보여줍니다.</div>
+  </details>
+  
+</article><article class="item">
+  <h3><a href="https://latent.space/p/the_revolution_vs_the_renaissance_thariq_shihipar_openai/" target="_blank" rel="noopener">Thariq Shihipar (OpenAI): AI 시대의 소프트웨어 개발과 에이전트의 미래</a></h3>
+  <div class="meta">
+    <span class="badge">Latent Space</span>
+    <span class="badge">실무 지식</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">OpenAI의 Thariq Shihipar는 AI가 소프트웨어 생산 비용을 대폭 낮출 수 있으면서도, 동시에 개발자가 하나의 결과물에 더 많은 시간을 들여 완성도를 높일 수 있게 할 것이라고 말합니다. 그는 AI 에이전트와 코딩에 대한 자신의 생각 변화, 의사 결정 흐름을 어떻게 외부화하는지에 대해 논의하며, 개인 프로젝트를 통해 AI가 개발자의 창의성과 효율성을 어떻게 동시에 높일 수 있는지 보여줍니다.</p>
+  <p class="why">AI 에이전트가 소프트웨어 개발 워크플로우를 혁신하고 개발자의 생산성과 창의성을 동시에 향상시킬 수 있음을 보여주어, 개발자들이 AI를 자신의 작업에 통합하는 구체적인 비전과 실용적인 접근법을 제시합니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">AI는 소프트웨어를 수천 개를 생산할 만큼 저렴하게 만들 수 있으며, 동시에 하나의 작업에 더 많은 시간을 할애하여 완벽하게 만들 수 있습니다. AI Engineer CODE에서 Thariq Shihipar는 이 두 가지 미래가 어떻게 공존할 수 있는지 보여줍니다. 그의 격투 게임에서 그는 /human 폴더에 있는 바위의 크기를 편집하고 즉시 던지는 것을 시도합니다. 그는 또한 모드를 전환하는 Mac Dock을 만들고 사용했으며, 자신이 언제 집중력을 잃었는지 알아차리는 데 더 신경 썼다는 것을 깨달았습니다.
+우리는 Thariq이 코딩 에이전트에 대해 마음을 바꾼 점, 디자이너가 정의한 행동 중에서 의사 결정 모델이 어떻게 선택할 수 있는지, 그리고 어떤 실험이 컴퓨팅 자원을 받을 자격이 있는지 누가 결정하는지에 대해 이야기합니다. Thariq은 우리가 녹화를 마친 후 OpenAI로 이직한다고 발표했습니다.
+Atlassian의 Jira가 후원합니다. 자세한 내용은 jira.dev에서 알아보세요.
+쇼 노트
+
+Thariq의 CODE 기조연설 및 읽기 버전
+
+라이브 /human 바위 던지기 데모
+
+오리지널 Dock 데모 및 사용을 중단한 이유
+
+Thariq의 이전 Latent Space Claude Code 인터뷰
+
+Thariq의 OpenAI 발표
+
+챕터
+00:00 콜드 오픈
+00:23 소개 및 Thariq의 OpenAI 이직
+03:03 후원 – Atlassian의 Jira
+03:22 에이전트가 Thariq을 놀라게 한 점
+06:47 /human 폴더
+09:07 공예로서의 소프트웨어
+11:11 게임 밸런스
+15:07 야망
+19:06 의사 결정 모델
+26:34 땅/물 테스트
+30:25 개인 소프트웨어
+37:46 채택
+42:24 자동 연구
+48:29 사람들이 볼 수 있는 작업</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/pytorch.org/post/3n35ts6ywtp2l" target="_blank" rel="noopener">vLLM 싱가포르 밋업 하이라이트: 더 빠른 프리필, 에이전트 작성 커널, NVIDIA Vera Rubin</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 2건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://huggingface.co/blog/inkling-2-mini-inference-hillclimb" target="_blank" rel="noopener">RTX PRO 6000에서 Inkling 2 Mini 모델 추론 성능 최적화</a><span class="src">Hugging Face Blog</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n363ydfqfs24" target="_blank" rel="noopener">Lean 게임을 통해 Lean에 대해 배우기</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-3">
+  <h2>도구·오픈소스 <span class="cnt">4건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://masondata.ai/" target="_blank" rel="noopener">Mason: 컬럼형 스토리지 기반의 경량 Postgres 읽기 복제본 오픈소스</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 3건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga" target="_blank" rel="noopener">CUGA를 활용한 인도어 음성 에이전트 개발</a><span class="src">Hugging Face Blog</span></li>
+  
+  <li><a href="https://github.com/xoxorwr/pw-loudness-eq" target="_blank" rel="noopener">Windows Loudness Equalization, PipeWire로 역공학 및 포팅</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://arxiv.org/abs/2611.33432v1" target="_blank" rel="noopener">소멸 위기 언어를 위한 오픈소스 FUTO 키보드 레이아웃 및 예측 텍스트</a><span class="src">arXiv</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-4">
+  <h2>업계 동향 <span class="cnt">3건</span></h2>
+  <article class="item">
+  <h3><a href="https://bsky.app/profile/pytorch.org/post/3n35n7aikeq25" target="_blank" rel="noopener">사전 훈련 스케일링은 끝났는가? #PyTorchCon 발표 요약</a></h3>
+  <div class="meta">
+    <span class="badge">Bluesky</span>
+    <span class="badge">업계 동향</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    <span class="badge">♥ 4</span>
+    
+  </div>
+  <p class="summary">#PyTorchCon에서 Adaption의 Sara Hooker는 사전 훈련(pre-training)의 스케일링이 한계에 도달하고 있으며, 더 작고 잘 적응된 모델들이 거대한 모델들을 능가하고 있다고 강조했습니다. 그녀는 AI를 더 쉽게 맞춤화할 수 있도록 하는 것이 더 많은 사람들이 최전선 AI를 구축하게 할 것이라고 주장했습니다.</p>
+  <p class="why">거대 모델 위주의 스케일링 패러다임이 한계에 다다르고 있음을 지적하며, 작고 효율적인 맞춤형 모델의 중요성을 부각하여 AI 개발의 방향성에 대한 새로운 시각과 전략적 고려 사항을 제시합니다.</p>
+  
+  
+</article>
+  
+  
+  <details class="more">
+    <summary>그 외 2건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://bsky.app/profile/davidbau.bsky.social/post/3n365323ibv2d" target="_blank" rel="noopener">AI 이해를 돕는 도구 구축: MIT PhD 지원 안내</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/ai2.bsky.social/post/3n35nbry4fk2c" target="_blank" rel="noopener">AI2, 새로운 프로젝트 발표 예고</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+<section id="cat-5">
+  <h2>정책·안전 <span class="cnt">3건</span></h2>
+  <article class="item">
+  <h3><a href="https://arxiv.org/abs/2611.33605v1" target="_blank" rel="noopener">우회는 위험: LLM 에이전트 복구 시 보안 유지</a></h3>
+  <div class="meta">
+    <span class="badge">arXiv</span>
+    <span class="badge">정책·안전</span>
+    <span class="badge imp">중요도 4</span>
+    
+    
+    
+    
+  </div>
+  <p class="summary">LLM 에이전트가 외부 도구와 재사용 가능한 스킬을 사용하여 복잡한 워크플로우를 실행하고, 작업 실패 시 자율적으로 재계획할 때 보안 문제가 발생할 수 있음을 지적합니다. 이 연구는 &#39;워크플로우 보안 저하&#39;라는 위협을 조사하며, 에이전트가 원래 워크플로우에 필요한 보안 보호를 만족하지 않고 민감한 작업을 실행할 수 있는 위험성을 탐구합니다.</p>
+  <p class="why">LLM 에이전트가 자율적으로 작업을 수행할 때 보안 취약점이 발생할 수 있다는 점은 AI 시스템 설계 시 보안을 최우선으로 고려해야 함을 보여주며, 이는 개발자들이 간과해서는 안 될 중요한 실무 지식입니다.</p>
+  
+  
+  <details class="reader">
+    <summary>본문 읽기</summary>
+    <div class="reader-body">LLM 에이전트는 복잡한 워크플로우를 실행하기 위해 외부 도구 및 재사용 가능한 Skill에 점점 더 의존하며, 작업이 실패하면 자율적으로 재계획합니다. 그러나 이러한 복구는 원래 워크플로우에 필요한 보안 보호를 소리 없이 폐기하면서 작업 기능을 보존할 수 있습니다. 이 논문에서 우리는 에이전트가 원래 보호 요구 사항을 충족하지 않고 민감한 작업을 실행하는, 실패로 인한 보안 위협인 워크플로우 보안 다운그레이드를 조사합니다. 프롬프트 인젝션과 달리 이 위협은 지침이나 도구 정의를 수정하지 않고 실행 실패로 인해 트리거되는 자율 복구 결정을 악용합니다. 우리는 7개의 LLM, 12개의 작업 템플릿, 3개의 보안에 민감한 도메인을 아우르는 실행 가능한 MCP/Skill 환경에서 오류 주입을 통해 이 동작을 체계적으로 평가합니다. 이 위협을 해결하기 위해 우리는 자원 제한 보안 증거, 격리된 복구 계획 검증 및 실행 시간 강화를 결합한 의무 보존 복구 프레임워크인 ARGUS를 제안합니다. 별도의 864회 실행 평가에서 ARGUS는 강제 실행 시 관찰된 모든 보호 손실 이벤트를 방지했으며, 복구 지원은 차단만 하는 것보다 보호된 작업 완료에서 모델 종속적인 개선을 가져왔습니다. 우리의 연구 결과는 안전한 에이전트 복구가 단순히 작업 기능을 복원하는 것이 아니라 워크플로우 변경 전반에 걸쳐 보안 의무를 보존해야 함을 보여줍니다.</div>
+  </details>
+  
+</article>
+  <ul class="compact">
+  
+  <li><a href="https://arxiv.org/abs/2611.33515v1" target="_blank" rel="noopener">추론 튜닝 LLM의 안전성 평가 및 복원</a><span class="src">arXiv</span></li>
+  
+  <li><a href="https://bsky.app/profile/ai2.bsky.social/post/3n35ts3tgco2p" target="_blank" rel="noopener">AI 에이전트가 과학 연구를 수행할 때의 경계 설정</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+</section>
+
+<section id="cat-6">
+  <h2>커뮤니티 화제 <span class="cnt">5건</span></h2>
+  
+  <ul class="compact">
+  
+  <li><a href="https://simonwillison.net/2026/Nov/25/scott-aaronson/" target="_blank" rel="noopener">스코트 애런슨 인용: 수학적 진실의 새로운 대륙</a><span class="src">Simon Willison</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n35ovat4uc2c" target="_blank" rel="noopener">산업 연구소와 경쟁: 학계의 자원 효율적인 기여</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  
+  <details class="more">
+    <summary>그 외 3건 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://www.marginalia.nu/log/a_141_marginalia_update/" target="_blank" rel="noopener">Marginalia Search: AI 등 다양한 기술에 대한 고찰</a><span class="src">Hacker News</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n366w2ozts2y" target="_blank" rel="noopener">기술 낙관론에 대한 Vitalik Buterin의 에세이</a><span class="src">Bluesky</span></li>
+  
+  <li><a href="https://bsky.app/profile/eugenevinitsky.bsky.social/post/3n35q5ylepk2t" target="_blank" rel="noopener">글을 끝까지 읽어보세요 (Read to the end)</a><span class="src">Bluesky</span></li>
+  
+</ul>
+  </details>
+  
+</section>
+
+
+
+
+
+<section>
+  <h2>수집된 소식 <span class="cnt">요약 없음 · 1건</span></h2>
+  <details class="more" >
+    <summary>목록 보기</summary>
+    <ul class="compact">
+  
+  <li><a href="https://github.com/alesha-pro/llm.asm/tree/main/02-baremetal-os" target="_blank" rel="noopener">Bare Metal Qwen</a><span class="src">Hacker News</span></li>
+  
+</ul>
+  </details>
+</section>
+
+
+
+
+<footer>
+  
+  소스 13/19 성공 · 생성 2026-11-26 11:46 KST
+  <ul>
+    
+    <li class="ok">✓ OpenAI News (50건)</li>
+    
+    <li class="ok">✓ Google DeepMind (50건)</li>
+    
+    <li class="ok">✓ Google AI (20건)</li>
+    
+    <li class="ok">✓ Anthropic News (50건)</li>
+    
+    <li class="ok">✓ Hugging Face Blog (50건)</li>
+    
+    <li class="ok">✓ Hacker News (17건)</li>
+    
+    <li class="fail">✗ Reddit r/LocalLLaMA (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FLocalLLaMA%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.m</li>
+    
+    <li class="fail">✗ Reddit r/MachineLearning (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FMachineLearning%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://develo</li>
+    
+    <li class="fail">✗ Reddit r/singularity (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsingularity%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.</li>
+    
+    <li class="fail">✗ Reddit r/ClaudeAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FClaudeAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.moz</li>
+    
+    <li class="fail">✗ Reddit r/OpenAI (0건) — Client error &#39;403 Blocked&#39; for url &#39;https://old.reddit.com/login/?reason=lor2&amp;dest=https%3A%2F%2Fold.reddit.com%2Fr%2FOpenAI%2Ftop%2F.rss%3Ft%3Dday&#39;
+For more information check: https://developer.mozil</li>
+    
+    <li class="ok">✓ arXiv (100건)</li>
+    
+    <li class="ok">✓ HF Daily Papers (50건)</li>
+    
+    <li class="ok">✓ Simon Willison (30건)</li>
+    
+    <li class="ok">✓ Interconnects (20건)</li>
+    
+    <li class="fail">✗ Import AI (0건) — Client error &#39;403 Forbidden&#39; for url &#39;https://importai.substack.com/feed&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</li>
+    
+    <li class="ok">✓ Latent Space (20건)</li>
+    
+    <li class="ok">✓ AI News (smol.ai) (31건)</li>
+    
+    <li class="ok">✓ Bluesky (321건)</li>
+    
+  </ul>
+</footer>
+</div>
+</body>
+</html>
